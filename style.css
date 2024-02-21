@@ -10,7 +10,8 @@ h1 {
     position: absolute;
     top: 0;
     right: 0;
-    
+    height: 100%;
+    width: auto;
 }
 .imagelogin2 {
     position: absolute;
@@ -103,8 +104,8 @@ button{
 .lienversconnexion{
     color :rgb(80, 177, 226);
     position :absolute;
-    right: 260px;
-    top:666px;
+    right: 181px;
+    top:646px;
 }
     
 .inline,.inline2{
@@ -112,24 +113,24 @@ button{
 }
 .inline2{
     position :absolute;
-    right: 360px;
-    top: 650px;
+    right: 280px;
+    top: 630px;
 
 }
 .titre{
    position: absolute;
-   right:200px;
+   right:100px;
    top:30px;
    width:366px;
    height: 56px;
 }
 .a{
     position :absolute;
-    right: 360px;
-    top: 220px;
+    right: 200px;
+    top: 180px;
     margin-bottom: 10px;
     color: #777;
-    font-family: Roboto;
+    font-family: "Roboto";
     font-size: 18px;
     font-style: normal;
     font-weight: 600px;
@@ -140,16 +141,16 @@ button{
     flex-shrink: 0;
     background-color:black;
     border-color:white;
-    text-align: center;
     border-radius: 10px;
     border: 5px solid #818181;
     background: rgba(217, 217, 217, 0.00);
+    padding-left: 15px;
     
 }
 .b{ 
     position :absolute;
-    right: 360px;
-    top: 280px;
+    right: 200px;
+    top: 240px;
     margin-bottom: 10px;
     color: #777;
     font-family: Roboto;
@@ -161,14 +162,17 @@ button{
     width: 200px;
     height: 40px;
     flex-shrink: 0;
-    text-align: center;
+    padding-left: 15px;
+    border: 5px solid #818181;
+    background: rgba(217, 217, 217, 0.00);
+    border-radius: 10px;
     
 
 }
 .c{
     position :absolute;
-    right: 360px;
-    top: 340px;
+    right: 200px;
+    top: 300px;
     margin-bottom: 10px;
     color: #777;
     font-family: Roboto;
@@ -180,12 +184,16 @@ button{
     width: 200px;
     height: 40px;
     flex-shrink: 0;
-    text-align: center;
+    padding-left: 15px;
+    border: 5px solid #818181;
+    background: rgba(217, 217, 217, 0.00);
+    border-radius: 10px;
+    
 }
 .d{
     position :absolute;
-    right: 360px;
-    top: 400px;
+    right: 200px;
+    top: 360px;
     margin-bottom: 10px;
     color: #777;
     font-family: Roboto;
@@ -197,13 +205,18 @@ button{
     width: 200px;
     height: 40px;
     flex-shrink: 0;
-    text-align: center;
+    padding-left: 15px;
+    border: 5px solid #818181;
+    background: rgba(217, 217, 217, 0.00);
+    border-radius: 10px;
+    
+    
 
 }
 .e {
     position :absolute;
-    right: 360px;
-    top: 475px;
+    right: 200px;
+    top: 440px;
     margin-bottom: 10px;
     color: #777;
     font-family: Roboto;
@@ -215,13 +228,17 @@ button{
     width: 200px;
     height: 40px;
     flex-shrink: 0;
-    text-align: center;
+    padding-left: 15px;
+    border: 5px solid #818181;
+    background: rgba(217, 217, 217, 0.00);
+    border-radius: 10px;
+    
 
 }
 .f{
     position :absolute;
-    right: 360px;
-    top: 530px;
+    right: 200px;
+    top: 500px;
     margin-bottom: 10px;
     color: #777;
     font-family: Roboto;
@@ -233,12 +250,15 @@ button{
     width: 200px;
     height: 40px;
     flex-shrink: 0;
-    text-align: center;
+    padding-left: 15px;
+    border: 5px solid #818181;
+    background: rgba(217, 217, 217, 0.00);
+    border-radius: 10px;
 }
 .buttoncreer{
     position :absolute;
-    right: 360px;
-    top: 600px;
+    right: 220px;
+    top: 580px;
     border-radius: 20px;
     font-size: 20px;
     background-color: white;
@@ -259,4 +279,13 @@ button{
     gap: 40px;
 
 
+}
+.logo-events{
+    position:absolute;
+    right: 0;
+    top:0;
+}
+.pied-de-page{
+    background: #282828;
+    
 }
