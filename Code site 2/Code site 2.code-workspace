@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Code site"
+		},
+		{
+			"path": "../../../../../WebAndApp/Web/HTML et CSS/Soundloc"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Code site 2"
+	}
+}
