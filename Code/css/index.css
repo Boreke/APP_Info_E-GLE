@@ -23,6 +23,7 @@ header {
     display: flex;
     align-items: center;
     color: white;
+    gap: 20px;
 }
 .Nom {
     color: #FFF;
@@ -40,13 +41,14 @@ header {
     padding-left: 12px;
     padding-right: 12px;
     border-radius: 36px;
+    gap: 30px;
 
 }
 .nav_elmt, .nav_elmt1 {
     text-decoration: none;
     color: white;
     background-color: #141414;
-    font-size: 16px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 600;
     padding: 14px;
