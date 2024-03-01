@@ -127,6 +127,7 @@ h1 {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    margin-right: 10px;
 }
 
 .scroll-btn {
@@ -201,6 +202,29 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.salle2 {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.salle3 {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.ajouter_salle {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.add_btn{
+    width: 40px;
+    height: auto;
 }
 
 /* fin body, debut footer */
