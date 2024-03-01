@@ -23,6 +23,7 @@ header {
     display: flex;
     align-items: center;
     color: white;
+    gap: 20px;
 }
 .Nom {
     color: #FFF;
@@ -40,13 +41,14 @@ header {
     padding-left: 12px;
     padding-right: 12px;
     border-radius: 36px;
+    gap: 30px;
 
 }
 .nav_elmt, .nav_elmt1 {
     text-decoration: none;
     color: white;
     background-color: #141414;
-    font-size: 16px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 600;
     padding: 14px;
@@ -110,39 +112,13 @@ button:hover {
     background-color: #898989;
 }
 
-/*Center 1*/
+/*Center*/
 
-h1 {
-    color: #FFF;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.soundwaves {
-    width: 700px; 
-    height: auto; 
-}
-
-.scroll-btn {
-    width: 40px; 
-    height: auto;
-}
-.center1 {
+.barre-recherche {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-}
-.left1 {
-    padding-left: 40px;
 }
 
-/*Center 2*/
 
-.center2 {
-    background-color: rgba(40, 40, 40, 0.60);
-    position: absolute;
-    left: 0;
-    right: 0;
-}
+
+
