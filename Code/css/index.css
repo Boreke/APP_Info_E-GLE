@@ -111,6 +111,9 @@ button {
 button:hover {
     background-color: #898989;
 }
+.menu {
+    display: none;
+}
 
 @keyframes slideinleft {
     from {
@@ -122,6 +125,34 @@ button:hover {
     from {
         margin-right: -20%;
         opacity: 0%;
+    }
+}
+
+@media (max-width:1060px) {
+    .topnav {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+    .button1 {
+        display: none;
+    }
+}
+
+@media (max-width:520px) {
+    .Nom {
+        display: none;
+    }
+    .Logo_Nom {
+        transform: scale(0.7);
+    }
+    .lg {
+        transform: scale(0.7);
+    }
+    header {
+        margin: 0 10px 0 10px;
     }
 }
 
@@ -256,23 +287,21 @@ h2 {
 
 .texte_son {
     width: 500px;
-    color: #888;
+    color: #dbdbdb;
     text-align: right;
     font-family: Roboto;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    animation-duration: 1.2s;
     animation-name: slideinright;
     animation-timeline: view() ;
 }
 
 .center4 {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    justify-content: right;
-    gap: 400px;
     background: linear-gradient(90deg, rgba(40, 40, 40, 0.60) 0%, rgba(40, 40, 40, 0.00) 100%);
 }
 
@@ -284,7 +313,7 @@ h2 {
 
 .texte_image {
     width: 500px;
-    color: #7B7B7B;
+    color: #dbdbdb;
     font-family: Roboto;
     font-size: 24px;
     font-style: normal;
@@ -292,7 +321,6 @@ h2 {
     line-height: normal;
     animation-name: slideinleft;
     animation-timeline: view() ;
-    overflow: hidden;
 }
 
 .captivant {
