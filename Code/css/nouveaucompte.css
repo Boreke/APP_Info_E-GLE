@@ -102,9 +102,14 @@ p{
 
 .CGU{
     display: flex;
+    align-items: flex-start;
     position: inline;
     margin-right: -20%;
     margin-top:-4%;
+}
+
+.CGU-checkbox {
+    margin-top: 11px;
 }
 
 .CGU-ensemble{
