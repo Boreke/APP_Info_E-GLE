@@ -168,6 +168,12 @@ h1 {
     animation-name: slideinleft;
 }
 
+@media (max-width:550px) {
+    h1 {
+        font-size: 18px;
+    }
+}
+
 .soundwaves {
     width: 700px; 
     height: auto; 
@@ -181,7 +187,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 100%;
+    height: 100vh;
 }
 .left1 {
 }
@@ -216,7 +222,7 @@ h1 {
     justify-content: space-around;
     padding-top: 120px;
     padding-bottom: 120px;
-    height: 100%;
+    height: 100vh;
 
 }
 .img-intouchables {
@@ -287,14 +293,53 @@ h2 {
     color: #ACA6A6;
 }
 
+@media (max-width:860px) {
+    .reserver_text {
+        font-size: 24px;
+    }
+
+    .img-intouchables {
+        width: 150px;
+    }
+
+    .slider-1 {
+        max-width: 150px;
+        margin: 50px auto;
+    }
+    
+}
+
+@media (max-width:600px) {
+    .center2 {
+        flex-direction: column;
+        gap: 90px;
+    }
+
+    .left2 {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .reserver_text {
+        font-size: 16px;
+    }
+    button {
+        border-radius: 36px;
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
 .center3 {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 90px 0;
     background: linear-gradient(270deg, #282828 0%, rgba(0, 0, 0, 0.00) 100%);
-    height: 100%;
-
+    height: 100vh;
 }
 
 .right3 {
@@ -302,6 +347,7 @@ h2 {
     flex-direction: column;
     align-items: end;
     gap: 40px;
+    margin: 2vh;
 }
 
 .expérience {
@@ -309,7 +355,7 @@ h2 {
 }
 
 .texte_son {
-    width: 500px;
+    max-width: 500px;
     color: #dbdbdb;
     text-align: right;
     font-family: Roboto;
@@ -318,26 +364,49 @@ h2 {
     font-weight: 400;
     line-height: normal;
     animation-name: slideinright;
-    animation-timeline: view() ;
+    animation-timeline: view();
 }
+
+@media (max-width:990px){
+    .center3 {
+        flex-direction:column;
+        
+    }
+    .img-enceinte {
+        transform: scale(0.5);
+    }
+    .texte_son {
+        font-size: 18px; 
+        text-align: center;
+    }
+    .small-h1 {
+        font-size: 20px;
+    }
+    .right3{
+        align-items: center;
+    }
+}
+
 
 .center4 {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: linear-gradient(90deg, rgba(40, 40, 40, 0.60) 0%, rgba(40, 40, 40, 0.00) 100%);
-    height: 100%;
+    background: black;
+    height: 100vh;
 
 }
 
 .left4{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 40px;
+    margin: 2vh;
 }
 
 .texte_image {
-    width: 500px;
+    max-width: 500px;
     color: #dbdbdb;
     font-family: Roboto;
     font-size: 24px;
@@ -348,6 +417,33 @@ h2 {
     animation-timeline: view() ;
 }
 
+@media (max-width:990px){
+    .center4 {
+        flex-direction:column-reverse;
+        
+    }
+    .img-terre {
+        transform: scale(0.5);
+    }
+    .texte_image {
+        font-size: 18px; 
+        text-align: center;
+    }
+    .left4{
+        align-items: center;
+    }
+}
+
+@media (max-width:320px){
+    .texte_son,.texte_image{
+        font-size: 14px;
+    }
+}
+@media (max-width:1300px) {
+    .texte_son, .texte_image,.reserver_text{
+        animation-name: none;
+    }
+}
 .captivant {
     color: #3375AA;
 }
