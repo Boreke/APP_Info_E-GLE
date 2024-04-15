@@ -1,0 +1,111 @@
+body {
+    font-family: 'Roboto';
+    background-color: rgb(0, 0, 0);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 50px 0 50px;
+}
+
+.topleft {
+    text-decoration: none;
+}
+
+.Logo_Nom {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 20px;
+}
+.Nom {
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.topnav {
+    display: flex;
+    list-style: none;
+    background-color: #141414;
+    padding: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 36px;
+    gap: 30px;
+
+}
+.nav_elmt, .nav_elmt1 {
+    text-decoration: none;
+    color: white;
+    background-color: #141414;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    padding: 14px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 36px;
+    transition-duration: 0.3s;
+
+}
+.nav_elmt:hover {
+    background-color: #222222;
+}
+.nav_elmt1 {
+    background-color: #FFF;
+    color: black;
+    
+}
+.topright{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.lg {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 5px;
+    padding-left: 7px;
+    background-color: #232323;
+    border-radius: 24px;
+    color: #FFF;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.lg_elmt, .lg_elmt1{
+    background-color: #232323;
+    text-decoration: none;
+    color: #FFF;
+}
+.lg_elmt {
+    background-color: white;
+    color: black;
+    border-radius: 36px;
+    padding: 5px;
+}
+
+button {
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 36px;
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #898989;
+}
+.menu {
+    display: none;
+}
