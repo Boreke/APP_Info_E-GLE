@@ -25,6 +25,7 @@ header {
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
+  
 }
 
 .topnav {
@@ -260,7 +261,6 @@ input {
 /* ------DEUXIEME CARROUSSEL------*/
 
 
-
 .film-affiche-nom{
   padding: 0 10vw;
   font-size: 30px;
@@ -276,7 +276,7 @@ input {
   width: 10vw;
   height: 50%;
   position: absolute;
-  top:100%;
+  top:80%;
   background: black;
   z-index:2;
 }
