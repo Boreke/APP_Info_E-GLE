@@ -260,13 +260,14 @@ input {
 
 /* ------DEUXIEME CARROUSSEL------*/
 
-.movie-affiche{
-margin-top: 7%;
+.movie-a-affiche{
+margin-top: 6%;
 display: block;
 align-items: center;
+background:rgb(54, 52, 52);
+padding-top: 1%;
 
 }
-
 
 .film-affiche-nom{
   padding: 0 10vw;
@@ -283,9 +284,9 @@ align-items: center;
   width: 10vw;
   height: 50%;
   position: absolute;
-  top:90%;
-  background: black;
-  z-index:2;
+  top:95%;
+  background: rgb(54, 52, 52);
+  z-index:3;
 }
 .next-btn{
   right:0;
@@ -295,7 +296,7 @@ align-items: center;
   left:0;
 }
 .previous-btn:hover , .next-btn:hover{
-  background: black;
+  background: rgb(54, 52, 52);
 }
 .previous-btn img , .next-btn img{
   opacity: 0.2;
@@ -303,22 +304,21 @@ align-items: center;
 
 .previous-btn:hover img , .next-btn:hover img{
   opacity: 1;
-  background: black;
+  background:rgb(54, 52, 52);
 }
-.movie-container2{
+.movie-contenu{
   padding: 0 10vw;
-  display: flex;
+  display: flex; 
   overflow-x: auto;
   scroll-behavior: smooth;
   gap: 50px;
 }
-.movie-card2{
+.movie-affiche{
   flex: 0 0 auto;
   width: 250px;
-  height: 450px;
   margin-right: 40px;
 }
-.movie-image2{
+.movie-img{
   position: relative;
   width: 100%;
   height: 350px;
@@ -326,11 +326,92 @@ align-items: center;
   z-index: 2;
 
 }
-.movie-name2{
+.movie-nom{
   color: white;
   text-transform: uppercase;
 }
-.movie-container2::-webkit-scrollbar {
+.movie-contenu::-webkit-scrollbar {
   display: none;
 }
+
+/*------FIN-SECOND-CARROUSSEL--------------*/
+
+/* ------TROISIEME CARROUSSEL------*/
+.movie-a-venir{
+  margin-top: 6%;
+  display: block;
+  align-items: center;
+  padding-top: 1%;
+  
+  }
+  
+  .film-venir-nom{
+    padding: 0 10vw;
+    font-size: 30px;
+    font-weight: 500; 
+    margin-bottom: 40px;
+    text-transform: capitalize;
+    display: flex;
+    text-align: left;
+    color: white;
+  }
+  .precedent-btn, .suivant-btn{
+    border: none;
+    width: 10vw;
+    height: 50%;
+    position: absolute;
+    top:172%;
+    background: black;
+    z-index:3;
+  }
+  .suivant-btn{
+    right:0;
+    transform: rotate(180deg);
+  }
+  .precedent-btn{
+    left:0;
+  }
+  .precedent-btn:hover , .suivant-btn:hover{
+    background: black;
+  }
+  
+  .precedent-btn img , .suivant-btn img{
+    opacity: 0.2;
+  }
+  
+  .precedent-btn:hover img , .suivant-btn:hover img{
+    opacity: 1;
+    background: black;
+  }
+  .movie-venir-contenu{
+    padding: 0 10vw;
+    display: flex; 
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 50px;
+  }
+  .movie-venir{
+    flex: 0 0 auto;
+    width: 250px;
+    margin-right: 40px;
+  }
+  .movie-venir-img{
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    z-index: 2;
+  
+  }
+  .movie-venir-nom{
+    color: white;
+    text-transform: uppercase;
+  }
+  .movie-venir-contenu::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+
+
 
