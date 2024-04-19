@@ -284,7 +284,6 @@ padding-top: 1%;
   width: 10vw;
   height: 50%;
   position: absolute;
-  top:95%;
   background: rgb(54, 52, 52);
   z-index:3;
 }
@@ -360,7 +359,7 @@ padding-top: 1%;
     width: 10vw;
     height: 50%;
     position: absolute;
-    top:172%;
+    
     background: black;
     z-index:3;
   }
