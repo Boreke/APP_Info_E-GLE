@@ -42,7 +42,7 @@ if (isset($_SESSION["user_id"])) {
        
         <nav id="nav" >
             <li><a href="index.html"  class="nav_elmt1">Accueil</a></li>
-            <li><a href="seances.html"  class="nav_elmt">Séances</a></li>
+            <li><a href="seancesflorent.html"  class="nav_elmt">Séances</a></li>
             <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
         </nav>
         <img src="img/Menu.png" alt="Menu" class="menu" id="menuburger">
