@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+    <link rel="stylesheet" href="css/calendar.css" />
+  </head>
+  <body>
+    <header>
+        <a href="index.html" class="topleft">
+            <div class="Logo_Nom">
+                <img src="img/Falcon (1).png" alt="Logo" class="logo">
+                <p class="Nom">E-GLE</p>
+            </div>
+        </a>
+       
+        <nav class="topnav">
+            <li><a href="index.html"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="seances.html"  class="nav_elmt">Séances</a></li>
+            <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
+        </nav>
+        <img src="img/Menu.png" alt="Menu" class="menu">
+        <div class="topright">
+            <div class="lg">
+                <li><a href="" class="lg_elmt1">EN</a></li>
+                <li><a href="" class="lg_elmt">FR</a></li>
+            </div>    
+
+            <a href="connexion.html"><button class="button1">Login</button></a>
+
+        </div>
+    </header>
+    <div class="container">
+    <div class="calendar">
+      <header>
+        <h3></h3>
+        <nav>
+          <button id="prev"></button>
+          <button id="next"></button>
+        </nav>
+      </header>
+      <section>
+        <ul class="days">
+          <li>Sun</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+        </ul>
+        <ul class="dates"></ul>
+      </section>
+    </div>
+    <div class="rectangle">
+      <h1 id="rectangleTitle"></h1>
+    </div>
+    </div>
+    <script src="js/calendar.js" defer></script>
+    <div>
+    </div>
+  </body>
+</html> 

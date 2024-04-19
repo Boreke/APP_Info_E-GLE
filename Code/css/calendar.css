@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 2rem;
+  height: 100vh;
+  font-family: Robobto, sans-serif;
+  background: black
+}
+h1 {
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+h3 {
+  font-weight: 600;
+}
+
+.calendar header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.calendar nav {
+  display: flex;
+  align-items: center;
+}
+.calendar ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.calendar ul li {
+  width: calc(100% / 7);
+  margin-top: 25px;
+  position: relative;
+  z-index:0;
+  color: pink
+    
+}
+#prev,
+#next {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+#prev::before,
+#next::before {
+  content: "";
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-style: solid;
+  border-width: 0.25em 0.25em 0 0;
+  border-color: #ccc;
+}
+#next::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+#prev::before {
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+#prev:hover::before,
+#next:hover::before {
+  border-color: #000000;
+}
+.days {
+  font-weight: 600;
+}
+.dates li.today {
+  color: #fff;
+}
+.dates li.today::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 50px 0 50px;
+}
+
+.Logo_Nom {
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 20px;
+  
+}
+.Nom {
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.topnav {
+  display: flex;
+  list-style: none;
+  background-color: #141414;
+  padding: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 36px;
+  gap: 30px;
+
+}
+
+.nav_elmt, .nav_elmt1 {
+  text-decoration: none;
+  color: white;
+  background-color: #141414;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  padding: 14px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 36px;
+  transition-duration: 0.3s;
+
+}
+.nav_elmt:hover {
+  background-color: #222222;
+}
+.nav_elmt1 {
+  background-color: #FFF;
+  color: black;
+  
+}
+.topright{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.lg {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 5px;
+  padding-left: 7px;
+  background-color: #232323;
+  border-radius: 24px;
+  color: #FFF;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.lg_elmt, .lg_elmt1{
+  background-color: #232323;
+  text-decoration: none;
+  color: #FFF;
+}
+.lg_elmt {
+  background-color: white;
+  color: black;
+  border-radius: 36px;
+  padding: 5px;
+}
+
+button {
+  color: black;
+  background-color: white;
+  border: none;
+  border-radius: 36px;
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #898989;
+}
+.menu {
+  display: none;
+}
+.Logo_Nom {
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 20px;
+}
+
+.Logo_Nom .Nom {
+  font-family: "Roboto", sans-serif;
+}
+
+
+
+.dates li {
+  color: rgb(89, 89, 89);
+  transition: background-color 0.3s ease;
+  text-decoration: none;  
+}
+
+.calendar ul li {
+  color: black;
+}
+
+.dates li a {
+  color: rgb(101, 101, 101);
+  text-decoration : none;
+}
+
+.dates li.today a {
+  color: white;
+}
+
+
+.calendar {
+  margin: auto;
+  margin-top: 200px;
+  width: 48%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 10px;
+  float: left;
+  padding: 1rem;
+}
+
+.rectangle {
+  margin: auto;  
+  margin-top: 200px;
+  width: 48%;
+  max-width: 380px;
+  height: 400px; 
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  float: right;
+}
+.container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  height: 100vh; 
+}
+
+.selected {
+  color: black; 
+  font-family: Roboto;
+}
+
+#rectangleTitle {
+  color: black; 
+  margin-top: 20px;
+  font-size : 20px;
+}
