@@ -1,3 +1,36 @@
+<?php
+
+$is_invalid = false;
+
+if($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $mysqli = require __DIR__ . "/php/database.php";
+
+    $sql = sprintf("SELECT * FROM user WHERE username = '%s'", $mysqli->real_escape_string($_POST["username"]));
+
+    $result = $mysqli->query($sql);
+
+    $user = $result->fetch_assoc();
+
+    if ($user) {
+        
+        if (password_verify($_POST["password"], $user["password_hash"])) {
+            
+            session_start();
+            
+            session_regenerate_id();
+            
+            $_SESSION["user_id"] = $user["id"];
+            
+            header("Location: index.php");
+            exit;
+        }
+    }
+    
+    $is_invalid = true;
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,14 +53,22 @@
     </div>
 <section class="connexion">
     <h2 class="titre2">Connexion</h2>
-    <div class="inputs">
-        <input type="Identifiant" placeholder="Identifiant" class="id">
-        <input type="password" placeholder="Mot de passe" class="id">
+
+    <?php if ($is_invalid): ?>
+        <em>Invalid login</em>
+    <?php endif; ?>
+
+    <form class="inputs" method="post">
+        <input type="Identifiant" placeholder="Identifiant" class="id" id="username" name="username" value="<?= htmlspecialchars($_POST["username"] ?? "") ?>">
+        <input type="password" placeholder="Mot de passe" class="id" id="password" name="password">
         <button class="buttonconnexion"> Connexion </button>
         <div class="crétioncompte">
             <p class="inline">Vous n'avez pas de compte ?</p> <a href="nouveaucompte.html" class="lienverscreation">Créer un compte</a>
         </div>
-    </div>
+    </form>
+   
+
 </section>
 </body>
+
 </html>
