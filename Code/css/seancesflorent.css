@@ -8,6 +8,10 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 0 50px 0 50px;
+  position: static;
+  top: 0;
+  z-index: 2;
+  margin-top: 2%;
 }
 
 .topleft {
@@ -18,6 +22,7 @@ header {
   display: flex;
   align-items: center;
   color: white;
+  gap: 20px;
 }
 .Nom {
   color: #FFF;
@@ -25,10 +30,9 @@ header {
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
-  
 }
 
-.topnav {
+nav {
   display: flex;
   list-style: none;
   background-color: #141414;
@@ -36,13 +40,14 @@ header {
   padding-left: 12px;
   padding-right: 12px;
   border-radius: 36px;
+  gap: 30px;
 
 }
 .nav_elmt, .nav_elmt1 {
   text-decoration: none;
   color: white;
   background-color: #141414;
-  font-size: 16px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   padding: 14px;
@@ -89,23 +94,20 @@ header {
   border-radius: 36px;
   padding: 5px;
 }
-  button {
-    color: black;
-    background-color: white;
-    border: none;
-    border-radius: 36px;
-    width: 120px;
-    height: 50px;
-    font-size: 18px;
-    font-weight: 700;
-    transition-duration: 0.3s;
-    cursor: pointer;
 
-}
-button:hover {
-  background-color: #898989;
-}
+button {
+  color: black;
+  background-color: white;
+  border: none;
+  border-radius: 36px;
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  transition-duration: 0.3s;
+  cursor: pointer;
   
+}
 
 /*--------FIN HEADER-------*/
 
