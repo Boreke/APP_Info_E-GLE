@@ -8,6 +8,10 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 0 50px 0 50px;
+  position: static;
+  top: 0;
+  z-index: 2;
+  margin-top: 2%;
 }
 
 .topleft {
@@ -18,6 +22,7 @@ header {
   display: flex;
   align-items: center;
   color: white;
+  gap: 20px;
 }
 .Nom {
   color: #FFF;
@@ -25,10 +30,9 @@ header {
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
-  
 }
 
-.topnav {
+nav {
   display: flex;
   list-style: none;
   background-color: #141414;
@@ -36,13 +40,14 @@ header {
   padding-left: 12px;
   padding-right: 12px;
   border-radius: 36px;
+  gap: 30px;
 
 }
 .nav_elmt, .nav_elmt1 {
   text-decoration: none;
   color: white;
   background-color: #141414;
-  font-size: 16px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   padding: 14px;
@@ -89,23 +94,20 @@ header {
   border-radius: 36px;
   padding: 5px;
 }
-  button {
-    color: black;
-    background-color: white;
-    border: none;
-    border-radius: 36px;
-    width: 120px;
-    height: 50px;
-    font-size: 18px;
-    font-weight: 700;
-    transition-duration: 0.3s;
-    cursor: pointer;
 
-}
-button:hover {
-  background-color: #898989;
-}
+button {
+  color: black;
+  background-color: white;
+  border: none;
+  border-radius: 36px;
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  transition-duration: 0.3s;
+  cursor: pointer;
   
+}
 
 /*--------FIN HEADER-------*/
 
@@ -114,30 +116,32 @@ button:hover {
 /*BARRE DE RECHERCHE*/
 
 .search-container{
- display: flex;
- position: left; 
- margin-left: 4%;
- margin-top: 2%;
- margin-bottom: 2%;
- align-items: center;
- z-index: index 8;;
-}
-
-.search-icon{
+  display: flex;
+  position: left; 
+  margin-left: 4%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  align-items: center;
+  z-index: index 8;;
+ }
+ 
+ .search-icon{
   margin-right: -40px;
-  z-index:2;
-  height:20px;
-  width:20px;
-    
-}
-.search-text{
-  padding-left: 2.5%;
-  
-}
-.search-text:focus{
-  font-weight: 900;
-  font-style: bold;
-}
+   z-index:2;
+   height:20px;
+   width:20px;
+   padding-right: 10px;
+     
+ }
+ .search-text{
+   padding-left: 2.5%;
+  color: #222222;
+ }
+ 
+ .search-container:hover{
+   filter: drop-shadow(3px 3px 3px rgb(119, 119, 119));
+   
+ }
 
   /*FIN BARRE DE RECHERCHE*/
 
@@ -260,6 +264,14 @@ input {
 
 /* ------DEUXIEME CARROUSSEL------*/
 
+.movie-a-affiche{
+margin-top: 6%;
+display: block;
+align-items: center;
+background:rgb(54, 52, 52);
+padding-top: 1%;
+
+}
 
 .film-affiche-nom{
   padding: 0 10vw;
@@ -276,9 +288,8 @@ input {
   width: 10vw;
   height: 50%;
   position: absolute;
-  top:80%;
-  background: black;
-  z-index:2;
+  background: rgb(54, 52, 52);
+  z-index:3;
 }
 .next-btn{
   right:0;
@@ -288,7 +299,7 @@ input {
   left:0;
 }
 .previous-btn:hover , .next-btn:hover{
-  background: black;
+  background: rgb(54, 52, 52);
 }
 .previous-btn img , .next-btn img{
   opacity: 0.2;
@@ -296,32 +307,161 @@ input {
 
 .previous-btn:hover img , .next-btn:hover img{
   opacity: 1;
-  background: black;
+  background:rgb(54, 52, 52);
 }
-.movie-container2{
+.movie-contenu{
   padding: 0 10vw;
-  display: flex;
+  display: flex; 
   overflow-x: auto;
   scroll-behavior: smooth;
   gap: 50px;
 }
-.movie-card2{
+.movie-affiche{
   flex: 0 0 auto;
   width: 250px;
-  height: 450px;
   margin-right: 40px;
 }
-.movie-image2{
+.movie-img{
   position: relative;
   width: 100%;
   height: 350px;
   overflow: hidden;
+  z-index: 2;
 
 }
-.movie-name2{
+.movie-nom{
   color: white;
   text-transform: uppercase;
 }
-.movie-container2::-webkit-scrollbar {
+.movie-contenu::-webkit-scrollbar {
   display: none;
 }
+
+/*------FIN-SECOND-CARROUSSEL--------------*/
+
+/* ------TROISIEME CARROUSSEL------*/
+.movie-a-venir{
+  margin-top: 6%;
+  display: block;
+  align-items: center;
+  padding-top: 1%;
+  
+  }
+  
+  .film-venir-nom{
+    padding: 0 10vw;
+    font-size: 30px;
+    font-weight: 500; 
+    margin-bottom: 40px;
+    text-transform: capitalize;
+    display: flex;
+    text-align: left;
+    color: white;
+  }
+  .precedent-btn, .suivant-btn{
+    border: none;
+    width: 10vw;
+    height: 50%;
+    position: absolute;
+    
+    background: black;
+    z-index:3;
+  }
+  .suivant-btn{
+    right:0;
+    transform: rotate(180deg);
+  }
+  .precedent-btn{
+    left:0;
+  }
+  .precedent-btn:hover , .suivant-btn:hover{
+    background: black;
+  }
+  
+  .precedent-btn img , .suivant-btn img{
+    opacity: 0.2;
+  }
+  
+  .precedent-btn:hover img , .suivant-btn:hover img{
+    opacity: 1;
+    background: black;
+  }
+  .movie-venir-contenu{
+    padding: 0 10vw;
+    display: flex; 
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 50px;
+  }
+  .movie-venir{
+    flex: 0 0 auto;
+    width: 250px;
+    margin-right: 40px;
+  }
+  .movie-venir-img{
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    z-index: 2;
+  
+  }
+  .movie-venir-nom{
+    color: white;
+    text-transform: uppercase;
+  }
+  .movie-venir-contenu::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    background: #282828;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.nav_bas {
+    color: #8A8A8A;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    list-style: none;
+    gap: 60px;
+}
+
+.nav_bas_elmt {
+    text-decoration: none;
+}
+
+.reseaux {
+    display: flex;
+    list-style: none;
+    gap: 69px;
+}
+
+.mention_legales {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+}
+.mention_legales_text {
+    color: #5A5A5A;
+}
+.Copyright {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+  
+  
+
+
+
