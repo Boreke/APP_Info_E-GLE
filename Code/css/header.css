@@ -1,0 +1,199 @@
+.loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lettre {
+    color: #484848;
+    font-size: 80px;
+    letter-spacing: 15px;
+    animation: flash 1.2s linear infinite;
+}
+
+@keyframes flash {
+    0% {
+        color: #1e94d3;
+        text-shadow: 0 0 7px #1e94d3;
+    }
+    90%{
+        color: #484848;
+        text-shadow: none;
+    }
+    100% {
+        color: #1e94d3;
+        text-shadow: 0 0 7px #1e94d3;
+    }
+}
+
+.lettre:nth-child(1){
+    animation-delay: 0.1s;
+}
+.lettre:nth-child(2){
+    animation-delay: 0.2s;
+}
+.lettre:nth-child(3){
+    animation-delay: 0.3s;
+}
+.lettre:nth-child(4){
+    animation-delay: 0.4s;
+}
+
+.fondu-out {
+    display: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-top: 2%;
+}
+
+.topleft {
+    text-decoration: none;
+}
+
+.Logo_Nom {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 20px;
+}
+.Nom {
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    list-style: none;
+    background-color: #141414;
+    padding: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 36px;
+    gap: 30px;
+
+}
+.nav_elmt, .nav_elmt1 {
+    text-decoration: none;
+    color: white;
+    background-color: #141414;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    padding: 14px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 36px;
+    transition-duration: 0.3s;
+
+}
+.nav_elmt:hover {
+    background-color: #222222;
+}
+.nav_elmt1 {
+    background-color: #FFF;
+    color: black;
+    
+}
+.topright{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.lg {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 5px;
+    padding-left: 7px;
+    background-color: #232323;
+    border-radius: 24px;
+    color: #FFF;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.lg_elmt, .lg_elmt1{
+    background-color: #232323;
+    text-decoration: none;
+    color: #FFF;
+}
+.lg_elmt {
+    background-color: white;
+    color: black;
+    border-radius: 36px;
+    padding: 5px;
+}
+
+button {
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 36px;
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 1px rgb(119, 119, 119));
+}
+button:hover {
+    background-color: #898989;
+}
+.menu {
+    display: none;
+}
+
+@media (max-width:1060px) {
+    nav {
+        position: fixed;
+        top: -100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        border-radius: 0 0 40px 40px;
+    }
+
+    .menu {
+        display: block;
+    }
+    .button1 {
+        display: none;
+    }
+    nav.active {
+        left: 0;
+        right: 0;
+        width: 100%;
+        top: 8vw;
+    }
+}
+
+@media (max-width:520px) {
+    .Nom {
+        display: none;
+    }
+    .Logo_Nom {
+        transform: scale(0.7);
+    }
+    .lg {
+        transform: scale(0.7);
+    }
+    header {
+        margin: 0 10px 0 10px;
+    }
+}
