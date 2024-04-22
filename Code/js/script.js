@@ -46,3 +46,7 @@ FilmVenirContenu.forEach((item, i) => {
         item.scrollLeft -= containerWidth;
     });
 });
+function acceptCookies() {
+    document.getElementById("cookieBanner").style.display = "none";
+    // Ici vous pouvez ajouter le code pour enregistrer que l'utilisateur a accepté les cookies, par exemple en utilisant les cookies du navigateur ou en envoyant une requête au serveur.
+}
