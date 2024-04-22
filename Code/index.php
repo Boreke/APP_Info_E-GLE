@@ -1,3 +1,20 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION["user_id"])) {
+    
+    $mysqli = require __DIR__ . "/php/database.php";
+    
+    $sql = "SELECT * FROM user WHERE id = {$_SESSION["user_id"]}";
+            
+    $result = $mysqli->query($sql);
+    
+    $user = $result->fetch_assoc();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +44,7 @@
        
         <nav id="nav" >
             <li><a href="index.html"  class="nav_elmt1">Accueil</a></li>
-            <li><a href="seances.html"  class="nav_elmt">Séances</a></li>
+            <li><a href="seancesflorent.html"  class="nav_elmt">Séances</a></li>
             <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
         </nav>
         <img src="img/Menu.png" alt="Menu" class="menu" id="menuburger">
@@ -37,7 +54,7 @@
                 <li><a href="" class="lg_elmt">FR</a></li>
             </div>    
 
-            <a href="connexion.html"><button class="button1">Login</button></a>
+            <a href="connexion.php"><button class="button1">Login</button></a>
 
         </div>
     </header>
