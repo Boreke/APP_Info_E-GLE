@@ -13,6 +13,27 @@ validation
         }
     ])
 
+    .addField("#email", [
+        {
+            rule: "required"
+        },
+        {
+            rule: "email"
+        },
+        {
+            validator: (value) => () => {
+                return fetch("validationemail.php?email=" + encodeURIComponent(value))
+                       .then(function(response) {
+                           return response.json();
+                       })
+                       .then(function(json) {
+                           return json.available;
+                       });
+            },
+            errorMessage: "email already taken"
+        }
+    ]) 
+
     .addField("#password", [
         {
             rule: "required"
