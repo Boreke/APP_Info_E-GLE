@@ -45,7 +45,7 @@ $stmt->bind_param("sssss", $_POST["nom"], $_POST["prenom"], $_POST["email"], $_P
 
 if ($stmt->execute()) {
 
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit;
     
 } else {
