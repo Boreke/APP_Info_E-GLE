@@ -13,7 +13,7 @@ validation
         }
     ])
 
-    .addField("#email", [
+/*    .addField("#email", [
         {
             rule: "required"
         },
@@ -32,7 +32,7 @@ validation
             },
             errorMessage: "email already taken"
         }
-    ])
+    ]) */
     .addField("#password", [
         {
             rule: "required"
