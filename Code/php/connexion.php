@@ -20,8 +20,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
             
             session_regenerate_id();
             
-            $_SESSION["user_id"] = $user["id"];
+            $_SESSION["user_id"] = $user["id_user"];
             
+
             header("Location: index.php");
             exit;
         }

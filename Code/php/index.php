@@ -6,7 +6,7 @@ if (isset($_SESSION["user_id"])) {
     
     $mysqli = require __DIR__ . "/database.php";
     
-    $sql = "SELECT * FROM user WHERE id = {$_SESSION["user_id"]}";
+    $sql = "SELECT * FROM user WHERE id_user = {$_SESSION["user_id"]}";
             
     $result = $mysqli->query($sql);
     
@@ -53,8 +53,13 @@ if (isset($_SESSION["user_id"])) {
                 <li><a href="" class="lg_elmt1">EN</a></li>
                 <li><a href="" class="lg_elmt">FR</a></li>
             </div>    
-
-            <a href="connexion.php"><button class="button1">Login</button></a>
+            <?php if (isset($user)): ?>
+                <a href="deconnexion.php"><button class="button1">Logout</button></a>
+            <?php else:  ?>
+                <a href="connexion.php"><button class="button1">Login</button></a>
+            <?php endif; ?> 
+           
+            
 
         </div>
     </header>
@@ -95,6 +100,12 @@ if (isset($_SESSION["user_id"])) {
             </div>
             <div class="right3">
                 <h1 class="small-h1">Une <span class="expérience">expérience</span> sonore immersive</h1>
+                <?php if (isset($user)): ?>
+                    <p>Hello <?= htmlspecialchars($user["name"]) ?></p>
+                    <p><a href="logout.php">Log out</a></p>
+                <?php else: ?>
+                    <p><a href="login.php">Log in</a> or <a href="signup.html">sign up</a></p>
+                <?php endif; ?>
                 <p class="texte_son">Découvrez une expérience sonore inégalée dans nos salles de cinéma partenaires. Grâce à une technologie audio de pointe, chaque film prend vie avec une clarté cristalline et une immersion totale. Plongez au cœur de l'action avec un son surround époustouflant, où chaque murmure, explosion et note de musique est restitué avec une fidélité exceptionnelle.</p>
             </div>
         </div>
