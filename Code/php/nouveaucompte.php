@@ -32,7 +32,7 @@ $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $mysqli = require __DIR__ . "/database.php";
 
-$sql = "INSERT INTO user (nom, prenom, email, username, password_hash)
+$sql = "INSERT INTO user (nom, prenom, username, email, password_hash)
         VALUES (?, ?, ?, ?, ?)";
         
 $stmt = $mysqli->stmt_init();
@@ -41,11 +41,11 @@ if ( ! $stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
 }
 
-$stmt->bind_param("sssss", $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["username"], $password_hash);
+$stmt->bind_param("sssss", $_POST["nom"], $_POST["prenom"], $_POST["username"], $_POST["email"], $password_hash);
 
 if ($stmt->execute()) {
 
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit;
     
 } else {
