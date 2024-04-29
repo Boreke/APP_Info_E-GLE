@@ -122,6 +122,9 @@ input {
 .nxt-btn {
   transform: rotate(180deg);
 }
+.pre-btn:hover, .nxt-btn:hover {
+  opacity: 0.5;
+}
 
 
 
