@@ -398,6 +398,19 @@ footer {
     
 }
 
+
+#popup11:hover{
+    font-size: 0.7vw;
+    font-style: normal;
+    border: 1px solid grey;
+    width: 7vw;
+    height: 10vh;
+    border-radius: 10px;
+    color: black;
+    background-color: #a0a0a0;
+
+}
+
 #popup12{
     font-size: 0.7vw;
     font-style: normal;
@@ -410,7 +423,7 @@ footer {
 }
 
 #popup12:hover{
-    background-color: rgb(112, 112, 25);
+    background-color: rgb(117, 93, 20);
 }
 
 .PP{
