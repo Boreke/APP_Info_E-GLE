@@ -26,21 +26,21 @@ body {
         opacity: 0%;
     }
 }
-#TITRE {
+.TITRE {
     margin-left: 10vw;
     margin-top: 6vh;
     color: gray; 
     font-size: 100px; 
     
 }
-#sous-titre{
+.sous-titre{
     margin-left: 10vw;
     margin-top: 2vh;
     color: gray; 
     font-size: 20px;  
     padding-bottom: 20vh; 
 }
-#question{
+.question{
     margin-left: 0;
     padding-left: 3vw;
     margin-bottom: 0;
@@ -52,11 +52,12 @@ body {
     flex-direction: row;
 }
 
-#flechebas {
+.flechebas {
     transform: scale(0.6);
 }
-#description{
+.description{
     background-color: #4e4e4e;
     padding: 50px;
     margin-top: 0;
+    display: none;
 }
