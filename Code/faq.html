@@ -22,7 +22,7 @@
         <nav class="topnav" id="nav">
             <li><a href="index.php"  class="nav_elmt">Accueil</a></li>
             <li><a href="seances.html"  class="nav_elmt">Séances</a></li>
-            <li><a href="salles.html"  class="nav_elmt1">Salles</a></li>
+            <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
         </nav>
         <img src="img/Menu.png" alt="Menu" class="menu" id="menuburger">
         <div class="topright">
@@ -60,6 +60,62 @@
                     <p>En fonction de ta gentillesse </p>
 
                 </div>
+                <div id="question">
+                    <p>Est-ce qu'on peut précommander une séance ? </p>
+                    <img src="img/Drop Down.png" alt="" id="flechebas">
+                </div>
+                <div id="description">
+                    <p> Surement </p>
+
+                </div>
+                <div id="question">
+                    <p>Comment puis-je réserver des billets de cinéma sur votre site ? </p>
+                    <img src="img/Drop Down.png" alt="" id="flechebas">
+                </div>
+                <div id="description">
+                    <p>OUI C EST LE BUT </p>
+
+                </div>
+                <div id="question">
+                    <p>Quels modes de paiement acceptez-vous pour la réservation en ligne ? </p>
+                    <img src="img/Drop Down.png" alt="" id="flechebas">
+                </div>
+                <div id="description">
+                    <p>Cartes </p>
+
+                </div>
+                <div id="question">
+                    <p>Puis-je modifier ou annuler ma réservation ? </p>
+                    <img src="img/Drop Down.png" alt="" id="flechebas">
+                </div>
+                <div id="description">
+                    <p>Force à toi </p>
+
+                </div>
+                <div id="question">
+                    <p>Est-ce que je peux choisir mes sièges lors de la réservation en ligne ? </p>
+                    <img src="img/Drop Down.png" alt="" id="flechebas">
+                </div>
+                <div id="description">
+                    <p>OF COURSE</p>
+
+                </div>
+                <div id="question">
+                    <p>Y a-t-il des réductions disponibles pour les étudiants, les seniors ou d'autres groupes spécifiques ? </p>
+                    <img src="img/Drop Down.png" alt="" id="flechebas">
+                </div>
+                <div id="description">
+                    <p>Non tu payes comme un brave </p>
+
+                </div>
+                <div id="question">
+                    <p>Comment puis-je récupérer mes billets réservés en ligne au cinéma ?</p>
+                    <img src="img/Drop Down.png" alt="" id="flechebas">
+                </div>
+                <div id="description">
+                    <p>Tu les imprimes </p>
+
+                </div>
             </body>
             </html>
             </div>
@@ -88,4 +144,23 @@
     </footer>
 </body>
 <script src="../js/index.js"></script>
+<script>
+    // Récupère toutes les questions
+const questions = document.querySelectorAll('#question');
+
+// Pour chaque question, ajoute un gestionnaire d'événements
+questions.forEach(question => {
+    // Récupère l'élément "description" associé à cette question
+    const description = question.nextElementSibling;
+    
+    // Ajoute un événement de clic à la question
+    question.addEventListener('click', () => {
+        // Vérifie si la description est visible ou non
+        const isVisible = description.style.display === 'block';
+        
+        // Change la visibilité de la description en fonction de son état actuel
+        description.style.display = isVisible ? 'none' : 'block';
+    });
+});
+</script>
 </html>
