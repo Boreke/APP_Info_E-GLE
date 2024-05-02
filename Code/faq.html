@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/faq.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 
     <title>FAQ</title>
 </head>
@@ -19,10 +21,10 @@
             </div>
         </a>
        
-        <nav class="topnav" id="nav">
+        <nav class="topnav" class="nav">
             <li><a href="index.php"  class="nav_elmt">Accueil</a></li>
             <li><a href="seances.html"  class="nav_elmt">Séances</a></li>
-            <li><a href="salles.html"  class="nav_elmt1">Salles</a></li>
+            <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
         </nav>
         <img src="img/Menu.png" alt="Menu" class="menu" id="menuburger">
         <div class="topright">
@@ -44,21 +46,95 @@
                 <link rel="stylesheet" href="faq.CSS">
             </head>
             <body>
-                <div id="TITRE">
+                <div class="TITRE">
                     FAQs 
 
                 </div>
+                <div class="sous-titre">
+                        Frequetly Asked Questions.
+                    </div>
+                <div class="general">
+                    
+                    <div class="question">
+                        <p>Comment sont fixés les prix ? </p>
+                        <img src="img/Drop Down.png" alt="" class="flechebas">
+                    </div>
+                    <div class="description">
+                        <p>En fonction de ta gentillesse </p>
 
-                <div id="sous-titre">
-                    Frequetly Asked Questions.
+                    </div>
                 </div>
-                <div id="question">
-                    <p>Comment sont fixés les prix ? </p>
-                    <img src="img/Drop Down.png" alt="" id="flechebas">
-                </div>
-                <div id="description">
-                    <p>En fonction de ta gentillesse </p>
+                
+                <div class="general"> 
+                    <div class="question">
+                        <p>Est-ce qu'on peut précommander une séance ? </p>
+                        <img src="img/Drop Down.png" alt="" class="flechebas">
+                    </div>
+                    <div class="description">
+                        <p> Surement </p>
 
+                    </div>
+                </div>
+
+                <div class="general">
+                    <div class="question">
+                        <p>Comment puis-je réserver des billets de cinéma sur votre site ? </p>
+                        <img src="img/Drop Down.png" alt="" class="flechebas">
+                    </div>
+                    <div class="description">
+                        <p>OUI C EST LE BUT </p>
+                    </div>
+                </div>
+
+                <div class="general">
+                    <div class="question">
+                        <p>Quels modes de paiement acceptez-vous pour la réservation en ligne ? </p>
+                        <img src="img/Drop Down.png" alt="" class="flechebas">
+                    </div>
+                    <div class="description">
+                        <p>Cartes </p>
+                    </div>
+                </div>
+
+                <div class="general">
+                    <div class="question">
+                        <p>Puis-je modifier ou annuler ma réservation ? </p>
+                        <img src="img/Drop Down.png" alt="" class="flechebas">
+                    </div>
+                    <div class="description">
+                        <p>Force à toi </p>
+                    </div>
+                </div>
+
+                <div class="general">
+                    <div class="question">
+                        <p>Est-ce que je peux choisir mes sièges lors de la réservation en ligne ? </p>
+                        <img src="img/Drop Down.png" alt="" class="flechebas">
+                    </div>
+                    <div class="description">
+                        <p>OF COURSE</p>
+                    </div>
+                </div>
+
+                <div class="general"></div>
+                    <div class="question">
+                        <p>Y a-t-il des réductions disponibles pour les étudiants, les seniors ou d'autres groupes spécifiques ? </p>
+                        <img src="img/Drop Down.png" alt="" class="flechebas">
+                    </div>
+                    <div class="description">
+                        <p>Non tu payes comme un brave </p>
+                    </div>
+                </div>
+
+
+                <div class="general">
+                    <div class="question">
+                        <p>Comment puis-je récupérer mes billets réservés en ligne au cinéma ?</p>
+                        <img src="img/Drop Down.png" alt="" class="flechebas">
+                    </div>
+                    <div class="description">
+                        <p>Tu les imprimes </p>
+                    </div>
                 </div>
             </body>
             </html>
@@ -86,6 +162,36 @@
             <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
         </div>
     </footer>
-</body>
+
 <script src="../js/index.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Select all general elements
+        const generalElements = document.querySelectorAll('.general');
+
+        // Loop through each general element
+        generalElements.forEach(function(generalElement) {
+            // Find elements within the current general element
+            const dropdownImage = generalElement.querySelector('.flechebas');
+            const descriptionElement = generalElement.querySelector('.description');
+
+            let isDescriptionVisible = false; // Track initial state
+
+            // Add click event listener to dropdown image
+            dropdownImage.addEventListener('click', function() {
+                // Toggle visibility of description for the current general element
+                if (isDescriptionVisible) {
+                    descriptionElement.style.display = 'none';
+                } else {
+                    descriptionElement.style.display = 'block';
+                }
+
+                // Toggle state for the current general element
+                isDescriptionVisible = !isDescriptionVisible;
+
+            });
+        });
+    });
+</script>
+</body>
 </html>
