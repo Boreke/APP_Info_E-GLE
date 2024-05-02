@@ -8,8 +8,13 @@
 body {
   padding: 2rem;
   height: 100vh;
-  font-family: Robobto, sans-serif;
-  background: black
+  font-family: 'Roboto', sans-serif;
+  background: black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center; /* Center everything on the page */
+  overflow: hidden; /* Prevents any overflow from the body */
 }
 h1 {
   font-weight: 600;
@@ -25,6 +30,8 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 10px 20px 10px; /* Adds padding for spacing */
+  font-size: 2rem;
 }
 .calendar nav {
   display: flex;
@@ -35,6 +42,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
+
 }
 
 .calendar ul li {
@@ -42,13 +50,32 @@ h3 {
   margin-top: 25px;
   position: relative;
   z-index:0;
-  color: pink
-    
+  font-size: 3rem;
+
 }
+.calendar ul.days {
+  display: flex; 
+  justify-content: space-around; 
+  padding: 0; 
+  margin: 0; 
+  list-style-type: none; 
+}
+
+.calendar ul.days li {
+  font-size: 2.5rem; 
+  flex-grow: 1; 
+  text-align: center;
+
+}
+
+.calendar ul.days li:last-child {
+  margin-right: 0; 
+}
+
 #prev,
 #next {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   position: relative;
   border: none;
   background: transparent;
@@ -76,16 +103,14 @@ h3 {
 #next:hover::before {
   border-color: #000000;
 }
-.days {
-  font-weight: 600;
-}
+
 .dates li.today {
   color: #fff;
 }
 .dates li.today::before {
   content: "";
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -95,67 +120,7 @@ h3 {
   z-index: -1;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 50px 0 50px;
-}
 
-.Logo_Nom {
-  display: flex;
-  align-items: center;
-  color: white;
-  gap: 20px;
-  
-}
-.Nom {
-  color: #FFF;
-  font-family: Roboto;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-}
-
-.topnav {
-  display: flex;
-  list-style: none;
-  background-color: #141414;
-  padding: 20px;
-  padding-left: 12px;
-  padding-right: 12px;
-  border-radius: 36px;
-  gap: 30px;
-
-}
-
-.nav_elmt, .nav_elmt1 {
-  text-decoration: none;
-  color: white;
-  background-color: #141414;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  padding: 14px;
-  padding-left: 18px;
-  padding-right: 18px;
-  border-radius: 36px;
-  transition-duration: 0.3s;
-
-}
-.nav_elmt:hover {
-  background-color: #222222;
-}
-.nav_elmt1 {
-  background-color: #FFF;
-  color: black;
-  
-}
-.topright{
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
 .lg {
   display: flex;
   align-items: center;
@@ -210,54 +175,78 @@ button:hover {
   font-family: "Roboto", sans-serif;
 }
 
-
+.calendar .days li {
+  font-size: 1.5rem; /* Larger text for days of the week */
+  padding: 15px 10px; /* More padding for a bigger clickable area */
+}
 
 .dates li {
   color: rgb(89, 89, 89);
   transition: background-color 0.3s ease;
   text-decoration: none;  
+  display: block;
+}
+
+.calendar .dates li {
+  font-size: 2.5rem; /* Larger text for dates */
+  padding: 10px 0; /* Padding for better spacing */
+  flex-grow: 1; /* Allows items to take available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  
 }
 
 .calendar ul li {
-  color: black;
+  color: rgb(92, 92, 92);
 }
 
 .dates li a {
-  color: rgb(101, 101, 101);
+  color: rgb(0, 0, 0);
   text-decoration : none;
 }
 
 .dates li.today a {
   color: white;
 }
-
-
+.calendar ul.days, .calendar ul.dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns for each day of the week */
+  gap: 4px; /* Gap between grid items */
+}
+.calendar ul.days li, .calendar ul.dates li {
+  text-align: center;
+  font-size: 1em; /* Responsive font size */
+  padding: 10px 5px;
+}
 .calendar {
-  margin: auto;
-  margin-top: 200px;
-  width: 48%;
-  max-width: 380px;
+  width: 100%; /* Full width to adjust within the container */
+  max-width: 500px; /* Maximum width of the calendar */
+  height: auto; /* Height to auto for flexibility */
   background: #fff;
   border-radius: 10px;
-  float: left;
-  padding: 1rem;
+  padding: 20px; /* Padding to ensure contents do not touch the edges */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
 .rectangle {
-  margin: auto;  
-  margin-top: 200px;
-  width: 48%;
-  max-width: 380px;
-  height: 400px; 
+  width: 20%; /* Adjusted width */
+  height: 50vh; /* Height relative to viewport */
   background-color: #f0f0f0;
   border-radius: 10px;
-  float: right;
+  padding: 1rem;
+  align-items: center ; /* Added padding */
 }
 .container {
-  display: flex; 
-  justify-content: center; 
+  display: flex;
   align-items: center;
-  height: 100vh; 
+  width: 80vw; /* Uses 80% of the viewport width */
+  max-width: 1200px; /* Maximum width to ensure it doesn't get too large */
+  height: 80vh; /* Uses 80% of the viewport height */
+  margin: auto;
+  gap : 50px; /* Centers the container */
 }
 
 .selected {
@@ -268,7 +257,7 @@ button:hover {
 #rectangleTitle {
   color: black; 
   margin-top: 20px;
-  font-size : 20px;
+  font-size : 3rem;
 }
 
 footer {
@@ -297,9 +286,7 @@ footer {
   justify-content: center;
   
 }
-@media (max-width:760px) {
 
-}
 
 .topleft {
   text-decoration: none;
@@ -310,22 +297,119 @@ footer {
   color: #8A8A8A;
 }
 
-.reseaux {
-  display: flex;
-  list-style: none;
-  gap: 69px;
+
+
+  .movie-details {
+    color: white;  /* Ensures all text inside is white */
+    padding: 50px; /* Adds some spacing inside the container */
+    background-color: #000000; /* Optional: Dark background for contrast */
+    border-radius: 8px; /* Optional: Rounded corners */
+    margin: 20px;
+    margin-top : 50px;
+    font-size: 50px;
+    font-family: Roboto; /* Optional: Adds some margin around the container */
 }
 
-.mention_legales {
+.movie-details h1,
+.movie-details p {
+    margin-bottom: 10px; /* Adds spacing between paragraphs and heading */
+}
+
+/* Ensure links within movie details are also white */
+.movie-details a {
+    color: white;
+    text-decoration: none; /* Removes underline from links */
+}
+
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-top {
+  margin: 10vh 2vh 10vh 2vh;
   display: flex;
   align-items: center;
-  gap: 16px;
-  
+  justify-content: space-between;
+  width: 80vw;
 }
-.mention_legales_text {
-  color: #5A5A5A;
+
+.barre-recherche {
+  display: flex;
+  align-items: center;
+  border-radius: 36px;
+  background: rgb(148, 148, 148);
+  max-width: 300px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0 4px 0 4px;
 }
-.Copyright {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;}
+
+.zone-recherche {
+  background-color:  rgb(148, 148, 148);
+  border: none;
+}
+
+.zone-recherche::placeholder {
+  color: rgb(39, 39, 39);
+}
+
+.zone-recherche:focus {
+  outline: none;
+}
+
+* {
+    
+  color: #FFF;
+}
+
+body {
+  font-family: 'Roboto';
+  background-color: rgb(0, 0, 0);
+}
+
+.calendar header h3 {
+  font-size: 3.5rem; /* Adjusted for better visibility */
+  color: black; /* Ensure contrast for readability */
+  font-weight: bold;
+}
+
+/* Ensures the nav buttons are appropriately spaced */
+.calendar nav {
+  margin: 0 10px; /* added margin for spacing */
+}
+
+/* More distinctive button styling */
+#prev, #next {
+  color: black;
+  background-color: #e0e0e0; /* Light grey for visibility */
+  padding: 15px 20px; /* Larger clickable area */
+  margin: 0 10px; /* Space between buttons */
+  border-radius: 5px; 
+  font-size: 1.5rem;/* Rounded corners for aesthetics */
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column; /* Stack vertically on smaller screens */
+  }
+
+  .calendar, .rectangle {
+    width: 50%; /* Full width for smaller screens */
+    margin-top: 20px;
+     /* Space between elements when stacked */
+  }
+}
+@media (max-width: 768px) {
+  .calendar {
+    padding: 10px;
+    max-width: none;
+    width: 90%; /* Takes more width on smaller screens */
+  }
+
+  .calendar ul.days li, .calendar ul.dates li {
+    font-size: 0.8em; /* Smaller font size on smaller screens */
+  }
+}
