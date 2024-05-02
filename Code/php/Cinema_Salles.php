@@ -40,6 +40,7 @@ if ($cinemaResult) {
             $error_message="Erreur lors de l'ajout de la salle: " . $e->getMessage();
         }
     }
+    
 }
 ?>
 
