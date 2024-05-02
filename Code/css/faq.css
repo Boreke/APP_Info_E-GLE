@@ -29,25 +29,28 @@ body {
 .TITRE {
     margin-left: 10vw;
     margin-top: 6vh;
-    color: gray; 
+    color: rgb(255, 255, 255); 
     font-size: 100px; 
     
 }
 .sous-titre{
     margin-left: 10vw;
     margin-top: 2vh;
-    color: gray; 
+    color: rgb(255, 255, 255); 
     font-size: 20px;  
-    padding-bottom: 20vh; 
+    padding-bottom: 10vh; 
 }
+
+
 .question{
-    margin-left: 0;
-    padding-left: 3vw;
     margin-bottom: 0;
+    padding-left: 3vw;
+    margin: 1vh;
     color: white; 
     font-size: 20px; 
-    border-bottom: solid 1px #FFF;
-     
+    
+    border-radius: 5px;
+    background-color: rgba(58, 57, 57, 0.363);
     display: flex;
     flex-direction: row;
 }
@@ -56,8 +59,10 @@ body {
     transform: scale(0.6);
 }
 .description{
-    background-color: #4e4e4e;
+    background-color: rgba(58, 57, 57, 0.363);
     padding: 50px;
     margin-top: 0;
+    margin: 1vh;
+    border-radius: 5px;
     display: none;
 }
