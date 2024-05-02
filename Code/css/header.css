@@ -52,7 +52,6 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 0 50px 0 50px;
-    position: sticky;
     top: 0;
     z-index: 2000;
     margin-top: 2%;
