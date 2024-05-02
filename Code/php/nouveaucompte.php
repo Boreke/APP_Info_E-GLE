@@ -30,10 +30,16 @@ if ($_POST["password"] !== $_POST["password_confirmation"]) {
 
 $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
+if(isset($_POST["type"])){
+    $type = 'gerant';
+} else{
+    $type = 'client';
+}
+
 $mysqli = require __DIR__ . "/database.php";
 
-$sql = "INSERT INTO user (nom, prenom, username, email, password_hash)
-        VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO user (nom, prenom, username, email, password_hash, type)
+        VALUES (?, ?, ?, ?, ?, ?)";
         
 $stmt = $mysqli->stmt_init();
 
@@ -41,9 +47,22 @@ if ( ! $stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
 }
 
-$stmt->bind_param("sssss", $_POST["nom"], $_POST["prenom"], $_POST["username"], $_POST["email"], $password_hash);
+$stmt->bind_param("ssssss", $_POST["nom"], $_POST["prenom"], $_POST["username"], $_POST["email"], $password_hash, $type);
 
 if ($stmt->execute()) {
+
+    $user_id = $stmt->insert_id;
+
+    $sql2 = "INSERT INTO cinema (nom_cinema, adresse_cinema, user_id_user) VALUES (?, ?, ?)";
+    $stmt2 = $mysqli->stmt_init();
+    if(!$stmt2->prepare($sql2)) {
+        die("SQL error: " . $mysqli->error);
+    }
+
+    $stmt2->bind_param("ssi", $_POST['nom_cinema'], $_POST['adresse_cinema'],$user_id);
+    if(!$stmt2->execute()) {
+        die($mysqli->error . " " . $mysqli->errno);
+    }
 
     header("Location: index.php");
     exit;
