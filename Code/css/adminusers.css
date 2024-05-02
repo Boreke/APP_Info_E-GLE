@@ -16,7 +16,7 @@ body {
 
 .container {
     display: flex;
-
+    gap: 2vw;
 }
 
 .nav {
@@ -31,8 +31,8 @@ body {
 
 .elmt_nav {
     text-decoration: none;
-    background-color: #FFF;
     color: black;
+    background-color: transparent;
     padding: 20px 84px 20px 84px;
     border-radius: 34px;
     color: #000;
@@ -48,6 +48,26 @@ body {
 }
 
 .elmt1 {
-    background-color: transparent;
+    background-color: #FFF;
+
+}
+
+li {
+    list-style: none;
+}
+ul {
+    display: flex;
+    background-color: #545454;
+    gap: 15vw;
+    border-radius: 34px;
+    padding: 20px 64px;
+}
+
+.elmt {
+    display: flex;
+    background-color: #545454;
+    gap: 15vw;
+    border-radius: 34px;
+    padding: 20px 64px;
 }
 
