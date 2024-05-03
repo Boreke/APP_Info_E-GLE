@@ -338,12 +338,12 @@ footer {
     width: 7vw;
     height: 10vh;
     border-radius: 10px;
-    background-color: rgb(181, 133, 0);
+    background-color: rgb(115, 115, 115);
 
 }
 
 #popup12:hover{
-    background-color: rgb(117, 93, 20);
+    background-color: rgb(150, 176, 185);
 }
 
 .PP{
