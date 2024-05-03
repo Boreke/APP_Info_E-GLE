@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($_POST['form_type'] === 'add_film') {
 
-        $sql = "INSERT INTO film (titre, synopsis, duree, genre) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO film (titre, synopsis, duree, genre, id_cinema) VALUES (?, ?, ?, ?, ?)";
 
         $stmt = $mysqli->prepare($sql);
         if (!$stmt) {
@@ -30,7 +30,15 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $minute = isset($_POST["minute"]) ? (int) $_POST["minute"] : 0;
         $duration = $hour * 3600 + $minute * 60;
 
-        $stmt->bind_param("ssis", $_POST["titre"], $_POST["synopsis"], $duration, $_POST["genre"]);
+        $sqlRequest = "SELECT idcinema FROM cinema WHERE user_id_user = ?";
+        $stmt2 = $mysqli->prepare($sqlRequest);
+        $stmt2->bind_param("i", $_SESSION["user_id"]);
+        $stmt2->execute();
+        $cinemaResult = $stmt2->get_result();
+        $cinemaRow = $cinemaResult->fetch_assoc();
+        $cinema_id = $cinemaRow['idcinema'];
+
+        $stmt->bind_param("ssisi", $_POST["titre"], $_POST["synopsis"], $duration, $_POST["genre"], $cinema_id);
 
         if ($stmt->execute()) {
             echo "Film added successfully";
@@ -40,22 +48,24 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
     } elseif ($_POST['form_type'] === 'create_screening') {
         
-        $sql2 = "INSERT INTO diffuser (Film_id_film, salle_idsalle, date) VALUES (?, ?, ?)";
+        $sql2 = "INSERT INTO diffuser (Film_id_film, salle_idsalle, film_date) VALUES (?, ?, ?)";
 
-        $stmt2 = $mysqli->prepare($sql);
-        if (!$stmt2) {
+        $stmt3 = $mysqli->prepare($sql2);
+        if (!$stmt3) {
             die("SQL error: " . $mysqli->error);
         }
 
         $film_date = strtotime($_POST['film_date']);
+        $time = $_POST['time'];
         $formatted_date = date('Y-m-d', $film_date);
+        $datetime = $formatted_date . ' ' . $time . ':00';
 
-        $stmt2->bind_param("ssd", $_POST['film'], $_POST['salle'], $formatted_date);
+        $stmt3->bind_param("sss", $_POST['film'], $_POST['salle'], $datetime);
 
-        if ($stmt2->execute()) {
+        if ($stmt3->execute()) {
             echo "Screening created successfully";
         } else {
-            echo "Error Creating Screening: " . $stmt2->error;
+            echo "Error Creating Screening: " . $stmt3->error;
         }
 
     }
@@ -91,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         <nav id="nav" >
             <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
             <li><a href="seancesgerant.php"  class="nav_elmt">Séances</a></li>
-            <li><a href="../Cinema_Salles.html"  class="nav_elmt">Salles</a></li>
+            <li><a href="Cinema_Salles.php"  class="nav_elmt">Salles</a></li>
         </nav>
         <?php elseif (isset($user) && htmlspecialchars($user['type'])=='admin'):?>
             <nav id="nav" >
@@ -210,7 +220,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                             if ($cinemaRow) {
                                 $cinema_id = $cinemaRow['idcinema'];
 
-                                $sql = "SELECT DISTINCT id_film, titre, cinema_idcinema FROM film WHERE cinema_idcinema = ? ORDER BY title";
+                                $sql = "SELECT DISTINCT id_film, titre, id_cinema FROM film WHERE id_cinema = ? ORDER BY titre";
                                 $stmt = $mysqli->prepare($sql);
                                 $stmt->bind_param("i", $cinema_id);
                                 $stmt->execute();
@@ -232,6 +242,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                             ?>
                         </select>
                         <input type="date" name="film_date">
+                        <input type="time" id="appointment-time" name="time" min="09:00" max="22:00" step="1800">
                         <button id="b1"> VALIDER</button>
                 </form>
             </div>                    
