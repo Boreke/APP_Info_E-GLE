@@ -286,10 +286,10 @@ footer {
 }
   
 .popup-content {
-    background-color: #827100;
+    background-color: #555454;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #424242e4;
     width: 60vw;
     border-radius: 40px;
 }
@@ -322,12 +322,12 @@ footer {
 #popup11:hover{
     font-size: 0.7vw;
     font-style: normal;
-    border: 1px solid grey;
+    border: 1px solid rgb(80, 80, 80);
     width: 7vw;
     height: 10vh;
     border-radius: 10px;
-    color: black;
-    background-color: #a0a0a0;
+    background-color: rgb(35, 35, 35);
+    color: white;
 
 }
 
@@ -338,12 +338,13 @@ footer {
     width: 7vw;
     height: 10vh;
     border-radius: 10px;
-    background-color: rgb(115, 115, 115);
+    background-color: rgb(99, 99, 99);
 
 }
 
 #popup12:hover{
-    background-color: rgb(150, 176, 185);
+    background-color: rgb(35, 35, 35);
+    color: white;
 }
 
 .PP{
@@ -356,8 +357,8 @@ footer {
 
 #CHOICE-POPUP{
     height: 5vh;
-    color: black;
-    background-color: wheat;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
 }
 
@@ -368,13 +369,13 @@ footer {
 #b1{
     width: 20vw;
     height: 5vh;
-    background-color: rgb(125, 125, 125);
-    color: wheat;
+    background-color: rgb(57, 57, 57);
+    color: rgb(255, 255, 255);
     border-radius: 10px;
 }
 #b1:hover{
-    background-color: wheat;
-    color: rgb(125, 125, 125);
+    background-color:rgb(255, 255, 255);
+    color: rgb(57, 57, 57);
     border-radius: 10px;
     
 }
@@ -392,9 +393,6 @@ footer {
 
 }
 
-#choi1{
-    
-}
 
 
 
