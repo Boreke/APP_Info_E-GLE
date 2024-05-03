@@ -41,9 +41,12 @@ main {
     gap: 6vw;
     
 }
+.descriptiffilm{
+    padding-left: 5vw;
+}
 
 #film1{
-    height: 37vw;
+    height: 65vh;
     width: auto;
     margin-left: 4vw;
     margin-right: 8vw;
@@ -65,6 +68,11 @@ main {
 }
 #A{
     color: grey;
+    font-size: 2vw;
+}
+#AA{
+    font-size: 2vw;
+    color: white;
 }
 
 #B{
@@ -84,7 +92,7 @@ main {
 }
 
 #titreF{
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 #place{
@@ -104,10 +112,11 @@ main {
 }
 
 #resa{
-    margin-left: 10vw;
+    margin-left: 17vw;
     color: white;
-    font-size: 3vw;
+    font-size: 2vw;
     margin-top: 5vh;
+
     
 }
 
