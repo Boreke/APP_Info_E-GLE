@@ -41,12 +41,25 @@ if (isset($_SESSION["user_id"])) {
                 <p class="Nom">E-GLE</p>
             </div>
         </a>
-       
+        <?php if (isset($user) && htmlspecialchars($user['type'])=='gerant'):?>
         <nav id="nav" >
+            <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="seancesgerant.php"  class="nav_elmt">Séances</a></li>
+            <li><a href="Cinema_Salles.php"  class="nav_elmt">Salles</a></li>
+        </nav>
+        <?php elseif (isset($user) && htmlspecialchars($user['type'])=='admin'):?>
+            <nav id="nav" >
+            <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="../adminusers.html"  class="nav_elmt">Séances</a></li>
+            <li><a href="../faq.html"  class="nav_elmt">Salles</a></li>
+        </nav>
+        <?php else: ?>
+            <nav id="nav" >
             <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
             <li><a href="../seancesflorent.html"  class="nav_elmt">Séances</a></li>
             <li><a href="../salles.html"  class="nav_elmt">Salles</a></li>
         </nav>
+        <?php endif; ?>
         <img src="../img/Menu.png" alt="Menu" class="menu" id="menuburger">
         <div class="topright">
             <div class="lg">
@@ -100,12 +113,6 @@ if (isset($_SESSION["user_id"])) {
             </div>
             <div class="right3">
                 <h1 class="small-h1">Une <span class="expérience">expérience</span> sonore immersive</h1>
-                <?php if (isset($user)): ?>
-                    <p>Hello <?= htmlspecialchars($user["name"]) ?></p>
-                    <p><a href="logout.php">Log out</a></p>
-                <?php else: ?>
-                    <p><a href="login.php">Log in</a> or <a href="signup.html">sign up</a></p>
-                <?php endif; ?>
                 <p class="texte_son">Découvrez une expérience sonore inégalée dans nos salles de cinéma partenaires. Grâce à une technologie audio de pointe, chaque film prend vie avec une clarté cristalline et une immersion totale. Plongez au cœur de l'action avec un son surround époustouflant, où chaque murmure, explosion et note de musique est restitué avec une fidélité exceptionnelle.</p>
             </div>
         </div>
