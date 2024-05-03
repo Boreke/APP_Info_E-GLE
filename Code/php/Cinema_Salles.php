@@ -52,6 +52,7 @@ if ($cinemaResult) {
         <title>Cinema - Salles</title>
         <link rel="stylesheet" href="../css/cinema_salles.css">
         <link rel="stylesheet" href="../css/footer.css">
+        <link rel="stylesheet" href="../css/header.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <body>
