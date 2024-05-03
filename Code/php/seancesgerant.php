@@ -50,15 +50,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $film_date = strtotime($_POST['film_date']);
         $formatted_date = date('Y-m-d', $film_date);
 
-        $sqlRequest2 = "SELECT id_film FROM film WHERE id_user = ?";
-        $stmt3 = $mysqli->prepare($sqlRequest2);
-        $stmt3->bind_param("i", $_SESSION["user_id"]);
-        $stmt3->execute();
-        $filmResult = $stmt3->get_result();
-        $filmRow = $filmResult->fetch_assoc();
-        $film_id = $filmRow['idsalle'];
-
-        $stmt2->bind_param("ssd", $film_id, $_POST['salle'], $formatted_date);
+        $stmt2->bind_param("ssd", $_POST['film'], $_POST['salle'], $formatted_date);
 
         if ($stmt2->execute()) {
             echo "Screening created successfully";
@@ -205,6 +197,40 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                                 $stmt->close();
                             ?>
                         </select>
+                        <select id="film" name="film">
+                            <?php
+                           
+                            $sqlCinema = "SELECT idcinema FROM cinema WHERE user_id_user = ?";
+                            $stmtCinema = $mysqli->prepare($sqlCinema);
+                            $stmtCinema->bind_param("i", $_SESSION["user_id"]);
+                            $stmtCinema->execute();
+                            $cinemaResult = $stmtCinema->get_result();
+                            $cinemaRow = $cinemaResult->fetch_assoc();
+
+                            if ($cinemaRow) {
+                                $cinema_id = $cinemaRow['idcinema'];
+
+                                $sql = "SELECT DISTINCT id_film, titre, cinema_idcinema FROM film WHERE cinema_idcinema = ? ORDER BY title";
+                                $stmt = $mysqli->prepare($sql);
+                                $stmt->bind_param("i", $cinema_id);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                    echo "<option value=\"{$row['id_film']}\">{$row['titre']}</option>";
+                                    }
+                                } else {
+                                    echo "<option>No data found</option>";
+                                }
+                                } else {
+                                    echo "<option>No cinema found for user</option>";
+                                }
+
+                                $stmtCinema->close();
+                                $stmt->close();
+                            ?>
+                        </select>
                         <input type="date" name="film_date">
                         <button id="b1"> VALIDER</button>
                 </form>
@@ -231,5 +257,5 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                 <img src="../img/Copyright.png" alt="" class="Copyright">
                 <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
             </div>
-        </footer>
+    </footer>
 </body>
