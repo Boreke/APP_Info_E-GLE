@@ -25,7 +25,7 @@ if (isset($_SESSION["user_id"])) {
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="img/Falcon (1).png">
 </head>
 <body>
     <div class="loader">
