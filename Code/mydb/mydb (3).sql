@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2024 at 09:15 AM
+-- Generation Time: May 03, 2024 at 10:03 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -89,8 +89,16 @@ CREATE TABLE `commentaire` (
 CREATE TABLE `diffuser` (
   `Film_id_film` int(11) NOT NULL,
   `salle_idsalle` int(11) NOT NULL,
-  `date` datetime NOT NULL
+  `film_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `diffuser`
+--
+
+INSERT INTO `diffuser` (`Film_id_film`, `salle_idsalle`, `film_date`) VALUES
+(0, 3, '2024-05-05 19:30:00'),
+(0, 3, '2024-05-05 20:00:00');
 
 -- --------------------------------------------------------
 
@@ -114,15 +122,16 @@ CREATE TABLE `film` (
   `titre` varchar(45) NOT NULL,
   `synopsis` varchar(1000) DEFAULT NULL,
   `duree` int(255) DEFAULT NULL,
-  `genre` varchar(45) DEFAULT NULL
+  `genre` varchar(45) DEFAULT NULL,
+  `id_cinema` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `film`
 --
 
-INSERT INTO `film` (`id_film`, `titre`, `synopsis`, `duree`, `genre`) VALUES
-(0, 'Bob', 'BOB', 4500, 'romance');
+INSERT INTO `film` (`id_film`, `titre`, `synopsis`, `duree`, `genre`, `id_cinema`) VALUES
+(0, 'Bob', 'BOB', 4080, 'romance', 1);
 
 -- --------------------------------------------------------
 
@@ -211,12 +220,6 @@ ALTER TABLE `cinema`
 --
 ALTER TABLE `commentaire`
   ADD PRIMARY KEY (`idcommentaire`);
-
---
--- Indexes for table `diffuser`
---
-ALTER TABLE `diffuser`
-  ADD PRIMARY KEY (`Film_id_film`,`salle_idsalle`);
 
 --
 -- Indexes for table `faq`
