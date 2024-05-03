@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($_POST['form_type'] === 'add_film') {
 
-        $sql = "INSERT INTO film (titre, synopsis, duree, genre, id_cinema) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO film (titre, synopsis, duree, genre, id_cinema, image_file) VALUES (?, ?, ?, ?, ?, ?)";
 
         $stmt = $mysqli->prepare($sql);
         if (!$stmt) {
@@ -30,21 +30,72 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $minute = isset($_POST["minute"]) ? (int) $_POST["minute"] : 0;
         $duration = $hour * 3600 + $minute * 60;
 
-        $sqlRequest = "SELECT idcinema FROM cinema WHERE user_id_user = ?";
-        $stmt2 = $mysqli->prepare($sqlRequest);
-        $stmt2->bind_param("i", $_SESSION["user_id"]);
-        $stmt2->execute();
-        $cinemaResult = $stmt2->get_result();
-        $cinemaRow = $cinemaResult->fetch_assoc();
-        $cinema_id = $cinemaRow['idcinema'];
-
-        $stmt->bind_param("ssisi", $_POST["titre"], $_POST["synopsis"], $duration, $_POST["genre"], $cinema_id);
-
-        if ($stmt->execute()) {
-            echo "Film added successfully";
-        } else {
-            echo "Error adding film: " . $stmt->error;
+        if(isset($_FILES["image"])){
+            if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
+            
+                echo "file uploading";
+                $target_dir = "../img/"; // Ensure this directory exists and is writable
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    
+    
+                if (file_exists($target_file)) {
+                    echo "Sorry, file already exists.";
+                    $uploadOk = 0;
+                }
+            
+                // Check file size
+                if ($_FILES["image"]["size"] > 500000) { // size in bytes
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+            
+                // Allow certain file formats
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+            
+                // Check if $uploadOk is set to 0 by an error
+                if ($uploadOk == 0) {
+                    echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                        echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+    
+                if ($uploadOk == 1) {
+                    $sqlRequest = "SELECT idcinema FROM cinema WHERE user_id_user = ?";
+                    $stmt2 = $mysqli->prepare($sqlRequest);
+                    $stmt2->bind_param("i", $_SESSION["user_id"]);
+                    $stmt2->execute();
+                    $cinemaResult = $stmt2->get_result();
+                    $cinemaRow = $cinemaResult->fetch_assoc();
+                    $cinema_id = $cinemaRow['idcinema'];
+        
+                    $stmt->bind_param("ssisis", $_POST["titre"], $_POST["synopsis"], $duration, $_POST["genre"], $cinema_id, $target_file);
+        
+                    if ($stmt->execute()) {
+                        echo "Film added successfully";
+                    } else {
+                        echo "Error adding film: " . $stmt->error;
+                    }
+                }
+            
+            } else {
+                echo "Error uploading file: " . $_FILES["image"]["error"];
+            }
+        }else{
+            echo "Is not set";
+            print_r($_FILES);
         }
+        
 
     } elseif ($_POST['form_type'] === 'create_screening') {
         
@@ -138,7 +189,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         <div id="popupFilm" class="popup">
             <div class="popup-content">
                 <span class="close" onclick="closePopupFilm()">&times;</span>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                 <input type="hidden" name="form_type" value="add_film">
                 <div><input type="Titre" placeholder="Titre" class="id" id="titre" name="titre"></div>
                 <div><input type="Synopsis" placeholder="Synopsis" class="id" id="synopsis" name="synopsis"></div>
@@ -159,6 +210,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                     </select>min
                 </div>
                 <div><input type="Genre" placeholder="Genre" class="id" id="genre" name="genre"></div>
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image">
                 <button id="b1"> VALIDER</button>
                 </form>
             </div>                    
@@ -241,8 +294,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                                 $stmt->close();
                             ?>
                         </select>
+
                         <input type="date" name="film_date">
-                        <input type="time" id="appointment-time" name="time" min="09:00" max="22:00" step="1800">
+                        <input type="time" id="time" name="time" min="09:00" max="22:00" step="1800">
+
                         <button id="b1"> VALIDER</button>
                 </form>
             </div>                    
