@@ -357,3 +357,19 @@ footer {
     height: 28px;
     flex-shrink: 0;
 }
+
+.totalpp{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#img1pp{
+    height: 2vh;
+    width: 2vw;
+}
+
+.imgpopup, .interieur{
+    display: grid;
+    
+}
+
