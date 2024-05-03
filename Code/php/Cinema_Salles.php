@@ -54,6 +54,8 @@ if ($cinemaResult) {
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/header.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="icon" type="image/png" href="img/Falcon (1).png">
+
     </head>
     <body>
         <header>
