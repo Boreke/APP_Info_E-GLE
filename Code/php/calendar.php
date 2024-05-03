@@ -37,18 +37,7 @@
     </header>
 
     <?php
-    $host = "localhost";
-    $username = "root";  // Your MySQL username
-    $password = "";      // Your MySQL password
-    $dbname = "mydb";    // Database name
-
-    // Create connection
-    $mysqli = new mysqli($host, $username, $password, $dbname);
-
-    // Check connection
-    if ($mysqli->connect_error) {
-        die("Connection failed: " . $mysqli->connect_error);
-    }
+    $mysqli = require __DIR__ . "/database.php";
 
     // Fetch movie details
     $movieId = isset($_GET['id']) ? $_GET['id'] : 1; // Default to 1 if no ID is provided
