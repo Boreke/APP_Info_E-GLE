@@ -11,27 +11,6 @@ body {
 
 
 
-/* ton {
-    color: black;
-    background-color: white;
-    border: none;
-    border-radius: 36px;
-    width: 120px;
-    height: 50px;
-    font-size: 18px;
-    font-weight: 700;
-    transition-duration: 0.3s;
-    cursor: pointer;
-}
-
-ton:hover {
-    background-color: #898989;
-}
-.menu {
-    display: none;
-} */
-
-
 main {
     display: grid;
     grid-template-columns: 35% 65%;
@@ -41,9 +20,12 @@ main {
     gap: 6vw;
     
 }
+.descriptiffilm{
+    padding-left: 5vw;
+}
 
 #film1{
-    height: 37vw;
+    height: 65vh;
     width: auto;
     margin-left: 4vw;
     margin-right: 8vw;
@@ -55,7 +37,7 @@ main {
 
 #resum{
     width: 40vw;
-    font-size: 2vw;
+    font-size: 1.5vw;
 
 }
 
@@ -65,6 +47,11 @@ main {
 }
 #A{
     color: grey;
+    font-size: 2vw;
+}
+#AA{
+    font-size: 2vw;
+    color: white;
 }
 
 #B{
@@ -84,7 +71,7 @@ main {
 }
 
 #titreF{
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 #place{
@@ -104,26 +91,16 @@ main {
 }
 
 #resa{
-    margin-left: 10vw;
+    margin-left: 17vw;
     color: white;
-    font-size: 3vw;
+    font-size: 2vw;
     margin-top: 5vh;
+
     
 }
 
 
 
-
-/* .{
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    padding-left: 4vw;
-    border: 2px solid grey;
-    border-radius: 20px;
-
-
-} */
 
 #img4{
     padding-left: 5vw;
@@ -150,7 +127,7 @@ main {
     display: grid;
     grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw 10vw;
     gap: 3vw;
-    margin: 0 5vw 0 5vw;
+    margin: 20vh 20vw 20vh 20vw;
     border: 2px solid white;
     padding: 1vh 2vh 1vh 1vh;
 }
