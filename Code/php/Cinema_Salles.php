@@ -16,31 +16,37 @@ $stmt = $mysqli->prepare($sqlRequest);
 $stmt->bind_param("i", $_SESSION["user_id"]);
 $stmt->execute();
 $cinemaResult = $stmt->get_result();
-if ($cinemaResult) {
-    $cinemaRow = $cinemaResult->fetch_assoc();
-    $cinema_id = $cinemaRow['idcinema'];
-    if (empty($_POST["numero_salle"])) {
-
-        $_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
-    } elseif (!is_numeric($_POST["numero_salle"])&& $_POST["numero_salle"]==0) {
-        $_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["numero_salle"])) {
+    if ($_POST["numero_salle"]!=0){
+    if ($cinemaResult) {
+        $cinemaRow = $cinemaResult->fetch_assoc();
+        $cinema_id = $cinemaRow['idcinema'];
+        
+            if (empty($_POST["numero_salle"])) {
+                $error_message = "Veuillez saisir un numéro de salle.";
+            } elseif (!is_numeric($_POST["numero_salle"]) ) {
+                $error_message = "Veuillez saisir un numéro valide pour la salle.";
+            }
+            $sql = "INSERT INTO salle (numero, cinema_idcinema) VALUES (?, ?)";
+            $stmt = $mysqli->prepare($sql);
+            if (!$stmt) {
+                die("SQL error: " . $mysqli->error);
+            }
+            $stmt->bind_param("si", $_POST["numero_salle"], $cinema_id);
+            try {
+                $stmt->execute();
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1062) {
+                    $error_message="une salle de ce numero existe deja pour ce cinéma";
+                } else {
+                    $error_message="Erreur lors de l'ajout de la salle: " . $e->getMessage();
+                }
+        
+            }
     }
-    $sql = "INSERT INTO salle (numero, cinema_idcinema) VALUES (?, ?)";
-    $stmt = $mysqli->prepare($sql);
-    if (!$stmt) {
-        die("SQL error: " . $mysqli->error);
+    }else{
+        $error_message="le numero ne peut pas être nul";
     }
-    $stmt->bind_param("si", $_POST["numero_salle"], $cinema_id);
-    try {
-        $stmt->execute();
-    } catch (mysqli_sql_exception $e) {
-        if ($e->getCode() == 1062) {
-            $error_message="une salle de ce numero existe deja pour ce cinéma";
-        } else {
-            $error_message="Erreur lors de l'ajout de la salle: " . $e->getMessage();
-        }
-    }
-    
 }
 ?>
 
@@ -81,26 +87,24 @@ if ($cinemaResult) {
         <section class="center">
             <div class="ajouter_salle">
                 <h1>Ajouter une salle</h1>
-                <button onclick="openPopup()" id="popup11" > <img src="../img/Addplus.png" alt="Bouton Add" class="add_btn"></button>
+                <img src="../img/Addplus.png" alt="Bouton Add" class="add_btn" onclick="openPopup()" id="popup11">
                 <?php if (!empty($error_message)) : ?>
                     <div class="error-message"><?php echo $error_message; ?></div>
                 <?php endif; ?>  
-                    <div id="popup" class="popup">
-                        <div class="popup-content">
-                            <div class="haut">
-                                <button class="close" onclick="closePopup()">&times;</button>
-                                <h1>Entrez le numero de la salle.</h1>
-                                
-                            </div>
+                <div id="popup" class="popup">
+                    <div class="popup-content">
+                        <span class="close" onclick="closePopup()">&times;</span>
+                        <div class="content">
+                            <h1 class="popuptext">Entrez le numero de la salle.</h1>
                             <form class="form_salle" method="post" >
                                 <input type="numero" placeholder="numero de la salle" class="numero_salle" id="numero_salle" name="numero_salle">
                                 
                                 <button class="button-creer">Créer</button>
-                        </form>
-                        
-                    </div>  
+                            </form>
+                        </div>
+                    </div> 
+                </div> 
                 <script src="../js/planningSeanceGas.js"></script>
-                
             </div>
                   
         </section>    
