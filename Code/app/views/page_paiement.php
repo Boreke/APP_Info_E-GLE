@@ -11,33 +11,45 @@
         <link rel="icon" type="image/png" href="img/Falcon (1).png">
     </head>
     <body>
-        <header>
-            <a href="php/index.php" class="topleft">
-                <div class="Logo_Nom">
-                    <img src="img/Falcon (1).png" alt="Logo">
-                    <h1 class="Nom">E-GLE</h1>
-                </div>
-            </a>
-            <nav class="topnav">
-                <li><a href="php/index.php"  class="nav_elmt">Accueil</a></li>
-                <li><a href="seances.html"  class="nav_elmt1">Séances</a></li>
-                <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
-            </nav>
-            <div class="topright">
-                <div class="lg">
-                    <li><a href="" class="lg_elmt1">EN</a></li>
-                    <li><a href="" class="lg_elmt">FR</a></li>
-                </div>    
-                <a href="php/connexion.php"><button class="button">Login</button></a>
+    <header>
+        <a href="<?=ROOT?> home" class="topleft">
+            <div class="Logo_Nom">
+                <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo">
+                <p class="Nom">E-GLE</p>
             </div>
-        </header>
-
-
-
-
-
-
-        
+        </a>
+        <?php if (isset($user) && htmlspecialchars($user['type'])=='gerant'):?>
+        <nav id="nav" >
+            <li><a href="<?=ROOT?>index.php"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>seancesgerant.php"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>Cinema_Salles.php"  class="nav_elmt">Salles</a></li>
+        </nav>
+        <?php elseif (isset($user) && htmlspecialchars($user['type'])=='admin'):?>
+            <nav id="nav" >
+            <li><a href="<?=ROOT?>index.php"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>adminusers.php"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>faq.php"  class="nav_elmt">Salles</a></li>
+        </nav>
+        <?php else: ?>
+            <nav id="nav" >
+            <li><a href="<?=ROOT?>index.php"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>seancesflorent"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>salles.php"  class="nav_elmt">Salles</a></li>
+        </nav>
+        <?php endif; ?>
+        <img src="<?=ASSETS?>img/Menu.png" alt="Menu" class="menu" id="menuburger">
+        <div class="topright">
+            <div class="lg">
+                <li><a href="" class="lg_elmt1">EN</a></li>
+                <li><a href="" class="lg_elmt">FR</a></li>
+            </div>    
+            <?php if (isset($user)): ?>
+                <a href="<?=ROOT?>deconnexion"><button class="button1">Logout</button></a>
+            <?php else:  ?>
+                <a href="<?=ROOT?>login"><button class="button1">Login</button></a>
+            <?php endif; ?> 
+        </div>
+    </header>
 
         <br><br><br>
         <section id="resa">
@@ -52,7 +64,7 @@
             
 
             <section class="descriptiffilm">
-                <img src="img/8C01404F-F8BD-4ADD-8079-E07121D25BEE.jpeg" id="film1">
+                <img src="<?=ASSETS?>img/8C01404F-F8BD-4ADD-8079-E07121D25BEE.jpeg" id="film1">
             </section>
 
             <section class="formpay">
@@ -97,7 +109,7 @@
 
                 <h1 id="M1">
                     <div id="M11">Moyen de paiement</div>
-                    <img src="img/image 39.png" id="img2">
+                    <img src="<?=ASSETS?>img/image 39.png" id="img2">
                 </h1>
                 
                 <div id="F1">
@@ -116,7 +128,7 @@
                 <br><br>
 
                 <div class="but">
-                    <button id="b1"> <img src="img/Padlock.png" id="img3"> PAYER</button>
+                    <button id="b1"> <img src="<?=ASSETS?>img/Padlock.png" id="img3"> PAYER</button>
                 </div>
                 <br><br>
 
@@ -135,7 +147,7 @@
 
 
         <footer>
-            <img src="img/logo-events-IT 1.png" alt="">
+            <img src="<?=ASSETS?>img/logo-events-IT 1.png" alt="">
             <div class="nav_bas">
                 <li><a href="#" class="nav_bas_elmt">A propos</a></li>
                 <li><a href="#" class="nav_bas_elmt">Forum</a></li>
@@ -144,12 +156,12 @@
                 <li><a href="#" class="nav_bas_elmt">FAQ</a></li>
             </div>
             <div class="reseaux">
-                <li><a href="www.twitter.com"><img src="img/Twitter.png" alt="Twitter"></a></li>
-                <li><a href="www.instagram.com"><img src="img/Instagram.png" alt="Instagram"></a></li>
-                <li><a href="www.facebook.com"><img src="img/Facebook.png" alt=""></a></li>
+                <li><a href="https://www.twitter.com"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>
+                <li><a href="https://www.instagram.com"><img src="<?=ASSETS?>img/Instagram.png" alt="Instagram"></a></li>
+                <li><a href="https://www.facebook.com"><img src="<?=ASSETS?>img/Facebook.png" alt=""></a></li>
             </div>
             <div class="mention_legales">
-                <img src="img/Copyright.png" alt="" class="Copyright">
+                <img src="<?=ASSETS?>img/Copyright.png" alt="" class="Copyright">
                 <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
             </div>
         </footer>
