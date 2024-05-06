@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de connexion</title>
-    <link rel="stylesheet" href="../css/connexion.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/connexion.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -47,9 +47,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
 
     <div class="center">
-        <img src="../img/imagedelogin.svg" alt="image de fond" class="imagelogin">
+        <img src="<?=ASSETS?>img/imagedelogin.svg" alt="image de fond" class="imagelogin">
         <div class="left">
-            <img src="../img/Falcon (1).png" alt="logo events-IT">
+            <img src="<?=ASSETS?>img/Falcon (1).png" alt="logo events-IT">
             </div>
     </div>
 <section class="connexion">
@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="password" placeholder="Mot de passe" class="id" id="password" name="password">
         <button class="buttonconnexion"> Connexion </button>
         <div class="crétioncompte">
-            <p class="inline">Vous n'avez pas de compte ?</p> <a href="../nouveaucompte.html" class="lienverscreation">Créer un compte</a>
+            <p class="inline">Vous n'avez pas de compte ?</p> <a href="<?=ROOT?>nouveaucompte" class="lienverscreation">Créer un compte</a>
         </div>
     </form>
    
