@@ -1,57 +1,72 @@
-body{
-    background: black;
+* {
+  color: white;
 }
 
+body {
+  background-color: black;
+  color: white;
+  background-image: url(../img/SoundWavesIMG.svg);
+  background-repeat: no-repeat;
+  background-position: top;
+  font-family: 'Roboto';
+}
 
-.imagelogin {
-    position: absolute;
-    top:0;
-    left:0;
-    width: 50%;
+.container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2vh;
+  
 }
-.logo-events{
-    position: absolute;
-    top:0;
-    right:0;
+
+.connexion {
+  border-radius: 40px;
+  background: rgba(80, 80, 80, 0.81);
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 40%;
+  padding: 1vw 5vw;
+  gap: 2vh;
+  backdrop-filter: blur(5px);
 }
+
 .redirection{
-  margin-left:69%;
-  margin-top:1%;
-  font-size: 18px;
-    
-   
+  font-size: 18px;  
 }
+
 .question{
     display: inline;
     padding:5px;
     font-size: 16px;
 }
 
+.name {
+  display: flex;
+  gap: 2vw;
+}
 
-.inputs{
-    display:flex;
-    flex-direction: column;
-    gap:30px;
-    align-items: flex-end;
-    margin-right: 20%;
-    margin-top: 1%;
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
 }
 
 .id{
-    color: #777;
-    font-family: Roboto;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    border-radius: 10px;
-    width: 200px;
-    height: 40px;
-    flex-shrink: 0;
-    padding-left: 15px;
-    border: 5px solid #818181;
-    background: rgba(217, 217, 217, 0.00);
-    
+  color: #777;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 20px;
+  width: 200px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 5px 15px;
+  border: 5px solid #818181;
+  background: rgba(217, 217, 217, 0.00);
 }
 .id:focus{
     color:white;
@@ -62,38 +77,26 @@ body{
     color :rgb(80, 177, 226);
     
 }
-h2{
-    text-align: right;
-    color: white;
-    font-size: 40px;
-    margin-right: 17.8%;
-    color: #FFF;
-    font-family: Roboto;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin-right: -5%;
+
+h2 {
+  font-size: 40px
 }
-.button-creer{
-    width: 190px;
-    height: 49px;
-    flex-shrink: 0;
-    color: black;
-    background: grey;
-    font-family: Roboto;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    border-radius: 10px;
-    margin-top: -1%;
-    
-    
+
+button {
+  color: black;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  width: 160px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  filter: drop-shadow(2px 2px 1px rgb(119, 119, 119));
 }
-.button-creer:hover{
-    color: black;
-    background: white;
+button:hover {
+  background-color: #898989;
 }
 
 .text{
@@ -173,9 +176,6 @@ p{
 .CGU{
     display: flex;
     align-items: flex-start;
-    position: inline;
-    margin-right: -20%;
-    margin-top:-4%;
 }
 
 .CGU-checkbox {
@@ -186,5 +186,9 @@ p{
     display: flex;
     flex-direction: column;
     justify-content: right;
-    margin-right: -11%;
+}
+
+.cinema_form {
+  display: flex;
+  flex-direction: row;
 }

@@ -67,7 +67,7 @@ if (isset($_SESSION["user_id"])) {
                 <li><a href="" class="lg_elmt">FR</a></li>
             </div>    
             <?php if (isset($user)): ?>
-                <a href="deconnexion.php"><button class="button1">Logout</button></a>
+                <a href="deconnexion.php"><img src="../img/Male User (1).png" alt=""></a>
             <?php else:  ?>
                 <a href="connexion.php"><button class="button1">Login</button></a>
             <?php endif; ?> 
