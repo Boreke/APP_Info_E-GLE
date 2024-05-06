@@ -22,7 +22,7 @@
     </div>
 
     <header>
-        <a href="index.php" class="topleft">
+        <a href="<?=ROOT?> home" class="topleft">
             <div class="Logo_Nom">
                 <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo">
                 <p class="Nom">E-GLE</p>
@@ -54,9 +54,9 @@
                 <li><a href="" class="lg_elmt">FR</a></li>
             </div>    
             <?php if (isset($user)): ?>
-                <a href="deconnexion.php"><button class="button1">Logout</button></a>
+                <a href="<?=ROOT?>deconnexion"><button class="button1">Logout</button></a>
             <?php else:  ?>
-                <a href="connexion.php"><button class="button1">Login</button></a>
+                <a href="<?=ROOT?>login"><button class="button1">Login</button></a>
             <?php endif; ?> 
            
             
@@ -96,7 +96,7 @@
         </div>
         <div class="center3">
             <div class="left3">
-                <img src="../img/enceinte.svg" alt="Enceinte" class="img-enceinte">
+                <img src="<?=ASSETS?>img/enceinte.svg" alt="Enceinte" class="img-enceinte">
             </div>
             <div class="right3">
                 <h1 class="small-h1">Une <span class="expérience">expérience</span> sonore immersive</h1>
@@ -109,7 +109,7 @@
                 <p class="texte_image">Découvrez une vision nouvelle du cinéma dans nos salles partenaires, où chaque image est une œuvre d'art en mouvement. Grâce à des technologies de projection de pointe, nous vous offrons une qualité visuelle d'une clarté saisissante, où les couleurs éclatent et les détails prennent vie sous vos yeux.</p>
             </div>
             <div class="right4">
-                <img src="../img/terre.png" alt="Terre" class="img-terre">
+                <img src="<?=ASSETS?>img/terre.png" alt="Terre" class="img-terre">
             </div>
         </div>
 

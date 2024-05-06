@@ -10,7 +10,7 @@ Class Login extends Controller
 
 
 
-		$this->view("minima/login",$data);
+		$this->view("connexion",$data);
 	}
 
 }

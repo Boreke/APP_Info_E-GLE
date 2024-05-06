@@ -5,33 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Séances</title>
-    <link rel="stylesheet" href="css/seancesflorent.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/seancesflorent.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/Falcon (1).png">
+    <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
 </head>
 <body>
     <header>
-        <a href="index.php" class="topleft">
+        <a href="<?=ROOT?>home" class="topleft">
             <div class="Logo_Nom">
-                <img src="img/Falcon (1).png" alt="Logo">
+                <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo">
                 <h1 class="Nom">E-GLE</h1>
             </div>
         </a>
        
         <nav id="nav" >
-            <li><a href="php/index.php"  class="nav_elmt">Accueil</a></li>
-            <li><a href="seances.html"  class="nav_elmt1">Séances</a></li>
-            <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
+            <li><a href="<?=ROOT?>home"  class="nav_elmt">Accueil</a></li>
+            <li><a href="<?=ROOT?>sceancesflorent"  class="nav_elmt1">Séances</a></li>
+            <li><a href="<?=ROOT?>salles"  class="nav_elmt">Salles</a></li>
         </nav>
-        <img src="img/Menu.png" alt="Menu" class="menu" id="menuburger">
+        <img src="<?=ASSETS?>img/Menu.png" alt="Menu" class="menu" id="menuburger">
         <div class="topright">
             <div class="lg">
                 <li><a href="" class="lg_elmt1">EN</a></li>
                 <li><a href="" class="lg_elmt">FR</a></li>
             </div>    
-            <a href="php/connexion.php"><button class="button">Login</button></a>
+            <a href="<?=ROOT?>login"><button class="button">Login</button></a>
         </div>
     </header>
 
@@ -40,7 +40,7 @@
 
     <!--BARRE DE RECHERCHE-->
     <div class="search-container">
-        <img src="img/search.png" alt="Loupe-Logo" class="search-icon">
+        <img src="<?=ASSETS?>img/search.png" alt="Loupe-Logo" class="search-icon">
         <input type="text" placeholder="Rechercher un film"  class="search-text">
     </div>
 <!-- FIN BARRE DE RECHERCHE-->
@@ -50,20 +50,20 @@
     <h2 class="movie-category">Nouveautés :</h2>
     <section class="new-movie">
         
-        <img src="img/arrow.png" alt="" class="pre-btn">
+        <img src="<?=ASSETS?>img/arrow.png" alt="" class="pre-btn">
 
         <div class="movie-container">
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="planningSeanceGas.html"> <img src="img/shutterisland.jpg" class="movie-cover" alt=""></a>
-                </div>
+                    <a href="planningSeanceGas.html"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Shutter Island</h2>
                 </div>
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="planningSeanceGas.html"><img src="img/avatar.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Avatar</h2>
@@ -71,7 +71,7 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="planningSeanceGas.html"><img src="img/inception.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Inception</h2>
@@ -79,7 +79,7 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="planningSeanceGas.html"><img src="img/leparrain.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Le Parrain</h2>
@@ -87,7 +87,7 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="planningSeanceGas.html"><img src="img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Shutter Island</h2>
@@ -95,15 +95,15 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="planningSeanceGas.html"><img src="img/shutterièsland.jpg" class="movie-cover" alt=""></a>
-                    <img src="img/shutterisland.jpg" class="movie-cover" alt="">
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/shutterièsland.jpg" class="movie-cover" alt=""></a>
+                    <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt="">
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Shutter Island</h2>
                 </div>
             </div>
         </div>
-        <img src="img/arrow.png" alt="" class="nxt-btn">
+        <img src="<?=ASSETS?>img/arrow.png" alt="" class="nxt-btn">
     </section>
     <!-- FIN Premier carroussel-->
 
@@ -112,12 +112,12 @@
 <h2 class="film-affiche-nom">A l'affiche :</h2>
     <section class="movie-a-affiche">
         
-        <img src="img/arrow.png" alt="" class="previous-btn">
+        <img src="<?=ASSETS?>img/arrow.png" alt="" class="previous-btn">
 
         <div class="movie-contenu">
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="planningSeanceGas.html"> <img src="img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Shutter Island</h2>
@@ -125,7 +125,7 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="planningSeanceGas.html"><img src="img/avatar.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Avatar</h2>
@@ -133,7 +133,7 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="planningSeanceGas.html"><img src="img/inception.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Inception</h2>
@@ -141,7 +141,7 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="planningSeanceGas.html"><img src="img/leparrain.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Le Parrain</h2>
@@ -149,7 +149,7 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="planningSeanceGas.html"></a><img src="img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"></a><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Shutter Island</h2>
@@ -157,14 +157,14 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <img src="img/shutterièsland.jpg" class="movie-cover" alt="">
+                    <img src="<?=ASSETS?>img/shutterièsland.jpg" class="movie-cover" alt="">
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Shutter Island</h2>
                 </div>
             </div>
         </div>
-        <img src="img/arrow.png" alt="" class="next-btn">
+        <img src="<?=ASSETS?>img/arrow.png" alt="" class="next-btn">
     </section>
 </div>
  <!-- FIN second carroussel-->  
@@ -175,12 +175,12 @@
 <h2 class="film-venir-nom">A venir :</h2>
     <section class="movie-a-venir">
         
-        <img src="img/arrow.png" alt="" class="precedent-btn">
+        <img src="<?=ASSETS?>img/arrow.png" alt="" class="precedent-btn">
 
         <div class="movie-venir-contenu">
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="planningSeanceGas.html"> <img src="img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Shutter Island</h2>
@@ -188,7 +188,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-img">
-                    <a href="planningSeanceGas.html"><img src="img/avatar.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-venir-nom">Avatar</h2>
@@ -196,7 +196,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="planningSeanceGas.html"><img src="img/inception.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Inception</h2>
@@ -204,7 +204,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="planningSeanceGas.html"><img src="img/leparrain.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Le Parrain</h2>
@@ -212,7 +212,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="planningSeanceGas.html"><img src="img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Shutter Island</h2>
@@ -220,17 +220,17 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="planningSeanceGas.html"><img src="img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Shutter Island</h2>
                 </div>
             </div>
         </div>
-        <img src="img/arrow.png" alt="" class="suivant-btn">
+        <img src="<?=ASSETS?>img/arrow.png" alt="" class="suivant-btn">
     </section>
 <footer>
-    <img src="img/logo-events-IT 1.png" alt="">
+    <img src="<?=ASSETS?>img/logo-events-IT 1.png" alt="">
     <div class="nav_bas">
         <li><a href="#" class="nav_bas_elmt">A propos</a></li>
         <li><a href="#" class="nav_bas_elmt">Forum</a></li>
@@ -239,19 +239,19 @@
         <li><a href="#" class="nav_bas_elmt">FAQ</a></li>
     </div>
     <div class="reseaux">
-        <li><a href="www.twitter.com"><img src="img/Twitter.png" alt="Twitter"></a></li>
-        <li><a href="www.instagram.com"><img src="img/Instagram.png" alt="Instagram"></a></li>
-        <li><a href="www.facebook.com"><img src="img/Facebook.png" alt=""></a></li>
+        <li><a href="www.twitter.com"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>
+        <li><a href="www.instagram.com"><img src="<?=ASSETS?>img/Instagram.png" alt="Instagram"></a></li>
+        <li><a href="www.facebook.com"><img src="<?=ASSETS?>img/Facebook.png" alt=""></a></li>
     </div>
     <div class="mention_legales">
-        <img src="img/Copyright.png" alt="" class="Copyright">
+        <img src="<?=ASSETS?>img/Copyright.png" alt="" class="Copyright">
         <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
     </div>
 </footer>
 
 
 
-    <script src="js/script.js"></script>
+    <script src="<?=ASSETS?>js/script.js"></script>
     
 </body>
 </html>
