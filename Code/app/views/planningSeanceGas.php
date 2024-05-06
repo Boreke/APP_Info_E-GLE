@@ -4,35 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLANNING</title>
-    <link rel="stylesheet" href="css/planningSeanceGas.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/planningSeanceGas.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/Falcon (1).png">
+    <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
 </head>
 
 
 
 <body>
 
-    <header>
-        <a href="php/index.php" class="topleft">
+<header>
+        <a href="<?=ROOT?> home" class="topleft">
             <div class="Logo_Nom">
-                <img src="img/Falcon (1).png" alt="Logo">
-                <h1 class="Nom">E-GLE</h1>
+                <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo">
+                <p class="Nom">E-GLE</p>
             </div>
         </a>
-        <nav class="topnav">
-            <li><a href="php/index.php"  class="nav_elmt">Accueil</a></li>
-            <li><a href="Code/seancesflorent.html"  class="nav_elmt1">Séances</a></li>
-            <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
+        <?php if (isset($user) && htmlspecialchars($user['type'])=='gerant'):?>
+        <nav id="nav" >
+            <li><a href="<?=ROOT?>index"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>seancesgerant"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>Cinema_Salles"  class="nav_elmt">Salles</a></li>
         </nav>
+        <?php elseif (isset($user) && htmlspecialchars($user['type'])=='admin'):?>
+            <nav id="nav" >
+            <li><a href="<?=ROOT?>index"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>adminusers"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>faq"  class="nav_elmt">Salles</a></li>
+        </nav>
+        <?php else: ?>
+            <nav id="nav" >
+            <li><a href="<?=ROOT?>index"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>seancesflorent"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>salles"  class="nav_elmt">Salles</a></li>
+        </nav>
+        <?php endif; ?>
+        <img src="<?=ASSETS?>img/Menu.png" alt="Menu" class="menu" id="menuburger">
         <div class="topright">
             <div class="lg">
                 <li><a href="" class="lg_elmt1">EN</a></li>
                 <li><a href="" class="lg_elmt">FR</a></li>
             </div>    
-            <a href="php/connexion.php"><button class="button">Login</button></a>
+            <?php if (isset($user)): ?>
+                <a href="<?=ROOT?>deconnexion"><button class="button1">Logout</button></a>
+            <?php else:  ?>
+                <a href="<?=ROOT?>login"><button class="button1">Login</button></a>
+            <?php endif; ?> 
+
         </div>
     </header>
 
@@ -40,7 +60,6 @@
     <section id="resa">
     
         Votre Film :
-    
         
     </section>
 
@@ -48,7 +67,7 @@
     <main>
 
         <section class="descriptiffilm">
-            <img src="img/8C01404F-F8BD-4ADD-8079-E07121D25BEE.jpeg" id="film1">
+            <img src="<?=ASSETS?>img/8C01404F-F8BD-4ADD-8079-E07121D25BEE.jpeg" id="film1">
         </section>
 
         <section class="formpay">
@@ -123,7 +142,7 @@
                         <div class="PP">
                             <section class="totalpp">
                                 <div class="imgpopup">
-                                    <img src="img/8C01404F-F8BD-4ADD-8079-E07121D25BEE.jpeg" id="img1pp" alt="rien">
+                                    <img src="<?=ASSETS?>img/8C01404F-F8BD-4ADD-8079-E07121D25BEE.jpeg" id="img1pp" alt="rien">
                                 </div>
 
                                 <div class="interieur">
@@ -225,7 +244,7 @@
                         
                     </div>
                 </div>
-                <script src="js/planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
               
@@ -269,7 +288,7 @@
                         
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H3">
@@ -282,7 +301,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H4">
@@ -295,7 +314,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H5">
@@ -308,7 +327,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
 
@@ -329,7 +348,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H2">
@@ -342,7 +361,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
 
@@ -356,7 +375,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H4">
@@ -369,7 +388,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
 
@@ -383,7 +402,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
         </section>
@@ -402,7 +421,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
               
@@ -418,7 +437,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H3">
@@ -431,7 +450,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H4">
@@ -444,7 +463,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H5">
@@ -457,7 +476,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
         </section>
@@ -474,7 +493,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H2">
@@ -487,7 +506,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
 
@@ -501,7 +520,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H4">
@@ -514,7 +533,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
 
@@ -528,7 +547,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
             
         </section>
@@ -546,7 +565,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
               
@@ -562,7 +581,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H3">
@@ -575,7 +594,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H4">
@@ -588,7 +607,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H5">
@@ -601,7 +620,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
         </section>
         
@@ -617,7 +636,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H2">
@@ -630,7 +649,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
 
@@ -644,7 +663,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H4">
@@ -657,7 +676,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
 
@@ -671,7 +690,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
         </section>
         
@@ -688,7 +707,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
               
@@ -704,7 +723,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H3">
@@ -717,7 +736,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H4">
@@ -730,7 +749,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
 
             <div id="H5">
@@ -743,7 +762,7 @@
                         <p>Contenu de la popup...</p>
                     </div>
                 </div>
-                <script src="planningSeanceGas.js"></script>
+                <script src="<?=ASSETS?>js/planningSeanceGas.js"></script>
             </div>
         </section>
 
@@ -755,23 +774,23 @@
 
 
     <footer>
-        <img src="logo-events-IT 1.png" alt="">
-        <div class="nav_bas">
-            <li><a href="#" class="nav_bas_elmt">A propos</a></li>
-            <li><a href="#" class="nav_bas_elmt">Forum</a></li>
-            <li><a href="#" class="nav_bas_elmt">Contact</a></li>
-            <li><a href="#" class="nav_bas_elmt">Mention légales</a></li>
-            <li><a href="#" class="nav_bas_elmt">FAQ</a></li>
-        </div>
-        <div class="reseaux">
-            <li><a href="www.twitter.com"><img src="img/Twitter.png" alt="Twitter"></a></li>
-            <li><a href="www.instagram.com"><img src="img/Instagram.png" alt="Instagram"></a></li>
-            <li><a href="www.facebook.com"><img src="img/Facebook.png" alt=""></a></li>
-        </div>
-        <div class="mention_legales">
-            <img src="img/Copyright.png" alt="" class="Copyright">
-            <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
-        </div>
+            <img src="<?=ASSETS?>img/logo-events-IT 1.png" alt="">
+            <div class="nav_bas">
+                <li><a href="#" class="nav_bas_elmt">A propos</a></li>
+                <li><a href="#" class="nav_bas_elmt">Forum</a></li>
+                <li><a href="#" class="nav_bas_elmt">Contact</a></li>
+                <li><a href="#" class="nav_bas_elmt">Mention légales</a></li>
+                <li><a href="#" class="nav_bas_elmt">FAQ</a></li>
+            </div>
+            <div class="reseaux">
+                <li><a href="https://www.twitter.com"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>
+                <li><a href="https://www.instagram.com"><img src="<?=ASSETS?>img/Instagram.png" alt="Instagram"></a></li>
+                <li><a href="https://www.facebook.com"><img src="<?=ASSETS?>img/Facebook.png" alt=""></a></li>
+            </div>
+            <div class="mention_legales">
+                <img src="<?=ASSETS?>img/Copyright.png" alt="" class="Copyright">
+                <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
+            </div>
     </footer>
     
 </body>
