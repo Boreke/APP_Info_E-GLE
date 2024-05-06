@@ -30,21 +30,21 @@
         </a>
         <?php if (isset($user) && htmlspecialchars($user['type'])=='gerant'):?>
         <nav id="nav" >
-            <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
-            <li><a href="seancesgerant.php"  class="nav_elmt">Séances</a></li>
-            <li><a href="Cinema_Salles.php"  class="nav_elmt">Salles</a></li>
+            <li><a href="<?=ROOT?>index.php"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>seancesgerant.php"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>Cinema_Salles.php"  class="nav_elmt">Salles</a></li>
         </nav>
         <?php elseif (isset($user) && htmlspecialchars($user['type'])=='admin'):?>
             <nav id="nav" >
-            <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
-            <li><a href="adminusers.html"  class="nav_elmt">Séances</a></li>
-            <li><a href="faq.html"  class="nav_elmt">Salles</a></li>
+            <li><a href="<?=ROOT?>index.php"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>adminusers.php"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>faq.php"  class="nav_elmt">Salles</a></li>
         </nav>
         <?php else: ?>
             <nav id="nav" >
-            <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
-            <li><a href="seancesflorent.html"  class="nav_elmt">Séances</a></li>
-            <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
+            <li><a href="<?=ROOT?>index.php"  class="nav_elmt1">Accueil</a></li>
+            <li><a href="<?=ROOT?>seancesflorent"  class="nav_elmt">Séances</a></li>
+            <li><a href="<?=ROOT?>salles.php"  class="nav_elmt">Salles</a></li>
         </nav>
         <?php endif; ?>
         <img src="<?=ASSETS?>img/Menu.png" alt="Menu" class="menu" id="menuburger">
