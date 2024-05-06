@@ -26,7 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   align-self: center;
-  width: 40%;
+  width: 35rem;
   padding: 1vw 5vw;
   gap: 2vh;
   backdrop-filter: blur(5px);
@@ -68,6 +68,11 @@ body {
   border: 5px solid #818181;
   background: rgba(217, 217, 217, 0.00);
 }
+
+.just-validate-error-label{
+  max-width: 190px;
+}
+
 .id:focus{
     color:white;
     border-color: white;
