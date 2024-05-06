@@ -82,7 +82,7 @@ Class NouveauCompte extends Controller
             }
         }
 
- 	 	if(isset($_POST['email']))
+ 	 	/*if(isset($_POST['email']))
  	 	{
  	 		$user = $this->loadModel("user");
  	 		$user->signup($_POST);
@@ -91,7 +91,7 @@ Class NouveauCompte extends Controller
 
  	 		$user = $this->loadModel("user");
  	 		$user->login($_POST);
- 	 	}
+ 	 	}*/
  	 	
 		$this->view("nouveaucompte",$data);
 	}
