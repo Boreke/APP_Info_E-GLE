@@ -1,19 +1,4 @@
-<?php
 
-session_start();
-
-if (isset($_SESSION["user_id"])) {
-    
-    $mysqli = require __DIR__ . "/database.php";
-    
-    $sql = "SELECT * FROM user WHERE id_user = {$_SESSION["user_id"]}";
-            
-    $result = $mysqli->query($sql);
-    
-    $user = $result->fetch_assoc();
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,23 +6,25 @@ if (isset($_SESSION["user_id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Events-IT</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href= "<?=ASSETS?>css/index.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/Falcon (1).png">
+    <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
 </head>
 <body>
+    
     <div class="loader">
         <span class="lettre">L</span>
         <span class="lettre">O</span>
         <span class="lettre">A</span>
         <span class="lettre">D</span>
     </div>
+
     <header>
         <a href="index.php" class="topleft">
             <div class="Logo_Nom">
-                <img src="../img/Falcon (1).png" alt="Logo" class="logo">
+                <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo">
                 <p class="Nom">E-GLE</p>
             </div>
         </a>
@@ -50,17 +37,17 @@ if (isset($_SESSION["user_id"])) {
         <?php elseif (isset($user) && htmlspecialchars($user['type'])=='admin'):?>
             <nav id="nav" >
             <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
-            <li><a href="../adminusers.html"  class="nav_elmt">Séances</a></li>
-            <li><a href="../faq.html"  class="nav_elmt">Salles</a></li>
+            <li><a href="adminusers.html"  class="nav_elmt">Séances</a></li>
+            <li><a href="faq.html"  class="nav_elmt">Salles</a></li>
         </nav>
         <?php else: ?>
             <nav id="nav" >
             <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
-            <li><a href="../seancesflorent.html"  class="nav_elmt">Séances</a></li>
-            <li><a href="../salles.html"  class="nav_elmt">Salles</a></li>
+            <li><a href="seancesflorent.html"  class="nav_elmt">Séances</a></li>
+            <li><a href="salles.html"  class="nav_elmt">Salles</a></li>
         </nav>
         <?php endif; ?>
-        <img src="../img/Menu.png" alt="Menu" class="menu" id="menuburger">
+        <img src="<?=ASSETS?>img/Menu.png" alt="Menu" class="menu" id="menuburger">
         <div class="topright">
             <div class="lg">
                 <li><a href="" class="lg_elmt1">EN</a></li>
@@ -80,9 +67,9 @@ if (isset($_SESSION["user_id"])) {
         <div class="center1">
             <div class="left1">
                 <h1>Explorez l'essence de l'expérience <br>cinématographique.</h1>
-                <a href="#center2"><img src="../img/Scroll Down.png" alt="Bouton Scroll" class="scroll-btn"></a>
+                <a href="#center2"><img src="<?=ASSETS?>img/Scroll Down.png" alt="Bouton Scroll" class="scroll-btn"></a>
             </div>
-            <img src="../img/SoundWavesIMG.svg" alt="" class="soundwaves">
+            <img src="<?=ASSETS?>img/SoundWavesIMG.svg" alt="" class="soundwaves">
         </div>
         <div class="center2" id="center2">
             <div class="left2">
@@ -96,10 +83,10 @@ if (isset($_SESSION["user_id"])) {
                     
                     <div class="slider-container slider-1">
                         <div class="slider">
-                            <img src="../img/intouchables.svg" alt="" class="img-intouchables">
-                            <img src="../img/shutterIsland.png" alt="" class="img-intouchables">
-                            <img src="../img/avatar.png" alt="" class="img-intouchables">
-                            <img src="../img/intouchables.svg" alt="" class="img-intouchables">
+                            <img src="<?=ASSETS?>img/intouchables.svg" alt="" class="img-intouchables">
+                            <img src="<?=ASSETS?>img/shutterIsland.png" alt="" class="img-intouchables">
+                            <img src="<?=ASSETS?>img/avatar.png" alt="" class="img-intouchables">
+                            <img src="<?=ASSETS?>img/intouchables.svg" alt="" class="img-intouchables">
                         </div>
                     </div>
                     
@@ -127,7 +114,7 @@ if (isset($_SESSION["user_id"])) {
         </div>
 
         <footer>
-            <img src="../img/logo-events-IT 1.png" alt="">
+            <img src="<?=ASSETS?>img/logo-events-IT 1.png" alt="">
             <div class="nav_bas">
                 <li><a href="#" class="nav_bas_elmt">A propos</a></li>
                 <li><a href="#" class="nav_bas_elmt">Forum</a></li>
@@ -136,12 +123,12 @@ if (isset($_SESSION["user_id"])) {
                 <li><a href="#" class="nav_bas_elmt">FAQ</a></li>
             </div>
             <div class="reseaux">
-                <li><a href="https://www.twitter.com"><img src="../img/Twitter.png" alt="Twitter"></a></li>
-                <li><a href="https://www.instagram.com"><img src="../img/Instagram.png" alt="Instagram"></a></li>
-                <li><a href="https://www.facebook.com"><img src="../img/Facebook.png" alt=""></a></li>
+                <li><a href="https://www.twitter.com"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>
+                <li><a href="https://www.instagram.com"><img src="<?=ASSETS?>img/Instagram.png" alt="Instagram"></a></li>
+                <li><a href="https://www.facebook.com"><img src="<?=ASSETS?>img/Facebook.png" alt=""></a></li>
             </div>
             <div class="mention_legales">
-                <img src="../img/Copyright.png" alt="" class="Copyright">
+                <img src="<?=ASSETS?>img/Copyright.png" alt="" class="Copyright">
                 <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
             </div>
         </footer>
@@ -150,7 +137,7 @@ if (isset($_SESSION["user_id"])) {
 
     
 </body>
-<script src="../js/index.js">
+<script src="<?=ASSETS?>js/index.js">
     
 </script>
 </html>
