@@ -37,32 +37,31 @@
     </header>
 
     <?php
-    $mysqli = require __DIR__ . "/database.php";
+$mysqli = require __DIR__ . "/database.php";
+$movieId = isset($_GET['id']) ? $_GET['id'] : 1;
+$sql = "SELECT * FROM film WHERE id_film = $movieId";
+$result = $mysqli->query($sql);
 
-    // Fetch movie details
-    $movieId = isset($_GET['id']) ? $_GET['id'] : 1; // Default to 1 if no ID is provided
-    $sql = "SELECT * FROM film WHERE id_film = $movieId";
-    $result = $mysqli->query($sql);
-
-    if ($result->num_rows > 0) {
-        $movie = $result->fetch_assoc();
-        echo "<div class='movie-details'>";
-        echo "<h1>" . htmlspecialchars($movie['titre']) . "</h1>";
-        echo "<p><strong>Genre:</strong> " . htmlspecialchars($movie['genre']) . "</p>";
-        echo "<p><strong>Duration:</strong> " . htmlspecialchars($movie['duree']) . "</p>";
-        echo "<p><strong>Synopsis:</strong> " . htmlspecialchars($movie['synopsis']) . "</p>";
-        echo "<img src='" . htmlspecialchars($movie['image_path']) . "' alt='Movie Image' style='max-width: 100%;'>";
-        echo "</div>";
-    } else {
-        echo "<p>Movie not found.</p>";
-    }
-    ?>
+if ($result->num_rows > 0) {
+    $movie = $result->fetch_assoc();
+    echo "<div class='movie-layout'>";
+    echo "<div class='movie-image'>";
+    echo "<img src='" . htmlspecialchars($movie['image_path']) . "' alt='Movie Image' style='width:100%;'>";
+    echo "</div>";
+    echo "<div class='movie-info'>";
+    echo "<p><strong></strong> " . htmlspecialchars($movie['titre']) . "</p>";
+    echo "<p><strong>Genre:</strong> " . htmlspecialchars($movie['genre']) . "</p>";
+    echo "<p><strong>Duration:</strong> " . htmlspecialchars($movie['duree']) . "</p>";
+    echo "<p><strong>Synopsis:</strong> " . htmlspecialchars($movie['synopsis']) . "</p>";
+    echo "</div>";
+    echo "</div>";
+} else {
+    echo "<p>Movie not found.</p>";
+}
+?>
     <div class="center-top">
-        <h2>Cinémas</h2>
-        <div class="barre-recherche">
-            <img src="../img/Search.png" alt="Search">
-            <input type="search" placeholder="Rechercher un cinéma" class="zone-recherche">
-        </div>
+        <h2>Réserver ma séance</h2>
+        
     </div>
     <div class="container">
         <div class="calendar">
