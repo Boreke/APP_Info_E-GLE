@@ -26,7 +26,7 @@
             <li><a href="../seancesflorent.html"  class="nav_elmt1">Séances</a></li>
             <li><a href="../salles.html"  class="nav_elmt">Salles</a></li>
         </nav>
-        <img src="img/Menu.png" alt="Menu" class="menu" id="menuburger">
+        <img src="../img/Menu.png" alt="Menu" class="menu" id="menuburger">
         <div class="topright">
             <div class="lg">
                 <li><a href="" class="lg_elmt1">EN</a></li>
@@ -46,13 +46,15 @@ if ($result->num_rows > 0) {
     $movie = $result->fetch_assoc();
     echo "<div class='movie-layout'>";
     echo "<div class='movie-image'>";
-    echo "<img src='" . htmlspecialchars($movie['image_path']) . "' alt='Movie Image' style='width:100%;'>";
+    echo "<img class='cinema-image' src='" . htmlspecialchars($movie['image_path']) . "' alt='Cinema Image'>";
     echo "</div>";
     echo "<div class='movie-info'>";
-    echo "<p><strong></strong> " . htmlspecialchars($movie['titre']) . "</p>";
-    echo "<p><strong>Genre:</strong> " . htmlspecialchars($movie['genre']) . "</p>";
-    echo "<p><strong>Duration:</strong> " . htmlspecialchars($movie['duree']) . "</p>";
-    echo "<p><strong>Synopsis:</strong> " . htmlspecialchars($movie['synopsis']) . "</p>";
+    echo "<p class='movie-title'><strong></strong> " . htmlspecialchars($movie['titre']) . "</p>";
+    echo "<div class='movie-genre-duration'>";
+    echo "<p><span class='movie-detail-label'><strong>Genre:</strong></span> " . htmlspecialchars($movie['genre']) . "</p>";
+    echo "<p><span class='movie-detail-label'><strong>Duration:</strong></span> " . htmlspecialchars($movie['duree']) . "</p>";
+    echo "</div>";
+    echo "<p><span class='movie-detail-label'><strong>Synopsis:</strong></span><br><br> " . htmlspecialchars($movie['synopsis']) . "</p>";
     echo "</div>";
     echo "</div>";
 } else {
