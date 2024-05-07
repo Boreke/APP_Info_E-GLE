@@ -12,35 +12,7 @@
 
 </head>
 <body>
-    <div class="loader">
-        <span class="lettre">L</span>
-        <span class="lettre">O</span>
-        <span class="lettre">A</span>
-        <span class="lettre">D</span>
-    </div>
-    <header>
-        <a href="<?=ROOT?>home" class="topleft">
-            <div class="Logo_Nom">
-                <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo">
-                <p class="Nom">E-GLE</p>
-            </div>
-        </a>
-       
-        <nav id="nav">
-            <li><a href="<?=ROOT?>home"  class="nav_elmt">Accueil</a></li>
-            <li><a href="<?=ROOT?>seancesflorent"  class="nav_elmt">Séances</a></li>
-            <li><a href="<?=ROOT?>salles"  class="nav_elmt1">Salles</a></li>
-        </nav>
-        <img src="<?=ASSETS?>img/Menu.png" alt="Menu" class="menu" id="menuburger">
-        <div class="topright">
-            <div class="lg">
-                <li><a href="" class="lg_elmt1">EN</a></li>
-                <li><a href="" class="lg_elmt">FR</a></li>
-            </div>    
-            <a href="<?=ROOT?>login"><button class="button">Login</button></a>
-        </div>
-    </header>
-
+<?php $this->view("header")?>
     <section class="center">
         <div class="center-top">
             <h2>Cinémas</h2>

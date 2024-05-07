@@ -1,5 +1,5 @@
 <?php
-
+/*
 $is_invalid = false;
 
 if($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     
     $is_invalid = true;
 }
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -54,10 +54,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 <section class="connexion">
     <h2 class="titre2">Connexion</h2>
-
-    <?php if ($is_invalid): ?>
-        <em>Invalid login</em>
-    <?php endif; ?>
 
     <form class="inputs" method="post">
         <input type="Identifiant" placeholder="Identifiant" class="id" id="username" name="username" value="<?= htmlspecialchars($_POST["username"] ?? "") ?>">

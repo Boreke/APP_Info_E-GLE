@@ -21,22 +21,25 @@ Class Database
 
 		$DB = $this->db_connect();
 		$stm = $DB->prepare($query);
-
+		
 		if(count($data) == 0)
 		{
+			
 			$stm = $DB->query($query);
 			$check = 0;
 			if($stm){
 				$check = 1;
 			}
 		}else{
-
+			
 			$check = $stm->execute($data);
 		}
 
 		if($check)
 		{
+			
 			$data = $stm->fetchAll(PDO::FETCH_OBJ);
+
 			if(is_array($data) && count($data) > 0)
 			{
 				return $data;

@@ -6,15 +6,18 @@ Class cinemasalle extends Controller
 	{
  	 	unset($_SESSION['error_message']);
  	 	$data['page_title'] = "salle";
-
+		if(isset($_POST['numero_salle'])){
+			$this->add_salle($_POST);
+		}
 		$this->view("cinemasalle",$data);
 	}
 	function add_salle($POST){
 		$DB = new Database();
 		$user=$this->loadModel("user");
-		if ($user->check_logged_in) {
+		show($user);
+		if ($user->check_logged_in()) {
 			$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
-			$cinemaResult =$DB->read($sqlRequest,$_SESSION["user_id"])
+			$cinemaResult =$DB->read($sqlRequest,$_SESSION["user_id"]);
 			if (isset($cinemaResult)) {
 				$cinema_id = $cinemaResult['idcinema'];
 				if (empty($_POST["numero_salle"])) {
@@ -36,7 +39,6 @@ Class cinemasalle extends Controller
 				}
 				
 			}
-
 		}
 
 	}
