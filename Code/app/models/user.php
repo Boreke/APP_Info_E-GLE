@@ -22,7 +22,7 @@ Class User
 				if(password_verify($_POST["password"], $data[0]->password_hash)){
 					//logged in
 					$_SESSION['username'] = $data[0]->username;
-					$_SESSION['user_id'] = $data[0]->user_id;
+					$_SESSION['user_id'] = $data[0]->id_user;
 					$_SESSION['type']=$data[0]->type;
 					header("Location:". ROOT . "home");
 					die;
@@ -128,18 +128,19 @@ Class User
 	{
 
 		$DB = new Database();
-		show($_SESSION);
+		
 		if(isset($_SESSION['user_id']))
 		{
 			
 			$arr['user_id'] = $_SESSION['user_id'];
-			$query = "select * from user where user_id = :user_id limit 1";
+			$query = "select * from user where id_user = :user_id limit 1";
 			$data = $DB->read($query,$arr);
 			if(is_array($data))
 			{
 				//logged in
  				$_SESSION['username'] = $data[0]->username;
-				$_SESSION['user_id'] = $data[0]->user_id;
+				$_SESSION['user_id'] = $data[0]->id_user;
+				$_SESSION['type'] = $data[0]->type;
 				return true;
 			}
 		}

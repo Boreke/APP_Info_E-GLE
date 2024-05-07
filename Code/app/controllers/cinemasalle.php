@@ -17,15 +17,17 @@ Class cinemasalle extends Controller
 		if ($user->check_logged_in()) {
 			
 			$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
-			$cinemaResult =$DB->read($sqlRequest,$_SESSION["user_id"]);
+			$arr["user_id"]=$_SESSION["user_id"];
+			$cinemaResult =$DB->read($sqlRequest,$arr);
 			if (isset($cinemaResult)) {
-				$cinema_id = $cinemaResult['idcinema'];
+				$cinema_id = $cinemaResult[0]->idcinema;
 				if (empty($_POST["numero_salle"])) {
 					$_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
 				} elseif (!is_numeric($_POST["numero_salle"])&& $_POST["numero_salle"]==0) {
 					$_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
 				}
 				$sql = "INSERT INTO salle (numero, cinema_idcinema) VALUES (:numero, :cinema_idcinema)";
+				unset($arr);
 				$arr["numero"]=$_POST["numero_salle"];
 				$arr["cinema_idcinema"]=$cinema_id;
 				try {
