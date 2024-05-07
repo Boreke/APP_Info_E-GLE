@@ -4,7 +4,7 @@ Class Signup extends Controller
 {
 	function index()
 	{
- 	 	
+		unset($_SESSION['error_message']);
  	 	$data['page_title'] = "Signup";
 
  	 	if(isset($_POST['email']))

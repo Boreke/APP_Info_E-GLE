@@ -1,48 +1,4 @@
-<?php
-session_start();
 
-$mysqli = require __DIR__ . "/database.php";
-$error_message="";
-if (isset($_SESSION["user_id"])) {
-    $sql = "SELECT * FROM user WHERE id_user = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $_SESSION["user_id"]);
-    $stmt->execute();
-    $user = $stmt->get_result()->fetch_assoc();
-}
-
-$sqlRequest = "SELECT idcinema FROM cinema WHERE user_id_user = ?";
-$stmt = $mysqli->prepare($sqlRequest);
-$stmt->bind_param("i", $_SESSION["user_id"]);
-$stmt->execute();
-$cinemaResult = $stmt->get_result();
-if ($cinemaResult) {
-    $cinemaRow = $cinemaResult->fetch_assoc();
-    $cinema_id = $cinemaRow['idcinema'];
-    if (empty($_POST["numero_salle"])) {
-
-        $_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
-    } elseif (!is_numeric($_POST["numero_salle"])&& $_POST["numero_salle"]==0) {
-        $_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
-    }
-    $sql = "INSERT INTO salle (numero, cinema_idcinema) VALUES (?, ?)";
-    $stmt = $mysqli->prepare($sql);
-    if (!$stmt) {
-        die("SQL error: " . $mysqli->error);
-    }
-    $stmt->bind_param("si", $_POST["numero_salle"], $cinema_id);
-    try {
-        $stmt->execute();
-    } catch (mysqli_sql_exception $e) {
-        if ($e->getCode() == 1062) {
-            $error_message="une salle de ce numero existe deja pour ce cinéma";
-        } else {
-            $error_message="Erreur lors de l'ajout de la salle: " . $e->getMessage();
-        }
-    }
-    
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,8 +57,8 @@ if ($cinemaResult) {
             <div class="ajouter_salle">
                 <h1>Ajouter une salle</h1>
                 <button onclick="openPopup()" id="popup11" > <img src="<?=ASSETS?>img/Addplus.png" alt="Bouton Add" class="add_btn"></button>
-                <?php if (!empty($error_message)) : ?>
-                    <div class="error-message"><?php echo $error_message; ?></div>
+                <?php if (!empty($_SESSION["error_message"])) : ?>
+                    <div class="error-message"><?php echo $_SESSION["error_message"]; ?></div>
                 <?php endif; ?>  
                     <div id="popup" class="popup">
                         <div class="popup-content">

@@ -4,7 +4,7 @@ Class Single_post extends Controller
 {
 	function index($link = '')
 	{
- 	 	
+		unset($_SESSION['error_message']);
 		if($link == "")
 		{
 

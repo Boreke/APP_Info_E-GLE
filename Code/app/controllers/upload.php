@@ -4,7 +4,7 @@ Class Upload extends Controller
 {
 	function index()
 	{
- 	 	
+		unset($_SESSION['error_message']);
  	 	header("Location:". ROOT . "upload/image");
 		die;
 	}
