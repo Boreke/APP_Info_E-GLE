@@ -9,7 +9,7 @@
 <header>
     <a href="<?=ROOT?> home" class="topleft">
         <div class="Logo_Nom">
-            <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo">
+            <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo" href="<?=ROOT?>home">
             <p class="Nom">E-GLE</p>
         </div>
     </a>
@@ -38,8 +38,8 @@
             <li><a href="" class="lg_elmt1">EN</a></li>
             <li><a href="" class="lg_elmt">FR</a></li>
         </div>    
-        <?php if (isset($user)): ?>
-            <a href="<?=ROOT?>deconnexion"><button class="button1">Logout</button></a>
+        <?php if (isset($_SESSION["username"])): ?>
+            <a href="<?=ROOT?>logout" ><button class="button1" >Logout</button></a>
         <?php else:  ?>
             <a href="<?=ROOT?>login"><button class="button1">Login</button></a>
         <?php endif; ?> 

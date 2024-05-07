@@ -18,14 +18,14 @@
         <section class="center">
             <div class="ajouter_salle">
                 <h1>Ajouter une salle</h1>
-                <button onclick="openPopup()" id="popup11" > <img src="<?=ASSETS?>img/Addplus.png" alt="Bouton Add" class="add_btn"></button>
+                <a onclick="openPopup()" id="popup11" > <img src="<?=ASSETS?>img/Addplus.png" alt="Bouton Add" class="add_btn"></a>
                 <?php if (!empty($_SESSION["error_message"])) : ?>
                     <div class="error-message"><?php echo $_SESSION["error_message"]; ?></div>
                 <?php endif; ?>  
                     <div id="popup" class="popup">
                         <div class="popup-content">
                             <div class="haut">
-                                <button class="close" onclick="closePopup()">&times;</button>
+                                <a class="close" onclick="closePopup()">&times;</a>
                                 <h1>Entrez le numero de la salle.</h1>
                                 
                             </div>

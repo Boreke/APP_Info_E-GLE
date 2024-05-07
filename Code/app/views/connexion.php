@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="center">
         <img src="<?=ASSETS?>img/imagedelogin.svg" alt="image de fond" class="imagelogin">
         <div class="left">
-            <img src="<?=ASSETS?>img/Falcon (1).png" alt="logo events-IT">
+            <a href="<?=ROOT?>home"><img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo" ></a>
             </div>
     </div>
 <section class="connexion">

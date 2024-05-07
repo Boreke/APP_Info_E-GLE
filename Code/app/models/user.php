@@ -72,19 +72,18 @@ Class User
 	{
 
 		$DB = new Database();
+		show($_SESSION);
 		if(isset($_SESSION['user_id']))
 		{
-
+			
 			$arr['user_id'] = $_SESSION['user_id'];
-
 			$query = "select * from user where user_id = :user_id limit 1";
 			$data = $DB->read($query,$arr);
 			if(is_array($data))
 			{
 				//logged in
- 				$_SESSION['user_name'] = $data[0]->username;
-				$_SESSION['user_id'] = $data[0]->url_address;
-
+ 				$_SESSION['username'] = $data[0]->username;
+				$_SESSION['user_id'] = $data[0]->user_id;
 				return true;
 			}
 		}

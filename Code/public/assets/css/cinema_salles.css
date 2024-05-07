@@ -142,33 +142,29 @@ h1 {
 .numero_salle{
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    border-radius: 20px;
-    border: 2px solid;
-    border-width: 20px;
-    color:black;
-    
-}
-.numero_salle::placeholder{
-    color:black;
-
+    border-radius: 10px;
+    padding: 20px;
+    color:white;
+    width: 10vw;
+    height: 1vh;
+    border: none;
 }
 
 
 .button-creer{
-    width: 190px;
-    height: 49px;
+    width: 10vw;
+    height: 5vh;
     flex-shrink: 0;
     color: black;
     background: #888;
     font-family: Roboto;
-    font-size: 24px;
+    font-size:x-large;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    border-radius: 10px;
+    border-radius: 1vw;
     margin-top: 1%;
-    
+    border: none;
     
 }
 .button-creer:hover{
