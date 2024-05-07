@@ -17,7 +17,7 @@
    <img src="img/imagedelogin.svg" alt="" class="imagelogin">
    
    
-    <form class="inputs" id="signup" action="php/nouveaucompte.php" method="post" novalidate>
+    <form class="inputs" id="signup" method="post" novalidate>
       <h2>Nouveau compte</h2>
 
       <div><input type="Nom" placeholder="Nom" class="id" id="nom" name="nom"></div>
