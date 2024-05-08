@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
     echo "<p class='movie-title'><strong></strong> " . htmlspecialchars($movie['titre']) . "</p>";
     echo "<div class='movie-genre-duration'>";
     echo "<p><span class='movie-detail-label'><strong>Genre:</strong></span> " . htmlspecialchars($movie['genre']) . "</p>";
-    echo "<p><span class='movie-detail-label'><strong>Duration:</strong></span> " . htmlspecialchars($movie['duree']) . "</p>";
+    echo "<p><span class='movie-detail-label'><strong>Durée:</strong></span> " . htmlspecialchars($movie['duree']) . "</p>";
     echo "</div>";
     echo "<p><span class='movie-detail-label'><strong>Synopsis:</strong></span><br><br> " . htmlspecialchars($movie['synopsis']) . "</p>";
     echo "</div>";

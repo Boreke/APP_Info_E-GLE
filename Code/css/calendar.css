@@ -231,7 +231,7 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 300px; 
-  transform: scale(0.8); /* Adjust the scale value to decrease or increase size */
+  transform: scale(0.8); 
   transform-origin: top center;
 }
 .rectangle {
@@ -245,7 +245,7 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 300px; 
-  transform: scale(0.8); /* Adjust the scale value to decrease or increase size */
+  transform: scale(0.8); 
   transform-origin: top center;
 }
 .container {
@@ -412,10 +412,10 @@ footer {
     flex-direction: column;
   }
   .movie-image, .movie-info {
-    width: 100%; /* Full width on smaller screens */
+    width: 100%;
   }
   .movie-info {
-    font-size: 2.5vw; /* Increase font size slightly for better readability on smaller screens */
+    font-size: 2.5vw; 
   }
 }
 @media (max-width: 768px) {
@@ -435,22 +435,23 @@ footer {
 .movie-layout {
   display: flex;
   justify-content: center;
-  align-items: stretch; /* Adjust alignment */
+  align-items: stretch; 
   margin-top: 80px;
 }
 
 .movie-image, .movie-info {
-  flex: 1; /* Each takes equal width */
-  max-width: 50%; /* Ensures that neither the image nor the text takes more than half the container */
+  flex: 1; 
+  max-width: 50%; 
 }
 
 
 
 .movie-info {
-  padding: 20px; /* Adjust padding for readability */
+  padding: 20px; 
   color: #ffffff;
   font-size: 1.25vw;
-  margin-right : 80px; /* Adjusts font size based on the width of the viewport */
+  margin-right : 80px; 
+  margin-bottom: 50px;
 }
 .movie-details {
   display: flex; 
@@ -483,7 +484,7 @@ footer {
 }
 
 .cinema-image {
-  height: 500px;
+  height: 400px;
   width: auto;
   object-fit: contain; 
   margin: auto; 
