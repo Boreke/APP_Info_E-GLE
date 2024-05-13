@@ -66,9 +66,9 @@ if ($cinemaResult) {
                 </div>
             </a>
             <nav class="topnav">
-                <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
+                <li><a href="index.php"  class="nav_elmt">Accueil</a></li>
                 <li><a href="seancesgerant.php"  class="nav_elmt">Séances</a></li>
-                <li><a href="Cinema_Salles.php"  class="nav_elmt">Salles</a></li>
+                <li><a href="Cinema_Salles.php"  class="nav_elmt1">Salles</a></li>
             </nav>
             <div class="topright">
                 <div class="lg">

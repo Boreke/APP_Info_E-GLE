@@ -150,8 +150,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         </a>
         <?php if (isset($user) && htmlspecialchars($user['type'])=='gerant'):?>
         <nav id="nav" >
-            <li><a href="index.php"  class="nav_elmt1">Accueil</a></li>
-            <li><a href="seancesgerant.php"  class="nav_elmt">Séances</a></li>
+            <li><a href="index.php"  class="nav_elmt">Accueil</a></li>
+            <li><a href="seancesgerant.php"  class="nav_elmt1">Séances</a></li>
             <li><a href="Cinema_Salles.php"  class="nav_elmt">Salles</a></li>
         </nav>
         <?php elseif (isset($user) && htmlspecialchars($user['type'])=='admin'):?>
