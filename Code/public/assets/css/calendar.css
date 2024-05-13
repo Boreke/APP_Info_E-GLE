@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-* {
-    
-  color: #FFF;
-}
+
 
 html {
   scroll-behavior: smooth;
@@ -30,7 +27,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px 20px 10px; /* Adds padding for spacing */
+  padding: 0 10px 20px 10px; 
   font-size: 2rem;
 }
 .calendar nav {
@@ -176,21 +173,21 @@ button:hover {
 }
 
 .calendar .days li {
-  font-size: 1.5rem; /* Larger text for days of the week */
-  padding: 15px 10px; /* More padding for a bigger clickable area */
+  font-size: 1.5rem; 
+  padding: 15px 10px; 
 }
 
 .dates li {
-  color: rgb(89, 89, 89);
+  color: rgb(41, 41, 41);
   transition: background-color 0.3s ease;
   text-decoration: none;  
   display: block;
 }
 
 .calendar .dates li {
-  font-size: 2.5rem; /* Larger text for dates */
-  padding: 10px 0; /* Padding for better spacing */
-  flex-grow: 1; /* Allows items to take available space */
+  font-size: 2.5rem; 
+  padding: 10px 0; 
+  flex-grow: 1; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -199,7 +196,7 @@ button:hover {
 }
 
 .calendar ul li {
-  color: rgb(92, 92, 92);
+  color: rgb(54, 52, 52);
 }
 
 .dates li a {
@@ -212,41 +209,53 @@ button:hover {
 }
 .calendar ul.days, .calendar ul.dates {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 columns for each day of the week */
-  gap: 4px; /* Gap between grid items */
+  grid-template-columns: repeat(7, 1fr); 
+  gap: 4px; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .calendar ul.days li, .calendar ul.dates li {
   text-align: center;
-  font-size: 1em; /* Responsive font size */
-  padding: 10px 5px;
+  font-size: 1em; 
+  
 }
 .calendar {
-  width: 100%; /* Full width to adjust within the container */
-  max-width: 500px; /* Maximum width of the calendar */
-  height: auto; /* Height to auto for flexibility */
+  width: 100%; 
+  max-width: 500px; 
+  height: auto; 
   background: #fff;
   border-radius: 10px;
-  padding: 20px; /* Padding to ensure contents do not touch the edges */
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 300px; 
+  transform: scale(0.8); 
+  transform-origin: top center;
 }
 .rectangle {
-  width: 20%; /* Adjusted width */
-  height: 50vh; /* Height relative to viewport */
-  background-color: #f0f0f0;
+  width: 100%; 
+  max-width: 500px; 
+  height: 590px; 
+  background-color: #fff;
   border-radius: 10px;
-  padding: 1rem;
-  align-items: center ; /* Added padding */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 300px; 
+  transform: scale(0.8); 
+  transform-origin: top center;
 }
 .container {
   display: flex;
   align-items: center;
-  width: 80vw; /* Uses 80% of the viewport width */
-  max-width: 1200px; /* Maximum width to ensure it doesn't get too large */
-  height: 80vh; /* Uses 80% of the viewport height */
+  width: 70vw; 
+  max-width: 1200px; 
+  height: 80vh; 
   margin: auto;
-  gap : 50px; /* Centers the container */
+  gap : 50px;
 }
 
 .selected {
@@ -300,25 +309,25 @@ footer {
 
 
   .movie-details {
-    color: white;  /* Ensures all text inside is white */
-    padding: 50px; /* Adds some spacing inside the container */
-    background-color: #000000; /* Optional: Dark background for contrast */
-    border-radius: 8px; /* Optional: Rounded corners */
+    color: white; 
+    padding: 50px; 
+    background-color: #000000; 
+    border-radius: 8px; 
     margin: 20px;
     margin-top : 50px;
     font-size: 50px;
-    font-family: Roboto; /* Optional: Adds some margin around the container */
 }
 
 .movie-details h1,
 .movie-details p {
-    margin-bottom: 10px; /* Adds spacing between paragraphs and heading */
+    margin-bottom: 10px;
+   
 }
 
-/* Ensure links within movie details are also white */
+
 .movie-details a {
     color: white;
-    text-decoration: none; /* Removes underline from links */
+    text-decoration: none; 
 }
 
 
@@ -334,6 +343,11 @@ footer {
   align-items: center;
   justify-content: space-between;
   width: 80vw;
+}
+
+.center-top h2 {
+  font-size: 5em;
+  margin-left: 20px;
 }
 
 .barre-recherche {
@@ -360,56 +374,125 @@ footer {
   outline: none;
 }
 
-* {
-    
-  color: #FFF;
-}
 
-body {
-  font-family: 'Roboto';
-  background-color: rgb(0, 0, 0);
-}
+
 
 .calendar header h3 {
-  font-size: 3.5rem; /* Adjusted for better visibility */
-  color: black; /* Ensure contrast for readability */
+  font-size: 2rem; 
+  color: black; 
   font-weight: bold;
 }
 
-/* Ensures the nav buttons are appropriately spaced */
+
 .calendar nav {
-  margin: 0 10px; /* added margin for spacing */
+  margin: 0 10px; 
 }
 
-/* More distinctive button styling */
+
 #prev, #next {
   color: black;
-  background-color: #e0e0e0; /* Light grey for visibility */
-  padding: 15px 20px; /* Larger clickable area */
-  margin: 0 10px; /* Space between buttons */
+  background-color: #e0e0e0; 
+  padding: 15px 20px; 
+  margin: 0 10px; 
   border-radius: 5px; 
-  font-size: 1.5rem;/* Rounded corners for aesthetics */
+  font-size: 1.5rem;
 }
 
 @media (max-width: 1024px) {
   .container {
-    flex-direction: column; /* Stack vertically on smaller screens */
+    flex-direction: column; 
   }
 
   .calendar, .rectangle {
-    width: 50%; /* Full width for smaller screens */
+    width: 50%; 
     margin-top: 20px;
-     /* Space between elements when stacked */
+     
+  }
+  .movie-layout {
+    flex-direction: column;
+  }
+  .movie-image, .movie-info {
+    width: 100%;
+  }
+  .movie-info {
+    font-size: 2.5vw; 
   }
 }
 @media (max-width: 768px) {
   .calendar {
     padding: 10px;
     max-width: none;
-    width: 90%; /* Takes more width on smaller screens */
+    width: 90%; 
   }
 
   .calendar ul.days li, .calendar ul.dates li {
-    font-size: 0.8em; /* Smaller font size on smaller screens */
+    font-size: 0.8em; 
   }
 }
+
+
+
+.movie-layout {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; 
+  margin-top: 80px;
+}
+
+.movie-image, .movie-info {
+  flex: 1; 
+  max-width: 50%; 
+}
+
+
+
+.movie-info {
+  padding: 20px; 
+  color: #ffffff;
+  font-size: 1.25vw;
+  margin-right : 80px; 
+  margin-bottom: 50px;
+}
+.movie-details {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  font-family: Roboto;
+}
+.movie-detail-label {
+  color: rgb(81, 81, 81);
+  font-size: 40px;
+}
+
+.movie-title {
+  font-size: 50px; 
+  font-weight: bold;
+}
+.movie-genre-duration {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.movie-image {
+  flex: 1; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  max-width: 70%; 
+  overflow: hidden;
+  
+}
+
+.cinema-image {
+  height: 400px;
+  width: auto;
+  object-fit: contain; 
+  margin: auto; 
+  border-radius: 40px;
+  border: 5px solid #5b5b5b;
+}
+
+.date-link {
+  cursor: pointer;
+}
+
