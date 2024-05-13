@@ -127,12 +127,12 @@ main {
     color: white;
     height: auto;
     padding: 0 7vw 0 7vw;
-    gap: 6vw;
+    gap: 10vw;
     
 }
 
 #film1{
-    height: 65vh;
+    height: 30vw;
     width: auto;
     margin-left: 7vw;
     margin-right: 8vw;
