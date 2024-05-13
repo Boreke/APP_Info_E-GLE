@@ -128,7 +128,7 @@ Class User
 	{
 
 		$DB = new Database();
-		
+
 		if(isset($_SESSION['user_id']))
 		{
 			
@@ -137,9 +137,10 @@ Class User
 			$data = $DB->read($query,$arr);
 			if(is_array($data))
 			{
+				
 				//logged in
  				$_SESSION['username'] = $data[0]->username;
-				$_SESSION['user_id'] = $data[0]->id_user;
+				$_SESSION['user_id'] = $data[0]->user_id;
 				$_SESSION['type'] = $data[0]->type;
 				return true;
 			}
