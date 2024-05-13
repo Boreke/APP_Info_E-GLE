@@ -492,3 +492,7 @@ footer {
   border: 5px solid #5b5b5b;
 }
 
+.date-link {
+  cursor: pointer;
+}
+
