@@ -132,9 +132,9 @@ main {
 }
 
 #film1{
-    height: 40vw;
+    height: 65vh;
     width: auto;
-    margin-left: 4vw;
+    margin-left: 7vw;
     margin-right: 8vw;
     margin-top: 6vh;
     border: 1px solid rgb(136, 133, 133);
@@ -144,7 +144,7 @@ main {
 
 #resum{
     width: 40vw;
-    font-size: 2vw;
+    font-size: 1.4vw;
 
 }
 
@@ -154,6 +154,13 @@ main {
 }
 #A{
     color: grey;
+    font-size: 1.5vw;
+
+}
+
+#AB{
+    font-size: 1.5vw;
+    color: white;
 }
 
 #B{
@@ -170,15 +177,23 @@ main {
 
 #S1, #S2{
     color: grey;
+    font-size: 1.3vw;
+}
+#S12{
+    font-size: 1.3vw;
 }
 
 #titreF{
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 #place{
-    font-size: 2vw;
+    font-size: 1.3vw;
     color: grey;
+}
+#place1{
+    font-size: 1.3vw;
+    color: white;
 }
 #plaace{
     display: flex;
@@ -206,12 +221,14 @@ main {
 
 
 #M1{
-    font-size: 3vw;
+    font-size: 2vw;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 35% 65%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-left: 2vw;
+    
 }
 
 
@@ -230,6 +247,7 @@ main {
     text-align: center;
     padding-left: 3vw;
     padding-right: 3vw;
+    font-size: vw;
 
 }
 
@@ -249,13 +267,18 @@ main {
     color: grey;
     background-color: #141414;
     text-decoration: overline;
+    font-size: 1.5vw;
     
 }
 
-#resa{
-    margin-left: 10vw;
+#resav{
+    margin-left: 15vw;
     color: white;
-    font-size: 3vw;
+    font-size: 2vw;
+}
+
+#resa{
+    font-size: 4vw;
 }
 
 .but{
@@ -353,3 +376,19 @@ footer {
     height: 28px;
     flex-shrink: 0;
 }
+
+.totalpp{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#img1pp{
+    height: 2vh;
+    width: 2vw;
+}
+
+.imgpopup, .interieur{
+    display: grid;
+    
+}
+

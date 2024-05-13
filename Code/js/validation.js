@@ -30,6 +30,18 @@ validation
             errorMessage: "Passwords should match"
         }
     ])
+
+    .addField('#acceptcheckbox',
+        [
+          {
+            rule: 'required',
+          },
+        ],
+        {
+          errorMessage: "Vous devez accepter les CGU",
+        }
+      )
+
     .onSuccess((event) => {
         document.getElementById("signup").submit();
     });
