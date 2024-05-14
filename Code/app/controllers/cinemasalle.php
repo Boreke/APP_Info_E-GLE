@@ -11,11 +11,11 @@ Class cinemasalle extends Controller
 		}
 		$this->view("cinemasalle",$data);
 	}
+
 	function add_salle($POST){
 		$DB = new Database();
 		$user=$this->loadModel("user");
 		if ($user->check_logged_in()) {
-			
 			$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
 			$arr["user_id"]=$_SESSION["user_id"];
 			$cinemaResult =$DB->read($sqlRequest,$arr);
@@ -32,6 +32,7 @@ Class cinemasalle extends Controller
 				$arr["cinema_idcinema"]=$cinema_id;
 				try {
 					$DB->write($sql,$arr);
+					echo "La salle a été créer.";
 				} catch (mysqli_sql_exception $e) {
 					if ($e->getCode() == 1062) {
 						$_SESSION["error_message"]="une salle de ce numero existe deja pour ce cinéma";
