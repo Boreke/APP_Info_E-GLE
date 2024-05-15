@@ -83,9 +83,13 @@ h1 {
     box-shadow: 0 3px 10px rgba(255,255,255,0.7);
     
 }
-.salle {
+.salle-top {
     display: flex;
     align-items: center;
+}
+.salle-bot{
+    color: red;
+    display: none;
 }
 .dropdown{
     width: 40px;

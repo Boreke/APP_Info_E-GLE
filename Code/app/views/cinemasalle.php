@@ -19,9 +19,11 @@
             <div class="salles_existantes">
                 <?php foreach ($data["existingRooms"] as $room) : ?>
                     <div class="salle">
-                        <h1>Salle <?php echo $room->numero; ?></h1>
-                        <a><img class="dropdown" src="<?=ASSETS?>img/Drop Down.png" alt=""></a>
-                        
+                        <div class="salle-top">
+                            <h1>Salle <?php echo $room->numero; ?></h1>
+                            <a><img class="dropdown" src="<?=ASSETS?>img/Drop Down.png" alt=""></a>
+                        </div>
+                        <div class="salle-bot">red</div>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -70,4 +72,37 @@
             <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        // Select all cinema elements
+        const salleElements = document.querySelectorAll('.salle');
+
+        // Loop through each cinema element
+        salleElements.forEach(function(salleElement) {
+            // Find elements within the current cinema element
+            const dropdownImage = salleElement.querySelector('.dropdown');
+            const salleBotElement = salleElement.querySelector('.salle-bot');
+
+            let isSalleBotVisible = false; // Track initial state
+            salleBotElement.style.display = 'none';
+            // Add click event listener to dropdown image
+            dropdownImage.addEventListener('click', function() {
+                // Toggle visibility of cinema-elmt-bot for the current cinema element
+                if (isSalleBotVisible) {
+                    salleBotElement.style.display = 'none';
+                    
+                } else {
+                    salleBotElement.style.display = 'flex';
+                    
+                }
+
+                // Toggle state for the current cinema element
+                isSalleBotVisible = !isSalleBotVisible;
+
+                // Rotate the dropdown image by 90 degrees
+                dropdownImage.style.transform = isSalleBotVisible ? 'rotate(-90deg)' : 'rotate(0deg)';
+            });
+        });
+        });
+    </script>
 </html>
