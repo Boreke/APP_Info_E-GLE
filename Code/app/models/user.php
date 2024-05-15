@@ -160,7 +160,6 @@ Class User
 	}
 
 	function getCinemaId(){
-		show($_SESSION);
 		$DB = new Database();
 		$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
 		$arr["user_id"]=$_SESSION["user_id"];

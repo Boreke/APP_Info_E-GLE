@@ -7,9 +7,9 @@
 </div>
 
 <header>
-    <a href="<?=ROOT?> home" class="topleft">
+    <a class="topleft" href="<?=ROOT?>home">
         <div class="Logo_Nom">
-            <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo" href="<?=ROOT?>home">
+            <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo" >
             <p class="Nom">E-GLE</p>
         </div>
     </a>

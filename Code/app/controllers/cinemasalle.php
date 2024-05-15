@@ -29,7 +29,8 @@ Class cinemasalle extends Controller
 
 	function add_salle($POST){
 		$DB = new Database();
-		$user=$this->loadModel("user");
+		$user=new User();
+		
 		if ($user->check_logged_in()) {
 			
 			$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
