@@ -87,9 +87,9 @@ Class Gerant{
         
     }
 
-    function create_sceance(){
+    function create_sceance($POST){
         $DB = new Database();
-        if ($_POST['form_type'] === 'create_screening') {
+        if (isset($_POST['form_type']) && $_POST['form_type'] ===  'create_screening') {
 
             $film_date = strtotime($_POST['film_date']);
             $time = $_POST['time'];
@@ -101,8 +101,8 @@ Class Gerant{
                 'salle_id' => $_POST['salle'], 
                 'date' => $datetime
             ];
-
-            $query = "insert into diffuser (Film_id_film, salle_idsalle, film_date) values (:film_id,salle_id,:date)";
+        
+            $query = "insert into diffuser (Film_id_film, salle_idsalle, film_date) values (:film_id,:salle_id,:date)";
             $result = $DB->write($query,$arr3,false);
 
         }
