@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +9,6 @@
         <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
-
     </head>
     <body>
     <?php $this->view("header")?>

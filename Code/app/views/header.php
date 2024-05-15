@@ -7,31 +7,62 @@
 </div>
 
 <header>
+    
     <a class="topleft" href="<?=ROOT?>home">
         <div class="Logo_Nom">
             <img src="<?=ASSETS?>img/Falcon (1).png" alt="Logo" class="logo" >
             <p class="Nom">E-GLE</p>
         </div>
     </a>
-    <?php if (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='gerant'):?>
     <nav id="nav" >
-        <li><a href="<?=ROOT?>home"  class="nav_elmt1">Accueil</a></li>
-        <li><a href="<?=ROOT?>seancesgerant"  class="nav_elmt">Séances</a></li>
-        <li><a href="<?=ROOT?>cinemasalle"  class="nav_elmt">Salles</a></li>
+    <?php 
+        $currentURL = strtok($_SERVER['REQUEST_URI'], '?');
+
+        $currentPage = basename($currentURL); 
+        if (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='gerant'){
+
+        $pageClassMap = [
+            'home' => 'nav_elmt',
+            'seancesgerant' => 'nav_elmt',
+            'cinemasalle' => 'nav_elmt'
+        ];
+        $pageName=[
+            'home' => 'Acceuil',
+            'seancesgerant' => 'Sceances',
+            'cinemasalle' => 'Salles'
+        ];
+        }elseif (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='admin'){
+            $pageClassMap = [
+                'home' => 'nav_elmt',
+                'adminusers' => 'nav_elmt',
+                'faq' => 'nav_elmt'
+            ];
+            $pageName=[
+                'home' => 'Acceuil',
+                'adminusers' => 'utilisateurs',
+                'faq' => 'FAQ'
+            ];
+        }else{
+
+            $pageClassMap = [
+                'home' => 'nav_elmt',
+                'seancesflorent' => 'nav_elmt',
+                'salles' => 'nav_elmt'
+            ];
+            $pageName=[
+                'home' => 'Acceuil',
+                'seancesflorent' => 'Sceances',
+                'salles' => 'Salles'
+            ];
+        }
+        foreach ($pageClassMap as $filename => $class) {
+            if ($currentPage == $filename) {
+                $class .= ' active';
+            }
+            echo '<li><a href="' . ROOT . $filename . '" class="' . $class . '">' . $pageName[$filename] . '</a></li>';
+        }
+        ?>
     </nav>
-    <?php elseif (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='admin'):?>
-        <nav id="nav" >
-        <li><a href="<?=ROOT?>index"  class="nav_elmt1">Accueil</a></li>
-        <li><a href="<?=ROOT?>adminusers"  class="nav_elmt">Séances</a></li>
-        <li><a href="<?=ROOT?>faq"  class="nav_elmt">Salles</a></li>
-    </nav>
-    <?php else: ?>
-        <nav id="nav" >
-        <li><a href="<?=ROOT?>index"  class="nav_elmt1">Accueil</a></li>
-        <li><a href="<?=ROOT?>seancesflorent"  class="nav_elmt">Séances</a></li>
-        <li><a href="<?=ROOT?>salles"  class="nav_elmt">Salles</a></li>
-    </nav>
-    <?php endif; ?>
     <img src="<?=ASSETS?>img/Menu.png" alt="Menu" class="menu" id="menuburger">
     <div class="topright">
         <div class="lg">

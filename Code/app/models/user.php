@@ -155,6 +155,7 @@ Class User
 		//logged in
 		unset($_SESSION['username']);
 		unset($_SESSION['user_id']);
+		unset($_SESSION['type']);
 		header("Location:". ROOT . "login");
 		die;
 	}
