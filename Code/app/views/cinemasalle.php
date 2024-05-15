@@ -16,6 +16,15 @@
     <body>
     <?php $this->view("header")?>
         <section class="center">
+            <div class="salles_existantes">
+                <?php foreach ($data["existingRooms"] as $room) : ?>
+                    <div class="salle">
+                        <h1>Salle <?php echo $room->numero; ?></h1>
+                        <a><img class="dropdown" src="<?=ASSETS?>img/Drop Down.png" alt=""></a>
+                        
+                    </div>
+                <?php endforeach; ?>
+            </div>
             <div class="ajouter_salle">
                 <h1>Ajouter une salle</h1>
                 <a onclick="openPopup()" id="popup11" > <img src="<?=ASSETS?>img/Addplus.png" alt="Bouton Add" class="add_btn"></a>

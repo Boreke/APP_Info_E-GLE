@@ -1,16 +1,32 @@
 <?php
 
 Class cinemasalle extends Controller 
+
 {
+	
 	function index()
 	{
  	 	unset($_SESSION['error_message']);
+		$existingRooms=$this->getExistingRooms();
  	 	$data['page_title'] = "salle";
+		$data['existingRooms']=$existingRooms;
 		if(isset($_POST['numero_salle'])){
 			$this->add_salle($_POST);
 		}
 		$this->view("cinemasalle",$data);
 	}
+
+	function getExistingRooms(){
+		$user=$this->loadModel("user");
+		$DB = new Database();
+		$cinemaId=$user->getCinemaID();
+		$sqlRequest="SELECT * FROM salle WHERE cinema_idcinema = :idCinema";
+		$arr["idCinema"]=$cinemaId;
+		$existingRooms=$DB->read($sqlRequest,$arr);
+		unset($sqlRequest);
+		return $existingRooms;
+	}
+
 	function add_salle($POST){
 		$DB = new Database();
 		$user=$this->loadModel("user");
@@ -42,6 +58,6 @@ Class cinemasalle extends Controller
 				
 			}
 		}
-
+		unset($sqlRequest);
 	}
 }

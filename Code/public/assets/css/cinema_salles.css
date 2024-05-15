@@ -10,7 +10,6 @@ body {
 }
 
 
-
 /* fin header, debut body */
 
 h1 {
@@ -27,11 +26,6 @@ h1 {
     height: auto;
 }
 
-.salle1 {
-    display: flex;
-    align-items: center;
-    margin-left: 50px;
-}
 
 .layout {
     display: flex;
@@ -88,6 +82,14 @@ h1 {
     transform: rotateX(-45deg);
     box-shadow: 0 3px 10px rgba(255,255,255,0.7);
     
+}
+.salle {
+    display: flex;
+    align-items: center;
+}
+.dropdown{
+    width: 40px;
+    height: auto;
 }
 
 .row {
