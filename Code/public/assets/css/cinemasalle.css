@@ -107,20 +107,22 @@ h1 {
 
 .ajouter_salle {
     display: flex;
-    align-items: center;
+    align-items:center;
     margin-left: 50px;
+    justify-content:flex-start;
 }
 
-.add_btn{
+.add_btn,.del_btn{
     width: 40px;
     height: auto;
+    margin-right: 1vh;
 }
-
 
 #popup11:hover{
     background-color: black;
 }
-.popup {
+
+.addPopup,.delPopup {
     display: none;
     position: fixed;
     z-index: 1;
@@ -131,12 +133,14 @@ h1 {
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
 }
+
 .form_salle{
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .popup-content {
     background-color: black;
     margin: 15% auto;
@@ -148,6 +152,7 @@ h1 {
     flex-direction: column;
     justify-content: space-evenly;
 }
+
 .numero_salle{
     display: flex;
     flex-direction: column;
@@ -158,7 +163,6 @@ h1 {
     height: 1vh;
     border: none;
 }
-
 
 .button-creer{
     width: 10vw;

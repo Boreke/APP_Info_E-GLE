@@ -41,3 +41,17 @@ $(document).ready(function() {
         });
     });
 });
+function openAddPopup() {
+    document.getElementById("addPopup").style.display = "block";
+}
+  
+function closeAddPopup() {
+    document.getElementById("addPopup").style.display = "none";
+}
+function openDelPopup() {
+    document.getElementById("delPopup").style.display = "block";
+}
+  
+function closeDelPopup() {
+    document.getElementById("delPopup").style.display = "none";
+}
