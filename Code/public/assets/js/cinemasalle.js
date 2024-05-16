@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const salleElements = document.querySelectorAll('.salle');
+    const salleElement = document.querySelectorAll('.salle');
 
-    salleElements.forEach(function(salleElement) {
+    salleElement.forEach(function(salleElement) {
         const dropdownImage = salleElement.querySelector('.dropdown');
         const salleBotElement = salleElement.querySelector('.salle-bot');
 
@@ -21,24 +21,23 @@ document.addEventListener("DOMContentLoaded", function() {
             dropdownImage.style.transform = isSalleBotVisible ? 'rotate(-90deg)' : 'rotate(0deg)';
         });
     });
-    });
-    $(document).ready(function() {
-        const formElement = document.querySelectorAll('.form_salle')
-        const addButton = salleElement.querySelector('.button-creer');
-        addButton.addEventListener('click', function() {
-            event.preventDefault(); 
+});
+$(document).ready(function() {
+    const formElement = document.querySelectorAll('.form_salle')
+    const addButton = formElement.querySelectorAll('.button-creer');
+    addButton.addEventListener('click', function() {
 
-            $.ajax({
-                url: '../app/AJAX/addSalle.php', 
-                type: 'POST',
-                data: $(this).serialize(), 
-                success: function(response) {
-                    
-                    $('#salles_existantes').load('../app/AJAX/getSalle.php');
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
+        $.ajax({
+            url: '../app/AJAX/addSalle.php', 
+            type: 'POST',
+            data: $(this).serialize(), 
+            success: function(response) {
+                
+                $('#salles_existantes').load('../app/AJAX/getSalle.php');
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
         });
     });
+});

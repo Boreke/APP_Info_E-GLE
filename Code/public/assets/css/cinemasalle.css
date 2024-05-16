@@ -91,6 +91,9 @@ h1 {
     color: red;
     display: none;
 }
+.salles_existentes{
+    margin-left: 50px;
+}
 .dropdown{
     width: 40px;
     height: auto;

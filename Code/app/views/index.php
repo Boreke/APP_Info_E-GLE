@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<head><link rel="stylesheet" href="<?=ASSETS?>css/index.css"></head>
 <body>
     <?php 
         require "../app/controllers/header.php";

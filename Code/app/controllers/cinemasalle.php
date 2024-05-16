@@ -1,8 +1,6 @@
 <?php
 
-Class cinemasalle extends Controller 
-
-{
+Class cinemasalle extends Controller {
 	
 	function index()
 	{
@@ -50,8 +48,8 @@ Class cinemasalle extends Controller
 				$arr["cinema_idcinema"]=$cinema_id;
 				try {
 					$DB->write($sql,$arr);
-				} catch (mysqli_sql_exception $e) {
-					if ($e->getCode() == 1062) {
+				} catch (PDOexception $e) {
+					if ($e->getCode() == 23000) {
 						$_SESSION["error_message"]="une salle de ce numero existe deja pour ce cinéma";
 					} else {
 						$_SESSION["error_message"]="Erreur lors de l'ajout de la salle: " . $e->getMessage();
@@ -61,5 +59,9 @@ Class cinemasalle extends Controller
 			}
 		}
 		unset($sqlRequest);
+	}
+
+	function delete_salle($roomId){
+		show($_SESSION);
 	}
 }
