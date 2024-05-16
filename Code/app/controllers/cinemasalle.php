@@ -6,6 +6,7 @@ Class cinemasalle extends Controller
 	
 	function index()
 	{
+		$user=$this->loadModel("user");
  	 	unset($_SESSION['error_message']);
 		$existingRooms=$this->getExistingRooms();
  	 	$data['page_title'] = "salle";
@@ -17,7 +18,7 @@ Class cinemasalle extends Controller
 	}
 
 	function getExistingRooms(){
-		$user=$this->loadModel("user");
+		$user=new User();
 		$DB = new Database();
 		$cinemaId=$user->getCinemaID();
 		$sqlRequest="SELECT * FROM salle WHERE cinema_idcinema = :idCinema";

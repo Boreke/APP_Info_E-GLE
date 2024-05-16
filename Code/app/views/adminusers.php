@@ -60,4 +60,5 @@
         </div>
     </section>
 </body>
+<?= $this->view("footer")?>
 </html>
