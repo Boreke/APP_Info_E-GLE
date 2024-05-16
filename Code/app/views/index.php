@@ -2,18 +2,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - Events-IT</title>
-    <link rel="stylesheet" href= "<?=ASSETS?>css/index.css">
-    <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
-    <link rel="stylesheet" href="<?=ASSETS?>css/footer.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
-</head>
+
 <body>
-    <?php $this->view("header")?>
+    <?php 
+        require "../app/controllers/header.php";
+        $header= new Header();
+        $header->displayHeader();
+    ?>
     <section class="center">
         <div class="center1">
             <div class="left1">

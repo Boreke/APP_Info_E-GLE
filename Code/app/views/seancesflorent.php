@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Séances</title>
-    <link rel="stylesheet" href="<?=ASSETS?>css/seancesflorent.css">
-    <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
-    <link rel="stylesheet" href="<?=ASSETS?>css/footer.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
-</head>
+
 <body>
-<?php $this->view("header")?>
+<?php 
+        require "../app/controllers/header.php";
+        $header= new Header();
+        $header->displayHeader();
+    ?>
 
 
     
@@ -34,7 +28,7 @@
         <div class="movie-container">
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="planningSeanceGas.html"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                     </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Shutter Island</h2>
@@ -42,7 +36,7 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Avatar</h2>
@@ -50,7 +44,7 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Inception</h2>
@@ -58,7 +52,7 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Le Parrain</h2>
@@ -66,7 +60,7 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-name">Shutter Island</h2>
@@ -74,7 +68,7 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/shutterièsland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/shutterièsland.jpg" class="movie-cover" alt=""></a>
                     <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt="">
                 </div>
                 <div class="movie-info">
@@ -96,7 +90,7 @@
         <div class="movie-contenu">
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="<?=ROOT?>planningSeanceGas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Shutter Island</h2>
@@ -104,7 +98,7 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Avatar</h2>
@@ -112,7 +106,7 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Inception</h2>
@@ -120,7 +114,7 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Le Parrain</h2>
@@ -128,7 +122,7 @@
             </div>
             <div class="movie-affiche">
                 <div class="movie-img">
-                    <a href="<?=ROOT?>planningSeanceGas"></a><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"></a><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-nom">Shutter Island</h2>
@@ -159,7 +153,7 @@
         <div class="movie-venir-contenu">
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="<?=ROOT?>planningSeanceGas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Shutter Island</h2>
@@ -167,7 +161,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-img">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
                     <h2 class="movie-venir-nom">Avatar</h2>
@@ -175,7 +169,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/inception.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Inception</h2>
@@ -183,7 +177,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/leparrain.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Le Parrain</h2>
@@ -191,7 +185,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Shutter Island</h2>
@@ -199,7 +193,7 @@
             </div>
             <div class="movie-venir">
                 <div class="movie-venir-img">
-                    <a href="<?=ROOT?>planningSeanceGas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-venir-info">
                     <h2 class="movie-venir-nom">Shutter Island</h2>

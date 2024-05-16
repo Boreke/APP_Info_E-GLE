@@ -1,3 +1,13 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Scéance</title>
+    <link rel="stylesheet" href="<?=$data['CSS']?>">
+    <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
+    <link rel="stylesheet" href="<?=ASSETS?>css/footer.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
+</head>
 
 <div class="loader">
     <span class="lettre">L</span>
@@ -16,50 +26,12 @@
     </a>
     <nav id="nav" >
     <?php 
-        $currentURL = strtok($_SERVER['REQUEST_URI'], '?');
 
-        $currentPage = basename($currentURL); 
-        if (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='gerant'){
-
-        $pageClassMap = [
-            'home' => 'nav_elmt',
-            'seancesgerant' => 'nav_elmt',
-            'cinemasalle' => 'nav_elmt'
-        ];
-        $pageName=[
-            'home' => 'Acceuil',
-            'seancesgerant' => 'Sceances',
-            'cinemasalle' => 'Salles'
-        ];
-        }elseif (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='admin'){
-            $pageClassMap = [
-                'home' => 'nav_elmt',
-                'adminusers' => 'nav_elmt',
-                'faq' => 'nav_elmt'
-            ];
-            $pageName=[
-                'home' => 'Acceuil',
-                'adminusers' => 'utilisateurs',
-                'faq' => 'FAQ'
-            ];
-        }else{
-
-            $pageClassMap = [
-                'home' => 'nav_elmt',
-                'seancesflorent' => 'nav_elmt',
-                'salles' => 'nav_elmt'
-            ];
-            $pageName=[
-                'home' => 'Acceuil',
-                'seancesflorent' => 'Sceances',
-                'salles' => 'Salles'
-            ];
-        }
-        foreach ($pageClassMap as $filename => $class) {
-            if ($currentPage == $filename) {
+        foreach ($data['pageClassMap'] as $filename => $class) {
+            if ($data['currentPage'] == $filename) {
                 $class .= ' active';
             }
-            echo '<li><a href="' . ROOT . $filename . '" class="' . $class . '">' . $pageName[$filename] . '</a></li>';
+            echo '<li><a href="' . ROOT . $filename . '" class="' . $class . '">' . $data['pageName'][$filename] . '</a></li>';
         }
         ?>
     </nav>

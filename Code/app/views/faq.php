@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
-    <link rel="stylesheet" href="<?=ASSETS?>css/footer.css">
-    <link rel="stylesheet" href="<?=ASSETS?>css/faq.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
 
-
-    <title>FAQ</title>
-</head>
 <body>
     
-<?php $this->view("header")?>
+<?php 
+        require "../app/controllers/header.php";
+        $header= new Header();
+        $header->displayHeader();
+    ?>
     <section>
         <div>
             <!DOCTYPE html>
