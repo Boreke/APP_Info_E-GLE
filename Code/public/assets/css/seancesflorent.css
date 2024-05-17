@@ -1,0 +1,328 @@
+body{
+  background: black;
+  font-family: 'Roboto';
+  margin: 0;
+}
+
+/*BARRE DE RECHERCHE*/
+
+.search-container{
+ display: flex;
+ position: left; 
+ margin-left: 4%;
+ margin-top: 2%;
+ margin-bottom: 2%;
+ align-items: center;
+ z-index: index 8;;
+}
+
+.search-icon{
+ margin-right: -40px;
+  z-index:2;
+  height:20px;
+  width:20px;
+  padding-right: 10px;
+    
+}
+.search-text{
+  padding-left: 2.5%;
+ color: #222222;
+}
+
+.search-container:hover{
+  filter: drop-shadow(3px 3px 3px rgb(119, 119, 119));
+  
+}
+  
+ 
+ 
+ 
+
+  /*FIN BARRE DE RECHERCHE*/
+
+ /*------CARROUSEL-----*/
+
+
+
+input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  width: 10%;
+  border-radius: 5px;
+}
+.new-movie {
+  
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.movie-category {
+  padding: 0 10vw;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  text-transform: capitalize;
+  display: flex;
+  text-align: left;
+  color: white;
+}
+
+.movie-container {
+  padding: 0 10vw;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 50px;
+}
+
+.movie-container::-webkit-scrollbar {
+  display: none;
+}
+.movie-card {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 450px;
+  margin-right: 40px;
+}
+
+.movie-image {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  
+
+}
+
+
+.movie-image:hover .movie-cover2{
+  display:block;
+  object-position: right;
+}
+
+ 
+.movie-image:hover .movie-cover{
+  display:none;
+}
+
+.movie-image:hover{
+  opacity:0.6;
+}
+ 
+.movie-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-cover2{
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+}
+.movie-card:hover {
+  opacity: 1;
+}
+.movie-info { 
+  width: 100%;
+  height: 100px;
+  padding-top: 10px;
+}
+
+.movie-name {
+  text-transform: uppercase;
+  color:white
+}
+
+.pre-btn,
+.nxt-btn {
+  border: none;
+  cursor: pointer;
+}
+.nxt-btn {
+  transform: rotate(180deg);
+}
+.pre-btn:hover, .nxt-btn:hover {
+  opacity: 0.5;
+}
+
+
+
+/*------FIN-CARROUSSEL--------------*/
+
+
+
+/* ------DEUXIEME CARROUSSEL------*/
+.couleur{
+  background: #282828;
+  padding-top: 1vh;
+}
+.movie-a-affiche {
+  
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.film-affiche-nom {
+  padding: 0 10vw;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  text-transform: capitalize;
+  display: flex;
+  text-align: left;
+  color: white;
+ 
+}
+
+.movie-contenu {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 50px;
+}
+
+.movie-contenu::-webkit-scrollbar {
+  display: none;
+}
+.movie-affiche {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 450px;
+  margin-right: 40px;
+}
+
+
+.movie-img {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+.movie-img:hover {
+  opacity: 0.5;
+}
+
+.movie-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-affiche:hover {
+  opacity: 1;
+}
+.movie-info { 
+  width: 100%;
+  height: 100px;
+  padding-top: 10px;
+}
+
+.movie-nom {
+  text-transform: uppercase;
+  color:white
+}
+
+.previous-btn,
+.next-btn {
+  border: none;
+  cursor: pointer;
+}
+.next-btn {
+  transform: rotate(180deg);
+}
+.previous-btn:hover, .next-btn:hover {
+  opacity: 0.5;
+}
+/*------FIN-SECOND-CARROUSSEL--------------*/
+
+/* ------TROISIEME CARROUSSEL------*/
+
+.movie-a-venir {
+  
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.film-venir-nom {
+  padding: 0 10vw;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  text-transform: capitalize;
+  display: flex;
+  text-align: left;
+  color: white;
+ 
+}
+
+.movie-venir-contenu {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 50px;
+}
+
+.movie-venir-contenu::-webkit-scrollbar {
+  display: none;
+}
+.movie-venir {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 450px;
+  margin-right: 40px;
+}
+
+.movie-venir-img {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.movie-venir-img:hover{
+  opacity: 0.5;
+}
+
+.movie-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-affiche:hover {
+  opacity: 1;
+}
+.movie-info { 
+  width: 100%;
+  height: 100px;
+  padding-top: 10px;
+}
+
+.movie-venir-nom {
+  text-transform: uppercase;
+  color:white
+}
+
+.precedent-btn,
+.suivant-btn {
+  border: none;
+  cursor: pointer;
+}
+.suivant-btn {
+  transform: rotate(180deg);
+}
+.precedent-btn:hover, .suivant-btn:hover {
+  opacity:0.5;
+}
+
