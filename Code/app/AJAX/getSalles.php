@@ -2,7 +2,7 @@
 require_once "../app/controllers/cinemasalle.php";
 
 $cinemaSalleController = new cinemasalle();
-$existingRooms = $cinemaSalleController->getExistingRooms();
+$existingRooms = $cinemaSalleController->getExistingSalles();
 foreach ($existingRooms as $room) {
     echo '<div class="salle">';
     echo '<div class="salle-top">';
