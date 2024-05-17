@@ -13,6 +13,18 @@ validation
         }
     ])
 
+    .addField("#email", [
+        {
+            rule: "required"
+        }
+    ])
+
+    .addField("#username", [
+        {
+            rule: "required"
+        }
+    ])
+
     
     .addField("#password", [
         {

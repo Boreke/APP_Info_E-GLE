@@ -63,13 +63,16 @@ ul {
 }
 .liste {
     background-color: #868686;
-    border-radius: 34px;
 }
 .elmt {
     display: flex;
     gap: 10vw;
     padding: 20px 64px;
     align-items: center;
+}
+
+.elmt2 {
+    background-color: #cfcfcf;
 }
 
 .supp_btn {

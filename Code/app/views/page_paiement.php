@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="FR">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Séances</title>
-        <link rel="stylesheet" href="css/page_paiement.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">   
-        <link rel="icon" type="image/png" href="img/Falcon (1).png">
-    </head>
+
     <body>
-    <?php $this->view("header")?>
+    <?php 
+        require "../app/controllers/header.php";
+        $header= new Header();
+        $header->displayHeader();
+    ?>
 
         <br><br><br>
         <section id="resa">
@@ -106,28 +101,8 @@
             <br><br><br>
 
         </main>
-
-
-        <footer>
-            <img src="<?=ASSETS?>img/logo-events-IT 1.png" alt="">
-            <div class="nav_bas">
-                <li><a href="#" class="nav_bas_elmt">A propos</a></li>
-                <li><a href="#" class="nav_bas_elmt">Forum</a></li>
-                <li><a href="#" class="nav_bas_elmt">Contact</a></li>
-                <li><a href="#" class="nav_bas_elmt">Mention légales</a></li>
-                <li><a href="#" class="nav_bas_elmt">FAQ</a></li>
-            </div>
-            <div class="reseaux">
-                <li><a href="https://www.twitter.com"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>
-                <li><a href="https://www.instagram.com"><img src="<?=ASSETS?>img/Instagram.png" alt="Instagram"></a></li>
-                <li><a href="https://www.facebook.com"><img src="<?=ASSETS?>img/Facebook.png" alt=""></a></li>
-            </div>
-            <div class="mention_legales">
-                <img src="<?=ASSETS?>img/Copyright.png" alt="" class="Copyright">
-                <p class="mention_legales_text">E-GLE 2024 Tous droits réservés</p>
-            </div>
-        </footer>
 <body>
+<?= $this->view("footer")?>
     
 </body>
 </html>

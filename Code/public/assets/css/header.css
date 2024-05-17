@@ -87,7 +87,7 @@ nav {
     position: sticky;
 
 }
-.nav_elmt, .nav_elmt1 {
+.nav_elmt{
     text-decoration: none;
     color: white;
     background-color: #141414;
@@ -101,14 +101,14 @@ nav {
     transition-duration: 0.3s;
 
 }
+.nav_elmt.active {
+    background-color: white; 
+    color: black; 
+}
 .nav_elmt:hover {
     background-color: #222222;
 }
-.nav_elmt1 {
-    background-color: #FFF;
-    color: black;
-    
-}
+
 .topright{
     display: flex;
     align-items: center;

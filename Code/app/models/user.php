@@ -140,7 +140,7 @@ Class User
 				
 				//logged in
  				$_SESSION['username'] = $data[0]->username;
-				$_SESSION['user_id'] = $data[0]->user_id;
+				$_SESSION['user_id'] = $data[0]->id_user;
 				$_SESSION['type'] = $data[0]->type;
 				return true;
 			}
@@ -155,10 +155,21 @@ Class User
 		//logged in
 		unset($_SESSION['username']);
 		unset($_SESSION['user_id']);
-
+		unset($_SESSION['type']);
 		header("Location:". ROOT . "login");
 		die;
 	}
 
+	function getCinemaId(){
+		$DB = new Database();
+		$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
+		$arr["user_id"]=$_SESSION["user_id"];
+		$cinemaResult =$DB->read($sqlRequest,$arr);
+		if (isset($cinemaResult)) {
+			$cinema_id = $cinemaResult[0]->idcinema;
+			return $cinema_id;
+		}
+		
+	}
 
 }
