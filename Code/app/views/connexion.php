@@ -11,27 +11,25 @@
 </head>
 <body>
 
-<section class="container">
+
+    <section class="container">
         <div class="connexion">
             <h2 class="titre2">Connexion</h2>
-
-            <?php if ($is_invalid): ?>
-                <em>Invalid login</em>
-            <?php endif; ?>
 
             <form class="inputs" method="post">
                 <input type="Identifiant" placeholder="Identifiant" class="id" id="username" name="username" value="<?= htmlspecialchars($_POST["username"] ?? "") ?>">
                 <input type="password" placeholder="Mot de passe" class="id" id="password" name="password">
                 <button class="buttonconnexion"> Connexion </button>
                 <div class="crétioncompte">
-                    <p class="inline">Vous n'avez pas de compte ?</p> 
-                    <a href="../nouveaucompte.html" class="lienverscreation">Créer un compte</a>
+                    <p class="inline">Vous n'avez pas de compte ?</p> <a href="<?=ROOT?>nouveaucompte" class="lienverscreation">Créer un compte</a>
                 </div>
+                
             </form>
-    
         </div>
-        
-    </section>
+   
+
+</section>
+
 </body>
 
 </html>
