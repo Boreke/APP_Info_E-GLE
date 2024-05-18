@@ -17,78 +17,8 @@
         </div>
         
         <div class="cinema-list">
-            <div class="cinema-elmt">
-
-                <div class="cinema-elmt-top">
-                    <div class="cinema-info">
-                        <img class="objet-fit" src="<?=ASSETS?>img/logo-ugc.png" alt="Logo UGC">
-                        <div class="cinema-desc">
-                            <h3>UGC Ciné Cité Les Halles</h3>
-                            <p>7 place De La Rotonde, 75001 Paris</p>
-                            <p>10 salles</p>
-                        </div>
-                    </div>
-                    <img class="dropdown" src="<?=ASSETS?>img/Drop Down.png" alt="">
-                </div>
-                <div class="cinema-elmt-bot">
-                    <div class="salle">Salle 1</div>
-                    <div class="salle">Salle 2</div>
-                    <div class="salle">Salle 3</div>
-                    <div class="salle">Salle 4</div>
-                    <div class="salle">Salle 5</div>
-                    <div class="salle">Salle 6</div>
-                    <div class="salle">Salle 7</div>
-                    <div class="salle">Salle 8</div>
-                    <div class="salle">Salle 9</div>
-                    <div class="salle">Salle 10</div>
-                </div>
-
-            </div>
-            <div class="cinema-elmt">
-
-                <div class="cinema-elmt-top">
-                    <div class="cinema-info">
-                        <img class="objet-fit" src="<?=ASSETS?>img/logo-mk2.png" alt="Logo mk2">
-                        <div class="cinema-desc">
-                            <h3>mk2 Parnasse</h3>
-                            <p>7 place De La Rotonde, 75001 Paris</p>
-                            <p>10 salles</p>
-                        </div>
-                    </div>
-                    <img class="dropdown" src="<?=ASSETS?>img/Drop Down.png" alt="">
-                </div>
-                <div class="cinema-elmt-bot">
-                    <div class="salle">Salle 1</div>
-                    <div class="salle">Salle 2</div>
-                    <div class="salle">Salle 3</div>
-                    <div class="salle">Salle 4</div>
-                    <div class="salle">Salle 5</div>
-                    <div class="salle">Salle 6</div>
-                    <div class="salle">Salle 7</div>
-                </div>
-
-            </div>
-            <div class="cinema-elmt">
-
-                <div class="cinema-elmt-top">
-                    <div class="cinema-info">
-                        <img class="objet-fit" src="<?=ASSETS?>img/logo-pathe.png" alt="Logo Pathé">
-                        <div class="cinema-desc">
-                            <h3>UGC Ciné Cité Les Halles</h3>
-                            <p>7 place De La Rotonde, 75001 Paris</p>
-                            <p>10 salles</p>
-                        </div>
-                    </div>
-                    <img class="dropdown" src="<?=ASSETS?>img/Drop Down.png" alt="">
-                </div>
-                <div class="cinema-elmt-bot">
-                    <div class="salle">Salle 1</div>
-                    <div class="salle">Salle 2</div>
-                    <div class="salle">Salle 3</div>
-                    <div class="salle">Salle 4</div>
-                </div>
-
-            </div>
+            <?php $this->showCinemas();?>
+            
         </div>
     </section>
 </body>
