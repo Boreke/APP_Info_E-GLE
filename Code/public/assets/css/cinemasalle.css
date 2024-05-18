@@ -17,68 +17,7 @@ h1 {
     margin-right: 10px;
 }
 
-.scroll-btn {
-    width: 40px; 
-    height: auto;
-}
 
-
-.layout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.showcase {
-    display: flex;
-    flex-direction: column;
-    background: rgba(0,0,0,0.1);
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #777;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.showcase li {
-    display: flex;
-    align-items: center;
-    justify-content: left;    
-    margin-top: 10px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.seat {
-    background-color: #444451;
-    height: 12px;
-    width: 15px;
-    margin: 3px;
-    margin-top: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.occupied {
-    background-color: #fff;
-}
-
-.screen {
-    
-    background: #fff;
-    height: 70px;
-    width: 100%;
-    transform: rotateX(-45deg);
-    box-shadow: 0 3px 10px rgba(255,255,255,0.7);
-    
-}
 .salle-top {
     display: flex;
     align-items: center;
