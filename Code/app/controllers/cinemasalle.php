@@ -7,6 +7,9 @@ Class cinemasalle extends Controller {
 		$user=$this->loadModel("user");
  	 	unset($_SESSION['error_message']);;
  	 	$data['page_title'] = "salle";
+		if(isset($_POST['numero_salle_del'])){
+			$this->delete_salle($_POST);
+		}
 		if(isset($_POST['numero_salle'])){
 			$this->add_salle($_POST);
 		}
@@ -23,7 +26,20 @@ Class cinemasalle extends Controller {
 		unset($sqlRequest);
 		return $existingRooms;
 	}
-
+	function showExistingSalles(){
+		$existingRooms=$this->getExistingSalles();
+		foreach ($existingRooms as $room){
+			echo '<div class="salle">
+				<div class="salle-top">
+					<h1>Salle '.$room->numero.'</h1>
+					<a><img class="dropdown" src="../public/assets/img/Drop Down.png" alt=""></a>
+				</div>
+				<div class="salle-bot">
+					red
+				</div>
+			</div>';
+		}
+	}
 	function add_salle($POST){
 		$DB = new Database();
 		$user=new User();
@@ -62,32 +78,31 @@ Class cinemasalle extends Controller {
 
 
 
-	function delete_salle($POST){
-		$arr['numero_salle_del']=$POST['numero_salle_del'];
-		$sqlRequest='DELETE FROM salle WHERE `numero` = :numero_salle_del ';
-		if (empty($POST["numero_salle"])) {
-			$_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
-		} elseif (!is_numeric($POST["numero_salle"])&& $POST["numero_salle"]==0) {
-			$_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
-		}
-		$sql = "INSERT INTO salle (numero, cinema_idcinema) VALUES (:numero, :cinema_idcinema)";
-		unset($arr);
-		$arr["numero"]=$POST["numero_salle"];
-		$arr["cinema_idcinema"]=$cinema_id;
-		try {
-			$DB->write($sql,$arr);
-		} catch (PDOexception $e) {
-			if ($e->getCode() == 23000) {
-				$_SESSION["error_message"]="une salle de ce numero existe deja pour ce cinéma";
-			} else {
-				$_SESSION["error_message"]="Erreur lors de l'ajout de la salle: " . $e->getMessage();
-			}
-		}
-
-	}
+	function delete_salle($POST) {
+        $DB = new Database();
+        if (empty($POST["numero_salle_del"])) {
+            $_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
+        } elseif (!is_numeric($POST["numero_salle_del"]) || $POST["numero_salle_del"] == 0) {
+            $_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
+        } else {
+            $arr = ['numero_salle_del' => $POST['numero_salle_del']];
+            $sql = 'DELETE FROM salle WHERE idsalle = :numero_salle_del';
+            try {
+                $DB->write($sql, $arr);
+            } catch (PDOException $e) {
+                $_SESSION["error_message"] = "Erreur lors de la suppression de la salle: " . $e->getMessage();
+            }
+        }
+    }
 
 	function afficher_salle(){
 		$existingRooms=$this->getExistingSalles();
-		
+		if (is_array($existingRooms) && count($existingRooms) > 0) {
+			foreach ($existingRooms as $row) {
+				echo "<option value=\"{$row->idsalle}\">{$row->numero}</option>";
+			}
+		} else {
+			echo "<option>aucune salle</option>";
+		}
 	}
 }

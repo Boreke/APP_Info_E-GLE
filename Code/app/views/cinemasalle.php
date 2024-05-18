@@ -8,7 +8,7 @@
     ?>
         <section class="center">
             <div class="salles_existantes" id="salles_existantes">
-            <?php include "../app/AJAX/getSalles.php"; ?>
+            <?php $this->showExistingSalles(); ?>
             </div>
             <div class="ajouter_salle">
                 <h1>Ajouter une salle</h1>
@@ -39,16 +39,16 @@
                             <h1>Entrez le numero de la salle à supprimer.</h1>
                             
                         </div>
-                        <form class="form_salle" id="form_salle" method="post" >
+                        <form class="form_salle_del" id="form_salle_del" method="post" >
                             <select type="number" placeholder="numero de la salle" class="numero_salle_del" id="numero_salle_del" name="numero_salle_del">
                                 <?php
-                                    
+                                    $this->afficher_salle();
                                 ?>
                             </select>
                             
                             <button type="submit" class="button-del">Supprimer</button>
                         </form>
-                    
+                        
                     </div>  
                 </div>
                 
@@ -57,4 +57,5 @@
     </body>
     <?= $this->view("footer")?>
     <script src="<?=ASSETS?>js/cinemasalle.js"></script>
+
 </html>
