@@ -2,7 +2,7 @@
     
     color: #FFF;
 }
-a{
+.btn-salle{
     font-family: 'Roboto';
     text-decoration: none;
     background-color: transparent;
@@ -120,6 +120,11 @@ body {
 
 .salle:hover {
     background-color: rgb(175, 175, 175);
+}
+@media(max-width:1024px){
+    .cinema-info,.center-top{
+        flex-direction: column;
+    }
 }
 
 
