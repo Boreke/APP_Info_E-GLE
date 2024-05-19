@@ -30,6 +30,7 @@ h1 {
 }
 .salles_existentes{
     margin-left: 50px;
+
 }
 .dropdown{
     width: 40px;
@@ -44,11 +45,26 @@ h1 {
 
 .ajouter_salle {
     display: flex;
+    flex-direction: row;
     align-items:center;
     margin-left: 50px;
     justify-content:flex-start;
 }
 
+.div-btn-add{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: left;
+    flex:1;
+}
+.div-btn-del{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    flex:1;
+}
 .add_btn,.del_btn{
     width: 40px;
     height: auto;
@@ -176,4 +192,12 @@ select option{
     
     color:red;
     border-radius: 5%;
+}
+@media (max-width:520px){
+    .ajouter_salle{
+        flex-direction: column;
+    }
+    .div-btn-add, .div-btn-del{
+        flex-direction: column;
+    }
 }
