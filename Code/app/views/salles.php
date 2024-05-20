@@ -15,7 +15,6 @@
                 <input type="search" placeholder="Rechercher un cinéma" class="zone-recherche">
             </div>
         </div>
-        
         <div class="cinema-list">
             <?php $this->showCinemas();?>
             

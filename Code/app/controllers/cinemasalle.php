@@ -13,6 +13,7 @@ Class cinemasalle extends Controller {
 		if(isset($_POST['numero_salle'])){
 			$this->add_salle($_POST);
 		}
+		$data['salles']=$this->getExistingSalles();
 		$this->view("cinemasalle",$data);
 	}
 
@@ -28,16 +29,41 @@ Class cinemasalle extends Controller {
 	}
 	function showExistingSalles(){
 		$existingRooms=$this->getExistingSalles();
+		$seances=$this->getSeance();
 		foreach ($existingRooms as $room){
 			echo '<div class="salle">
-				<div class="salle-top">
-					<h1>Salle '.$room->numero.'</h1>
-					<a><img class="dropdown" src="../public/assets/img/Drop Down.png" alt=""></a>
-				</div>
-				<div class="salle-bot">
-					red
-				</div>
-			</div>';
+						<div class="salle-top">
+							<h1>Salle '.$room->numero.'</h1>
+							<a><img class="dropdown" src="../public/assets/img/Drop Down.png" alt=""></a>
+						</div>
+						<div class="salle-bot">
+							<div class="disposition">
+								<h1 class="place-header">Places:</h1> 
+								<div class="layout">
+							
+									<div class="container">
+										<div class="screen"></div>';
+											$this->showRows($room->idsalle);
+									echo '</div>
+									<ul class="showcase">
+										<li>
+											<div class="seat"></div>
+											<small>N/A</small>
+										</li>
+										<li>
+											<div class="seat occupied"></div>
+											<small>Occupied</small>
+											</li>    
+									</ul>
+								</div>
+						
+							</div>
+							<div class="infos-seances">';
+								$this->showSeance($seances[$room->idsalle]);
+							echo'</div>
+						</div>
+					</div>
+					</div>';
 		}
 	}
 	function add_salle($POST){
@@ -88,6 +114,12 @@ Class cinemasalle extends Controller {
             } catch (PDOException $e) {
                 $_SESSION["error_message"] = "Erreur lors de la suppression de la salle: " . $e->getMessage();
             }
+			$sql = 'DELETE FROM diffuser WHERE salle_idsalle = :numero_salle_del';
+			try {
+                $DB->write($sql, $arr);
+            } catch (PDOException $e) {
+                $_SESSION["error_message"] = "Erreur lors de la suppression de la salle: " . $e->getMessage();
+            }
         }
     }
 
@@ -100,5 +132,77 @@ Class cinemasalle extends Controller {
 		} else {
 			echo "<option>aucune salle</option>";
 		}
+	}
+	function showRows($idsalle){
+		$row=$this->getRowNumbers();
+		$seatId=1;
+		for ($i=0; $i < $row[$idsalle]['number']; $i++) { 
+			echo'<div class="row">';
+			for ($j = 0; $j < 15; $j++) {
+				echo '<div class="seat" id="'.$idsalle.'-'. $seatId . '"></div>';
+				$seatId++;
+			}
+			echo'</div>';
+		}
+		if ($row[$idsalle]['remaining_places'] > 0) {
+			echo '<div class="row">';
+			for ($i = 0; $i < $row[$idsalle]['remaining_places']; $i++) {
+				echo '<div class="seat" id="'.$idsalle.'-'. $seatId . '"></div>';
+				$seatId++;
+			}
+			echo '</div>';
+		}
+	}
+	function getRowNumbers(){
+		$salles=$this->getExistingSalles();
+		foreach($salles as $salle){	
+			$nbPlaces=$salle->nbr_places;
+			$rows[$salle->idsalle]['number']=intval($nbPlaces/15);
+			$rows[$salle->idsalle]['remaining_places']=fmod($nbPlaces,15);
+		}
+		return $rows;
+	}
+	function getSeance(){
+		$DB = new Database();
+		$salles=$this->getExistingSalles();
+		
+		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle";
+		foreach($salles as $salle){
+			$arr['idsalle'] = $salle->idsalle;
+			$seances[$salle->idsalle]=$DB->read($query, $arr);
+		}
+		return $seances;
+	}
+
+	function showSeance($seance){
+		$DB = new Database();
+		$query="SELECT * FROM film WHERE id_film=:idfilm";
+		$arr['idfilm']=$seance[0]->Film_id_film;
+		$film=$DB->read($query, $arr);
+		$dureeH=intval($film[0]->duree/3600);
+		$dureeM=fmod($film[0]->duree,3600);
+		echo'<div class="descriptiffilm">
+				<img src="'.$film[0]->image_file.'" class="img-film">
+			</div>
+
+			<div class="film-data">
+				<div>
+					<h2 class="titre">'.$film[0]->titre.'</h2>
+				</div>
+				<div class="genre-duree">
+					<div class="genre">
+						<h3 class="genre-header">Genre : </h3>
+						<h3 class="genre-content"> &nbsp'.$film[0]->titre.'</h3> 
+					</div>
+					<div class="duree">
+						<h3 class="duree-header">Durée du film : </h3>
+						<h3>&nbsp'.$dureeH.'h'.$dureeM.'min</h3>
+					</div>
+				</div>
+				<div class="synopsis">
+					<h3 class="syn-header">Synopsis : </h3>
+					<p class="syn-content">'.$film[0]->synopsis.'</p>
+				</div>
+			</div>';
 	}
 }

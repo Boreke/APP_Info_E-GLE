@@ -12,6 +12,8 @@ h1 {
     
     display: flex;
 }
+
+
 /*section*/
 section.top {
     display: flex;
@@ -21,7 +23,7 @@ section.top {
 }
 section.bot{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     padding: 20px;
 }
@@ -53,6 +55,8 @@ section.bot{
     flex: 1;
     text-align: left;
 }
+
+
 /*layout salle*/
 .disposition{
     align-self: left;
@@ -123,18 +127,83 @@ section.bot{
     box-shadow: 0 3px 10px rgba(255,255,255,0.7);
     
 }
+
+
 /*infos capteur*/
 .infos-capteur{
     color: #FFF;
     align-self: center;
     flex: 1;
 }
+
+
 /*infos seance*/
 .infos-seances{
     color: #FFF;
+    display: flex;
+    flex-direction: row;
     margin-left:5vh;
     margin-right:5vh;
     text-align:justify;
+    align-items: center;
+    justify-self: flex-start;
+    flex:1;
+}
+
+.descriptiffilm{
+    padding-left: 5vw;
+}
+
+.img-film{
+    height: 10vh;
+    width: auto;
+    margin-left: 4vw;
+    margin-right: 8vw;
+    margin-top: 6vh;
+    border: 1px solid rgb(136, 133, 133);
+    border-radius: 30px;  
+
+}
+.synopsis{
+    width: 40vw;
+    font-size: 2vw;
+
+}
+
+.genre{
+    display: flex;
+}
+.genre-header{
+    color: grey;
+    font-size: 20px;
+}
+.genre-content{
+    font-size: 20px;
+    color: white;
+}
+
+.genre-duree{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+}
+
+.duree{
+    display: flex;
+    flex-direction: row;
+    padding-right: 13vw;
+}
+.syn-header, .duree-header{
+    color: grey;
+    font-size: 20px;
+}
+.syn-content{
+    font-size: 17px;
+}
+
+.titre{
+    font-size: 23px;
 }
 
 @media(max-width:1060px){
