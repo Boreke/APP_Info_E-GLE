@@ -10,12 +10,19 @@ Class Seancesgerant extends Controller
 		$gerant=$this->loadModel("gerant");
 		
 		if($user->check_logged_in()){
-			
 			if(isset($_POST['titre'])){
 				$gerant->ajout_film($_POST,$_SESSION["user_id"]); 
-			}elseif (isset($_POST['salle'])) {
+			}
+			if (isset($_POST['salle'])) {
 				$gerant->create_sceance($_POST);
 			}
+			if (isset($_POST['editSeance'])) {
+				$gerant->updateSeance($_POST);
+			}
+			if (isset($_POST['deleteSeance'])) {
+				$gerant->deleteSeance($_POST['idseance']);
+			}
+
 			
 		}
 		$this->view("seancesgerant",$data);
@@ -66,6 +73,70 @@ Class Seancesgerant extends Controller
 				echo "<option>No cinema found for user</option>";
 			}
 
+	}
+
+	function displaySeances() {
+		$gerant = new Gerant();
+		$seances = $gerant->fetchAllSeances();  
+		if ($seances && count($seances) > 0) {
+			echo '<table border="1" style="width:100%; text-align:left;">';
+			echo '<tr>';
+			echo '<th>Titre</th>';
+			echo '<th>Date et Horaires</th>';
+			echo '<th>Salle</th>';
+			echo '<th>Places disponibles</th>';
+			echo '</tr>';
+	
+			foreach ($seances as $seance) {
+				$popupID = "popupEdit" . $seance->idseance;
+				$buttonID = "buttonEdit" . $seance->idseance;
+
+				echo '<tr>';
+
+				echo '<td>' . htmlspecialchars($seance->titre) . '</td>';
+				echo '<td>' . htmlspecialchars(date("F j, Y, g:i a", strtotime($seance->film_date))) . '</td>';
+				echo '<td>' . htmlspecialchars($seance->numero) . '</td>';
+				echo '<td>' . htmlspecialchars($seance->nbr_places_disp) . '</td>';
+
+				echo '<td>';
+
+				// Edit button
+				echo '<div id="section">';
+				echo 	'<button onclick="openPopupEdit(\'' . $popupID . '\')" id="' . $buttonID . '">Modifier la seance</button>';
+				echo 	'<div id="' . $popupID . '" class="popup">';
+				echo		'<div class="popup-content">';
+				echo			'<span class="close" onclick="closePopupEdit(\'' . $popupID . '\')">&times;</span>';
+				echo			'<form method="POST">';
+				echo 				'<input type="hidden" name="idseance" value="' . $seance->idseance . '">';
+				echo 				'<label for="film_date">Date et Horaire:</label>';
+				echo 				'<input type="datetime-local" name="film_date" value="' . htmlspecialchars(date('Y-m-d\TH:i', strtotime($seance->film_date))) . '" required>';
+				echo 				'<label for="film">Film:</label>';
+				echo 				'<input type="text" name="film" value="' . htmlspecialchars($seance->Film_id_film) . '" required>';
+				echo 				'<label for="salle">Salle:</label>';
+				echo 				'<input type="text" name="salle" value="' . htmlspecialchars($seance->salle_idsalle) . '" required>';
+				echo 				'<input type="submit" name="editSeance" value="Modifier" class="btn btn-edit">';
+				echo			'</form>';
+				echo		'</div>';                  
+				echo	'</div>';
+				echo	'<script src="<?=ASSETS?>js/popupsceancegerant.js"></script>';
+				echo'</div>';
+
+				
+
+				// Remove button
+				echo '<form method="POST" onsubmit="return confirm(\'Êtes-vous sûr que vous voulez supprimer cette séance?\');">';
+				echo '<input type="hidden" name="idseance" value="' . $seance->idseance . '">';
+				echo '<input type="submit" name="deleteSeance" value="Supprimer" class="btn btn-remove">';
+				echo '</form>';
+				echo '</td>';
+
+				echo '</tr>';
+
+			}
+			echo '</table>';
+		} else {
+			echo '<p>No upcoming seances available.</p>';
+		}
 	}
 
 }
