@@ -46,31 +46,27 @@ Class cinemasalle extends Controller {
 		
 		if ($user->check_logged_in()) {
 			
-			$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
-			$arr["user_id"]=$_SESSION["user_id"];
-			$cinemaResult =$DB->read($sqlRequest,$arr);
-			if (isset($cinemaResult)) {
-				$cinema_id = $cinemaResult[0]->idcinema;
-				if (empty($POST["numero_salle"])) {
-					$_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
-				} elseif (!is_numeric($POST["numero_salle"])&& $POST["numero_salle"]==0) {
-					$_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
-				}
-				$sql = "INSERT INTO salle (numero, cinema_idcinema) VALUES (:numero, :cinema_idcinema)";
-				unset($arr);
-				$arr["numero"]=$POST["numero_salle"];
-				$arr["cinema_idcinema"]=$cinema_id;
-				try {
-					$DB->write($sql,$arr);
-				} catch (PDOexception $e) {
-					if ($e->getCode() == 23000) {
-						$_SESSION["error_message"]="une salle de ce numero existe deja pour ce cinéma";
-					} else {
-						$_SESSION["error_message"]="Erreur lors de l'ajout de la salle: " . $e->getMessage();
-					}
-				}
-				
+			$cinema_id=$user->getCinemaId();
+			if (empty($POST["numero_salle"])) {
+				$_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
+			} elseif (!is_numeric($POST["numero_salle"])&& $POST["numero_salle"]==0) {
+				$_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
 			}
+			$sql = "INSERT INTO salle (numero, nbr_places, cinema_idcinema) VALUES (:numero, :nb_places, :cinema_idcinema)";
+			unset($arr);
+			$arr["numero"]=$POST["numero_salle"];
+			$arr["nb_places"]=$POST["nb_places"];
+			$arr["cinema_idcinema"]=$cinema_id;
+			try {
+				$DB->write($sql,$arr);
+			} catch (PDOexception $e) {
+				if ($e->getCode() == 23000) {
+					$_SESSION["error_message"]="une salle de ce numero existe deja pour ce cinéma";
+				} else {
+					$_SESSION["error_message"]="Erreur lors de l'ajout de la salle: " . $e->getMessage();
+				}
+			}
+				
 		}
 		unset($sqlRequest);
 		unset($arr);

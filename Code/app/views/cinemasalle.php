@@ -30,8 +30,8 @@
                             
                         </div>
                         <form class="form_salle" id="form_salle" method="post" >
-                            <input type="numero" placeholder="numero de la salle" class="numero_salle" id="numero_salle" name="numero_salle">
-                            
+                            <input type="text" placeholder="numero de la salle" class="numero_salle" id="numero_salle" name="numero_salle">
+                            <input type="text" placeholder="numero de places" class="nb_places" id="nb_places" name="nb_places">
                             <button type="submit" class="button-creer">Ajouter</button>
                         </form>
                     
