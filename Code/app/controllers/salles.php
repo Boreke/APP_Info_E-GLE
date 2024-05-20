@@ -30,7 +30,8 @@ Class Salles extends Controller
 			</div>
 			<div class="cinema-elmt-bot">';
 			foreach($salles[$cinema->idcinema] as $salle){
-				echo '<div  class="salle"><a class="btn-salle" href="'.ROOT.'salleinscrit">Salle '. $salle->numero.'</a></div>';
+				$url = ROOT . 'salleinscrit?salle_id=' . $salle->idsalle;
+				echo '<div  class="salle"><a class="btn-salle" href="'.$url.'">Salle '. $salle->numero.'</a></div>';
 			}
 			echo '</div></div>';
 		}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2024 at 10:03 AM
+-- Generation Time: May 20, 2024 at 01:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,7 +31,9 @@ CREATE TABLE `billet` (
   `idbillet` int(11) NOT NULL,
   `price` decimal(2,0) NOT NULL,
   `Film_id_film` int(11) NOT NULL,
-  `user_id_user` int(11) NOT NULL
+  `user_id_user` int(11) NOT NULL,
+  `id salle` int(11) NOT NULL,
+  `id cinema` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -65,7 +67,8 @@ CREATE TABLE `cinema` (
 --
 
 INSERT INTO `cinema` (`idcinema`, `nom_cinema`, `adresse_cinema`, `user_id_user`) VALUES
-(1, 'gui cinema', '123 rue du cine', 2);
+(1, 'gui cinema', '123 rue du cine', 2),
+(3, 'Hannah\'s club', '1451 Park Rd, NW', 8);
 
 -- --------------------------------------------------------
 
@@ -77,7 +80,8 @@ CREATE TABLE `commentaire` (
   `idcommentaire` int(11) NOT NULL,
   `titre` varchar(255) NOT NULL,
   `date` datetime NOT NULL,
-  `contenu` varchar(255) NOT NULL
+  `contenu` varchar(255) NOT NULL,
+  `user id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -89,16 +93,19 @@ CREATE TABLE `commentaire` (
 CREATE TABLE `diffuser` (
   `Film_id_film` int(11) NOT NULL,
   `salle_idsalle` int(11) NOT NULL,
-  `film_date` datetime NOT NULL
+  `film_date` datetime NOT NULL,
+  `nbr_places_rsv` int(255) NOT NULL,
+  `nbr_places_disp` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `diffuser`
 --
 
-INSERT INTO `diffuser` (`Film_id_film`, `salle_idsalle`, `film_date`) VALUES
-(0, 3, '2024-05-05 19:30:00'),
-(0, 3, '2024-05-05 20:00:00');
+INSERT INTO `diffuser` (`Film_id_film`, `salle_idsalle`, `film_date`, `nbr_places_rsv`, `nbr_places_disp`) VALUES
+(0, 3, '2024-05-05 19:30:00', 0, 0),
+(0, 3, '2024-05-05 20:00:00', 0, 0),
+(12, 6, '2024-05-15 19:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -123,15 +130,17 @@ CREATE TABLE `film` (
   `synopsis` varchar(1000) DEFAULT NULL,
   `duree` int(255) DEFAULT NULL,
   `genre` varchar(45) DEFAULT NULL,
-  `id_cinema` int(11) NOT NULL
+  `id_cinema` int(11) NOT NULL,
+  `image_file` varchar(255) NOT NULL,
+  `date_sortie` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `film`
 --
 
-INSERT INTO `film` (`id_film`, `titre`, `synopsis`, `duree`, `genre`, `id_cinema`) VALUES
-(0, 'Bob', 'BOB', 4080, 'romance', 1);
+INSERT INTO `film` (`id_film`, `titre`, `synopsis`, `duree`, `genre`, `id_cinema`, `image_file`, `date_sortie`) VALUES
+(12, 'Dune 2', 'Dune partie 2', 3600, 'aventure', 1, '../public/assets/img/OIP.jpeg', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,6 +167,7 @@ CREATE TABLE `post` (
 CREATE TABLE `salle` (
   `idsalle` int(11) NOT NULL,
   `numero` int(11) DEFAULT NULL,
+  `nbr_places` int(255) NOT NULL,
   `cinema_idcinema` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -165,10 +175,9 @@ CREATE TABLE `salle` (
 -- Dumping data for table `salle`
 --
 
-INSERT INTO `salle` (`idsalle`, `numero`, `cinema_idcinema`) VALUES
-(1, NULL, 1),
-(2, NULL, 1),
-(3, 1, 1);
+INSERT INTO `salle` (`idsalle`, `numero`, `nbr_places`, `cinema_idcinema`) VALUES
+(6, 1, 0, 1),
+(7, 2, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -191,7 +200,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nom`, `prenom`, `username`, `email`, `password_hash`, `type`) VALUES
-(2, 'boury', 'guilhem', 'gui', 'bouryguilhem@gmail.com', '$2y$10$xgOd1sPogfVtbvIDXl9UvOQz5.CWIJyPazKS1uGzPTlRvfnbG879y', 'gerant');
+(2, 'boury', 'guilhem', 'gui', 'bouryguilhem@gmail.com', '$2y$10$xgOd1sPogfVtbvIDXl9UvOQz5.CWIJyPazKS1uGzPTlRvfnbG879y', 'gerant'),
+(3, 'BOURY', 'Guilhem ', 'guiboury', 'guilhem@mail.com', '$2y$10$PZ6vawrx4.QkCDVky7y23OoF7Sg4GS3cvi9ZVveQySpso.x7LZdie', 'client'),
+(7, 'BOURY', 'Clement ', 'clement', 'bouryclement@gmail.com', '$2y$10$EmJpS5yGOW8GXFGVkjXJkO9hZNqd6kflcx0zM/oWDUgxiSoTAN9Y.', 'client'),
+(8, 'DAVIS JACOBS', 'HANNAH', '2h', 'HTD9524@NYU.EDU', '$2y$10$QFYRWXr97PXYTSg2XGUIhuiCwJkCo1.fLuSSPZq9s/ytk2NA/ejma', 'gerant');
 
 --
 -- Indexes for dumped tables
@@ -258,10 +270,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `billet`
+--
+ALTER TABLE `billet`
+  MODIFY `idbillet` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `capteur`
+--
+ALTER TABLE `capteur`
+  MODIFY `idcapteur` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `cinema`
 --
 ALTER TABLE `cinema`
-  MODIFY `idcinema` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idcinema` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `commentaire`
@@ -270,16 +294,34 @@ ALTER TABLE `commentaire`
   MODIFY `idcommentaire` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `faq`
+--
+ALTER TABLE `faq`
+  MODIFY `idFAQ` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `film`
+--
+ALTER TABLE `film`
+  MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `post`
+--
+ALTER TABLE `post`
+  MODIFY `idpost` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `salle`
 --
 ALTER TABLE `salle`
-  MODIFY `idsalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idsalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
