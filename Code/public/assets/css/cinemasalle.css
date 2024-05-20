@@ -1,7 +1,3 @@
-* {
-    
-    color: #FFF;
-}
 
 body {
     font-family: 'Roboto';
@@ -14,85 +10,27 @@ body {
 
 h1 {
     color: #FFF;
-    font-size: 30px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     margin-right: 10px;
 }
 
-.scroll-btn {
-    width: 40px; 
-    height: auto;
-}
 
-
-.layout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.showcase {
-    display: flex;
-    flex-direction: column;
-    background: rgba(0,0,0,0.1);
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #777;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.showcase li {
-    display: flex;
-    align-items: center;
-    justify-content: left;    
-    margin-top: 10px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.seat {
-    background-color: #444451;
-    height: 12px;
-    width: 15px;
-    margin: 3px;
-    margin-top: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.occupied {
-    background-color: #fff;
-}
-
-.screen {
-    
-    background: #fff;
-    height: 70px;
-    width: 100%;
-    transform: rotateX(-45deg);
-    box-shadow: 0 3px 10px rgba(255,255,255,0.7);
-    
-}
 .salle-top {
     display: flex;
     align-items: center;
+    margin-left: 50px;
 }
 .salle-bot{
     color: red;
     display: none;
+    margin-left: 50px;
 }
 .salles_existentes{
     margin-left: 50px;
+
 }
 .dropdown{
     width: 40px;
@@ -107,11 +45,26 @@ h1 {
 
 .ajouter_salle {
     display: flex;
+    flex-direction: row;
     align-items:center;
     margin-left: 50px;
     justify-content:flex-start;
 }
 
+.div-btn-add{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: left;
+    flex:1;
+}
+.div-btn-del{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    flex:1;
+}
 .add_btn,.del_btn{
     width: 40px;
     height: auto;
@@ -134,11 +87,12 @@ h1 {
     background-color: rgba(0,0,0,0.5);
 }
 
-.form_salle{
+.form_salle, .form_salle_del{
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .popup-content {
@@ -153,18 +107,51 @@ h1 {
     justify-content: space-evenly;
 }
 
-.numero_salle{
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    padding: 20px;
-    color:white;
-    width: 10vw;
-    height: 1vh;
-    border: none;
+
+
+
+select {
+    font-family: Roboto;
+    appearance: none;
+    outline: 10px red;
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    color: #777;
+    background-color: var(--darkgray);
+    background-image: none;
+    cursor: pointer;
 }
 
-.button-creer{
+select::-ms-expand {
+    display: none;
+}
+
+select option{
+    background-color: black;
+}
+.numero_salle_del, .numero_salle, .nb_places{
+    color: #777;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 5px 15px;
+    
+    border: 2px solid #818181;
+    background: rgba(217, 217, 217, 0.00);
+}
+.numero_salle, .nb_places{
+    margin-top: 5px;
+}
+
+.button-creer, .button-del{
     width: 10vw;
     height: 5vh;
     flex-shrink: 0;
@@ -177,10 +164,10 @@ h1 {
     line-height: normal;
     border-radius: 1vw;
     margin-top: 1%;
-    border: none;
+    filter: none;
     
 }
-.button-creer:hover{
+.button-creer:hover, .button-del:hover{
     color: black;
     background: white;
 }
@@ -194,6 +181,15 @@ h1 {
     background-color: black;
 }
 .error-message{
-    border: solid 2px red;
+    
+    color:red;
     border-radius: 5%;
+}
+@media (max-width:520px){
+    .ajouter_salle{
+        flex-direction: column;
+    }
+    .div-btn-add, .div-btn-del{
+        flex-direction: column;
+    }
 }

@@ -2,7 +2,18 @@
     
     color: #FFF;
 }
-
+.btn-salle{
+    font-family: 'Roboto';
+    text-decoration: none;
+    background-color: transparent;
+    color: black;
+    border-radius: 20px;
+    width: 80px;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+    transition: 200ms;
+    cursor: pointer;
+}
 body {
     font-family: 'Roboto';
     background-color: rgb(0, 0, 0);
@@ -109,6 +120,11 @@ body {
 
 .salle:hover {
     background-color: rgb(175, 175, 175);
+}
+@media(max-width:1024px){
+    .cinema-info,.center-top{
+        flex-direction: column;
+    }
 }
 
 
