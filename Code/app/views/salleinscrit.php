@@ -32,14 +32,23 @@
             <h1>89.3 dB</h1>
         </div>
     </section>
-    
+    <?php if(!empty($this->getSeance())):?>
     <section class="bot">
-        <h1 class="seance-header">Séances:</h1>
-        <div class="infos-seances">
+        <dic class="header-seances">
+            <h1 class="seance-header">Séances:</h1>
+            <div class="carrousel-command">
+                <img src="<?=ASSETS?>img/arrow.png" alt="" id="pre-btn">
+                <div class="seance-time" id="seance-time">
+                <?php $this->showSeanceDate();?>
+                </div>
+                <img src="<?=ASSETS?>img/arrow.png" alt="" id="nxt-btn">
+            </div>
+        </div>
+        <div class="infos-seances" id="infos-seances">
             <?php $this->showSeance();?>
             
-            </div>
+        </div>
     </section>
-    
+    <?php endif;?>
 </body>
 <?= $this->view("footer")?>

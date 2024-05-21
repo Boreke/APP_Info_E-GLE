@@ -33,33 +33,40 @@ Class SalleInscrit extends Controller
 		$DB = new Database();
 		$seances=$this->getSeance();
 		$query="SELECT * FROM film WHERE id_film=:idfilm";
-		$arr['idfilm']=$seances[0]->Film_id_film;
-		$film=$DB->read($query, $arr);
-		$dureeH=intval($film[0]->duree/3600);
-		$dureeM=fmod($film[0]->duree,3600);
-		echo'<section class="descriptiffilm">
-				<img src="'.$film[0]->image_file.'" class="img-film">
-			</section>
+		foreach($seances as $seance){
+			$arr['idfilm']=$seance->Film_id_film;
+			$film=$DB->read($query, $arr);
+			$dureeH=intval($film[0]->duree/3600);
+			$dureeM=fmod($film[0]->duree,3600);
+			
+			echo'
+			<div id="seance">
+				<div class="descriptiffilm">
+					<img src="'.$film[0]->image_file.'" class="img-film">
+				</div>
 
-			<section class="film-data">
-				<div>
-					<h2 class="titre">'.$film[0]->titre.'</h2>
-				</div>
-				<div class="genre-duree">
-					<div class="genre">
-						<h3 class="genre-header">Genre : </h3>
-						<h3 class="genre-content"> &nbsp'.$film[0]->titre.'</h3> 
+				<div class="film-data">
+					<div>
+						<h2 class="titre">'.$film[0]->titre.'</h2>
 					</div>
-					<div class="duree">
-						<h3 class="duree-header">Durée du film : </h3>
-						<h3>&nbsp'.$dureeH.'h'.$dureeM.'min</h3>
+					<div class="genre-duree">
+						<div class="genre">
+							<h3 class="genre-header">Genre : </h3>
+							<h3 class="genre-content"> &nbsp'.$film[0]->titre.'</h3> 
+						</div>
+						<div class="duree">
+							<h3 class="duree-header">Durée du film : </h3>
+							<h3>&nbsp'.$dureeH.'h'.$dureeM.'min</h3>
+						</div>
+					</div>
+					<div class="synopsis">
+						<h3 class="syn-header">Synopsis : </h3>
+						<p class="syn-content">'.$film[0]->synopsis.'</p>
 					</div>
 				</div>
-				<div class="synopsis">
-					<h3 class="syn-header">Synopsis : </h3>
-					<p class="syn-content">'.$film[0]->synopsis.'</p>
-				</div>
-			</section>';
+			</div>';
+
+		}
 	}
 	function getRowNumbers(){
 		$DB = new Database();
@@ -89,6 +96,12 @@ Class SalleInscrit extends Controller
 				$seatId++;
 			}
 			echo '</div>';
+		}
+	}
+	function showSeanceDate(){
+		$seances=$this->getSeance();
+		foreach ($seances as $seance) {
+			echo '<h2 class="date" id="'.$seance->idseance.'">'.$seance->film_date.'</h2>';
 		}
 	}
 }

@@ -36,6 +36,22 @@
             </div>
             <div class="movie-card">
                 <div class="movie-image">
+                    <a href="<?=ROOT?>planningseancegas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    </div>
+                <div class="movie-info">
+                    <h2 class="movie-name">Shutter Island</h2>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-image">
+                    <a href="<?=ROOT?>planningseancegas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
+                    </div>
+                <div class="movie-info">
+                    <h2 class="movie-name">Shutter Island</h2>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-image">
                     <a href="<?=ROOT?>planningseancegas"><img src="<?=ASSETS?>img/avatar.jpg" class="movie-cover" alt=""></a>
                 </div>
                 <div class="movie-info">
