@@ -28,6 +28,7 @@
         <div class="movie-container">
             <div class="movie-card">
                 <div class="movie-image">
+                    <a href="planningSeanceGas.html"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                     <a href="<?=ROOT?>planningseancegas"> <img src="<?=ASSETS?>img/shutterisland.jpg" class="movie-cover" alt=""></a>
                     </div>
                 <div class="movie-info">
