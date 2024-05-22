@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
 
 
 html {
@@ -7,7 +6,7 @@ html {
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   background-color: rgb(0, 0, 0);
   margin: 0;
   overflow-x: hidden;
@@ -168,9 +167,6 @@ button:hover {
   gap: 20px;
 }
 
-.Logo_Nom .Nom {
-  font-family: "Roboto", sans-serif;
-}
 
 .calendar .days li {
   font-size: 1.5rem; 
@@ -260,7 +256,6 @@ button:hover {
 
 .selected {
   color: black; 
-  font-family: Roboto;
 }
 
 #rectangleTitle {
@@ -410,6 +405,7 @@ footer {
   }
   .movie-layout {
     flex-direction: column;
+    margin-bottom: 200px;
   }
   .movie-image, .movie-info {
     width: 100%;
@@ -457,7 +453,6 @@ footer {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  font-family: Roboto;
 }
 .movie-detail-label {
   color: rgb(81, 81, 81);

@@ -1,49 +1,15 @@
-const productContainers = [...document.querySelectorAll('.movie-container')];
-const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
-const preBtn = [...document.querySelectorAll('.pre-btn')];
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = [...document.querySelectorAll('.movie-container')];
+    carousels.forEach((carousel) => {
+        const nextBtn = carousel.nextElementSibling;
+        const prevBtn = carousel.previousElementSibling;
 
-productContainers.forEach((item, i) => {
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollLeft += carousel.offsetWidth;
+        });
 
-    nxtBtn[i].addEventListener('click', () => {
-        item.scrollLeft += containerWidth;
-    });
-
-    preBtn[i].addEventListener('click', () => {
-        item.scrollLeft -= containerWidth;
-    });
-});
-
-const FilmContenu = [...document.querySelectorAll('.movie-contenu')];
-const nextBtn = [...document.querySelectorAll('.next-btn')]; 
-const previousBtn = [...document.querySelectorAll('.previous-btn')];
-
-FilmContenu.forEach((item, i) => {
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
-
-    nextBtn[i].addEventListener('click', () => {
-        item.scrollLeft += containerWidth;
-    });
-
-    previousBtn[i].addEventListener('click', () => {
-        item.scrollLeft -= containerWidth;
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollLeft -= carousel.offsetWidth;
+        });
     });
 });
-const FilmVenirContenu = [...document.querySelectorAll('.movie-venir-contenu')];
-const suivantBtn = [...document.querySelectorAll('.suivant-btn')]; 
-const precedentBtn = [...document.querySelectorAll('.precedent-btn')]; 
-FilmVenirContenu.forEach((item, i) => {
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
-
-    suivantBtn[i].addEventListener('click', () => {
-        item.scrollLeft += containerWidth;
-    });
-
-    precedentBtn[i].addEventListener('click', () => {
-        item.scrollLeft -= containerWidth;
-    });
-});
-
