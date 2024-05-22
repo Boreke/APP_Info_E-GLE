@@ -7,31 +7,31 @@ body{
 /*BARRE DE RECHERCHE*/
 
 .search-container{
- display: flex;
- position: left; 
- margin-left: 4%;
- margin-top: 2%;
- margin-bottom: 2%;
- align-items: center;
- z-index: index 8;;
+  display: flex;
+  position: relative; 
+  margin-left: 4vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  align-items: center;
+  z-index: 8;
+  filter: none;
 }
 
 .search-icon{
- margin-right: -40px;
-  z-index:2;
-  height:20px;
-  width:20px;
+  margin-right: -40px;
+  z-index: 2;
+  height: 20px;
   padding-right: 10px;
-    
 }
+
 .search-text{
-  padding-left: 2.5%;
- color: #222222;
+  padding-left: 2.5vw;
+  color: #222222;
+  width: 245px; /* Fixed width */
 }
 
 .search-container:hover{
   filter: drop-shadow(3px 3px 3px rgb(119, 119, 119));
-  
 }
   
  
@@ -48,7 +48,7 @@ input {
   padding: 10px;
   border: none;
   outline: none;
-  width: 10%;
+
   border-radius: 5px;
 }
 .new-movie {
@@ -324,5 +324,21 @@ input {
 }
 .precedent-btn:hover, .suivant-btn:hover {
   opacity:0.5;
+}
+@media(max-width:1024px) {
+  .search-icon{
+    display:none;
+  }
+  .search-text {
+    align-self: center;
+    width: 245px; /* Fixed width */
+    padding-left: 2.5vw;
+    flex-shrink: 0; /* Ensure it doesn't shrink */
+  }
+
+  .search-container {
+    justify-content: center; /* Center the search container */
+    width: 100%;
+  }
 }
 
