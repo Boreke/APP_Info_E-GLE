@@ -43,26 +43,26 @@ body {
   gap: 50px;
   padding: 0 10vw;
   position: relative;
-  align-items: center; /* Ensures vertical centering of all child elements */
+  align-items: center; 
 }
 
 .movie-category {
-  padding: 0 10vw; /* Adjust if necessary */
+  padding: 0 10vw; 
   font-size: 30px;
   font-weight: 500;
  
   text-transform: capitalize;
   display: flex;
-  text-align: center; /* Center-align the text */
+  text-align: center; 
   color: white;
 }
 
 .movie-category_2 {
-  padding: 0 10vw; /* Adjust if necessary */
+  padding: 0 10vw; 
   font-size: 30px;
   font-weight: 500;
-  margin: 0 auto; /* Centers the title and removes additional bottom margin */
-  display: flex; /* Center-align the text */
+  margin: 0 auto; 
+  display: flex; 
   color: white;
   background-color: #383838;
   height: 50px;
@@ -119,36 +119,35 @@ body {
 }
 
 .carousel-grey {
-  background-color: #383838; /* Dark grey background */
-  height: 550px; /* Set the height of the carousel */
-  display: flex; /* Centers the content vertically */
-/* Centers the content horizontally */
+  background-color: #383838;
+  height: 550px; 
+  display: flex; 
 }
 
 .movie-title_2 {
   color: white;
-  font-size: 25px; /* Adds padding above and below the title */
-  background: #383838; /* Darker background for better readability */
+  font-size: 25px; 
+  background: #383838; 
   width: 100%;
   font-weight: bold;
-  margin-top : 10px; /* Ensures padding does not add to the width */
+  margin-top : 10px; 
 }
 
 .movie-title_1 {
   color: white;
   font-size: 25px;
-  padding: 10px 0; /* Adds padding above and below the title */
-  background: #000000; /* Darker background for better readability */
+  padding: 10px 0; 
+  background: #000000; 
   width: 100%;
   font-weight: bold;
-  margin-top : 10px;/* Ensures padding does not add to the width */
+  margin-top : 10px;
 }
 
 .movie-title_3 {
   color: white;
   font-size: 25px;
-  padding: 10px 0; /* Adds padding above and below the title */
-  background: #000000; /* Darker background for better readability */
+  padding: 10px 0; 
+  background: #000000;
   width: 100%;
   height: 100px;
   padding-top: 10px;
