@@ -127,8 +127,7 @@ body {
 
 .movie-title_2 {
   color: white;
-  font-size: 25px;
-  text-align: center; /* Adds padding above and below the title */
+  font-size: 25px; /* Adds padding above and below the title */
   background: #383838; /* Darker background for better readability */
   width: 100%;
   font-weight: bold;
@@ -138,7 +137,6 @@ body {
 .movie-title_1 {
   color: white;
   font-size: 25px;
-  text-align: center;
   padding: 10px 0; /* Adds padding above and below the title */
   background: #000000; /* Darker background for better readability */
   width: 100%;
@@ -149,7 +147,6 @@ body {
 .movie-title_3 {
   color: white;
   font-size: 25px;
-  text-align: center;
   padding: 10px 0; /* Adds padding above and below the title */
   background: #000000; /* Darker background for better readability */
   width: 100%;
