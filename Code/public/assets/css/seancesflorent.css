@@ -153,7 +153,24 @@ body {
   padding: 10px 0; /* Adds padding above and below the title */
   background: #000000; /* Darker background for better readability */
   width: 100%;
-  font-weight: bold;
-  margin-top : 10px;
+  height: 100px;
+  padding-top: 10px;
+}
+
+.movie-venir-nom {
+  text-transform: uppercase;
+  color:white
+}
+
+.precedent-btn,
+.suivant-btn {
+  border: none;
+  cursor: pointer;
+}
+.suivant-btn {
+  transform: rotate(180deg);
+}
+.precedent-btn:hover, .suivant-btn:hover {
+  opacity:0.5;
 }
 

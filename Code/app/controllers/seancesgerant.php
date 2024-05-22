@@ -62,9 +62,9 @@ Class Seancesgerant extends Controller
 			} else {
 				echo "<option>No data found</option>";
 			}
-			} else {
-				echo "<option>No cinema found for user</option>";
-			}
+		} else {
+			echo "<option>No cinema found for user</option>";
+		}
 
 	}
 

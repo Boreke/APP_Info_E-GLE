@@ -13,27 +13,10 @@
 </head>
 
 <body>
-   <img src="img/Falcon (1).png" alt="Logo-events-IT" class="logo-events">
-   <img src="img/imagedelogin.svg" alt="" class="imagelogin">
-   
-   
-    <form class="inputs" id="signup" method="post" novalidate>
-      <h2>Nouveau compte</h2>
-
-      <div><input type="Nom" placeholder="Nom" class="id" id="nom" name="nom"></div>
-      <div><input type="Prénom" placeholder="Prénom" class="id" id="prenom" name="prenom"></div>
-      <div><input type="Email" placeholder="Email" class="id" id="email" name="email"></div>
-      <div><input type="Identifiant" placeholder="Identifiant" class="id" id="username" name="username"></div>
-      <div><input type="password" placeholder="Mot de passe" class="id" id="password" name="password"></div>
-      <div><input type="password" placeholder="Confirmation" class="id" id="password_confirmation" name="password_confirmation"></div>
-
-      <label class="text"for="type">Êtes-vous un gérant?<label class="switch"><input type="checkbox"  id="gerant" name="type"><span class="slider round"></span></label></label>
-      <div class="cinema_form">
-      <div class="cinema_form_elem"><input type="Nom" placeholder="Nom du Cinéma" class="id" id="nom_cinema" name="nom_cinema"></div>
-      <div class="cinema_form_elem"><input type="Adresse" placeholder="Adresse du Cinéma" class="id" id="adresse_cinema" name="adresse_cinema"></div>
-      </div>
-    
-      <form class="inputs" id="signup" action="php/nouveaucompte.php" method="post" novalidate>
+  <section class="container">
+    <div class="connexion">
+      <form class="inputs" id="signup" method="post" novalidate>
+        <h2>Nouveau compte</h2>
         <div class="name">
           <div><input type="Nom" placeholder="Nom*" class="id" id="nom" name="nom" required></div>
           <div><input type="Prénom" placeholder="Prénom*" class="id" id="prenom" name="prenom" required></div>
@@ -58,15 +41,25 @@
           <div class="cinema_form_elem"><input type="Nom" placeholder="Nom du Cinéma*" class="id" id="nom_cinema" name="nom_cinema"></div>
           <div class="cinema_form_elem"><input type="Adresse" placeholder="Adresse du Cinéma*" class="id" id="adresse_cinema" name="adresse_cinema"></div>
         </div>
-      
-    <div class="redirection">
-      <p class="question">Vous avez déjà un compte ?</p><a href="<?=ROOT?>connexion.php" class="lienversconnexion">Se connecter</a>
+
+        <div class="CGU-ensemble">
+            <div class="CGU">
+              <input type="checkbox" id="acceptcheckbox" required class="CGU-checkbox">
+              <p>En vous inscrivant sur E-GLE, vous confirmez avoir lu, <br>compris et accepté l'ensemble des conditions générales énoncées ci-dessous.</p>
+            </div>
+        </div>
+
+        <button class="button-creer">Créer</button>
+
+      </form>
+
+      <div class="redirection">
+        <p class="question">Vous avez déjà un compte ?</p><a href="<?=ROOT?>login" class="lienversconnexion">Se connecter</a>
+      </div>
     </div>
+    
   </section>
   
-    
-     
-
 </body>
 
 <script>
