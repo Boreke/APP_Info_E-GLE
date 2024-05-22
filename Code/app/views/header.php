@@ -43,7 +43,15 @@
             <li><a href="" class="lg_elmt">FR</a></li>
         </div>    
         <?php if (isset($_SESSION["username"])): ?>
-            <a href="<?=ROOT?>logout" ><button class="button1" >Logout</button></a>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">Dropdown</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="<?=ROOT?>profil">Mon Profil</a>
+                    <a href="#about">Sur Nous</a>
+                    <a href="<?=ROOT?>logout">Logout</a>
+                </div>
+            </div>
+            <script src="<?=ASSETS?>js/dropdown.js"></script>
         <?php else:  ?>
             <a href="<?=ROOT?>login"><button class="button1">Login</button></a>
         <?php endif; ?> 
