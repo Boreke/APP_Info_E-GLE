@@ -24,7 +24,7 @@
     <?php
             require_once "../app/core/database.php"; 
             $db = new Database();
-            $films = $db->read("SELECT id_film, image_path, titre FROM film");
+            $films = $db->read("SELECT id_film, image_file, titre FROM film");
 
             if ($films && count($films) > 0) {
                 foreach ($films as $film) {
@@ -34,7 +34,7 @@
                     $url = ROOT . 'calendar?id=' .  $film->id_film; 
                 
 
-                    echo '<a href="' . $url . '"><img src="' . ASSETS . $film->image_path . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
+                    echo '<a href="' . $url . '"><img src="'. $film->image_file . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
                     echo '<div class="movie-title_1">' . htmlspecialchars($film->titre) . '</div>'; 
                     echo '</div>';
                 }
@@ -57,7 +57,7 @@
     <?php
             require_once "../app/core/database.php"; 
             $db = new Database();
-            $films = $db->read("SELECT id_film, image_path, titre FROM film");
+            $films = $db->read("SELECT id_film, image_file, titre FROM film");
 
             if ($films && count($films) > 0) {
                 foreach ($films as $film) {
@@ -67,7 +67,7 @@
                     $url = ROOT . 'calendar?id=' .  $film->id_film; 
                 
 
-                    echo '<a href="' . $url . '"><img src="' . ASSETS . $film->image_path . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
+                    echo '<a href="' . $url . '"><img src="' . $film->image_file . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
                     echo '<div class="movie-title_2">' . htmlspecialchars($film->titre) . '</div>'; // Added movie title
                     echo '</div>';
                 }
@@ -90,7 +90,7 @@
     <?php
             require_once "../app/core/database.php"; 
             $db = new Database();
-            $films = $db->read("SELECT id_film, image_path, titre FROM film");
+            $films = $db->read("SELECT id_film, image_file, titre FROM film");
 
             if ($films && count($films) > 0) {
                 foreach ($films as $film) {
@@ -100,7 +100,7 @@
                     $url = ROOT . 'calendar?id=' .  $film->id_film; 
                 
 
-                    echo '<a href="' . $url . '"><img src="' . ASSETS . $film->image_path . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
+                    echo '<a href="' . $url . '"><img src="' . $film->image_file . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
                     echo '<div class="movie-title_3">' . htmlspecialchars($film->titre) . '</div>'; // Added movie title
                     echo '</div>';
                 }

@@ -18,7 +18,7 @@ if ($movieDetails) {
     $movie = $movieDetails[0]; 
     echo "<div class='movie-layout'>";
     echo "<div class='movie-image'>";
-    echo "<img class='cinema-image' src='" . ASSETS .  htmlspecialchars($movie->image_path) . "' alt='Cinema Image'>";
+    echo "<img class='cinema-image' src='" .  htmlspecialchars($movie->image_file) . "' alt='Cinema Image'>";
     echo "</div>";
     echo "<div class='movie-info'>";
     echo "<p class='movie-title'><strong></strong> " . htmlspecialchars($movie->titre) . "</p>";
