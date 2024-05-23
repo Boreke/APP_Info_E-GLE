@@ -40,7 +40,7 @@ Class SalleInscrit extends Controller
 			$dureeM=fmod($film[0]->duree,3600);
 			
 			echo'
-			<div id="seance">
+			<div class="seance">
 				<div class="descriptiffilm">
 					<img src="'.$film[0]->image_file.'" class="img-film">
 				</div>
@@ -101,7 +101,7 @@ Class SalleInscrit extends Controller
 	function showSeanceDate(){
 		$seances=$this->getSeance();
 		foreach ($seances as $seance) {
-			echo '<h2 class="date" id="'.$seance->idseance.'">'.$seance->film_date.'</h2>';
+			echo '<li class="date" id="'.$seance->idseance.'">'.$seance->film_date.'</li>';
 		}
 	}
 }

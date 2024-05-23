@@ -30,6 +30,7 @@ Class cinemasalle extends Controller {
 	function showExistingSalles(){
 		$existingRooms=$this->getExistingSalles();
 		$seances=$this->getSeance();
+
 		foreach ($existingRooms as $room){
 			echo '<div class="salle">
 						<div class="salle-top">
@@ -57,11 +58,13 @@ Class cinemasalle extends Controller {
 									</ul>
 								</div>
 						
-							</div>
-							<div class="infos-seances">';
+							</div>';
+							if(!empty($seances[$room->idsalle])){
+							echo'<div class="infos-seances">';
 								$this->showSeance($seances[$room->idsalle]);
-							echo'</div>
-						</div>
+							echo '</div>';
+							}
+					echo '</div>
 					</div>
 					</div>';
 		}
