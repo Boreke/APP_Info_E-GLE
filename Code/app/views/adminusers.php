@@ -3,62 +3,54 @@
 
 <body>
 <?php 
+
+        
         require "../app/controllers/header.php";
         $header= new Header();
         $header->displayHeader();
-    ?>
 
-    <section class="container">
-        <div>
-            <div class="nav">
-                <a href="#" class="elmt_nav elmt1">Clients</a>
-                <a href="#" class="elmt_nav">Cinéma</a>
-            </div>
+    ?>
+    <div class="container">
+        <h1>Liste des utilisateurs</h1>
+        <div class="listcontainer">
+            <table>
+                <tr class="top">
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+                <?php if($data['users']): ?>
+                    <?php foreach ($data['users'] as $user): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($user->nom); ?></td>
+                            <td><?php echo htmlspecialchars($user->prenom); ?></td>
+                            <td><?php echo htmlspecialchars($user->username); ?></td>
+                            <td><?php echo htmlspecialchars($user->email); ?></td>
+                            <td><?php echo htmlspecialchars($user->type); ?></td>
+                            <td>
+                                <form method="POST" action="">
+                                    <input type="hidden" name="delete_id" value="<?php echo $user->id_user; ?>">
+                                    <button type="submit" class="supp">Supprimer</button>
+                                </form>
+                                <form method="POST" action="">
+                                    <input type="hidden" name="login_id" value="<?php echo $user->id_user; ?>">
+                                    <button type="submit" class="login">Se Connecter</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="6">Aucun utilisateur trouvé</td>
+                    </tr>
+                <?php endif; ?>
+            </table>
         </div>
-        <div class="main">
-            <h2>Utilisateurs</h2>
-            <div class="listecontainer">
-                <div class="top">
-                    <ul>
-                        <li><p>Prénom</p></li>
-                        <li><p>Nom</p></li>
-                        <li><p>Email</p></li>
-                        <li><p>Pseudo</p></li>
-                    </ul>
-                </div>
-                <div class="liste">
-                    <div class="elmt">
-                        <li><p>Hugo</p></li>
-                        <li><p>O'Neill</p></li>
-                        <li><p>honeill2000@gmail.com</p></li>
-                        <li><p>Hugo</p></li>
-                        <li><a href="#" class="supp_btn"><img src="<?=ASSETS?>img/Waste.png" alt="Supprimer"></a></li>
-                    </div>
-                    <div class="elmt elmt2">
-                        <li><p>Hugo</p></li>
-                        <li><p>O'Neill</p></li>
-                        <li><p>honeill2000@gmail.com</p></li>
-                        <li><p>Hugo</p></li>
-                        <li><a href="#" class="supp_btn"><img src="<?=ASSETS?>img/Waste.png" alt="Supprimer"></a></li>
-                    </div>
-                    <div class="elmt">
-                        <li><p>Hugo</p></li>
-                        <li><p>O'Neill</p></li>
-                        <li><p>honeill2000@gmail.com</p></li>
-                        <li><p>Hugo</p></li>
-                        <li><a href="#" class="supp_btn"><img src="<?=ASSETS?>img/Waste.png" alt="Supprimer"></a></li>
-                    </div>
-                    <div class="elmt elmt2">
-                        <li><p>Hugo</p></li>
-                        <li><p>O'Neill</p></li>
-                        <li><p>honeill2000@gmail.com</p></li>
-                        <li><p>Hugo</p></li>
-                        <li><a href="#" class="supp_btn"><img src="<?=ASSETS?>img/Waste.png" alt="Supprimer"></a></li>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        
+    </div>
 </body>
 <?= $this->view("footer")?>
 </html>

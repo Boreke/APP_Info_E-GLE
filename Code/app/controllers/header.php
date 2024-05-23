@@ -25,7 +25,7 @@ Class Header extends Controller
         
         }elseif (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='admin'){
             $pageClassMap = [
-                'home' => 'nav_elmt',
+                
                 'adminusers' => 'nav_elmt',
                 'faq' => 'nav_elmt'
             ];
@@ -48,22 +48,22 @@ Class Header extends Controller
         if (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='gerant'){
 
         $pageName=[
-            'home' => 'Acceuil',
-            'seancesgerant' => 'Sceances',
+            'home' => 'Accueil',
+            'seancesgerant' => 'Séances',
             'cinemasalle' => 'Salles'
         ];
         }elseif (isset($_SESSION["username"]) && htmlspecialchars($_SESSION['type'])=='admin'){
 
             $pageName=[
-                'home' => 'Acceuil',
-                'adminusers' => 'utilisateurs',
+                'home' => 'Accueil',
+                'adminusers' => 'Utilisateurs',
                 'faq' => 'FAQ'
             ];
         }else{
 
             $pageName=[
-                'home' => 'Acceuil',
-                'seancesflorent' => 'Sceances',
+                'home' => 'Accueil',
+                'seancesflorent' => 'Séances',
                 'salles' => 'Salles'
             ];
         }
