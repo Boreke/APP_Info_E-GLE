@@ -41,8 +41,8 @@
                     <div class="popup-content">
                         <div class="haut">
                             <a class="close" onclick="closeDelPopup()">&times;</a>
-                            <h1>Entrez le numero de la salle à supprimer.</h1>
-                            
+                            <h1>Entrez le numero de la salle à supprimer. </h1>
+                            <h2>(attention cela supprimera les séances qui lui sont associées)</h2>
                         </div>
                         <form class="form_salle_del" id="form_salle_del" method="post" >
                             <select type="number" placeholder="numero de la salle" class="numero_salle_del" id="numero_salle_del" name="numero_salle_del">

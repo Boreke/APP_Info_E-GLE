@@ -12,6 +12,8 @@ h1 {
     
     display: flex;
 }
+
+
 /*section*/
 section.top {
     display: flex;
@@ -21,7 +23,7 @@ section.top {
 }
 section.bot{
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: center;
     padding: 20px;
 }
@@ -53,6 +55,8 @@ section.bot{
     flex: 1;
     text-align: left;
 }
+
+
 /*layout salle*/
 .disposition{
     align-self: left;
@@ -123,18 +127,175 @@ section.bot{
     box-shadow: 0 3px 10px rgba(255,255,255,0.7);
     
 }
+
+
 /*infos capteur*/
 .infos-capteur{
     color: #FFF;
     align-self: center;
     flex: 1;
 }
+
+
 /*infos seance*/
-.infos-seances{
+.header-seances{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.carrousel-command{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.date-container{
+    margin: 1rem;
+    width:40%;
+    position: relative;
+    overflow: hidden;
+}
+
+.seance-time{
+    color:white;
+    display: flex;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+    width: 100%;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    
+}
+.seance-time::-webkit-scrollbar { 
+    width: 0;
+    height: 0;
+}
+
+.date{
+    padding-right: 1vw;
+    padding-left: 1vw;
+    width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+}
+
+.nxt-btn-img,.pre-btn-img{
+    height: 4vh;
+    width:auto;
+}
+.nxt-btn-img{
+    transform: rotate(180deg);
+}
+#nxt-btn,
+#pre-btn {
+    background-color: transparent;
+    width: fit-content;
+}
+
+.infos-seances {
     color: #FFF;
-    margin-left:5vh;
-    margin-right:5vh;
-    text-align:justify;
+    display: flex;
+    flex-direction: row;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    text-align: justify;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    width: 40%;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    align-self: center;
+}
+
+.seances-container {
+    display: flex;
+    flex-direction: row;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.infos-seances, .seances-container {
+    overflow-x: auto;
+    display: flex;
+    scroll-behavior: smooth;
+}
+
+.seances-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+#seance {
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+}
+
+
+
+.img-film{
+    height: 25vh;
+    width: auto;
+    border: 1px solid rgb(136, 133, 133);
+    border-radius: 30px;  
+    margin-right: 3vw;
+
+}
+.synopsis{
+    width: 40vw;
+    font-size: 2vw;
+
+}
+
+.genre{
+    display: flex;
+}
+.genre-header{
+    color: grey;
+    font-size: 20px;
+}
+.genre-content{
+    font-size: 20px;
+    color: white;
+}
+
+.genre-duree{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+}
+
+.duree{
+    display: flex;
+    flex-direction: row;
+    margin-left: 3vw;
+    justify-self: center;
+    align-items: center;
+    flex:1;
+}
+.syn-header, .duree-header{
+    color: grey;
+    font-size: 20px;
+}
+.syn-content{
+    font-size: 17px;
+}
+
+.titre{
+    font-size: 23px;
 }
 
 @media(max-width:1060px){
