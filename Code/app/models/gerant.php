@@ -51,6 +51,9 @@ Class Gerant{
                         $minute = isset($_POST["minute"]) ? (int) $_POST["minute"] : 0;
                         $duration = $hour * 3600 + $minute * 60;
 
+                        $film_date = strtotime($_POST['film_release']);
+                        $formatted_date = date('Y-m-d', $film_date);
+
                         $cine_query = "SELECT * FROM cinema WHERE user_id_user = :user_id";
                         $arr["user_id"]=$_SESSION["user_id"];
                         $cinemaResult = $DB->read($cine_query,$arr);
@@ -64,9 +67,10 @@ Class Gerant{
                             'genre' => $_POST['genre'],
                             'id_cinema' => $cinema_id,
                             'image_file' => $target_file,
+                            'release' => $formatted_date
                             ];
 
-                            $query = " insert into film (titre, synopsis, duree, genre, id_cinema, image_file) values (:titre, :synopsis, :duree, :genre, :id_cinema, :image_file)";
+                            $query = " insert into film (titre, synopsis, duree, genre, id_cinema, image_file, date_sortie) values (:titre, :synopsis, :duree, :genre, :id_cinema, :image_file, :release)";
                             $result = $DB->write($query,$arr,false);
 
                             if (!$result) {
@@ -87,26 +91,113 @@ Class Gerant{
         
     }
 
-    function create_sceance($POST){
+    function create_sceance($POST) {
         $DB = new Database();
-        if (isset($_POST['form_type']) && $_POST['form_type'] ===  'create_screening') {
-
+        if (isset($_POST['form_type']) && $_POST['form_type'] === 'create_screening') {
             $film_date = strtotime($_POST['film_date']);
             $time = $_POST['time'];
             $formatted_date = date('Y-m-d', $film_date);
             $datetime = $formatted_date . ' ' . $time . ':00';
+    
+            $reserved = 0;
+    
+            $sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
+            $arr["user_id"] = $_SESSION["user_id"];
+            $cinemaResult = $DB->read($sqlRequest, $arr);
+            if ($cinemaResult) {
+                $cinema_id = $cinemaResult[0]->idcinema;
+    
+                if (isset($cinema_id)) {
+                    $arr2["cinema_id"] = $cinema_id;
+                    $salle_query = "SELECT distinct nbr_places FROM salle WHERE cinema_idcinema = :cinema_id";
+                    $salle_seats = $DB->read($salle_query, $arr2);
+                    $empty = $salle_seats[0]->nbr_places;
+    
+                    $check_query = "SELECT COUNT(*) AS existing_count FROM diffuser WHERE Film_id_film = :film_id AND salle_idsalle = :salle_id AND film_date = :date";
+                    $check_arr = [
+                        'film_id' => $_POST['film'],
+                        'salle_id' => $_POST['salle'],
+                        'date' => $datetime
+                    ];
+                    $existing = $DB->read($check_query, $check_arr);
+                    
+                    if ($existing[0]->existing_count == 0) {
+                        $arr3 = [
+                            'film_id' => $_POST['film'], 
+                            'salle_id' => $_POST['salle'], 
+                            'date' => $datetime,
+                            'reserved' => $reserved,
+                            'empty' => $empty
+                        ];
+    
+                        $query = "INSERT INTO diffuser (Film_id_film, salle_idsalle, film_date, nbr_places_rsv, nbr_places_disp) VALUES (:film_id, :salle_id, :date, :reserved, :empty)";
+                        $result = $DB->write($query, $arr3, false);
+    
+                        if ($result) {
+                            echo "Screening successfully created.";
+                        } else {
+                            echo "Failed to create screening.";
+                        }
+                    } else {
+                        echo "A screening for this film at the specified time and salle already exists.";
+                    }
+                }
+            }
+        }
+    }    
 
-            $arr3 = [
-                'film_id' => $_POST['film'], 
-                'salle_id' => $_POST['salle'], 
-                'date' => $datetime
-            ];
-        
-            $query = "insert into diffuser (Film_id_film, salle_idsalle, film_date) values (:film_id,:salle_id,:date)";
-            $result = $DB->write($query,$arr3,false);
-
+    function fetchAllSeances() {
+        $DB = new Database(); 
+        $today = date('Y-m-d H:i:s');
+        $query = "SELECT d.idseance, d.Film_id_film, d.salle_idsalle, d.film_date, f.titre, s.numero, d.nbr_places_disp FROM diffuser d
+                  JOIN film f ON d.Film_id_film = f.id_film
+                  JOIN salle s ON d.salle_idsalle = s.idsalle
+                  WHERE d.film_date >= :today
+                  ORDER BY d.film_date ASC";
+        $data = ['today' => $today];
+        $seances = $DB->read($query, $data);
+        return $seances; 
+    }
+    
+    function deleteSeance($id) {
+        $DB = new Database();
+        $query = "DELETE FROM diffuser WHERE idseance = :idseance";
+        $data = ['idseance' => $id];
+        if ($DB->write($query, $data)) {
+            echo "Seance removed successfully.";
+        } else {
+            echo "Failed to remove seance.";
         }
     }
+
+    function getSeanceById($id) {
+        $DB = new Database();
+        $query = "SELECT * FROM diffuser WHERE idseance = :idseance";
+        $data = ['idseance' => $id];
+        return $DB->read($query, $data);
+    }
+    
+    function updateSeance($POST) {
+        $DB = new Database();
+        $query = "UPDATE diffuser SET
+                  Film_id_film = :film_id,
+                  salle_idsalle = :salle_id,
+                  film_date = :film_date
+                  WHERE idseance = :idseance";
+        $arr = [
+            'film_id' => $POST['film'],
+            'salle_id' => $POST['salle'],
+            'film_date' => $POST['film_date'],
+            'idseance' => $POST['idseance']
+        ];
+    
+        if ($DB->write($query, $arr)) {
+            echo "Seance updated successfully.";
+        } else {
+            echo "Failed to update seance.";
+        }
+    }
+    
 
 }
 

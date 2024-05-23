@@ -1,59 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="stylesheet" href= "../app/public/css/calendar.css">
 <body>
-<?php 
-        require "../app/controllers/header.php";
-        $header= new Header();
-        $header->displayHeader();
-    ?>
+<?php
+require "../app/controllers/header.php";
+$header = new Header();
+$header->displayHeader();
 
-    <?php
-    $mysqli = require __DIR__ . "/database.php";
+require_once "../app/core/database.php"; 
+$db = new Database(); 
 
-    // Fetch movie details
-    $movieId = isset($_GET['id']) ? $_GET['id'] : 1; // Default to 1 if no ID is provided
-    $sql = "SELECT * FROM film WHERE id_film = $movieId";
-    $result = $mysqli->query($sql);
-    $mysqli = require __DIR__ . "/database.php";
+$movieId = isset($_GET['id']) ? $_GET['id'] : 1; 
+$query = "SELECT * FROM film WHERE id_film = ?";
+$movieDetails = $db->read($query, [$movieId]);
 
-    // Fetch movie details
-    $movieId = isset($_GET['id']) ? $_GET['id'] : 1; // Default to 1 if no ID is provided
-    $sql = "SELECT * FROM film WHERE id_film = $movieId";
-    $result = $mysqli->query($sql);
+if ($movieDetails) {
+    $movie = $movieDetails[0]; 
+    echo "<div class='movie-layout'>";
+    echo "<div class='movie-image'>";
+    echo "<img class='cinema-image' src='" .  htmlspecialchars($movie->image_file) . "' alt='Cinema Image'>";
+    echo "</div>";
+    echo "<div class='movie-info'>";
+    echo "<p class='movie-title'><strong></strong> " . htmlspecialchars($movie->titre) . "</p>";
+    echo "<div class='movie-genre-duration'>";
+    echo "<p><span class='movie-detail-label'><strong>Genre:</strong></span> " . htmlspecialchars($movie->genre) . "</p>";
+    echo "<p><span class='movie-detail-label'><strong>Durée:</strong></span> " . htmlspecialchars($movie->duree) . "</p>";
+    echo "</div>";
+    echo "<p><span class='movie-detail-label'><strong>Synopsis:</strong></span><br><br> " . htmlspecialchars($movie->synopsis) . "</p>";
+    echo "</div>";
+    echo "</div>";
+} else {
+    echo "<p>Movie not found.</p>";
+}
+?>
 
-    if ($result->num_rows > 0) {
-        $movie = $result->fetch_assoc();
-        echo "<div class='movie-details'>";
-        echo "<h1>" . htmlspecialchars($movie['titre']) . "</h1>";
-        echo "<p><strong>Genre:</strong> " . htmlspecialchars($movie['genre']) . "</p>";
-        echo "<p><strong>Duration:</strong> " . htmlspecialchars($movie['duree']) . "</p>";
-        echo "<p><strong>Synopsis:</strong> " . htmlspecialchars($movie['synopsis']) . "</p>";
-        echo "<img src='" . htmlspecialchars($movie['image_path']) . "' alt='Movie Image' style='max-width: 100%;'>";
-        echo "</div>";
-    } else {
-        echo "<p>Movie not found.</p>";
-    }
-    ?>
-    if ($result->num_rows > 0) {
-        $movie = $result->fetch_assoc();
-        echo "<div class='movie-details'>";
-        echo "<h1>" . htmlspecialchars($movie['titre']) . "</h1>";
-        echo "<p><strong>Genre:</strong> " . htmlspecialchars($movie['genre']) . "</p>";
-        echo "<p><strong>Duration:</strong> " . htmlspecialchars($movie['duree']) . "</p>";
-        echo "<p><strong>Synopsis:</strong> " . htmlspecialchars($movie['synopsis']) . "</p>";
-        echo "<img src='" . htmlspecialchars($movie['image_path']) . "' alt='Movie Image' style='max-width: 100%;'>";
-        echo "</div>";
-    } else {
-        echo "<p>Movie not found.</p>";
-    }
-    ?>
+
+<br><br><br>br><br><br>
+ 
+ 
     <div class="center-top">
-        <h2>Cinémas</h2>
-        <div class="barre-recherche">
-            <img src="<?=ASSETS?>img/Search.png" alt="Search">
-            <input type="search" placeholder="Rechercher un cinéma" class="zone-recherche">
-        </div>
+
     </div>
     <div class="container">
         <div class="calendar">

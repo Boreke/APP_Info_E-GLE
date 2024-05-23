@@ -5,6 +5,7 @@
     $header= new Header();
     $header->displayHeader();
 ?>
+
     <body>
 
     <section class="top">
@@ -34,21 +35,26 @@
     </section>
     <?php if(!empty($this->getSeance())):?>
     <section class="bot">
-        <dic class="header-seances">
-            <h1 class="seance-header">Séances:</h1>
-            <div class="carrousel-command">
-                <img src="<?=ASSETS?>img/arrow.png" alt="" id="pre-btn">
-                <div class="seance-time" id="seance-time">
-                <?php $this->showSeanceDate();?>
-                </div>
-                <img src="<?=ASSETS?>img/arrow.png" alt="" id="nxt-btn">
+        
+        <div class="infos-seances" id="infos-seances">
+            <div class="seances-container">
+                <?php $this->showSeance();?>
             </div>
         </div>
-        <div class="infos-seances" id="infos-seances">
-            <?php $this->showSeance();?>
-            
+        <div class="header-seances">
+            <h1 class="seance-header">Séances:</h1>
+            <div class="carrousel-command" id="carrousel-command">
+                <button id="pre-btn"><img src="<?=ASSETS?>img/arrow.png" alt="" class="pre-btn-img"></button>
+                <div class="date-container" id="date-container">
+                    <ul class="seance-time" id="seance-time">
+                    <?php $this->showSeanceDate();?>
+                    </ul>
+                </div>
+                <button id="nxt-btn"><img src="<?=ASSETS?>img/arrow.png" alt="" class="nxt-btn-img"></button>
+            </div>
         </div>
     </section>
     <?php endif;?>
 </body>
+<script src="<?=ASSETS?>js/carroussel.js"></script>
 <?= $this->view("footer")?>
