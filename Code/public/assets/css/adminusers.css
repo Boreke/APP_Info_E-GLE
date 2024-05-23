@@ -1,0 +1,88 @@
+* {
+    
+    color: #FFF;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto';
+    background-color: rgb(0, 0, 0);
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    gap: 2vw;
+}
+
+.nav {
+    background-color: #545454;
+    display: flex;
+    flex-direction: column;
+    padding: 41px;
+    gap: 3vh;
+    border-radius: 0px 40px 40px 0px;
+
+}
+
+.elmt_nav {
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+    padding: 20px 84px 20px 84px;
+    border-radius: 34px;
+    color: #000;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.elmt_nav:hover {
+    background-color: #868686;
+}
+
+.elmt1 {
+    background-color: #FFF;
+
+}
+
+li {
+    list-style: none;
+}
+ul {
+    display: flex;
+    background-color: #545454;
+    gap: 12vw;
+    border-radius: 34px;
+    padding: 20px 64px;
+}
+.liste {
+    background-color: #868686;
+}
+.elmt {
+    display: flex;
+    gap: 10vw;
+    padding: 20px 64px;
+    align-items: center;
+}
+
+.elmt2 {
+    background-color: #cfcfcf;
+}
+
+.supp_btn {
+    background-color: red;
+    padding: 15px;
+    padding-top: 30px;
+    border-radius: 20px;
+    align-self: center;
+}
+.supp_btn:hover {
+    background-color: rgb(255, 115, 115);
+}
+
