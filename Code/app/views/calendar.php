@@ -23,7 +23,14 @@ foreach ($seances as $seance) {
 }
 
 if ($movieDetails) {
-    $movie = $movieDetails[0]; 
+    $movie = $movieDetails[0];
+    $durationInSeconds = $movie->duree; // Duration in seconds
+    $hours = floor($durationInSeconds / 3600); // Convert seconds to hours
+    $minutes = floor(($durationInSeconds % 3600) / 60); // Remaining minutes
+
+    $formattedDuration = ($hours > 0 ? $hours . ' hour' . ($hours == 1 ? '' : 's') : '') . 
+                         ($minutes > 0 ? ' ' . $minutes . ' minute' . ($minutes == 1 ? '' : 's') : '');
+
     echo "<div class='movie-layout'>";
     echo "<div class='movie-image'>";
     echo "<img class='cinema-image' src='" .  htmlspecialchars($movie->image_file) . "' alt='Cinema Image'>";
@@ -32,7 +39,7 @@ if ($movieDetails) {
     echo "<p class='movie-title'>" . htmlspecialchars($movie->titre) . "</p>";
     echo "<div class='movie-genre-duration'>";
     echo "<p><strong>Genre:</strong> " . htmlspecialchars($movie->genre) . "</p>";
-    echo "<p><strong>Durée:</strong> " . htmlspecialchars($movie->duree) . " minutes</p>";
+    echo "<p><strong>Durée:</strong> " . $formattedDuration . "</p>";
     echo "</div>";
     echo "<p><strong>Synopsis:</strong><br>" . htmlspecialchars($movie->synopsis) . "</p>";
     echo "</div>";
