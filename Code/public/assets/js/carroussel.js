@@ -19,16 +19,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   nextButton.addEventListener("click", () => {
       const seanceWidth = seances[0].clientWidth;
-      const dateWidth= date[0].clientWidth;
-
+      
       seancesContainer.scrollLeft += seanceWidth;
-      dateList.scrollLeft += dateWidth;
+        if(date!=null){
+            const dateWidth= date[0].clientWidth;
+            dateList.scrollLeft += dateWidth;
+        }
   });
 
   prevButton.addEventListener("click", () => {
       const seanceWidth = seances[0].clientWidth;
-      const dateWidth= date[0].clientWidth;
+      
       seancesContainer.scrollLeft -= seanceWidth;
-      dateList.scrollLeft -= dateWidth;
+      if(date!=null){
+        const dateWidth= date[0].clientWidth;
+        dateList.scrollLeft -= dateWidth;
+    }
   });
 });
