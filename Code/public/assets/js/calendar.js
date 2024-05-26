@@ -3,18 +3,8 @@ const dates = document.querySelector(".dates");
 const navs = document.querySelectorAll("#prev, #next");
 
 const months = [
-  "January", 
-  "February", 
-  "March", 
-  "April", 
-  "May", 
-  "June",
-  "July", 
-  "August", 
-  "September", 
-  "October", 
-  "November", 
-  "December"
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
 ];
 
 let currentDate = new Date();
@@ -29,31 +19,44 @@ function renderCalendar() {
   let datesHtml = "";
 
   for (let i = startDay; i > 0; i--) {
-    datesHtml += `<li class="inactive"><div>${endDatePrev - i + 1}</div></li>`;
+    datesHtml += `<li class="inactive">${endDatePrev - i + 1}</li>`;
   }
 
   for (let i = 1; i <= endDate; i++) {
+    let dateFull = `${year}-${String(month+1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
     let className = i === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear() ? 'today' : '';
-    datesHtml += `<li class="${className}"><div class="date-link" data-day="${i}">${i}</div></li>`;
+    let seanceClass = seanceData[dateFull] ? 'seance' : '';
+    datesHtml += `<li class="${className} ${seanceClass}"><div class="date-link" data-day="${i}">${i}</div></li>`;
   }
 
   dates.innerHTML = datesHtml;
   header.textContent = `${months[month]} ${year}`;
 }
 
+function handleDayClick(day) {
+  let dateClicked = `${year}-${String(month+1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+  header.textContent = `${months[month]} ${year} - ${day}`;
+  var rectangleTitle = document.getElementById('rectangleTitle');
+  rectangleTitle.innerHTML = ''; 
+
+  if (seanceData[dateClicked]) {
+    let timeElement = document.createElement('div');
+    timeElement.className = 'time-block';
+    timeElement.textContent = seanceData[dateClicked].time; 
+    timeElement.onclick = function() { alert('You clicked the seance time!'); }; 
+    rectangleTitle.appendChild(timeElement);
+  } else {
+    rectangleTitle.textContent = "No seance";
+  }
+}
+
 dates.addEventListener("click", function(event) {
-  const target = event.target;
-  if (target.classList.contains('date-link')) {
+  const target = event.target.closest('.date-link');
+  if (target) {
     const day = target.dataset.day;
     handleDayClick(day);
   }
 });
-
-function handleDayClick(day) {
-  header.textContent = `${months[month]} ${year} - ${day}`;
-  var rectangleTitle = document.getElementById('rectangleTitle');
-  rectangleTitle.textContent = `${months[month]} ${day}, ${year}`;
-}
 
 navs.forEach((nav) => {
   nav.addEventListener("click", (e) => {
@@ -69,6 +72,4 @@ navs.forEach((nav) => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-  renderCalendar();
-});
+document.addEventListener("DOMContentLoaded", renderCalendar);
