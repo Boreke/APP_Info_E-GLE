@@ -24,9 +24,9 @@ foreach ($seances as $seance) {
 
 if ($movieDetails) {
     $movie = $movieDetails[0];
-    $durationInSeconds = $movie->duree; // Duration in seconds
-    $hours = floor($durationInSeconds / 3600); // Convert seconds to hours
-    $minutes = floor(($durationInSeconds % 3600) / 60); // Remaining minutes
+    $durationInSeconds = $movie->duree;
+    $hours = floor($durationInSeconds / 3600); 
+    $minutes = floor(($durationInSeconds % 3600) / 60); 
 
     $formattedDuration = ($hours > 0 ? $hours . ' hour' . ($hours == 1 ? '' : 's') : '') . 
                          ($minutes > 0 ? ' ' . $minutes . ' minute' . ($minutes == 1 ? '' : 's') : '');
