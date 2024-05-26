@@ -37,7 +37,7 @@ function handleDayClick(day) {
   let dateClicked = `${year}-${String(month+1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
   header.textContent = `${months[month]} ${year} - ${day}`;
   var rectangleTitle = document.getElementById('rectangleTitle');
-  rectangleTitle.innerHTML = ''; // Clear previous contents
+  rectangleTitle.innerHTML = ''; 
 
   if (seanceData[dateClicked]) {
     let timeElement = document.createElement('div');
