@@ -33,7 +33,7 @@
                         <img src="<?=ASSETS?>img/Drop Down.png" alt="" class="flechebas">
                     </div>
                     <div class="description">
-                        <p>En fonction de ta gentillesse </p>
+                        <p>Les prix sont fixés en fonction des coûts de production et de la demande. </p>
 
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <img src="<?=ASSETS?>img/Drop Down.png" alt="" class="flechebas">
                     </div>
                     <div class="description">
-                        <p> Surement </p>
+                        <p>Oui, vous pouvez précommander une séance sur notre site.</p>
 
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <img src="<?=ASSETS?>img/Drop Down.png" alt="" class="flechebas">
                     </div>
                     <div class="description">
-                        <p>OUI C EST LE BUT </p>
+                        <p>Vous pouvez réserver des billets sur notre site web en sélectionnant le film, l'horaire et le nombre de billets désirés. </p>
                     </div>
                 </div>
 
@@ -65,7 +65,7 @@
                         <img src="<?=ASSETS?>img/Drop Down.png" alt="" class="flechebas">
                     </div>
                     <div class="description">
-                        <p>Cartes </p>
+                        <p>Nous acceptons les paiements en ligne par carte de crédit ou de débit. </p>
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@
                         <img src="<?=ASSETS?>img/Drop Down.png" alt="" class="flechebas">
                     </div>
                     <div class="description">
-                        <p>Force à toi </p>
+                        <p>Oui, vous pouvez annuler ou modifier votre réservation selon nos conditions d'annulation. </p>
                     </div>
                 </div>
 
@@ -85,7 +85,7 @@
                         <img src="<?=ASSETS?>img/Drop Down.png" alt="" class="flechebas">
                     </div>
                     <div class="description">
-                        <p>OF COURSE</p>
+                        <p>Oui, vous pouvez choisir vos sièges lors de la réservation en ligne.</p>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                         <img src="<?=ASSETS?>img/Drop Down.png" alt="" class="flechebas">
                     </div>
                     <div class="description">
-                        <p>Non tu payes comme un brave </p>
+                        <p>Nous proposons des réductions pour les étudiants, les seniors et d'autres groupes spécifiques. Veuillez consulter notre site web pour les détails. </p>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
                         <img src="<?=ASSETS?>img/Drop Down.png" alt="" class="flechebas">
                     </div>
                     <div class="description">
-                        <p>Tu les imprimes </p>
+                        <p>Vous pouvez récupérer vos billets réservés en ligne au cinéma en présentant votre confirmation de réservation au guichet. </p>
                     </div>
                 </div>
             </body>

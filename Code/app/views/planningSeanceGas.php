@@ -54,10 +54,10 @@
 
 
         </section>
-
+        <br>
         <div class="but">
-            <!-- <label for="#R1"><img src="Search.png" id="img4"></label> -->
-            <br>
+            
+            
             <div id="R11">
                 RECHERCHER VOTRE CINEMA :
             </div> 
@@ -81,7 +81,7 @@
 
     <h1 id="horraire">Voici les horaires : </h1>
 
-    <br><br>
+    
 
     <section class="planning">
         <section id="sec1">

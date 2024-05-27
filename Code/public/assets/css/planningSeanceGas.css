@@ -17,7 +17,7 @@ main {
     color: white;
     height: auto;
     padding: 0 7vw 0 7vw;
-    gap: 6vw;
+    gap: 8vw;
     
 }
 .descriptiffilm{
@@ -110,14 +110,15 @@ main {
     /* padding-left: 40vw; */
     width: 30vw;
     border-radius: 20px;
-    padding-left: 3vw;
+    /* padding-left: 3vw; */
     font-size: 1.4vw;
+    /* margin-left: 10vw; */
     
 
 }
 
 #R11{
-    margin-left: 1vw;
+    /* margin-left: 10vw; */
     font-size: 1.4vw;
 }
 
@@ -126,8 +127,8 @@ main {
 .planning {
     display: grid;
     grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw 10vw;
-    gap: 3vw;
-    margin: 20vh 20vw 20vh 20vw;
+    /* gap: 3vw; */
+    margin: 5vh 15vw 5vh 15vw;
     border: 2px solid white;
     padding: 1vh 2vh 1vh 1vh;
 }
@@ -185,8 +186,9 @@ main {
 
 #horraire {
     color: white;
-    margin: 0 auto 0 7vw;
+    margin-left: 15vw;
     text-decoration: underline;
+    font-size: 2vw;
 }
 
 
@@ -338,10 +340,11 @@ footer {
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
 }
-
+/* 
 .but{
     margin-left: 7vw;
-}
+    width: auto;
+} */
 
 #b1{
     width: 20vw;
