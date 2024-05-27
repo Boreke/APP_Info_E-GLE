@@ -1,0 +1,132 @@
+* {
+    
+    color: #FFF;
+}
+.btn-salle{
+    font-family: 'Roboto';
+    text-decoration: none;
+    background-color: transparent;
+    color: black;
+    border-radius: 20px;
+    width: 80px;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+    transition: 200ms;
+    cursor: pointer;
+}
+body {
+    font-family: 'Roboto';
+    background-color: rgb(0, 0, 0);
+    margin: 0;
+}
+
+/*Center*/
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center-top {
+    margin: 10vh 2vh 10vh 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+}
+
+.barre-recherche {
+    display: flex;
+    align-items: center;
+    border-radius: 36px;
+    background: rgb(148, 148, 148);
+    max-width: 300px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 0 4px 0 4px;
+}
+
+.zone-recherche {
+    background-color:  rgb(148, 148, 148);
+    border: none;
+}
+
+.zone-recherche::placeholder {
+    color: rgb(39, 39, 39);
+}
+
+.zone-recherche:focus {
+    outline: none;
+}
+
+/*Cinémas*/
+.cinema-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+    margin-bottom: 10vh;
+    width: 57vw;
+}
+
+.cinema-elmt {
+    background-color: #202020;
+    border-radius: 27px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 60px;
+}
+
+.cinema-info {
+    display: flex;
+    margin: 0 2vw 0 2vw;
+    gap: 5vw;
+    object-fit: contain;
+}
+
+.cinema-elmt-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.objet-fit {
+    object-fit: contain;
+}
+
+.dropdown {
+    cursor: pointer;
+}
+
+.cinema-elmt-bot {
+    display: none;
+    column-gap: 5vw;
+    row-gap: 5vh;
+    flex-wrap: wrap;
+}
+.salle {
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    width: 80px;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+    transition: 200ms;
+    cursor: pointer;
+}
+
+.salle:hover {
+    background-color: rgb(175, 175, 175);
+}
+@media(max-width:1024px){
+    .cinema-info,.center-top{
+        flex-direction: column;
+    }
+}
+
+
+
+

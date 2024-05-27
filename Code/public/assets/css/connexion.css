@@ -1,0 +1,101 @@
+* {
+    color: white;
+}
+
+body {
+    background-color: black;
+    color: white;
+    background-image: url(../img/SoundWavesIMG.svg);
+    background-repeat: no-repeat;
+    background-position: top;
+    font-family: 'Roboto';
+}
+.container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 7vh;
+    
+}
+.connexion {
+    border-radius: 40px;
+    background: rgba(80, 80, 80, 0.81);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 25%;
+    padding: 5vw;
+    gap: 2vh;
+    backdrop-filter: blur(5px);
+}
+.topleft {
+    text-decoration: none;
+}
+
+.Logo_Nom {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 20px;
+}
+.Nom {
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+h2 {
+    font-size: 40px
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+.crétioncompte {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button {
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    width: 160px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 1px rgb(119, 119, 119));
+}
+button:hover {
+    background-color: #898989;
+}
+
+input {
+    color: #777;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 5px 15px;
+    border: 5px solid #818181;
+    background: rgba(217, 217, 217, 0.00);
+}
+
+.lienverscreation {
+    color: #8DDDFE;
+}
