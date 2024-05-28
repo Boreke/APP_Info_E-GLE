@@ -101,7 +101,7 @@ Class SalleInscrit extends Controller
 	function showSeanceDate(){
 		$seances=$this->getSeance();
 		foreach ($seances as $seance) {
-			echo '<li class="date" id="'.$seance->idseance.'">'.$seance->film_date.'</li>';
+			echo '<li class="date" id="'.$seance->idseance.'">'.date("F j, Y, g:i a", strtotime($seance->film_date)).'</li>';
 		}
 	}
 }

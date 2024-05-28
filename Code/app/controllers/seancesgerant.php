@@ -79,7 +79,7 @@ Class Seancesgerant extends Controller
 		$gerant = new Gerant();
 		$seances = $gerant->fetchAllSeances();  
 		if ($seances && count($seances) > 0) {
-			echo '<table border="1" style="width:100%; text-align:left;">';
+			echo '<table  >';
 			echo '<tr>';
 			echo '<th>Titre</th>';
 			echo '<th>Date et Horaires</th>';
@@ -99,10 +99,9 @@ Class Seancesgerant extends Controller
 				echo '<td>' . htmlspecialchars($seance->nbr_places_disp) . '</td>';
 
 				echo '<td>';
-
-				// Edit button
+				echo '<div class="table-btn">';
 				echo '<div id="section">';
-				echo 	'<button onclick="openPopupEdit(\'' . $popupID . '\')" id="' . $buttonID . '">Modifier la seance</button>';
+				echo 	'<button class ="btn-edit" onclick="openPopupEdit(\'' . $popupID . '\')" id="' . $buttonID . '"><img class="modify-img" src="'.ASSETS.'img/modifier.png" ></button>';
 				echo 	'<div id="' . $popupID . '" class="popup">';
 				echo		'<div class="popup-content">';
 				echo			'<span class="close" onclick="closePopupEdit(\'' . $popupID . '\')">&times;</span>';
@@ -123,19 +122,18 @@ Class Seancesgerant extends Controller
 
 				
 
-				// Remove button
 				echo '<form method="POST" onsubmit="return confirm(\'Êtes-vous sûr que vous voulez supprimer cette séance?\');">';
 				echo '<input type="hidden" name="idseance" value="' . $seance->idseance . '">';
-				echo '<input type="submit" name="deleteSeance" value="Supprimer" class="btn btn-remove">';
+				echo '<input type="submit" name="deleteSeance" class="btn-remove">';
 				echo '</form>';
 				echo '</td>';
-
+				echo '</div>';
 				echo '</tr>';
 
 			}
 			echo '</table>';
 		} else {
-			echo '<p>No upcoming seances available.</p>';
+			echo '<h2 class="no-seance">No upcoming seances available.</h2>';
 		}
 	}
 

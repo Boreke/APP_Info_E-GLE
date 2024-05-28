@@ -44,7 +44,7 @@
         </div>    
         <?php if (isset($_SESSION["username"])): ?>
             <div class="dropdown">
-                <button class="dropbtn" onclick="toggleDropdown()">Dropdown</button>
+                <button class="dropbtn" onclick="toggleDropdown()"><?=$_SESSION["username"]?></button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="<?=ROOT?>profil">Mon Profil</a>
                     <a href="#about">Sur Nous</a>

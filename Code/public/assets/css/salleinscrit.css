@@ -152,7 +152,7 @@ section.bot{
 
 .date-container{
     margin: 1rem;
-    width:40%;
+    width:27%;
     position: relative;
     overflow: hidden;
 }
@@ -187,6 +187,8 @@ section.bot{
 .nxt-btn-img,.pre-btn-img{
     height: 4vh;
     width:auto;
+    filter: none;
+    
 }
 .nxt-btn-img{
     transform: rotate(180deg);
@@ -195,6 +197,7 @@ section.bot{
 #pre-btn {
     background-color: transparent;
     width: fit-content;
+    border: none;
 }
 
 .infos-seances {
@@ -207,7 +210,7 @@ section.bot{
     align-items: center;
     justify-self: center;
     justify-content: center;
-    width: 40%;
+    width: 41%;
     position: relative;
     overflow: hidden;
     flex: 1;
@@ -221,7 +224,8 @@ section.bot{
     -ms-overflow-style: none;
     overflow: scroll;
     scroll-behavior: smooth;
-    width: 100%;
+    
+    width: fit-content;
 }
 
 .infos-seances, .seances-container {
@@ -292,6 +296,7 @@ section.bot{
 }
 .syn-content{
     font-size: 17px;
+    width: 95%;
 }
 
 .titre{

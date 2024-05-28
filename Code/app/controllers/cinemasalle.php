@@ -208,14 +208,14 @@ Class cinemasalle extends Controller {
 						</div>
 					</div>
 					<div class="syn-date">
-						<div class="synopsis">
+						<div class="headers-syn-date">
 							<h3 class="syn-header">Synopsis : </h3>
-							<p class="syn-content">'.$film[0]->synopsis.'</p>
-						</div>
-						<div class="date">
 							<h3 class="date-header">Date : </h3>
-							<h3>&nbsp'.$seance->film_date.'</h3>
-						</div>
+							<h3>&nbsp'.date("F j, Y, g:i a", strtotime($seance->film_date)).'</h3>
+							</div>
+							<p class="syn-content">'.$film[0]->synopsis.'</p>
+							
+						
 					</div>
 				</div>
 			</div>';

@@ -199,31 +199,36 @@ nav {
 }
 
 .dropbtn {
-    background-color: #3498db;
-    color: white;
+    background-color: white;
+    color: black;
+    font-family: Roboto;
+    font-size: 20px;
+    border-radius: 20rem;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    font-weight: 600;
 }
 
-/* Container needed to position the dropdown content */
+
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Dropdown content (hidden by default) */
+
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
+    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    
 }
 
-/* Links inside the dropdown */
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -231,8 +236,8 @@ nav {
     display: block;
 }
 
-/* Change color of dropdown links on hover */
+
 .dropdown-content a:hover {background-color: #ddd;}
 
-/* Show the dropdown menu on button click */
+
 .show {display: block;}
