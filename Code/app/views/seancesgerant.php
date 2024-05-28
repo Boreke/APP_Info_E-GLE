@@ -16,11 +16,11 @@
                     <input type="hidden" name="form_type" value="add_film">
                     <div class="titre-div">
                         <label for="titre">Titre du film:</label>
-                        <input type="Titre" placeholder="Titre" class="id" id="titre" name="titre">
+                        <input type="text" placeholder="Titre" class="id" id="titre" name="titre">
                     </div>
                     <div class="syn-div">
                         <label for="synopsis">Synopsis du film:</label>
-                        <input type="Synopsis" placeholder="Synopsis" class="id" id="synopsis" name="synopsis">
+                        <input type="text" placeholder="Synopsis" class="id" id="synopsis" name="synopsis">
                     </div>
                     <div class="hour-div">
                         Durée:
@@ -40,7 +40,7 @@
                     </div>
                     <div class="genre-div">
                         <label for="genre">Genre du film:</label>
-                        <input type="Genre" placeholder="Genre" class="id" id="genre" name="genre">
+                        <input type="text" placeholder="Genre" class="id" id="genre" name="genre">
                     </div>
                     <div class="img-div">
                         <label for="image">Image:</label>

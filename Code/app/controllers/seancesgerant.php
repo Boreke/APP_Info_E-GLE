@@ -105,7 +105,7 @@ Class Seancesgerant extends Controller
 				echo 	'<div id="' . $popupID . '" class="popup">';
 				echo		'<div class="popup-content">';
 				echo			'<span class="close" onclick="closePopupEdit(\'' . $popupID . '\')">&times;</span>';
-				echo			'<form method="POST">';
+				echo			'<form class="form" method="POST">';
 				echo 				'<input type="hidden" name="idseance" value="' . $seance->idseance . '">';
 				echo 				'<label for="film_date">Date et Horaire:</label>';
 				echo 				'<input type="datetime-local" name="film_date" value="' . htmlspecialchars(date('Y-m-d\TH:i', strtotime($seance->film_date))) . '" required>';
@@ -113,7 +113,7 @@ Class Seancesgerant extends Controller
 				echo 				'<input type="text" name="film" value="' . htmlspecialchars($seance->Film_id_film) . '" required>';
 				echo 				'<label for="salle">Salle:</label>';
 				echo 				'<input type="text" name="salle" value="' . htmlspecialchars($seance->salle_idsalle) . '" required>';
-				echo 				'<input type="submit" name="editSeance" value="Modifier" class="btn btn-edit">';
+				echo 				'<input type="submit" name="editSeance" value="Modifier" class="submit-edit">';
 				echo			'</form>';
 				echo		'</div>';                  
 				echo	'</div>';

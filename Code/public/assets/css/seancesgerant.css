@@ -43,6 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    
 }
   
 .close {
@@ -50,6 +51,8 @@ body {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    align-self: flex-start;
+    flex: 1;
 }
   
 .close:hover, .close:focus {
@@ -99,7 +102,7 @@ tr:nth-child(even) {
     
 }
 
-.film-btn, .seance-btn,#b1 {
+.film-btn, .seance-btn,#b1,.submit-edit {
     background-color: white;
     color: black;
     font-family: Roboto;
@@ -113,7 +116,7 @@ tr:nth-child(even) {
     margin-bottom: 3vh;
     margin-top: 3vh;
 }
-#b1{
+#b1,.submit-edit{
     padding: 10px;
 }
 
@@ -178,7 +181,7 @@ tr:nth-child(even) {
     margin-top: 0.5vh;
     margin-bottom: 0.5vh;
 }
-.id,#hour,#minute,#salle,#film{
+input[type="text"],#hour,#minute,#salle,#film{
     color: #777;
     font-family: Roboto;
     font-size: 18px;
@@ -235,24 +238,24 @@ select::-ms-expand {
 select option{
     background-color: black;
 }
-input[type="date"]::-webkit-clear-button {
+input[type="date"]::-webkit-clear-button,input[type="datetime-local"]::-webkit-clear-button {
     display: none;
 }
 
 
-input[type="date"]::-webkit-inner-spin-button { 
+input[type="date"]::-webkit-inner-spin-button,input[type="datetime-local"]::-webkit-inner-spin-button { 
     display: none;
 }
 
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator,input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     color: #777;
     background-color: #777;
     border-radius: 5px;
 }
 
 
-input[type="date"] {
+input[type="date"],input[type="datetime-local"] {
     appearance: none;
     -webkit-appearance: none;
     color: #777;
