@@ -28,7 +28,7 @@ if ($movieDetails) {
     $hours = floor($durationInSeconds / 3600); 
     $minutes = floor(($durationInSeconds % 3600) / 60); 
 
-    $formattedDuration = ($hours > 0 ? $hours . ' hour' . ($hours == 1 ? '' : 's') : '') . 
+    $formattedDuration = ($hours > 0 ? $hours . ' heure' . ($hours == 1 ? '' : 's') : '') . 
                          ($minutes > 0 ? ' ' . $minutes . ' minute' . ($minutes == 1 ? '' : 's') : '');
 
     echo "<div class='movie-layout'>";
@@ -72,11 +72,70 @@ if ($movieDetails) {
         </section>
     </div>
     <div class="rectangle">
-        <h1 id="rectangleTitle"></h1>
+        <h1 id="rectangleTitle" onclick="showReservation()"></h1>
+    </div>
+</div>
+<div id="festival-popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="hideReservation()">&times;</span>
+        <h1>RÉSERVATION :</h1>
+        <div class="popup-body">
+            <label for="seatCount">Nombre de places:</label>
+            <input type="number" id="seatCount" name="seatCount" min="1">
+        </div>
+        <br><br>
+        <div class="popup-footer">
+            <button type="submit" onclick="reserveSeats()">Réserver</button>
+        </div>
+    </div>
+</div>
+<div id="payment-popup" class="popup" style="display:none;">
+    <div class="popup-content">
+        <span class="close" onclick="hidePaymentPopup()">&times;</span>
+        <h1>Paiement</h1>
+        <div class="popup-body">
+            <label for="cardNumber">Numéro de carte:</label>
+            <br>
+            <input type="text" id="cardNumber" name="cardNumber">
+            <br>
+            <label for="expiryDate">Date d'expiration:</label>
+            <br>
+            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
+            <br>
+            <label for="cvv">CVV:</label>
+            <br>
+            <input type="text" id="cvv" name="cvv">
+        </div>
+        <div class="popup-footer">
+            <button type="button" onclick="processPayment()">Payer</button>
+        </div>
     </div>
 </div>
 <script>
-    const seanceData = <?= json_encode($seanceData); ?>;
+function showReservation() {
+    document.getElementById("festival-popup").style.display = "block";
+}
+
+function hideReservation() {
+    document.getElementById("festival-popup").style.display = "none";
+}
+
+function reserveSeats() {
+    document.getElementById('festival-popup').style.display = 'none'; 
+    document.getElementById('payment-popup').style.display = 'block'; 
+}
+
+function hidePaymentPopup() {
+    document.getElementById('payment-popup').style.display = 'none';
+}
+
+function processPayment() {
+    console.log('Processing payment...');
+    alert('Paiment validé!');  
+    hidePaymentPopup();
+}
+
+const seanceData = <?= json_encode($seanceData); ?>;
 </script>
 <script src="<?=ASSETS?>js/calendar.js" defer></script>
 </body>

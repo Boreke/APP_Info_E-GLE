@@ -43,7 +43,6 @@ function handleDayClick(day) {
     let timeElement = document.createElement('div');
     timeElement.className = 'time-block';
     timeElement.textContent = seanceData[dateClicked].time; 
-    timeElement.onclick = function() { alert('You clicked the seance time!'); }; 
     rectangleTitle.appendChild(timeElement);
   } else {
     rectangleTitle.textContent = "No seance";
