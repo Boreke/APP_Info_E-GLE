@@ -121,8 +121,8 @@ function hideReservation() {
 }
 
 function reserveSeats() {
-    document.getElementById('festival-popup').style.display = 'none';  // Hide the reservation popup
-    document.getElementById('payment-popup').style.display = 'block';  // Show the payment popup
+    document.getElementById('festival-popup').style.display = 'none'; 
+    document.getElementById('payment-popup').style.display = 'block'; 
 }
 
 function hidePaymentPopup() {
