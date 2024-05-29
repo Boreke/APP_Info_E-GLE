@@ -22,6 +22,9 @@ Class Seancesgerant extends Controller
 			if (isset($_POST['deleteSeance'])) {
 				$gerant->deleteSeance($_POST['idseance']);
 			}
+			if (isset($_POST['genre'])) {
+				$gerant->updateFilm($_POST);
+			}
 
 			
 		}
@@ -133,7 +136,63 @@ Class Seancesgerant extends Controller
 			}
 			echo '</table>';
 		} else {
-			echo '<h2 class="no-seance">No upcoming seances available.</h2>';
+			echo '<h2 class="no-seance">Aucune séance à venir.</h2>';
+		}
+	}
+	function displayFilms() {
+		$gerant = new Gerant();
+		$films = $gerant->fetchAllFilms();  
+		if ($films && count($films) > 0) {
+			echo '<table  >';
+			echo '<tr>';
+			echo '<th>Titre</th>';
+			echo '<th>Date de sortie</th>';
+			echo '<th>genre</th>';
+			echo '</tr>';
+	
+			foreach ($films as $film) {
+				$popupID = "popupEdit" . $film->id_film;
+				$buttonID = "buttonEdit" . $film->id_film;
+
+				echo '<tr>';
+
+				echo '<td>' . htmlspecialchars($film->titre) . '</td>';
+				echo '<td>' . htmlspecialchars(date("F j, Y, g:i a", strtotime($film->date_sortie))) . '</td>';
+				echo '<td>' . htmlspecialchars($film->genre) . '</td>';
+
+				echo '<td>';
+				echo '<div class="table-btn">';
+				echo 	'<button class ="btn-edit" onclick="openPopupEdit(\'' . $popupID . '\')" id="' . $buttonID . '"><img class="modify-img" src="'.ASSETS.'img/modifier.png" ></button>';
+				echo 	'<div id="' . $popupID . '" class="popup">';
+				echo		'<div class="popup-content">';
+				echo			'<span class="close" onclick="closePopupEdit(\'' . $popupID . '\')">&times;</span>';
+				echo			'<form class="form" method="POST">';
+				echo 				'<input type="hidden" name="idfilm" value="' . $film->id_film . '">';
+				echo 				'<label for="film_date">Date de sortie:</label>';
+				echo 				'<input type="date" name="film_date" value="' . htmlspecialchars(date('Y-m-d', strtotime($film->date_sortie))) . '" required>';
+				echo 				'<label for="genre">Genre:</label>';
+				echo 				'<input type="text" name="genre" value="' . htmlspecialchars($film->genre) . '" required>';
+				echo 				'<input type="submit" name="editfilm" value="Modifier" class="submit-edit">';
+				echo			'</form>';
+				echo		'</div>';                  
+				echo	'</div>';
+				echo	'<script src="<?=ASSETS?>js/popupsceancegerant.js"></script>';
+
+
+				
+
+				echo '<form method="POST" onsubmit="return confirm(\'Êtes-vous sûr que vous voulez supprimer ce film?\');">';
+				echo '<input type="hidden" name="idfilm" value="' . $film->id_film . '">';
+				echo '<input type="submit" name="deletefilm" class="btn-remove">';
+				echo '</form>';
+				echo '</td>';
+				echo '</div>';
+				echo '</tr>';
+
+			}
+			echo '</table>';
+		} else {
+			echo '<h2 class="no-film">Vous n\'avez aucun film pour l\'instant.</h2>';
 		}
 	}
 

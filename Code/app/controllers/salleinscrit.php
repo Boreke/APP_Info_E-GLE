@@ -37,7 +37,7 @@ Class SalleInscrit extends Controller
 			$arr['idfilm']=$seance->Film_id_film;
 			$film=$DB->read($query, $arr);
 			$dureeH=intval($film[0]->duree/3600);
-			$dureeM=fmod($film[0]->duree,3600);
+			$dureeM=intval(fmod($film[0]->duree,3600)/60);
 			
 			echo'
 			<div class="seance">

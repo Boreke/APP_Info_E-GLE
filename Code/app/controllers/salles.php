@@ -32,14 +32,14 @@ Class Salles extends Controller
 									echo'</div>
 								</div>
 								<img class="dropdown" src="'.ASSETS.'img/Drop Down.png" alt="">
-							</div>
+			</div>
 							<div class="cinema-elmt-bot">';
 							foreach($salles[$cinema->idcinema] as $salle){
 								$url = ROOT . 'salleinscrit?salle_id=' . $salle->idsalle;
 								echo '<div  class="salle"><a class="btn-salle" href="'.$url.'">Salle '. $salle->numero.'</a></div>';
 							}
 						}
-							echo '</div></div>';
+			echo '</div></div>';
 			
 		}
 	}

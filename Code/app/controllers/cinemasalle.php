@@ -171,8 +171,8 @@ Class cinemasalle extends Controller {
 	function getSeance(){
 		$DB = new Database();
 		$salles=$this->getExistingSalles();
-		
-		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle";
+		$arr['today']=date('Y-m-d H:i:s');
+		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today";
 		foreach($salles as $salle){
 			$arr['idsalle'] = $salle->idsalle;
 			$seances[$salle->idsalle]=$DB->read($query, $arr);
@@ -187,7 +187,7 @@ Class cinemasalle extends Controller {
 		$arr['idfilm']=$seance->Film_id_film;
 		$film=$DB->read($query, $arr);
 		$dureeH=intval($film[0]->duree/3600);
-		$dureeM=fmod($film[0]->duree,3600);
+		$dureeM=intval(fmod($film[0]->duree,3600)/60);
 		echo'<div class="seance">
 				<div class="descriptiffilm">
 					<img src="'.$film[0]->image_file.'" class="img-film">
