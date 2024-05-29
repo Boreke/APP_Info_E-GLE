@@ -193,6 +193,13 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     background-color: #a0a0a0;
 }
 
+.table-container {
+    width: fit-content;
+    height: 34vh;
+    overflow-y: auto;
+    
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -218,6 +225,21 @@ tr:nth-child(even) {
     background-color: black;
     
 }
+thead th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+thead{
+    display: table;
+    width: 60%;
+    table-layout: fixed;
+}
+
 
 .film-btn, .seance-btn,#b1,.submit-edit {
     background-color: white;

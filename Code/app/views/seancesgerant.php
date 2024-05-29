@@ -58,9 +58,9 @@
                 </div>
                 <script src="<?=ASSETS?>js/popupsceancegerant.js"></script>
             </div>
-            
-            <?php $this -> displayFilms(); ?>
-            
+            <div class="table-container">
+                <?php $this -> displayFilms(); ?>
+            </div>
         </div>
 
         
@@ -97,7 +97,9 @@
                 </div>
                 <script src="<?=ASSETS?>js/popupsceancegerant.js"></script>
             </div>
-            <?php $this -> displaySeances(); ?>
+            <div class="table-container">
+                <?php $this -> displaySeances(); ?>
+            </div>
 
         </div>
     </div>                
