@@ -28,7 +28,7 @@ if ($movieDetails) {
     $hours = floor($durationInSeconds / 3600); 
     $minutes = floor(($durationInSeconds % 3600) / 60); 
 
-    $formattedDuration = ($hours > 0 ? $hours . ' hour' . ($hours == 1 ? '' : 's') : '') . 
+    $formattedDuration = ($hours > 0 ? $hours . ' heure' . ($hours == 1 ? '' : 's') : '') . 
                          ($minutes > 0 ? ' ' . $minutes . ' minute' . ($minutes == 1 ? '' : 's') : '');
 
     echo "<div class='movie-layout'>";
@@ -78,7 +78,7 @@ if ($movieDetails) {
 <div id="festival-popup" class="popup">
     <div class="popup-content">
         <span class="close" onclick="hideReservation()">&times;</span>
-        <h1>RÉSERVATION : </h1>
+        <h1>RÉSERVATION :</h1>
         <div class="popup-body">
             <label for="seatCount">Nombre de places:</label>
             <input type="number" id="seatCount" name="seatCount" min="1">
@@ -121,7 +121,8 @@ function hideReservation() {
 }
 
 function reserveSeats() {
-    document.getElementById('payment-popup').style.display = 'block';
+    document.getElementById('festival-popup').style.display = 'none';  // Hide the reservation popup
+    document.getElementById('payment-popup').style.display = 'block';  // Show the payment popup
 }
 
 function hidePaymentPopup() {
@@ -130,7 +131,7 @@ function hidePaymentPopup() {
 
 function processPayment() {
     console.log('Processing payment...');
-    alert('Paiment validé!');  // Replace this with actual payment processing logic
+    alert('Paiment validé!');  
     hidePaymentPopup();
 }
 
