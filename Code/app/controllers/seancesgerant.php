@@ -157,7 +157,9 @@ Class Seancesgerant extends Controller
 				echo '<tr>';
 
 				echo '<td>' . htmlspecialchars($film->titre) . '</td>';
+
 				echo '<td>' . htmlspecialchars(date("F j, Y, g:i a", strtotime($film->date_sortie))) . '</td>';
+
 				echo '<td>' . htmlspecialchars($film->genre) . '</td>';
 
 				echo '<td>';
@@ -177,18 +179,15 @@ Class Seancesgerant extends Controller
 				echo		'</div>';                  
 				echo	'</div>';
 				echo	'<script src="<?=ASSETS?>js/popupsceancegerant.js"></script>';
-
-
-				
-
 				echo '<form method="POST" onsubmit="return confirm(\'Êtes-vous sûr que vous voulez supprimer ce film?\');">';
 				echo '<input type="hidden" name="idfilm" value="' . $film->id_film . '">';
 				echo '<input type="submit" name="deletefilm" class="btn-remove">';
 				echo '</form>';
 				echo '</td>';
-				echo '</div>';
-				echo '</tr>';
 
+				echo '</div>';
+
+				echo '</tr>';
 			}
 			echo '</table>';
 		} else {
