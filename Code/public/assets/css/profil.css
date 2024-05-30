@@ -40,8 +40,11 @@ input[type="text"],input[type="email"],input[type="password"]{
 .tabcontent {
     display: none;
     color:white;
-    padding: 20px;
-    
+    background-color: #141414;
+    padding: 15px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    border-radius: 5px;
     border-top: none;
 }
 

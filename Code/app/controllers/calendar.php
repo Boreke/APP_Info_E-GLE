@@ -141,7 +141,7 @@ Class Calendar extends Controller
 			}
 			echo "success";
 		}else{
-			$_SESSION['error-message']="veuillez vous connecter."
+			$_SESSION['error-message']="veuillez vous connecter.";
 		}
 	}
 

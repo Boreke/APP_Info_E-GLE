@@ -10,7 +10,6 @@ $header->displayHeader();
 
 <?php $this->showMovieData();?>
 
-<div class="center-top"></div>
 <div class="container">
     <div class="calendar">
         <header>
@@ -71,7 +70,7 @@ $header->displayHeader();
 <script>
 
 const root="<?php echo ROOT;?>";
-console.log(root);
+
 const seanceData = <?= json_encode($data['seanceData']); ?>;
 </script>
 <script src="<?=ASSETS?>js/calendar.js" defer></script>

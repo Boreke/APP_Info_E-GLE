@@ -11,7 +11,9 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
-
+p{
+  text-align: justify;
+}
 h1 {
   font-weight: 600;
   text-align: center;
@@ -226,7 +228,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 300px; 
   transform: scale(0.8); 
   transform-origin: top center;
 }
@@ -234,14 +235,13 @@ button:hover {
   position:relative;
   width: 100%;
   max-width: 500px;
-  height: 590px;
+  height: 580px;
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 300px;
   transform: scale(0.8);
   transform-origin: top center;
 }
@@ -504,10 +504,11 @@ footer {
 }
 
 .cinema-image {
-  height: 400px;
+  height: 600px;
   width: auto;
   object-fit: contain; 
   margin: auto; 
+  margin-right: 3.5vw;
   border-radius: 40px;
   border: 5px solid #5b5b5b;
 }

@@ -11,6 +11,7 @@ let currentDate = new Date();
 let month = currentDate.getMonth();
 let year = currentDate.getFullYear();
 var seanceId;
+
 function renderCalendar() {
   const startDay = new Date(year, month, 1).getDay();
   const endDate = new Date(year, month + 1, 0).getDate();
@@ -61,8 +62,10 @@ function handleDayClick(day) {
 
 dates.addEventListener("click", function(event) {
   const target = event.target.closest('.date-link');
+  
   if (target) {
     const day = target.dataset.day;
+    console.log(day);
     handleDayClick(day);
   }
 });
