@@ -2,9 +2,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Scéance</title>
-    <link rel="stylesheet" href="<?=$data['CSS']?>">
+    
     <link rel="stylesheet" href="<?=ASSETS?>css/header.css">
     <link rel="stylesheet" href="<?=ASSETS?>css/footer.css">
+    <link rel="stylesheet" href="<?=$data['CSS']?>">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="icon" type="image/png" href="<?=ASSETS?>img/Falcon (1).png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
