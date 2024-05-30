@@ -113,30 +113,36 @@ Class Calendar extends Controller
 		}
 	}
 	function checkPayment(){
-		$idseance = $_POST['idSeanceClicked'];
-		$formData=[
-			'cardNumber' => $_POST['cardNumber'],
-			'cvc' => $_POST['cvc'],
-			'expiryDate' => $_POST['expiryDate'],
-			'owner' => $_POST['owner']
-		];
-		
-		if(!is_numeric($formData['cardNumber'])||strlen($formData['cardNumber'])!=16){
-			$_SESSION['error-message']="numero de carte invalide";
-		}elseif (!is_numeric($formData['cvc'])||strlen($formData['cvc'])!=3) {
-			$_SESSION['error-message']="cvc invalide";
-		}elseif(preg_match_all("/\W/", $formData['owner'])){
-			$_SESSION['error-message']="nom invalide";
-		}else{
-			// Assuming reserver() function sets a session message upon success
-			$this->reserver($_POST['seatCount'], $idseance);
-			if (isset($_SESSION['error-message'])) {
-			echo $_SESSION['error-message']; // Return error message
-			} else {
-			echo "success"; // Return success
+		$user=$this->loadmodel('user');
+
+		if($user->check_logged_in()){
+			$idseance = $_POST['idSeanceClicked'];
+			$formData=[
+				'cardNumber' => $_POST['cardNumber'],
+				'cvc' => $_POST['cvc'],
+				'expiryDate' => $_POST['expiryDate'],
+				'owner' => $_POST['owner']
+			];
+			
+			if(!is_numeric($formData['cardNumber'])||strlen($formData['cardNumber'])!=16){
+				$_SESSION['error-message']="numero de carte invalide";
+			}elseif (!is_numeric($formData['cvc'])||strlen($formData['cvc'])!=3) {
+				$_SESSION['error-message']="cvc invalide";
+			}elseif(preg_match_all("/\W/", $formData['owner'])){
+				$_SESSION['error-message']="nom invalide";
+			}else{
+				// Assuming reserver() function sets a session message upon success
+				$this->reserver($_POST['seatCount'], $idseance);
+				if (isset($_SESSION['error-message'])) {
+				echo $_SESSION['error-message']; // Return error message
+				} else {
+				echo "success"; // Return success
+				}
 			}
+			echo "success";
+		}else{
+			$_SESSION['error-message']="veuillez vous connecter."
 		}
-		echo "success";
 	}
 
 
