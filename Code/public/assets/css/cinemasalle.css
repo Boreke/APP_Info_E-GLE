@@ -98,7 +98,7 @@ h2{
 }
 
 /*seance*/
-.infos-seances{
+#seance{
     color: #FFF;
     display: flex;
     flex-direction: row;
@@ -110,6 +110,48 @@ h2{
     flex:1;
 }
 
+.infos-seances {
+    color: #FFF;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    width:60%;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.seances-container {
+    display: flex;
+    flex-direction: row;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.infos-seances, .seances-container {
+    overflow-x: auto;
+    display: flex;
+    scroll-behavior: smooth;
+}
+
+.seances-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.seance {
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+}
 
 .img-film{
     height: 25vh;
@@ -121,11 +163,7 @@ h2{
     border-radius: 30px;  
 
 }
-.synopsis{
-    width: 40vw;
-    font-size: 2vw;
 
-}
 
 .genre{
     display: flex;
@@ -139,21 +177,49 @@ h2{
     color: white;
 }
 
-.genre-duree{
-    display: flex;
-    flex-direction: row;
-    
-    justify-content: space-between;
-}
+
 
 .duree{
     display: flex;
     flex-direction: row;
-    padding-right: 13vw;
+    align-items: center;
+    margin-left:4vw;
 }
-.syn-header, .duree-header{
+.nxt-btn-img,.pre-btn-img{
+    height: 4vh;
+    width:auto;
+}
+.nxt-btn-img{
+    transform: rotate(180deg);
+}
+#nxt-btn,
+#pre-btn {
+    background-color: transparent;
+    width: fit-content;
+    filter: none;
+    border: none;
+}
+
+.date{
+    margin-left: 5.5vw;
+}
+
+.syn-date{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.genre-duree, .headers-syn-date{
+    display: flex;
+    flex-direction: row;
+}
+.syn-header, .duree-header, .date-header{
     color: grey;
     font-size: 20px;
+}
+.syn-header{
+    margin-right: 4vw;
 }
 .syn-content{
     font-size: 17px;
@@ -172,7 +238,7 @@ h2{
 .salle-bot{
     display: flex;
     align-items: center;
-    color: red;
+    color: white;
     display: none;
     margin-left: 50px;
 }

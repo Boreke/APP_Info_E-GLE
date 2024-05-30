@@ -25,35 +25,35 @@
 <script src="<?=ASSETS?>js/index.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    // Select all cinema elements
-    const cinemaElements = document.querySelectorAll('.cinema-elmt');
 
-    // Loop through each cinema element
-    cinemaElements.forEach(function(cinemaElement) {
-        // Find elements within the current cinema element
+    document.querySelectorAll('.cinema-elmt').forEach(function(cinemaElement) {
+
         const dropdownImage = cinemaElement.querySelector('.dropdown');
         const cinemaBotElement = cinemaElement.querySelector('.cinema-elmt-bot');
 
-        let isCinemaBotVisible = false; // Track initial state
+        if (dropdownImage && cinemaBotElement) {
+            let isCinemaBotVisible = false;
 
-        // Add click event listener to dropdown image
-        dropdownImage.addEventListener('click', function() {
-            // Toggle visibility of cinema-elmt-bot for the current cinema element
-            if (isCinemaBotVisible) {
-                cinemaBotElement.style.display = 'none';
-                cinemaElement.style.backgroundColor = '#202020'; // Change background color
-            } else {
-                cinemaBotElement.style.display = 'flex';
-                cinemaElement.style.backgroundColor = '#4d4d4d'; // Change background color
-            }
+            cinemaBotElement.style.display = 'none';
 
-            // Toggle state for the current cinema element
-            isCinemaBotVisible = !isCinemaBotVisible;
+            dropdownImage.addEventListener('click', function() {
 
-            // Rotate the dropdown image by 90 degrees
-            dropdownImage.style.transform = isCinemaBotVisible ? 'rotate(-90deg)' : 'rotate(0deg)';
-        });
+                if (isCinemaBotVisible) {
+                    cinemaBotElement.style.display = 'none';
+                } else {
+                    cinemaBotElement.style.display = 'flex';
+                }
+                isCinemaBotVisible = !isCinemaBotVisible;
+
+                dropdownImage.style.transform = isCinemaBotVisible ? 'rotate(-90deg)' : 'rotate(0deg)';
+            });
+        } else {
+
+            console.warn('Dropdown or cinema bottom element not found for one of the cinema elements.');
+        }
     });
 });
+
+
 </script>
 </html>

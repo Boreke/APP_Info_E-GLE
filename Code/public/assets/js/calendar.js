@@ -35,6 +35,7 @@ function renderCalendar() {
 
 function handleDayClick(day) {
   let dateClicked = `${year}-${String(month+1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+  console.log(dateClicked);
   header.textContent = `${months[month]} ${year} - ${day}`;
   var rectangleTitle = document.getElementById('rectangleTitle');
   rectangleTitle.innerHTML = ''; 
@@ -43,11 +44,13 @@ function handleDayClick(day) {
     let timeElement = document.createElement('div');
     timeElement.className = 'time-block';
     timeElement.textContent = seanceData[dateClicked].time; 
-    timeElement.onclick = function() { alert('You clicked the seance time!'); }; 
     rectangleTitle.appendChild(timeElement);
+    
+    
   } else {
     rectangleTitle.textContent = "No seance";
   }
+  
 }
 
 dates.addEventListener("click", function(event) {
@@ -73,3 +76,23 @@ navs.forEach((nav) => {
 });
 
 document.addEventListener("DOMContentLoaded", renderCalendar);
+
+function showReservation() {
+  document.getElementById("festival-popup").style.display = "block";
+}
+
+function hideReservation() {
+  document.getElementById("festival-popup").style.display = "none";
+}
+
+function reserveSeats() {
+  document.getElementById('festival-popup').style.display = 'none';
+  setTimeout(function() {
+    document.getElementById('payment-popup').style.display = 'block'; 
+  }, 20);
+  
+}
+
+function hidePaymentPopup() {
+  document.getElementById('payment-popup').style.display = 'none';
+}

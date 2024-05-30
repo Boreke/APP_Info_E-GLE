@@ -57,12 +57,15 @@ Class cinemasalle extends Controller {
 											</li>    
 									</ul>
 								</div>
-						
 							</div>';
 							if(!empty($seances[$room->idsalle])){
-							echo'<div class="infos-seances">';
-								$this->showSeance($seances[$room->idsalle]);
-							echo '</div>';
+							echo'<div class="infos-seances" id="infos-seances">
+									<button id="pre-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="pre-btn-img"></button>
+									<div class="seances-container" id="seances-container">';
+										$this->showSeance($seances[$room->idsalle]);
+							echo '	</div>
+									<button id="nxt-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="nxt-btn-img"></button>
+								 </div>';
 							}
 					echo '</div>
 					</div>
@@ -168,8 +171,8 @@ Class cinemasalle extends Controller {
 	function getSeance(){
 		$DB = new Database();
 		$salles=$this->getExistingSalles();
-		
-		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle";
+		$arr['today']=date('Y-m-d H:i:s');
+		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today";
 		foreach($salles as $salle){
 			$arr['idsalle'] = $salle->idsalle;
 			$seances[$salle->idsalle]=$DB->read($query, $arr);
@@ -177,35 +180,46 @@ Class cinemasalle extends Controller {
 		return $seances;
 	}
 
-	function showSeance($seance){
+	function showSeance($seances){
 		$DB = new Database();
-		$query="SELECT * FROM film WHERE id_film=:idfilm";
-		$arr['idfilm']=$seance[0]->Film_id_film;
+		foreach ($seances as $seance) {
+			$query="SELECT * FROM film WHERE id_film=:idfilm";
+		$arr['idfilm']=$seance->Film_id_film;
 		$film=$DB->read($query, $arr);
 		$dureeH=intval($film[0]->duree/3600);
-		$dureeM=fmod($film[0]->duree,3600);
-		echo'<div class="descriptiffilm">
-				<img src="'.$film[0]->image_file.'" class="img-film">
-			</div>
+		$dureeM=intval(fmod($film[0]->duree,3600)/60);
+		echo'<div class="seance">
+				<div class="descriptiffilm">
+					<img src="'.$film[0]->image_file.'" class="img-film">
+				</div>
 
-			<div class="film-data">
-				<div>
-					<h2 class="titre">'.$film[0]->titre.'</h2>
-				</div>
-				<div class="genre-duree">
-					<div class="genre">
-						<h3 class="genre-header">Genre : </h3>
-						<h3 class="genre-content"> &nbsp'.$film[0]->titre.'</h3> 
+				<div class="film-data">
+					<div>
+						<h2 class="titre">'.$film[0]->titre.'</h2>
 					</div>
-					<div class="duree">
-						<h3 class="duree-header">Durée du film : </h3>
-						<h3>&nbsp'.$dureeH.'h'.$dureeM.'min</h3>
+					<div class="genre-duree">
+						<div class="genre">
+							<h3 class="genre-header">Genre : </h3>
+							<h3 class="genre-content"> &nbsp'.$film[0]->titre.'</h3> 
+						</div>
+						<div class="duree">
+							<h3 class="duree-header">Durée du film : </h3>
+							<h3>&nbsp'.$dureeH.'h'.$dureeM.'min</h3>
+						</div>
 					</div>
-				</div>
-				<div class="synopsis">
-					<h3 class="syn-header">Synopsis : </h3>
-					<p class="syn-content">'.$film[0]->synopsis.'</p>
+					<div class="syn-date">
+						<div class="headers-syn-date">
+							<h3 class="syn-header">Synopsis : </h3>
+							<h3 class="date-header">Date : </h3>
+							<h3>&nbsp'.date("F j, Y, g:i a", strtotime($seance->film_date)).'</h3>
+							</div>
+							<p class="syn-content">'.$film[0]->synopsis.'</p>
+							
+						
+					</div>
 				</div>
 			</div>';
+		}
+		
 	}
 }

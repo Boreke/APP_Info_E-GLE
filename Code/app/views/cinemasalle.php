@@ -62,5 +62,5 @@
     </body>
     <?= $this->view("footer")?>
     <script src="<?=ASSETS?>js/cinemasalle.js"></script>
-
+    <script src="<?=ASSETS?>js/carroussel.js"></script>
 </html>
