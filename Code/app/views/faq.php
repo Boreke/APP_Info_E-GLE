@@ -1,113 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Titre HTML et CSS</title>
-    <link rel="stylesheet" href="<?= ASSETS ?>css/faq.css">
+    <title><?= $data['page_title'] ?></title>
 </head>
-
 <body>
 
-    <?php require "../app/controllers/header.php";
-    $header = new Header();
-    $header->displayHeader();
-    ?>
+    <h1>FAQ</h1>
 
-    <section>
-        <div class="faq-container">
-            <div class="TITRE">FAQ</div>
-            <div class="sous-titre">Frequently Asked Questions.</div>
+    <button id="addFaqBtn">Add FAQ</button>
 
-            <!-- Questions and Answers -->
-            <div class="faq-items">
-                <?php
-                // Loop through each question and answer pair
-                foreach ($faqItems as $faqItem) {
-                    echo "<div class='faq-item'>";
-                    echo "<div class='question'>";
-                    echo "<p>" . $faqItem['question'] . "</p>";
-                    echo "<img src='" . ASSETS . "img/Drop Down.png' alt='' class='flechebas'>";
-                    echo "</div>";
-                    echo "<div class='description'>";
-                    echo "<p>" . $faqItem['answer'] . "</p>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-                ?>
-            </div>
-
-            <!-- Button to add a new question -->
-            <button id="addQuestionBtn">Ajouter une question</button>
-
-            <!-- Pop-up modal for adding a new question -->
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <form action="save_question.php" method="post">
-                        <label for="question">Question:</label><br>
-                        <input type="text" id="question" name="question"><br>
-                        <label for="answer">Réponse:</label><br>
-                        <textarea id="answer" name="answer"></textarea><br>
-                        <input type="submit" value="Enregistrer">
-                    </form>
+    <div id="faqList">
+        <?php if (is_array($data['faqs']) && count($data['faqs']) > 0): ?>
+            <?php foreach ($data['faqs'] as $faq): ?>
+                <div class="faqItem">
+                    <h2><?= $faq->question ?></h2>
+                    <p><?= $faq->answer ?></p>
+                    <button class="editFaqBtn" data-id="<?= $faq->id ?>" data-question="<?= $faq->question ?>" data-answer="<?= $faq->answer ?>">Edit</button>
                 </div>
-            </div>
-        </div>
-    </section>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No FAQs found.</p>
+        <?php endif; ?>
+    </div>
 
-    <?= $this->view("footer") ?>
+    <!-- Popup pour ajouter une FAQ -->
+    <div id="addFaqPopup" class="popup">
+        <form id="addFaqForm" method="POST" action="<?= ROOT ?>faq/add">
+            <label for="addQuestion">Question:</label>
+            <input type="text" id="addQuestion" name="question" required>
+            <label for="addAnswer">Answer:</label>
+            <textarea id="addAnswer" name="answer" required></textarea>
+            <button type="submit">Add</button>
+            <button type="button" id="closeAddPopup">Close</button>
+        </form>
+    </div>
 
-    <script src="<?= ASSETS ?>js/index.js"></script>
+    <!-- Popup pour éditer une FAQ -->
+    <div id="editFaqPopup" class="popup">
+        <form id="editFaqForm" method="POST" action="<?= ROOT ?>faq/edit">
+            <input type="hidden" id="editId" name="id">
+            <label for="editQuestion">Question:</label>
+            <input type="text" id="editQuestion" name="question" required>
+            <label for="editAnswer">Answer:</label>
+            <textarea id="editAnswer" name="answer" required></textarea>
+            <button type="submit">Edit</button>
+            <button type="button" id="closeEditPopup">Close</button>
+        </form>
+    </div>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Select all general elements
-            const generalElements = document.querySelectorAll('.faq-item');
+        // JavaScript pour gérer les popups
+        document.getElementById('addFaqBtn').addEventListener('click', function() {
+            document.getElementById('addFaqPopup').style.display = 'block';
+        });
 
-            // Loop through each general element
-            generalElements.forEach(function(generalElement) {
-                // Find elements within the current general element
-                const dropdownImage = generalElement.querySelector('.flechebas');
-                const descriptionElement = generalElement.querySelector('.description');
+        document.getElementById('closeAddPopup').addEventListener('click', function() {
+            document.getElementById('addFaqPopup').style.display = 'none';
+        });
 
-                let isDescriptionVisible = false; // Track initial state
-
-                // Add click event listener to dropdown image
-                dropdownImage.addEventListener('click', function() {
-                    // Toggle visibility of description for the current general element
-                    if (isDescriptionVisible) {
-                        descriptionElement.style.display = 'none';
-                    } else {
-                        descriptionElement.style.display = 'block';
-                    }
-
-                    // Toggle state for the current general element
-                    isDescriptionVisible = !isDescriptionVisible;
-
-                });
+        document.querySelectorAll('.editFaqBtn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('editId').value = this.dataset.id;
+                document.getElementById('editQuestion').value = this.dataset.question;
+                document.getElementById('editAnswer').value = this.dataset.answer;
+                document.getElementById('editFaqPopup').style.display = 'block';
             });
+        });
 
-            // JavaScript to show/hide the pop-up
-            const modal = document.getElementById("myModal");
-            const btn = document.getElementById("addQuestionBtn");
-            const span = document.getElementsByClassName("close")[0];
-
-            btn.onclick = function() {
-                modal.style.display = "block";
-            }
-
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
+        document.getElementById('closeEditPopup').addEventListener('click', function() {
+            document.getElementById('editFaqPopup').style.display = 'none';
         });
     </script>
 </body>
-
 </html>
