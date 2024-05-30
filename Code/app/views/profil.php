@@ -58,10 +58,10 @@
         </div>
 
         <div id="Password" class="tabcontent">
-            <h2>Mon Mot de passe </h2>
+            <h2>Mon Mot de passe : ******** </h2>
 
             <div id="section">
-                <button onclick="openPopup()" id="button">Modifier mon mot de passe</button>
+                <button onclick="openPopup()" id="buttonMDP">Modifier mon mot de passe</button>
                 <div id="popup" class="popup">
                     <div class="popup-content">
                         <span class="close" onclick="closePopup()">&times;</span>
