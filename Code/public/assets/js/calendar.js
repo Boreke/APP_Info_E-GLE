@@ -44,10 +44,16 @@ function handleDayClick(day) {
   if (seanceData[dateClicked]) {
     seanceData[dateClicked].forEach(seance => {
       let timeElement = document.createElement('div');
-
+      let hour=document.createElement('h3');
+      let seanceInfo=document.createElement('p');
+      hour.className='hour-header';
+      seanceInfo.className="info-seance";
       timeElement.className = 'time-block';
       timeElement.id=seance.id;
-      timeElement.textContent = seance.time; 
+      hour.textContent = seance.time;
+      seanceInfo.textContent= "cinema:"+seance.nomCinema+" \nprix: "+seance.price+"€";
+      timeElement.appendChild(hour);
+      timeElement.appendChild(seanceInfo);
       rectangleTitle.appendChild(timeElement);
       timeElement.addEventListener('click',function(){
         seanceId=timeElement.id;
@@ -88,15 +94,18 @@ document.addEventListener("DOMContentLoaded", renderCalendar);
 
 function showReservation() {
   document.getElementById("festival-popup").style.display = "block";
+  document.body.classList.add('no-scroll');
 }
 
 function hideReservation() {
   document.getElementById("festival-popup").style.display = "none";
+  document.body.classList.remove('no-scroll');
 }
 
 function reserveSeats() {
     
   document.getElementById('festival-popup').style.display = 'none';
+  document.body.classList.remove('no-scroll');
 }
 var form=document.getElementById('form');
 form.addEventListener('submit',function(e){

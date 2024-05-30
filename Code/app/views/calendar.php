@@ -31,7 +31,7 @@ $header->displayHeader();
         </section>
     </div>
     <div class="rectangle">
-        <h1 id="rectangleTitle"></h1>
+        <div id="rectangleTitle"></div>
     </div>
 </div>
 <div id="festival-popup" class="popup">
