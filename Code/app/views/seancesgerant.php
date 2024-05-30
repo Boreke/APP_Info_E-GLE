@@ -91,6 +91,10 @@
                                     <label for="time">Choisissez l'heure:</label>
                                     <input type="time" id="time" name="time" min="09:00" max="22:00" step="1800">
                                 </div>
+                                <div class="price-div">
+                                    <label for="price">Choisissez le prix en euros:</label>
+                                    <input type="number" id="price" name="price">
+                                </div>
                                 <button id="b1"> VALIDER</button>
                         </form>
                     </div>                    

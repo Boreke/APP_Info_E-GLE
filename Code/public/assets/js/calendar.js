@@ -10,7 +10,7 @@ const months = [
 let currentDate = new Date();
 let month = currentDate.getMonth();
 let year = currentDate.getFullYear();
-
+var seanceId;
 function renderCalendar() {
   const startDay = new Date(year, month, 1).getDay();
   const endDate = new Date(year, month + 1, 0).getDate();
@@ -35,18 +35,24 @@ function renderCalendar() {
 
 function handleDayClick(day) {
   let dateClicked = `${year}-${String(month+1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-  console.log(dateClicked);
+
   header.textContent = `${months[month]} ${year} - ${day}`;
   var rectangleTitle = document.getElementById('rectangleTitle');
   rectangleTitle.innerHTML = ''; 
 
   if (seanceData[dateClicked]) {
-    let timeElement = document.createElement('div');
-    timeElement.className = 'time-block';
-    timeElement.textContent = seanceData[dateClicked].time; 
-    rectangleTitle.appendChild(timeElement);
-    
-    
+    seanceData[dateClicked].forEach(seance => {
+      let timeElement = document.createElement('div');
+
+      timeElement.className = 'time-block';
+      timeElement.id=seance.id;
+      timeElement.textContent = seance.time; 
+      rectangleTitle.appendChild(timeElement);
+      timeElement.addEventListener('click',function(){
+        seanceId=timeElement.id;
+        showReservation();
+      });
+    }); 
   } else {
     rectangleTitle.textContent = "No seance";
   }
@@ -86,13 +92,33 @@ function hideReservation() {
 }
 
 function reserveSeats() {
+    
   document.getElementById('festival-popup').style.display = 'none';
-  setTimeout(function() {
-    document.getElementById('payment-popup').style.display = 'block'; 
-  }, 20);
+}
+var form=document.getElementById('form');
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  var formData = {
+    seatCount: $("#seatCount").val(),
+    cardNumber: $("#cardNumber").val(),
+    expiryDate: $("#expiryDate").val(),
+    owner: $("#owner").val(),
+    cvc: $("#cvc").val(),
+    idSeanceClicked:seanceId,
+  };
+  let url= root+"calendar/checkPayment";
   
-}
-
-function hidePaymentPopup() {
-  document.getElementById('payment-popup').style.display = 'none';
-}
+  console.log(formData);
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: formData,
+    success: function(response) {
+      console.log(response);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.error("Error:", errorThrown);
+      alert("An error occurred during form submission. Please try again later.");
+    }
+  });
+});

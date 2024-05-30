@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="../app/public/css/calendar.css">
+
 <?php
 require "../app/controllers/header.php";
 $header = new Header();
 $header->displayHeader();
-
 ?>
 <body>
 
 <?php $this->showMovieData();?>
-<br><br><br><br><br><br>
+
 <div class="center-top"></div>
 <div class="container">
     <div class="calendar">
@@ -33,31 +32,19 @@ $header->displayHeader();
         </section>
     </div>
     <div class="rectangle">
-        <h1 id="rectangleTitle" onclick="showReservation()" ></h1>
+        <h1 id="rectangleTitle"></h1>
     </div>
 </div>
 <div id="festival-popup" class="popup">
     <div class="popup-content">
         <span class="close" onclick="hideReservation()">&times;</span>
         <h1>RÉSERVATION :</h1>
-        <form class="form" method='get'>
+        <form class="form" method="POST" id="form">
             <div class="popup-body">
                 <label for="seatCount">Nombre de places:</label>
+                <br>
                 <input type="number" id="seatCount" name="seatCount" min="1">
-            </div>
-            <br><br>
-            <div class="popup-footer">
-                <button type="submit" onclick="reserveSeats()">Réserver</button>
-            </div>
-        </form>
-    </div>
-</div>
-<div id="payment-popup" class="popup" style="display:none;">
-    <div class="popup-content">
-        <span class="close" onclick="hidePaymentPopup()">&times;</span>
-        <h1>Paiement</h1>
-        <form class="form" method='get'>
-            <div class="popup-body">
+                <br>
                 <label for="cardNumber">Numéro de carte:</label>
                 <br>
                 <input type="text" id="cardNumber" name="cardNumber">
@@ -74,15 +61,17 @@ $header->displayHeader();
                 <br>
                 <input type="text" id="cvc" name="cvc">
             </div>
+            <br><br>
             <div class="popup-footer">
-                <button type="submit" onclick="hidePaymentPopup()">Payer</button>
+                <button type="submit" id="submitBtn" onclick="reserveSeats()" value="Submit">Réserver</button>
             </div>
         </form>
     </div>
 </div>
 <script>
 
-
+const root="<?php echo ROOT;?>";
+console.log(root);
 const seanceData = <?= json_encode($data['seanceData']); ?>;
 </script>
 <script src="<?=ASSETS?>js/calendar.js" defer></script>
