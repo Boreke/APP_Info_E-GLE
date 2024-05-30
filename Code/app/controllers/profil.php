@@ -5,10 +5,49 @@ Class Profil extends Controller{
     function index()
     {
         unset($_SESSION['error_message']);
+        $user=$this->loadModel("user");
+
  	 	$data['page_title'] = "Profil";
+        $data['user_info'] = $this->getUserInfo();
+        $data['user_cinema'] = $this->getCinemaInfo();
+        $data['user_posts'] = $this->getUserPosts();
+        $data['user_comments'] = $this->getUserComments();
+        $data['user_tickets'] = $this->getUserTickets();
+        if(isset($_SESSION['type']) && $_SESSION['type'] == 'gerant'){
+            $data['cinema_id'] = $user->getCinemaId();
+        }
+        
 
         if(isset($_POST['form_type']) && $_POST['form_type'] == "update_password"){
             $this->updatePassword($_POST);
+        }
+
+        if(isset($_POST['form_type']) && $_POST['form_type'] == "delete_profile"){
+            $this->deleteProfile($_POST);
+        }
+
+        if (isset($_POST['form_type']) && $_POST['form_type'] == "update_profile") {
+            $this->updateProfile($_POST);
+        }
+
+        if (isset($_POST['form_type']) && $_POST['form_type'] == "update_cinema") {
+            $this->updateCinema($_POST);
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_post'])) {
+            $this->deletePost($_POST['post_id']);
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_comment'])) {
+            $this->deleteComment($_POST['comment_id']);
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_post'])) {
+            $this->updatePost($_POST);
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_comment'])) {
+            $this->updateComment($_POST);
         }
 
 		$this->view("profil",$data);
@@ -20,23 +59,98 @@ Class Profil extends Controller{
 		$arr["user_id"]=$_SESSION["user_id"];
 		$userinfo=$DB->read($sqlRequest,$arr);
 		unset($sqlRequest);
-		return $userinfo;
+		return $userinfo ? $userinfo[0] : null;
 	}
+
+    function getCinemaInfo(){
+		$DB = new Database();
+		$sqlRequest="SELECT * FROM cinema WHERE user_id_user = :user_id";
+		$arr["user_id"]=$_SESSION["user_id"];
+		$cinemainfo=$DB->read($sqlRequest,$arr);
+		unset($sqlRequest);
+		return $cinemainfo ? $cinemainfo[0] : null;
+	}
+
+    function getUserTickets() {
+        $DB = new Database();
+        $sqlRequest = "
+            SELECT b.idbillet, b.price, 
+                   f.titre AS film_title, f.synopsis AS film_synopsis, f.duree AS film_duration, f.genre AS film_genre, f.image_file AS film_image,
+                   s.numero AS salle_number, 
+                   c.nom_cinema AS cinema_name, c.adresse_cinema AS cinema_address
+            FROM billet b
+            JOIN film f ON b.Film_id_film = f.id_film
+            JOIN salle s ON b.id_salle = s.idsalle
+            JOIN cinema c ON b.id_cinema = c.idcinema
+            WHERE b.user_id_user = :user_id
+        ";
+        $arr["user_id"] = $_SESSION["user_id"];
+        return $DB->read($sqlRequest, $arr);
+    }
 
     function displayUserInfo(){
         $userinfo = $this -> getUserInfo();
-        if ($userinfo && count($userinfo) > 0) {
-            $userinfo = $userinfo[0]; 
-            
-            echo '<h3>Bienvenue ' . htmlspecialchars($userinfo->prenom) . ' ' . htmlspecialchars($userinfo->nom) . '</h3>';
+        if ($userinfo) {
+            echo '<h3>Bienvenue ' . htmlspecialchars($userinfo->prenom) . ' ' . htmlspecialchars($userinfo->nom) . '!</h3>';
             echo '<ul>';
             echo '<li><strong>Email:</strong> ' . htmlspecialchars($userinfo->email) . '</li>';
             echo '<li><strong>Nom:</strong> ' . htmlspecialchars($userinfo->nom) . '</li>';
             echo '<li><strong>Prénom:</strong> ' . htmlspecialchars($userinfo->prenom) . '</li>';
-            // Add more fields as necessary
+            echo '<li><strong>Username:</strong> ' . htmlspecialchars($userinfo->username) . '</li>';
             echo '</ul>';
         } else {
             echo '<p>Utilisateur non trouvé ou erreur de requête.</p>';
+        }
+    }
+
+    function displayCinemaInfo(){
+        $cinemainfo = $this -> getCinemaInfo();
+        $userinfo = $this -> getUserInfo();
+        if ($cinemainfo) {
+            echo '<h3>Bienvenue au cinema ' . htmlspecialchars($cinemainfo->nom_cinema) . ' ' . htmlspecialchars($userinfo->prenom) . ' ' . htmlspecialchars($userinfo->nom) . '!</h3>';
+            echo '<ul>';
+            echo '<li><strong>Nom du Cinema:</strong> ' . htmlspecialchars($cinemainfo->nom_cinema) . '</li>';
+            echo '<li><strong>Adresse du Cinema:</strong> ' . htmlspecialchars($cinemainfo->adresse_cinema) . '</li>';
+            echo '</ul>';
+        } else {
+            echo '<p>Cinema non trouvé ou erreur de requête.</p>';
+        }
+    }
+
+    function updateProfile($postData) {
+        $DB = new Database();
+        $updateQuery = "UPDATE user SET prenom = :prenom, nom = :nom, username = :username, email = :email WHERE id_user = :user_id";
+        $params = [
+            'prenom' => $postData['current_surname'],
+            'nom' => $postData['current_name'],
+            'email' => $postData['current_email'],
+            'username' => $postData['current_username'],
+            'user_id' => $_SESSION["user_id"]
+        ];
+
+        if ($DB->write($updateQuery, $params)) {
+            echo "<p>Profil mis à jour avec succès.</p>";
+        } else {
+            echo "<p>Échec de la mise à jour du profil.</p>";
+        }
+    }
+
+    function updateCinema($postData) {
+        $DB = new Database();
+        $user = new User();
+        $cinema_id = $user->getCinemaId();
+        
+        $updateQuery = "UPDATE cinema SET nom_cinema = :nom_cinema, adresse_cinema = :adresse_cinema WHERE idcinema = :cinema_id";
+        $params = [
+            'nom_cinema' => $postData['current_cinema'],
+            'adresse_cinema' => $postData['current_address'],
+            'cinema_id' => $cinema_id
+        ];
+    
+        if ($DB->write($updateQuery, $params)) {
+            echo "<p>L'information a été mise à jour avec succès.</p>";
+        } else {
+            echo "<p>Échec de la mise à jour de l'information.</p>";
         }
     }
 
@@ -105,6 +219,59 @@ Class Profil extends Controller{
         } else {
             echo "<p>Utilisateur non trouvé.</p>";
         }
+    }
+
+    function getUserPosts() {
+        $DB = new Database();
+        $sqlRequest = "SELECT * FROM post WHERE user_id_user = :user_id";
+        $arr["user_id"] = $_SESSION["user_id"];
+        return $DB->read($sqlRequest, $arr);
+    }
+
+    function getUserComments() {
+        $DB = new Database();
+        $sqlRequest = "
+            SELECT c.idcommentaire AS id, c.titre AS comment_title, c.date AS comment_date, 
+                   c.contenu AS comment_content, p.idpost AS post_id, p.titre AS post_title 
+            FROM commentaire c
+            JOIN post p ON p.commentaire_idcommentaire = c.idcommentaire
+            WHERE c.user_id= :user_id";
+        $arr["user_id"] = $_SESSION["user_id"];
+        return $DB->read($sqlRequest, $arr);
+    }
+
+    function deletePost($post_id) {
+        $DB = new Database();
+        $sqlRequest = "DELETE FROM post WHERE idpost = :post_id";
+        $arr["post_id"] = $post_id;
+        $DB->write($sqlRequest, $arr);
+    }
+
+    function deleteComment($comment_id) {
+        $DB = new Database();
+        $sqlRequest = "DELETE FROM commentaire WHERE idcommentaire = :comment_id";
+        $arr["comment_id"] = $comment_id;
+        $DB->write($sqlRequest, $arr);
+    }
+
+    function updatePost($postData) {
+        $DB = new Database();
+        $updateQuery = "UPDATE post SET contenu = :content WHERE idpost = :post_id";
+        $params = [
+            'content' => $postData['post_content'],
+            'post_id' => $postData['post_id']
+        ];
+        $DB->write($updateQuery, $params);
+    }
+
+    function updateComment($postData) {
+        $DB = new Database();
+        $updateQuery = "UPDATE commentaire SET contenu = :content WHERE idcommentaire = :comment_id";
+        $params = [
+            'content' => $postData['comment_content'],
+            'comment_id' => $postData['comment_id']
+        ];
+        $DB->write($updateQuery, $params);
     }
 
 }

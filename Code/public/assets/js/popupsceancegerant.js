@@ -16,7 +16,7 @@ function closePopupScreening() {
 
 
 function openPopupEdit(popupID) {
-    console.log("Opening popup:", popupID);  // Debugging output
+   
     var popup = document.getElementById(popupID);
     if (popup) {
         popup.style.display = "block";
@@ -26,7 +26,7 @@ function openPopupEdit(popupID) {
 }
 
 function closePopupEdit(popupID) {
-    console.log("Closing popup:", popupID);  // Debugging output
+
     var popup = document.getElementById(popupID);
     if (popup) {
         popup.style.display = "none";
