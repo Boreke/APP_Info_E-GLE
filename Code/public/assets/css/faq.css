@@ -1,6 +1,6 @@
 * {
     
-    color: #FFF;
+    color: #ffffff;
 }
 
 html {
@@ -64,5 +64,33 @@ body {
     margin-top: 0;
     margin: 1vh;
     border-radius: 5px;
-    display: none;
 }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup form label {
+    margin-top: 10px;
+}
+
+.popup form input, .popup form textarea {
+    margin-top: 5px;
+}
+
+.popup form button {
+    margin-top: 10px;
+}
+

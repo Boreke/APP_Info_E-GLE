@@ -10,6 +10,7 @@ const months = [
 let currentDate = new Date();
 let month = currentDate.getMonth();
 let year = currentDate.getFullYear();
+var seanceId;
 
 function renderCalendar() {
   const startDay = new Date(year, month, 1).getDay();
@@ -35,25 +36,42 @@ function renderCalendar() {
 
 function handleDayClick(day) {
   let dateClicked = `${year}-${String(month+1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
   header.textContent = `${months[month]} ${year} - ${day}`;
   var rectangleTitle = document.getElementById('rectangleTitle');
   rectangleTitle.innerHTML = ''; 
 
   if (seanceData[dateClicked]) {
-    let timeElement = document.createElement('div');
-    timeElement.className = 'time-block';
-    timeElement.textContent = seanceData[dateClicked].time; 
-    timeElement.onclick = function() { alert('You clicked the seance time!'); }; 
-    rectangleTitle.appendChild(timeElement);
+    seanceData[dateClicked].forEach(seance => {
+      let timeElement = document.createElement('div');
+      let hour=document.createElement('h3');
+      let seanceInfo=document.createElement('p');
+      hour.className='hour-header';
+      seanceInfo.className="info-seance";
+      timeElement.className = 'time-block';
+      timeElement.id=seance.id;
+      hour.textContent = seance.time;
+      seanceInfo.textContent= "cinema:"+seance.nomCinema+" \nprix: "+seance.price+"€";
+      timeElement.appendChild(hour);
+      timeElement.appendChild(seanceInfo);
+      rectangleTitle.appendChild(timeElement);
+      timeElement.addEventListener('click',function(){
+        seanceId=timeElement.id;
+        showReservation();
+      });
+    }); 
   } else {
     rectangleTitle.textContent = "No seance";
   }
+  
 }
 
 dates.addEventListener("click", function(event) {
   const target = event.target.closest('.date-link');
+  
   if (target) {
     const day = target.dataset.day;
+    console.log(day);
     handleDayClick(day);
   }
 });
@@ -73,3 +91,46 @@ navs.forEach((nav) => {
 });
 
 document.addEventListener("DOMContentLoaded", renderCalendar);
+
+function showReservation() {
+  document.getElementById("festival-popup").style.display = "block";
+  document.body.classList.add('no-scroll');
+}
+
+function hideReservation() {
+  document.getElementById("festival-popup").style.display = "none";
+  document.body.classList.remove('no-scroll');
+}
+
+function reserveSeats() {
+    
+  document.getElementById('festival-popup').style.display = 'none';
+  document.body.classList.remove('no-scroll');
+}
+var form=document.getElementById('form');
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  var formData = {
+    seatCount: $("#seatCount").val(),
+    cardNumber: $("#cardNumber").val(),
+    expiryDate: $("#expiryDate").val(),
+    owner: $("#owner").val(),
+    cvc: $("#cvc").val(),
+    idSeanceClicked:seanceId,
+  };
+  let url= root+"calendar/checkPayment";
+  
+  console.log(formData);
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: formData,
+    success: function(response) {
+      console.log(response);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.error("Error:", errorThrown);
+      alert("An error occurred during form submission. Please try again later.");
+    }
+  });
+});

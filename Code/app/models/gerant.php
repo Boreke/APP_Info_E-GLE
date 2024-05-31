@@ -127,10 +127,11 @@ Class Gerant{
                             'salle_id' => $_POST['salle'], 
                             'date' => $datetime,
                             'reserved' => $reserved,
-                            'empty' => $empty
+                            'empty' => $empty,
+                            'price' => $_POST['price']
                         ];
     
-                        $query = "INSERT INTO diffuser (Film_id_film, salle_idsalle, film_date, nbr_places_rsv, nbr_places_disp) VALUES (:film_id, :salle_id, :date, :reserved, :empty)";
+                        $query = "INSERT INTO diffuser (Film_id_film, salle_idsalle, film_date, nbr_places_rsv, nbr_places_disp,price) VALUES (:film_id, :salle_id, :date, :reserved, :empty,:price)";
                         $result = $DB->write($query, $arr3, false);
     
                         if ($result) {
@@ -149,12 +150,22 @@ Class Gerant{
     function fetchAllSeances() {
         $DB = new Database(); 
         $today = date('Y-m-d H:i:s');
-        $query = "SELECT d.idseance, d.Film_id_film, d.salle_idsalle, d.film_date, f.titre, s.numero, d.nbr_places_disp FROM diffuser d
+        $query = "SELECT d.idseance, d.Film_id_film, d.salle_idsalle, d.film_date, d.price, f.titre, s.numero, d.nbr_places_disp FROM diffuser d
                   JOIN film f ON d.Film_id_film = f.id_film
                   JOIN salle s ON d.salle_idsalle = s.idsalle
-                  WHERE d.film_date >= :today
+                  WHERE d.film_date >= :today AND s.cinema_idcinema =:idcinema
                   ORDER BY d.film_date ASC";
         $data = ['today' => $today];
+        $data['idcinema']=$this->fetchCinema()[0]->idcinema;
+        $seances = $DB->read($query, $data);
+        return $seances; 
+    }
+    function fetchAllFilms() {
+        $DB = new Database(); 
+        $today = date('Y-m-d H:i:s');
+        $query = "SELECT * FROM film WHERE id_cinema =:idcinema
+                  ORDER BY date_sortie ASC";
+        $data['idcinema']=$this->fetchCinema()[0]->idcinema;
         $seances = $DB->read($query, $data);
         return $seances; 
     }
@@ -170,6 +181,14 @@ Class Gerant{
         }
     }
 
+    function fetchCinema(){
+        $DB = new Database(); 
+        $sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
+        $arr["user_id"] = $_SESSION["user_id"];
+        $cinemaResult = $DB->read($sqlRequest, $arr);
+        return $cinemaResult;
+    }
+
     function getSeanceById($id) {
         $DB = new Database();
         $query = "SELECT * FROM diffuser WHERE idseance = :idseance";
@@ -182,13 +201,16 @@ Class Gerant{
         $query = "UPDATE diffuser SET
                   Film_id_film = :film_id,
                   salle_idsalle = :salle_id,
-                  film_date = :film_date
+                  film_date = :film_date,
+                  price = :price
                   WHERE idseance = :idseance";
         $arr = [
             'film_id' => $POST['film'],
             'salle_id' => $POST['salle'],
             'film_date' => $POST['film_date'],
+            'price' =>$_POST['price'],
             'idseance' => $POST['idseance']
+            
         ];
     
         if ($DB->write($query, $arr)) {
@@ -196,6 +218,28 @@ Class Gerant{
         } else {
             echo "Failed to update seance.";
         }
+    }
+
+
+    function updateFilm($POST) {
+        $DB = new Database();
+
+        $query = "UPDATE film SET
+                  date_sortie = :date,
+                  genre=:genre
+                  WHERE id_film = :idfilm";
+        $arr = [
+            'genre' => $POST['genre'],
+            'date' => $POST['film_date'],
+            'idfilm' => $POST['idfilm']
+        ];
+    
+        if ($DB->write($query, $arr)) {
+            echo "Film mis à jour.";
+        } else {
+            echo "echec de la mise à jour du film.";
+        }
+        
     }
     
 

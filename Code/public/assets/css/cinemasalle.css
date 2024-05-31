@@ -196,6 +196,8 @@ h2{
 #pre-btn {
     background-color: transparent;
     width: fit-content;
+    filter: none;
+    border: none;
 }
 
 .date{
@@ -204,11 +206,11 @@ h2{
 
 .syn-date{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     
 }
 
-.genre-duree{
+.genre-duree, .headers-syn-date{
     display: flex;
     flex-direction: row;
 }
@@ -216,7 +218,9 @@ h2{
     color: grey;
     font-size: 20px;
 }
-
+.syn-header{
+    margin-right: 4vw;
+}
 .syn-content{
     font-size: 17px;
 }

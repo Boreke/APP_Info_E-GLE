@@ -37,7 +37,7 @@
                                 </form>
                                 <form method="POST" action="">
                                     <input type="hidden" name="login_id" value="<?php echo $user->id_user; ?>">
-                                    <button type="submit" class="login">Se Connecter</button>
+                                    <button type="submit" class="login">Connexion</button>
                                 </form>
                             </td>
                         </tr>

@@ -138,7 +138,7 @@ Class User
 			if(is_array($data))
 			{
 				
-				//logged in
+
  				$_SESSION['username'] = $data[0]->username;
 				$_SESSION['user_id'] = $data[0]->id_user;
 				$_SESSION['type'] = $data[0]->type;
@@ -152,7 +152,7 @@ Class User
 
 	function logout()
 	{
-		//logged in
+
 		unset($_SESSION['username']);
 		unset($_SESSION['user_id']);
 		unset($_SESSION['type']);

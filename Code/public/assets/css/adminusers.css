@@ -120,6 +120,7 @@ th, td {
     border-radius: 20px;
     align-self: center;
     cursor: pointer;
+    color: black;
 }
 
 .login:hover {
