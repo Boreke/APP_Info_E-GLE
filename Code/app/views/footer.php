@@ -5,7 +5,7 @@
         <li><a href="#" class="nav_bas_elmt">Forum</a></li>
         <li><a href="#" class="nav_bas_elmt">Contact</a></li>
         <li><a href="#" class="nav_bas_elmt">Mention légales</a></li>
-        <li><a href="#" class="nav_bas_elmt">FAQ</a></li>
+        <li><a href="<?=ROOT?>faqclient" class="nav_bas_elmt">FAQ</a></li>
     </div>
     <div class="reseaux">
         <li><a href="www.twitter.com"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>

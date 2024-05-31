@@ -21,7 +21,7 @@
         <div class="center2" id="center2">
             <div class="left2">
                 <p class="reserver_text">Réservez vos séances de cinéma</p>
-                <a href="#"><button class="button">Réserver</button></a>
+                <a href="<?=ROOT?>seancesflorent"><button class="button1">Réserver</button></a>
             </div>
             <div class="right2">
                 <h2>A l'affiche :</h2>
