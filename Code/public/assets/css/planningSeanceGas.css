@@ -11,34 +11,13 @@ body {
 
 
 
-/* ton {
-    color: black;
-    background-color: white;
-    border: none;
-    border-radius: 36px;
-    width: 120px;
-    height: 50px;
-    font-size: 18px;
-    font-weight: 700;
-    transition-duration: 0.3s;
-    cursor: pointer;
-}
-
-ton:hover {
-    background-color: #898989;
-}
-.menu {
-    display: none;
-} */
-
-
 main {
     display: grid;
     grid-template-columns: 35% 65%;
     color: white;
     height: auto;
     padding: 0 7vw 0 7vw;
-    gap: 6vw;
+    gap: 8vw;
     
 }
 .descriptiffilm{
@@ -58,7 +37,7 @@ main {
 
 #resum{
     width: 40vw;
-    font-size: 2vw;
+    font-size: 1.5vw;
 
 }
 
@@ -123,17 +102,6 @@ main {
 
 
 
-/* .{
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    padding-left: 4vw;
-    border: 2px solid grey;
-    border-radius: 20px;
-
-
-} */
-
 #img4{
     padding-left: 5vw;
 }
@@ -142,14 +110,15 @@ main {
     /* padding-left: 40vw; */
     width: 30vw;
     border-radius: 20px;
-    padding-left: 3vw;
+    /* padding-left: 3vw; */
     font-size: 1.4vw;
+    /* margin-left: 10vw; */
     
 
 }
 
 #R11{
-    margin-left: 1vw;
+    /* margin-left: 10vw; */
     font-size: 1.4vw;
 }
 
@@ -158,8 +127,8 @@ main {
 .planning {
     display: grid;
     grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw 10vw;
-    gap: 3vw;
-    margin: 0 5vw 0 5vw;
+    /* gap: 3vw; */
+    margin: 5vh 15vw 5vh 15vw;
     border: 2px solid white;
     padding: 1vh 2vh 1vh 1vh;
 }
@@ -217,8 +186,9 @@ main {
 
 #horraire {
     color: white;
-    margin: 0 auto 0 7vw;
+    margin-left: 15vw;
     text-decoration: underline;
+    font-size: 2vw;
 }
 
 
@@ -370,10 +340,11 @@ footer {
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
 }
-
+/* 
 .but{
     margin-left: 7vw;
-}
+    width: auto;
+} */
 
 #b1{
     width: 20vw;

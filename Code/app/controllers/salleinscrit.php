@@ -23,9 +23,10 @@ Class SalleInscrit extends Controller
 
 	function getSeance(){
 		$DB = new Database();
+		$arr['today']= date('Y-m-d H:i:s');
 		$arr['idsalle'] = $_GET['salle_id'];
 
-		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle";
+		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today ORDER BY film_date ASC";
 		return $DB->read($query, $arr);
 	}
 
@@ -98,6 +99,7 @@ Class SalleInscrit extends Controller
 			echo '</div>';
 		}
 	}
+	
 	function showSeanceDate(){
 		$seances=$this->getSeance();
 		foreach ($seances as $seance) {

@@ -17,12 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("One or more elements are missing.");
       return;
   }
+  
   nextButton.addEventListener("click", () => {
       const seanceWidth = seances[0].clientWidth;
       
       seancesContainer.scrollLeft += seanceWidth;
         if(date!=null){
-            const dateWidth= date[0].clientWidth;
+            const dateWidth = date[0].clientWidth;
             dateList.scrollLeft += dateWidth;
         }
   });

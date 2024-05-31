@@ -24,7 +24,12 @@
     <?php
             require_once "../app/core/database.php"; 
             $db = new Database();
-            $films = $db->read("SELECT id_film, image_file, titre FROM film");
+            $arr['today']=date('Y-m-d');
+            $date = new DateTime();
+            $date->modify('-3 months');
+            $arr['before'] = $date->format('Y-m-d');
+            
+            $films = $db->read("SELECT id_film, image_file, titre FROM film WHERE date_sortie <= :today AND date_sortie >= :before", $arr);
 
             if ($films && count($films) > 0) {
                 foreach ($films as $film) {

@@ -180,6 +180,7 @@ button:hover {
   transition: background-color 0.3s ease;
   text-decoration: none;  
   display: block;
+  justify-content: center;
 }
 
 .calendar .dates li {
@@ -189,7 +190,6 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  display: block;
   
 }
 
@@ -278,17 +278,26 @@ button:hover {
   user-select: none;
 }
 
-.seance .date-link {
-  font-weight: bold;  
-  color: rgb(255, 20, 8);       
-  cursor: pointer;    
-}
-
 .dates li.today .date-link {
   background: #000;   
   color: white;       
 }
 
+.dates li.inactive {   
+  color: grey; 
+  pointer-events: none;      
+}
+
+.dates li.past .date-link {  
+  color: grey;   
+  pointer-events: none;    
+}
+
+.seance .date-link {
+  font-weight: bold;  
+  color: rgb(255, 20, 8);       
+  cursor: pointer;    
+}
 
 .container {
   display: flex;
@@ -536,6 +545,7 @@ footer {
 
 .date-link {
   cursor: pointer;
+  width: fit-content;
 }
 
 .popup {

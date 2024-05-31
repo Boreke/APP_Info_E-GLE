@@ -54,10 +54,10 @@
 
 
         </section>
-
+        <br>
         <div class="but">
-            <!-- <label for="#R1"><img src="Search.png" id="img4"></label> -->
-            <br>
+            
+            
             <div id="R11">
                 RECHERCHER VOTRE CINEMA :
             </div> 
@@ -81,7 +81,7 @@
 
     <h1 id="horraire">Voici les horaires : </h1>
 
-    <br><br>
+    
 
     <section class="planning">
         <section id="sec1">
@@ -145,48 +145,7 @@
 
 
                             </section>
-                            <!-- <div class="interieur">
-
                             
-                                <div id="PP1">
-                                    DATE : 19 Fev 
-                                </div>
-
-                                <div id="PP3">
-                                    DEBUT : 9h30
-                                </div>
-
-                                <div id="PP4">
-                                    FIN :  11h30
-                                </div>
-
-                                <div id="PP5">
-                                    AUDIO : VF
-                                </div>
-                            
-
-                                <div id="PP2">
-                                    <div class="choi">
-                                        <div>
-                                            NOMBRE DE PLACE :
-                                        </div>
-                                    
-                                        <div id="choi1">
-                                           
-                                            <select id="CHOICE-POPUP">
-                                            <option value="option1">1</option>
-                                            <option value="option2">2</option>
-                                            <option value="option3">3</option>
-                                            <option value="option4">4</option>
-                                            <option value="option5">5</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                
-                                </div>
-                                
-                            </div> -->
                             <div class="but">
                                 <a href="page_paiement.html">
                                     <button id="b1"> VALIDER
