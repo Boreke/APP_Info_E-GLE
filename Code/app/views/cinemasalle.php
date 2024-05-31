@@ -13,11 +13,11 @@
             <div class="ajouter_salle">
                 <div class="div-btn-add">
                     <h1 class="add-header">Ajouter une salle</h1>
-                    <a onclick="openAddPopup()" id="popup11" > <img src="<?=ASSETS?>img/Addplus.png" alt="Bouton Add" class="add_btn"></a>
+                    <a onclick="openAddPopup()" id="popup11" class="plus"> <img src="<?=ASSETS?>img/Addplus.png" alt="Bouton Add" class="add_btn"></a>
                 </div>
                 <div class="div-btn-del">
                     <h1 class="del-header">Supprimer une salle</h1>
-                    <a onclick="openDelPopup()" id="popup11" > <img src="<?=ASSETS?>img/Addminus.png" alt="Bouton Del" class="del_btn"></a>
+                    <a onclick="openDelPopup()" id="popup11" class="plus"> <img src="<?=ASSETS?>img/Addminus.png" alt="Bouton Del" class="del_btn"></a>
                 </div>
                 <?php if (!empty($_SESSION["error_message"])) : ?>
                     <div class="error-message"><?php echo $_SESSION["error_message"]; ?></div>

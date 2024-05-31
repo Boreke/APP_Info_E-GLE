@@ -1,8 +1,10 @@
 
 body {
     font-family: 'Roboto';
-    background-color: rgb(0, 0, 0);
+    background: rgb(9,6,67);
+    background: linear-gradient(90deg, rgba(9,6,67,1) 0%, rgba(0,0,0,1) 42%, rgba(15,80,93,1) 100%);
     min-height:100vh;
+    margin: 0;
 }
 
 
@@ -25,8 +27,16 @@ h2{
     margin-right: 10px;
 }
 
+.plus {
+    cursor: pointer;
+}
 
 /*layout*/
+
+.center {
+    margin-top: 8vh;
+}
+
 .disposition{
     align-self: left;
     flex : 1;
@@ -275,10 +285,6 @@ h2{
     margin-right: 1vh;
 }
 
-#popup11:hover{
-    background-color: black;
-}
-
 .addPopup,.delPopup {
     display: none;
     position: fixed;
@@ -289,6 +295,10 @@ h2{
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
+}
+
+.close {
+    cursor: pointer;
 }
 
 .form_salle, .form_salle_del{

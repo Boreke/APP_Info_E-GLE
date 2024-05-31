@@ -7,7 +7,7 @@
 ?>
 <body>  
 
-<section id="Compte">
+<section id="Compte" class="Compte">
     <div>
         <div class="tabs">
             <button class="tablink" onclick="openTab(event, 'Profil')">Mon Compte</button>
