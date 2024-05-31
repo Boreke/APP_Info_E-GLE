@@ -89,7 +89,7 @@ Class Calendar extends Controller
 
 			$seanceCheck=$DB->write($query, $arr);
 			unset($arr);
-			$query="SELECT* FROM salle JOIN cinema ON salle.cinema_idcinema=cinema.idcinema WHERE salle.idsalle=?";
+			$query="SELECT * FROM salle JOIN cinema ON salle.cinema_idcinema=cinema.idcinema WHERE salle.idsalle=?";
 			$salle=$DB->read($query,[$seance[0]->salle_idsalle]);
 
 			$query="INSERT INTO billet (price, Film_id_film, user_id_user, id_salle, id_cinema, idseance, nbplaces) VALUES (:price,:idfilm, :iduser, :idsalle,:idcinema,:idseance,:nbplaces)";
@@ -103,7 +103,7 @@ Class Calendar extends Controller
 				'nbplaces'=>$nbPlaces
 			];
 			$billetCheck=$DB->write($query,$arr);
-			if ($seanceCheck&&$billetCheck) {
+			if ($seanceCheck && $billetCheck) {
 				$_SESSION['error-message']="Seance reservée.";
 			} else {
 				$_SESSION['error-message']="echec lors de la reservation, aucun paiement n'a été éfféctué.";
@@ -114,22 +114,27 @@ Class Calendar extends Controller
 	}
 	function checkPayment(){
 		$user=$this->loadmodel('user');
+		$today = date('Y-m-d');
 
 		if($user->check_logged_in()){
 			$idseance = $_POST['idSeanceClicked'];
+			$film_date = strtotime($_POST['expiryDate']);
+        	$formatted_date = date('Y-m-d', $film_date);
 			$formData=[
 				'cardNumber' => $_POST['cardNumber'],
 				'cvc' => $_POST['cvc'],
-				'expiryDate' => $_POST['expiryDate'],
+				'expiryDate' => $formatted_date,
 				'owner' => $_POST['owner']
 			];
 			
 			if(!is_numeric($formData['cardNumber'])||strlen($formData['cardNumber'])!=16){
-				$_SESSION['error-message']="numero de carte invalide";
+				$_SESSION['error-message']="Numero de carte invalide.";
 			}elseif (!is_numeric($formData['cvc'])||strlen($formData['cvc'])!=3) {
-				$_SESSION['error-message']="cvc invalide";
+				$_SESSION['error-message']="CVC invalide.";
 			}elseif(preg_match_all("/\W/", $formData['owner'])){
-				$_SESSION['error-message']="nom invalide";
+				$_SESSION['error-message']="Nom invalide.";
+			}elseif($formData['expiryDate'] < $today){
+				$_SESSION['error-message']="Carte expirée.";
 			}else{
 				// Assuming reserver() function sets a session message upon success
 				$this->reserver($_POST['seatCount'], $idseance);
@@ -139,7 +144,6 @@ Class Calendar extends Controller
 				echo "success"; // Return success
 				}
 			}
-			echo "success";
 		}else{
 			$_SESSION['error-message']="veuillez vous connecter.";
 		}
