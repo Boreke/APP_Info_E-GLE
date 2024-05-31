@@ -14,16 +14,15 @@
 
     ?>
 <body>
-    <h1>FAQ</h1>
+    <h1 class="TITRE">FAQ</h1>
 
-    <button id="addFaqBtn">Add FAQ</button>
 
     <div id="faqList">
         <?php if (is_array($data['faqs']) && count($data['faqs']) > 0): ?>
             <?php foreach ($data['faqs'] as $faq): ?>
                 <div class="faqItem">
-                    <h2><?= $faq->question ?></h2>
-                    <p><?= $faq->answer ?></p>
+                    <h2 class="question"><?= $faq->question ?></h2>
+                    <p class="description"><?= $faq->answer ?></p>
                     <button class="editFaqBtn" data-id="<?= $faq->id ?>" data-question="<?= $faq->question ?>" data-answer="<?= $faq->answer ?>">Edit</button>
                 </div>
             <?php endforeach; ?>
@@ -31,6 +30,8 @@
             <p>No FAQs found.</p>
         <?php endif; ?>
     </div>
+
+    <button id="addFaqBtn">Add FAQ</button>
 
     <!-- Popup pour ajouter une FAQ -->
     <div id="addFaqPopup" class="popup">
@@ -81,4 +82,6 @@
         });
     </script>
 </body>
+<?= $this->view("footer")?>
+
 </html>
