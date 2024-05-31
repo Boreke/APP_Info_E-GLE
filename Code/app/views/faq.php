@@ -30,8 +30,10 @@
             <p>No FAQs found.</p>
         <?php endif; ?>
     </div>
-
-    <button id="addFaqBtn">Add FAQ</button>
+    <div class="addBtn">
+        <button id="addFaqBtn">Add FAQ</button>
+    </div>
+    
 
     <!-- Popup pour ajouter une FAQ -->
     <div id="addFaqPopup" class="popup">

@@ -139,7 +139,7 @@ nav {
     padding: 5px;
 }
 
-button {
+.button1 {
     color: black;
     background-color: white;
     border: none;
@@ -152,7 +152,7 @@ button {
     cursor: pointer;
     filter:none;
 }
-button:hover {
+.button1:hover {
     background-color: #898989;
 }
 .menu {
@@ -179,7 +179,7 @@ button:hover {
         left: 0;
         right: 0;
         width: 100%;
-        top: 8vw;
+        top: 60px;
     }
 }
 
