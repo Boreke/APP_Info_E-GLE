@@ -98,17 +98,7 @@ h2{
 }
 
 /*seance*/
-#seance{
-    color: #FFF;
-    display: flex;
-    flex-direction: row;
-    margin-left:5vh;
-    margin-right:5vh;
-    text-align:justify;
-    align-items: center;
-    justify-self: flex-start;
-    flex:1;
-}
+
 
 .infos-seances {
     color: #FFF;
@@ -219,7 +209,7 @@ h2{
     font-size: 20px;
 }
 .syn-header{
-    margin-right: 4vw;
+    margin-left: 4vw;
 }
 .syn-content{
     font-size: 17px;
