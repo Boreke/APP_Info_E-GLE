@@ -116,6 +116,8 @@ Class Seancesgerant extends Controller
 				echo 				'<input type="text" name="film" value="' . htmlspecialchars($seance->Film_id_film) . '" required>';
 				echo 				'<label for="salle">Salle:</label>';
 				echo 				'<input type="text" name="salle" value="' . htmlspecialchars($seance->salle_idsalle) . '" required>';
+				echo 				'<label for="price">Prix en euros:</label>';
+				echo 				'<input type="number" name="price" value="' . htmlspecialchars($seance->price) . '" required>';
 				echo 				'<input type="submit" name="editSeance" value="Modifier" class="submit-edit">';
 				echo			'</form>';
 				echo		'</div>';                  

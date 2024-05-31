@@ -197,7 +197,23 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     width: fit-content;
     height: 34vh;
     overflow-y: auto;
-    
+    scrollbar-color: #1414149f #777;
+}
+.table-container::-webkit-scrollbar {
+width: 12px;
+}
+
+.table-container::-webkit-scrollbar-track {
+background: #777;
+border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+background: #1414149f;
+border-radius: 10px;
+}
+.table-container::-webkit-scrollbar-button {
+display: none;
 }
 
 table {
