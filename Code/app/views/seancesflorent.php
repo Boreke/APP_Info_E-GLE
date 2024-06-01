@@ -7,11 +7,6 @@
     $header->displayHeader();
 ?>
 
-<!--BARRE DE RECHERCHE-->
-<div class="search-container">
-    <img src="<?=ASSETS?>img/search.png" alt="Search Icon" class="search-icon">
-    <input type="text" placeholder="Rechercher un film" class="search-text">
-</div>
 
 <br><br><br>
 

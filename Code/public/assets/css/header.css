@@ -85,6 +85,7 @@ nav {
     border-radius: 36px;
     gap: 30px;
     position: sticky;
+    z-index: 2000;
 
 }
 .nav_elmt{
@@ -180,6 +181,7 @@ nav {
         right: 0;
         width: 100%;
         top: 60px;
+        z-index: 2000;
     }
 }
 

@@ -39,10 +39,7 @@
     </nav>
     <img src="<?=ASSETS?>img/Menu.png" alt="Menu" class="menu" id="menuburger">
     <div class="topright">
-        <div class="lg">
-            <li><a href="" class="lg_elmt1">EN</a></li>
-            <li><a href="" class="lg_elmt">FR</a></li>
-        </div>    
+           
         <?php if (isset($_SESSION["username"])): ?>
             <div class="dropdown">
                 <button class="dropbtn" onclick="toggleDropdown()"><?=$_SESSION["username"]?></button>
