@@ -40,19 +40,19 @@
                             </select>min
                         </div>
                         <div class="genre-div">
-                            <label for="genre">Genre du film:</label>
+                            <label for="genre">Genre du film :</label>
                             <input type="text" placeholder="Genre" class="id" id="genre" name="genre">
                         </div>
                         <div class="img-div">
-                            <label for="image">Image:</label>
+                            <label for="image">Image :</label>
                             <input type="file" id="image" name="image">
                         </div>
                         <div class="date-div">
-                            <label for="film_release">Date de sortie:</label>
+                            <label for="film_release">Date de sortie :</label>
                             <input type="date" name="film_release">
                         </div>
                         
-                        <button id="b1"> VALIDER</button>
+                        <button id="b1">Valider</button>
                         </form>
                     </div>                    
                 </div>

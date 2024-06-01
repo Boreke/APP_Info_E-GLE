@@ -1,8 +1,6 @@
 <footer>
     <img src="<?=ASSETS?>img/logo-events-IT 1.png" alt="">
     <div class="nav_bas">
-        <li><a href="#" class="nav_bas_elmt">A propos</a></li>
-        <li><a href="#" class="nav_bas_elmt">Forum</a></li>
         <li><a href="<?=ROOT?>contact" class="nav_bas_elmt">Contact</a></li>
         <li><a href="<?=ROOT?>mentionslegales" class="nav_bas_elmt">Mention légales</a></li>
         <li><a href="<?=ROOT?>faqclient" class="nav_bas_elmt">FAQ</a></li>
