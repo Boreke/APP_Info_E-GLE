@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body>
-    <?php 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $data['page_title'] ?></title>
+</head>
+<?php 
         require "../app/controllers/header.php";
         $header= new Header();
         $header->displayHeader();
     ?>
+    <body>
+
         <section class="center">
             <div class="salles_existantes" id="salles_existantes">
             <?php $this->showExistingSalles(); ?>

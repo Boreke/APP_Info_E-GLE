@@ -200,8 +200,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .table-container {
-    width: fit-content;
+    max-width: 100%;
     overflow-y: auto;
+    overflow-x: scroll;
+    overscroll-behavior-x: auto;
     scrollbar-color: #1414149f #777;
     background-color: rgb(26, 26, 26);
     padding: 2vw;
@@ -230,6 +232,8 @@ table {
     border-collapse: collapse;
     border:0;
     color: white;
+    overflow-x: scroll;
+    overscroll-behavior-x: auto;
 }
 
 th, td {

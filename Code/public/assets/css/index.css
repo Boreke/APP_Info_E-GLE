@@ -184,6 +184,10 @@ h1 {
     animation-timeline: view();
 }
 
+.texte-reserver {
+    max-width: 20vw;
+}
+
 h2 {
     color: #ACA6A6;
 }
