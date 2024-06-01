@@ -106,7 +106,7 @@ Class Calendar extends Controller
 			if ($seanceCheck && $billetCheck) {
 				$_SESSION['error-message']="Seance reservée.";
 			} else {
-				$_SESSION['error-message']="echec lors de la reservation, aucun paiement n'a été éfféctué.";
+				$_SESSION['error-message']="Echec lors de la reservation, aucun paiement n'a été éfféctué.";
 			}
 		}else{
 			$_SESSION['error-message']="Seance complète.";

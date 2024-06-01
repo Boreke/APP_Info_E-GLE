@@ -37,7 +37,7 @@ $header->displayHeader();
 <div id="festival-popup" class="popup">
     <div class="popup-content">
         <span class="close" onclick="hideReservation()">&times;</span>
-        <h1>RÉSERVATION :</h1>
+        <h1>Réservation</h1>
         <form class="form" method="POST" id="form">
             <div class="popup-body">
                 <label for="seatCount">Nombre de places:</label>

@@ -73,6 +73,19 @@ input[type="text"],input[type="email"],input[type="password"]{
     font-size: 0.9vw;
 }
 
+.infouser {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .popup {
     display: none;
     position: fixed;
@@ -148,4 +161,9 @@ button{
     flex-direction: column;
     justify-content: space-evenly;
     
+}
+
+tr {
+    display: flex;
+    gap: 2vw;
 }

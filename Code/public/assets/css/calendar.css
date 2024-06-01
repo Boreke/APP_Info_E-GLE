@@ -7,7 +7,8 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: rgb(0, 0, 0);
+  background: rgb(9,6,67);
+  background: linear-gradient(90deg, rgba(9,6,67,1) 0%, rgba(0,0,0,1) 42%, rgba(15,80,93,1) 100%);
   margin: 0;
   overflow-x: hidden;
 }
@@ -529,6 +530,7 @@ footer {
   align-items: center; 
   justify-content: center; 
   max-width: 70%; 
+  transform: scale(0.7);
   overflow: hidden;
   
 }
@@ -560,13 +562,14 @@ footer {
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
   overflow: scroll;
+  padding: 2vw;
 }
 .popup-content {
-  background-color: black;
+  background-color: rgb(28, 28, 28);
   font-family: 'Roboto';
   font-weight: 400;
   margin: 15% auto;
-  padding: 20px;
+  padding: 50px;
   color: #FFF;
   border: 1px solid #888;
   width: 15vw;
