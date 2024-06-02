@@ -194,9 +194,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .table-container {
-    width: fit-content;
-    height: 34vh;
-    overflow-y: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: scroll;
+    overscroll-behavior-x: auto;
     scrollbar-color: #1414149f #777;
 }
 .table-container::-webkit-scrollbar {
