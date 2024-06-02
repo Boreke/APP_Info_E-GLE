@@ -30,8 +30,10 @@
             <p>No FAQs found.</p>
         <?php endif; ?>
     </div>
-
-    <button id="addFaqBtn">Add FAQ</button>
+    <div class="addBtn">
+        <button id="addFaqBtn">Add FAQ</button>
+    </div>
+    
 
     <!-- Popup pour ajouter une FAQ -->
     <div id="addFaqPopup" class="popup">
@@ -49,9 +51,9 @@
     <div id="editFaqPopup" class="popup">
         <form id="editFaqForm" method="POST" action="<?= ROOT ?>faq/edit">
             <input type="hidden" id="editId" name="id">
-            <label for="editQuestion">Question:</label>
+            <label for="editQuestion">Question :</label>
             <input type="text" id="editQuestion" name="question" required>
-            <label for="editAnswer">Answer:</label>
+            <label for="editAnswer">Réponse :</label>
             <textarea id="editAnswer" name="answer" required></textarea>
             <button type="submit">Edit</button>
             <button type="button" id="closeEditPopup">Close</button>

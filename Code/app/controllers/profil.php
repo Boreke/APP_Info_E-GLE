@@ -91,6 +91,7 @@ Class Profil extends Controller{
     function displayUserInfo(){
         $userinfo = $this -> getUserInfo();
         if ($userinfo) {
+            echo '<div class="infouser">';
             echo '<h3>Bienvenue ' . htmlspecialchars($userinfo->prenom) . ' ' . htmlspecialchars($userinfo->nom) . '!</h3>';
             echo '<ul>';
             echo '<li><strong>Email:</strong> ' . htmlspecialchars($userinfo->email) . '</li>';
@@ -98,6 +99,7 @@ Class Profil extends Controller{
             echo '<li><strong>Prénom:</strong> ' . htmlspecialchars($userinfo->prenom) . '</li>';
             echo '<li><strong>Username:</strong> ' . htmlspecialchars($userinfo->username) . '</li>';
             echo '</ul>';
+            echo '</div>';
         } else {
             echo '<p>Utilisateur non trouvé ou erreur de requête.</p>';
         }

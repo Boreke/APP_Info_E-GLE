@@ -6,7 +6,8 @@ Class Contact extends Controller
 	{
 		unset($_SESSION['error_message']);
  	 	$data['page_title'] = "Contact Us";
-		$this->view("minima/contact",$data);
+		$this->view("contact",$data);
+
 	}
 
 }

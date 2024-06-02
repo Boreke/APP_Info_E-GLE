@@ -21,7 +21,11 @@
         <div class="center2" id="center2">
             <div class="left2">
                 <p class="reserver_text">Réservez vos séances de cinéma</p>
-                <a href="#"><button class="button">Réserver</button></a>
+                <p class="texte_image">
+                    Réserver une séance de cinéma n’a jamais été aussi simple et pratique ! En quelques clics, 
+                    assurez-vous une place pour le film de votre choix, à l’horaire qui vous convient le mieux. 
+                </p>
+                <a href="<?=ROOT?>seancesflorent"><button class="button1">Réserver</button></a>
             </div>
             <div class="right2">
                 <h2>A l'affiche :</h2>

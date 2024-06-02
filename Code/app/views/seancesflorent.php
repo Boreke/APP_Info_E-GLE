@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
-<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $data['page_title'] ?></title>
+</head>
 <?php 
     require "../app/controllers/header.php";
     $header = new Header();
     $header->displayHeader();
 ?>
+<body>
 
-<!--BARRE DE RECHERCHE-->
-<div class="search-container">
-    <img src="<?=ASSETS?>img/search.png" alt="Search Icon" class="search-icon">
-    <input type="text" placeholder="Rechercher un film" class="search-text">
-</div>
+
 
 <br><br><br>
 
@@ -24,7 +25,12 @@
     <?php
             require_once "../app/core/database.php"; 
             $db = new Database();
-            $films = $db->read("SELECT id_film, image_file, titre FROM film");
+            $arr['today']=date('Y-m-d');
+            $date = new DateTime();
+            $date->modify('-3 months');
+            $arr['before'] = $date->format('Y-m-d');
+            
+            $films = $db->read("SELECT id_film, image_file, titre FROM film WHERE date_sortie <= :today AND date_sortie >= :before", $arr);
 
             if ($films && count($films) > 0) {
                 foreach ($films as $film) {

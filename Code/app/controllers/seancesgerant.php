@@ -149,7 +149,7 @@ Class Seancesgerant extends Controller
 			echo '<tr>';
 			echo '<th>Titre</th>';
 			echo '<th>Date de sortie</th>';
-			echo '<th>genre</th>';
+			echo '<th>Genre</th>';
 			echo '</tr>';
 	
 			foreach ($films as $film) {

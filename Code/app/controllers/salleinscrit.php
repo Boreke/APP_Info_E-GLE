@@ -26,7 +26,7 @@ Class SalleInscrit extends Controller
 		$arr['today']= date('Y-m-d H:i:s');
 		$arr['idsalle'] = $_GET['salle_id'];
 
-		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today";
+		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today ORDER BY film_date ASC";
 		return $DB->read($query, $arr);
 	}
 

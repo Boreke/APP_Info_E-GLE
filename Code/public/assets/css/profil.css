@@ -1,8 +1,15 @@
 body {
     font-family: 'Roboto';
-    background-color: rgb(0, 0, 0);
+    background: rgb(9,6,67);
+    background: linear-gradient(90deg, rgba(9,6,67,1) 0%, rgba(0,0,0,1) 42%, rgba(15,80,93,1) 100%);
     min-height:100vh;
+    margin: 0;
 }
+
+.Compte {
+    margin-top: 8vh;
+}
+
 input[type="text"],input[type="email"],input[type="password"]{
     color: #777;
     font-family: Roboto;
@@ -43,9 +50,9 @@ input[type="text"],input[type="email"],input[type="password"]{
     background-color: #141414;
     padding: 15px;
     margin-top: 1vh;
-    margin-bottom: 1vh;
     border-radius: 5px;
     border-top: none;
+    padding-left: 2vw;
 }
 
 .tabcontent.active {
@@ -64,6 +71,19 @@ input[type="text"],input[type="email"],input[type="password"]{
     border: 5px solid black;
     border-radius: 20px;
     font-size: 0.9vw;
+}
+
+.infouser {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .popup {
@@ -141,4 +161,9 @@ button{
     flex-direction: column;
     justify-content: space-evenly;
     
+}
+
+tr {
+    display: flex;
+    gap: 2vw;
 }

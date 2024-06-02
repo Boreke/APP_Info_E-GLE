@@ -1,6 +1,7 @@
 body {
     font-family: 'Roboto';
-    background-color: rgb(0, 0, 0);
+    background: rgb(9,6,67);
+    background: linear-gradient(90deg, rgba(9,6,67,1) 0%, rgba(0,0,0,1) 42%, rgba(15,80,93,1) 100%);
     margin: 0;
 }
 
@@ -123,7 +124,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     background-color: #FFF;
@@ -135,6 +136,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     font-size: 0.9vw;
 }
 
+@media (max-width: 1290px) {
+    .section {
+        flex-direction: column;
+    }
+}
+
 .popup {
     display: none;
     position: fixed;
@@ -144,23 +151,22 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    
 }
   
 .popup-content {
-    background-color: black;
     font-family: 'Roboto';
     font-weight: 400;
     margin: 15% auto;
     padding: 20px;
     color: #FFF;
-    border: 1px solid #888;
     width: 15vw;
     border-radius: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    
+    background-color: rgb(26, 26, 26);
+    filter: drop-shadow(5px 5px 4px black);
 }
   
 .close {
@@ -195,10 +201,14 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .table-container {
     max-width: 100%;
-    overflow-x: auto;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: scroll;
     overscroll-behavior-x: auto;
     scrollbar-color: #1414149f #777;
+    background-color: rgb(26, 26, 26);
+    padding: 2vw;
+    border-radius: 30px;
+    filter: drop-shadow(5px 5px 4px black);
 }
 .table-container::-webkit-scrollbar {
 width: 12px;
@@ -222,20 +232,19 @@ table {
     border-collapse: collapse;
     border:0;
     color: white;
+    overflow-x: scroll;
+    overscroll-behavior-x: auto;
 }
 
 th, td {
     
-    background-color: black;
+    background-color: rgb(26, 26, 26);
     padding: 8px;
     text-align: center;
 
 }
 
-th {
-    background-color: black;
 
-}
 
 
 tr:nth-child(even) {
@@ -321,7 +330,27 @@ thead{
     display:flex;
     flex-direction:row ;
     justify-content: space-evenly;
+    margin: 8vh 0 8vh 0;
 }
+
+@media (max-width: 1290px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .section {
+        align-items: center;
+    }
+
+    .film-div, .seances-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
 .table-btn{
     display: flex;
     flex-direction: row;
@@ -344,4 +373,10 @@ thead{
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+@media (max-width: 630px) {
+    input[type="text"],#hour,#minute,#salle,#film {
+        font-size: 12px;
+    }
 }

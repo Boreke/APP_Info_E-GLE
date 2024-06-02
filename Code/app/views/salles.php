@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $data['page_title'] ?></title>
+</head>
 <?php 
         require "../app/controllers/header.php";
         $header= new Header();
         $header->displayHeader();
     ?>
+<body>
+
     <section class="center">
         <div class="center-top">
             <h2>Cinémas</h2>
+            <!--
             <div class="barre-recherche">
                 <img src="<?=ASSETS?>img/Search.png" alt="Search">
                 <input type="search" placeholder="Rechercher un cinéma" class="zone-recherche">
             </div>
+            -->
         </div>
         <div class="cinema-list">
             <?php $this->showCinemas();?>

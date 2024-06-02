@@ -1,0 +1,22 @@
+* {
+    color: white;
+}
+
+body {
+    font-family: 'Roboto';
+    background: rgb(9,6,67);
+    background: linear-gradient(90deg, rgba(9,6,67,1) 0%, rgba(0,0,0,1) 42%, rgba(15,80,93,1) 100%);
+    margin: 0;
+    font-size: 20px;
+}
+
+.contact-info {
+    padding: 10vw;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+
+

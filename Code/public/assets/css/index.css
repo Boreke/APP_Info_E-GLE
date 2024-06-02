@@ -9,9 +9,10 @@ html {
 
 body {
     font-family: 'Roboto';
-    background-color: rgb(0, 0, 0);
-    margin: 0;
+    background: rgb(9,6,67);
+    background: linear-gradient(90deg, rgba(9,6,67,1) 0%, rgba(0,0,0,1) 42%, rgba(15,80,93,1) 100%);
     overflow-x: hidden;
+    margin: 0;
 }
 
 
@@ -86,6 +87,23 @@ h1 {
         flex-direction: column;
         margin-left: 0;
     }
+}
+
+.button1 {
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 36px;
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    filter:none;
+}
+.button1:hover {
+    background-color: #898989;
 }
 
 /*Center 2*/
@@ -164,6 +182,10 @@ h1 {
     animation-duration: 1.2s;
     animation-name: slideinleft;
     animation-timeline: view();
+}
+
+.texte-reserver {
+    max-width: 20vw;
 }
 
 h2 {

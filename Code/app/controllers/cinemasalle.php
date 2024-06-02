@@ -172,7 +172,7 @@ Class cinemasalle extends Controller {
 		$DB = new Database();
 		$salles=$this->getExistingSalles();
 		$arr['today']=date('Y-m-d H:i:s');
-		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today";
+		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today ORDER BY film_date ASC";
 		foreach($salles as $salle){
 			$arr['idsalle'] = $salle->idsalle;
 			$seances[$salle->idsalle]=$DB->read($query, $arr);
@@ -209,9 +209,9 @@ Class cinemasalle extends Controller {
 					</div>
 					<div class="syn-date">
 						<div class="headers-syn-date">
-							<h3 class="syn-header">Synopsis : </h3>
 							<h3 class="date-header">Date : </h3>
 							<h3>&nbsp'.date("F j, Y, g:i a", strtotime($seance->film_date)).'</h3>
+							<h3 class="syn-header">Synopsis : </h3>
 							</div>
 							<p class="syn-content">'.$film[0]->synopsis.'</p>
 							

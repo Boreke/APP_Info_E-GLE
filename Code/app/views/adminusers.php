@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $data['page_title'] ?></title>
+</head>
 <?php 
 
         
@@ -10,6 +14,8 @@
         $header->displayHeader();
 
     ?>
+<body>
+
     <div class="container">
         <h1>Liste des utilisateurs</h1>
         <div class="listcontainer">

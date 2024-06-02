@@ -67,37 +67,7 @@ body {
     border-radius: 5px;
 }
 
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(26, 26, 26);
-    color: black;
-    padding: 20px;
-    filter: drop-shadow(5px 5px 4px black);
-    border-radius: 30px;
-}
 
-.popup form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.popup form label {
-    margin-top: 10px;
-}
-
-.popup form input, .popup form textarea {
-    margin-top: 5px;
-    color: black;
-}
-
-.popup form button {
-    margin-top: 10px;
-}
 
 button {
     color: black;
@@ -121,8 +91,6 @@ button:hover {
 .faqItem{
     padding-left: 3vw;
     padding-right: 3vw;
+
 }
 
-.addBtn{
-    padding: 3vw;
-}

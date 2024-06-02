@@ -10,7 +10,7 @@
 
     <section class="top">
         <div class="disposition">
-            <h1 class="place-header">Places:</h1> 
+            <h1 class="place-header">Places :</h1> 
             <div class="layout">
                 <div class="container">
                     <div class="screen"></div>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="infos-capteur">
-            <h1 class="capt-header">intensité sonore moyenne:</h1>
+            <h1 class="capt-header">Intensité sonore moyenne:</h1>
             <h1>89.3 dB</h1>
         </div>
     </section>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="header-seances">
-            <h1 class="seance-header">Séances:</h1>
+            <h1 class="seance-header">Séances :</h1>
             <div class="carrousel-command" id="carrousel-command">
                 <button id="pre-btn"><img src="<?=ASSETS?>img/arrow.png" alt="" class="pre-btn-img"></button>
                 <div class="date-container" id="date-container">
