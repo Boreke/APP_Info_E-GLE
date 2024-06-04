@@ -201,8 +201,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .table-container {
     max-width: 100%;
-    overflow-y: auto;
-    overflow-x: scroll;
+    overflow-x: auto;
+    overflow-y: scroll;
     overscroll-behavior-x: auto;
     scrollbar-color: #1414149f #777;
     background-color: rgb(26, 26, 26);
