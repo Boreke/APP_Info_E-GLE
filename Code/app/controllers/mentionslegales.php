@@ -9,4 +9,14 @@ Class MentionsLegales extends Controller
 		$this->view("mentionslegales",$data);
 	}
 
+	function updateMentions(){
+		if(isset($_SESSION['user_id'])&&$_SESSION['type']=='admin'){
+			//traiter le POST
+			//->verifier ajout catégories
+			//->recreation liste data
+			//modifier info legales.php
+			//->$configContent = "<?php\n\nreturn " . var_export($data, true) . ";\n";
+			//->file_put_contents('legal_info.php', $configContent);
+		}
+	}
 }

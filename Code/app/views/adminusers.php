@@ -41,10 +41,7 @@
                                     <input type="hidden" name="delete_id" value="<?php echo $user->id_user; ?>">
                                     <button type="submit" class="supp">Supprimer</button>
                                 </form>
-                                <form method="POST" action="">
-                                    <input type="hidden" name="login_id" value="<?php echo $user->id_user; ?>">
-                                    <button type="submit" class="login">Connexion</button>
-                                </form>
+
                             </td>
                         </tr>
                     <?php endforeach; ?>

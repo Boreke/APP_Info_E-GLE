@@ -24,8 +24,8 @@ body {
 table {
     width: 100%;
     background-color: #151515;
-    overflow-x: scroll;
-    overscroll-behavior-x: auto;
+    overflow-y: scroll;
+    overscroll-behavior-y: auto;
 }
 
 th, td {
@@ -39,33 +39,21 @@ th, td {
 }
 .listcontainer {
     max-width: 100%;
-    overflow-x: scroll;    
+    overflow-y: scroll;
+    overflow-x: hidden;    
 }
 
 .supp {
     background-color: red;
     padding: 1vw;
     border-radius: 20px;
+    border: 0;
     align-self: center;
     cursor: pointer;
     filter: none;
 }
 .supp:hover {
     background-color: rgb(255, 115, 115);
-}
-
-.login {
-    background-color: rgb(255, 255, 255);
-    padding: 1vw;
-    border-radius: 20px;
-    align-self: center;
-    cursor: pointer;
-    color: black;
-    filter: none;
-}
-
-.login:hover {
-    background-color: #545454;
 }
 
 
