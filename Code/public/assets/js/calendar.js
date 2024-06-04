@@ -11,7 +11,7 @@ const currentDate = new Date();
 let month = currentDate.getMonth();
 let year = currentDate.getFullYear();
 var seanceId;
-let dateMax=currentDate;
+let dateMax=new Date(year, month, getDaysInMonth(year, month));
 
 function renderCalendar() {
   const startDay = new Date(year, month, 1).getDay();
