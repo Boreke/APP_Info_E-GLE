@@ -6,7 +6,9 @@ body {
     min-height:100vh;
     margin: 0;
 }
-
+button{
+    border: 0;
+}
 
 /* fin header, debut body */
 
@@ -395,7 +397,7 @@ select option{
     background-color: black;
 }
 .error-message{
-    
+    margin-right: 1vw;
     color:red;
     border-radius: 5%;
 }

@@ -29,47 +29,51 @@ Class cinemasalle extends Controller {
 	}
 	function showExistingSalles(){
 		$existingRooms=$this->getExistingSalles();
-		$seances=$this->getSeance();
-
-		foreach ($existingRooms as $room){
-			echo '<div class="salle">
-						<div class="salle-top">
-							<h1>Salle '.$room->numero.'</h1>
-							<a><img class="dropdown" src="../public/assets/img/Drop Down.png" alt=""></a>
+		
+		if($existingRooms){
+			$seances=$this->getSeance();
+			foreach ($existingRooms as $room){
+				echo '<div class="salle">
+							<div class="salle-top">
+								<h1>Salle '.$room->numero.'</h1>
+								<a><img class="dropdown" src="../public/assets/img/Drop Down.png" alt=""></a>
+							</div>
+							<div class="salle-bot">
+								<div class="disposition">
+									<h1 class="place-header">Places:</h1> 
+									<div class="layout">
+								
+										<div class="container">
+											<div class="screen"></div>';
+												$this->showRows($room->idsalle);
+										echo '</div>
+										<ul class="showcase">
+											<li>
+												<div class="seat"></div>
+												<small>N/A</small>
+											</li>
+											<li>
+												<div class="seat occupied"></div>
+												<small>Occupied</small>
+												</li>    
+										</ul>
+									</div>
+								</div>';
+								if(!empty($seances[$room->idsalle])){
+								echo'<div class="infos-seances" id="infos-seances">
+										<button id="pre-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="pre-btn-img"></button>
+										<div class="seances-container" id="seances-container">';
+											$this->showSeance($seances[$room->idsalle]);
+								echo '	</div>
+										<button id="nxt-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="nxt-btn-img"></button>
+									</div>';
+								}
+						echo '</div>
 						</div>
-						<div class="salle-bot">
-							<div class="disposition">
-								<h1 class="place-header">Places:</h1> 
-								<div class="layout">
-							
-									<div class="container">
-										<div class="screen"></div>';
-											$this->showRows($room->idsalle);
-									echo '</div>
-									<ul class="showcase">
-										<li>
-											<div class="seat"></div>
-											<small>N/A</small>
-										</li>
-										<li>
-											<div class="seat occupied"></div>
-											<small>Occupied</small>
-											</li>    
-									</ul>
-								</div>
-							</div>';
-							if(!empty($seances[$room->idsalle])){
-							echo'<div class="infos-seances" id="infos-seances">
-									<button id="pre-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="pre-btn-img"></button>
-									<div class="seances-container" id="seances-container">';
-										$this->showSeance($seances[$room->idsalle]);
-							echo '	</div>
-									<button id="nxt-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="nxt-btn-img"></button>
-								 </div>';
-							}
-					echo '</div>
-					</div>
-					</div>';
+						</div>';
+			}
+		}else{
+			echo '<h1>Aucune Salle</h1>';
 		}
 	}
 	function add_salle($POST){

@@ -26,7 +26,7 @@
                     <a onclick="openDelPopup()" id="popup11" class="plus"> <img src="<?=ASSETS?>img/Addminus.png" alt="Bouton Del" class="del_btn"></a>
                 </div>
                 <?php if (!empty($_SESSION["error_message"])) : ?>
-                    <div class="error-message"><?php echo $_SESSION["error_message"]; ?></div>
+                    <h2 class="error-message"><?php echo $_SESSION["error_message"]; ?></h2>
                 <?php endif; ?>  
                 <div id="addPopup" class="addPopup">
                     <div class="popup-content">
