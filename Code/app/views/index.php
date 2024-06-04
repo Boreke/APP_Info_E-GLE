@@ -30,16 +30,7 @@
             <div class="right2">
                 <h2>A l'affiche :</h2>
                 <div class="caroussel">
-                    
-                    
-                    <div class="slider-container slider-1">
-                        <div class="slider">
-                            <img src="<?=ASSETS?>img/intouchables.svg" alt="" class="img-intouchables">
-                            <img src="<?=ASSETS?>img/shutterIsland.png" alt="" class="img-intouchables">
-                            <img src="<?=ASSETS?>img/avatar.png" alt="" class="img-intouchables">
-                            <img src="<?=ASSETS?>img/intouchables.svg" alt="" class="img-intouchables">
-                        </div>
-                    </div>
+                            <?php $this->showPictures();?>
                     
                 </div>
                 

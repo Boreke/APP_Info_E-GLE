@@ -120,8 +120,8 @@ h1 {
     min-height: 100vh;
 
 }
-.img-intouchables {
-    width: 250px;
+.img-carroussel {
+    width: 400px;
     height: auto;
 }
 
@@ -130,34 +130,17 @@ h1 {
     align-items: center;
 }
 .slider-1 {
-    max-width: 250px;
-    margin: 100px auto;
-    overflow: hidden;  
+    max-width: 400px;
+
+    overflow: hidden; 
+    border-radius: 20px; 
 }
 .slider-1 .slider {
-    animation: slider-1 12s infinite ease-in-out;
-    display: flex;
-}
 
-@keyframes slider-1 {
-    0%,
-    20% {
-      transform: translateX(0);
-    }
-    25%,
-    45% {
-      transform: translateX(-100%);
-    }
-    50%,
-    70% {
-      transform: translateX(-200%);
-    }
-    75%,
-    100% {
-      transform: translateX(-300%);
-    }
+    display: flex;
     
 }
+
 
 .arrow {
     width: 60px;
