@@ -236,7 +236,7 @@ Class Profil extends Controller{
             SELECT c.idcommentaire AS id, c.titre AS comment_title, c.date AS comment_date, 
                    c.contenu AS comment_content, p.idpost AS post_id, p.titre AS post_title 
             FROM commentaire c
-            JOIN post p ON p.commentaire_idcommentaire = c.idcommentaire
+            JOIN post p ON p.idpost =c.post_idpost  
             WHERE c.user_id= :user_id";
         $arr["user_id"] = $_SESSION["user_id"];
         return $DB->read($sqlRequest, $arr);
