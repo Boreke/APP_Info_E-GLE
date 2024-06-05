@@ -40,10 +40,8 @@ Class SeancesFlorent extends Controller
 	}
 	function getUpcoming(){
 		$db = new Database();
-		$date = new DateTime();
-		$date->modify('-3 months');
-		$arr['before'] = $date->format('Y-m-d');
-        $films = $db->read("SELECT DISTINCT id_film, image_file, titre FROM film WHERE id_film NOT IN (SELECT Film_id_film FROM diffuser) AND date_sortie >= :before",$arr);
+		$arr['today']=date('Y-m-d');
+        $films = $db->read("SELECT DISTINCT id_film, image_file, titre FROM film WHERE id_film NOT IN (SELECT Film_id_film FROM diffuser) AND date_sortie >= :today",$arr);
 		return $films;
 	}
 
@@ -62,7 +60,7 @@ Class SeancesFlorent extends Controller
 				echo '</div>';
 			}
 		} else {
-			echo "Aucun film";
+			echo "<br><br><h1>Aucun film</h1>";
 		}
 	}
 

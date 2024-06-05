@@ -11,6 +11,9 @@ body {
 main {
   flex: 1;
 }
+h1{
+  color: white;
+}
 .search-container {
   display: flex;
   align-items: center;
