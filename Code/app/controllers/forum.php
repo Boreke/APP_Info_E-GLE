@@ -70,7 +70,6 @@ Class Forum extends Controller
                             </div>
                         </div>
                         '.$this->displayCommentaire($post->idpost).'
-                        <button class="editPostBtn" " data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>
                         <button class="editPostBtn" " data-id="' . $post->idpost . '" data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>
                       </div>';
             } 
