@@ -17,10 +17,13 @@ Class AdminUsers extends Controller
             $data['users'] = $this->listUsers();
         }
 
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logintest'])) {
+			$this->loginAsUser($_POST);
+		}
+
 		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])){
 			$this->deleteUser($_POST['delete_id']);
-		} elseif (isset($_POST['login_id'])) {
-			$this->loginAsUser($_POST['login_id']);
 		}
 
 		$this->view("adminusers",$data);
@@ -61,16 +64,36 @@ Class AdminUsers extends Controller
         }
     }
 
-	public function loginAsUser($id) {
-        $query = "SELECT * FROM user WHERE id_user = :id limit 1";
-        $user = $this->db->read($query, ['id' => $id]);
-
-        if (is_array($user)) {
-            // Connectez l'utilisateur en initialisant la session
-            $_SESSION['username'] = $user[0]->username;
-            $_SESSION['user_id'] = $user[0]->id_user;
-            $_SESSION['type'] = $user[0]->type;
-        }
+    public function loginAsUser($POST) {
+        $user=$this->loadModel("user");
+        $user = new User();
+        if($POST['logintest'] == 'client'){
+            $query = "SELECT * FROM user WHERE id_user = :id limit 1";
+            $userResult = $this->db->read($query, ['id' => 13]);
+            if ($userResult) {
+                $_SESSION['real_type'] = 'admin';
+                $_SESSION['real_id'] = $user->getUserId();
+                $_SESSION['real_username'] = $user->getUsername();
+                $_SESSION['username'] = $userResult[0]->username;
+                $_SESSION['user_id'] = $userResult[0]->id_user;
+                $_SESSION['type'] = $userResult[0]->type;
+                
+                header("Location:". ROOT . "home");
+            }
+        }elseif($POST['logintest'] == 'gerant'){
+            $query = "SELECT * FROM user WHERE id_user = :id limit 1";
+            $userResult = $this->db->read($query, ['id' => 14]);
+            if ($userResult) {
+                $_SESSION['real_type'] = 'admin';
+                $_SESSION['real_id'] = $user->getUserId();
+                $_SESSION['real_username'] = $user->getUsername();
+                $_SESSION['username'] = $userResult[0]->username;
+                $_SESSION['user_id'] = $userResult[0]->id_user;
+                $_SESSION['type'] = $userResult[0]->type;
+                
+                header("Location:". ROOT . "home");
+            }
+        }  
     }
 
 }
