@@ -10,6 +10,7 @@
     ?>
 
 <body>
+    <main>
     <!-- ajouter modifs h2 (nouvelle entrées dans liste : $data['mention']['headers'][int] faire correspondre int à numero de la partie, commencer à 2)
         ajouter form d'edit ->js? ->popup? 
     -->
@@ -76,7 +77,7 @@
         <input type='text' class='header' name='5' value="<?=$data['mention']['headers'][5]?>">
         <textarea id='applicable_law' class='applicable_law' name='applicable_law' rows="4" cols="50"><?=$data['mention']['applicable_law']?></textarea>
     </form>
-    
+            </main>
 </body>
 <?= $this->view("footer")?>
 <script>const root="<?php echo ROOT;?>";</script>
