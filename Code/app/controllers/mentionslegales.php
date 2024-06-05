@@ -14,7 +14,7 @@ Class MentionsLegales extends Controller
 	function updateMentions(){
 		if(isset($_SESSION['user_id'])&&$_SESSION['type']=='admin'){
 			//traiter le POST
-			//->verifier ajout catégories
+			
 			//->recreation liste data
 			$dataArr=[
 				'page_title' => 'Your Page Title',
@@ -35,10 +35,15 @@ Class MentionsLegales extends Controller
 					5 => $_POST['5']
 				]
 			];
+			//->verifier ajout catégories
+			  
+
 			//modifier info legales.php
-			$configContent = "<?php\n\nreturn " . var_export($dataArr, true) . ";\n";
-			file_put_contents('../app/models/mentions_legales_content.php', $configContent);
-			echo 'success, data:'.$dataArr;
+			if($dataArr){
+				$configContent = "<?php\n\nreturn " . var_export($dataArr, true) . ";\n";
+				file_put_contents('../app/models/mentions_legales_content.php', $configContent);
+			}
 		}
 	}
+	
 }
