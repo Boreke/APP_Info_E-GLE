@@ -46,11 +46,8 @@
                 <div id="myDropdown" class="dropdown-content">
                     <a href="<?=ROOT?>profil">Mon Profil</a>
                     <a href="#about">Sur Nous</a>
-                    <?php if(isset($_SESSION['real_type'])):?>
-                        <a href="<?=ROOT?>logoutadmin">Back to Admin</a>
-                    <?php else:  ?>    
-                        <a href="<?=ROOT?>logout">Logout</a>
-                    <?php endif; ?>
+                    
+                    <a href="<?=ROOT?>logout">Logout</a>
                 </div>
             </div>
             <script src="<?=ASSETS?>js/dropdown.js"></script>

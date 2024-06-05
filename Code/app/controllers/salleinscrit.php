@@ -8,7 +8,7 @@ Class SalleInscrit extends Controller
 		$salle_id = $_GET['salle_id'] ?? null;
 
  	 	$data['page_title'] = "salle ".$salle_id;
-
+		$data['seances']=$this->getSeance();
 
 		if ($salle_id) {
             $DB = new Database();
