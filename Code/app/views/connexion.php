@@ -23,6 +23,11 @@
             <h2 class="titre2">Connexion</h2>
 
             <form class="inputs" method="post">
+                <?php if (isset($_SESSION['error'])): ?>
+                    <div class="error">
+                    <h3 class="error"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></h3>
+                    </div>  
+                <?php endif; ?>
                 <input type="Identifiant" placeholder="Identifiant" class="id" id="username" name="username" value="<?= htmlspecialchars($_POST["username"] ?? "") ?>">
                 <input type="password" placeholder="Mot de passe" class="id" id="password" name="password">
                 <button class="buttonconnexion"> Connexion </button>

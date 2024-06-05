@@ -7,10 +7,10 @@ Class User
 	{
 		$DB = new Database();
 
-		$_SESSION['error_message'] = "";
-		if(isset($POST['username']) && isset($POST['password']))
-		{
+		unset($_SESSION['error']);
 
+		if(isset($POST['username']) && isset($POST['password']) && $POST['username'] != '' && $POST['password'] != '')
+		{
 			$arr['username'] = $POST['username'];
 
 			
@@ -26,20 +26,23 @@ Class User
 					$_SESSION['type']=$data[0]->type;
 					header("Location:". ROOT . "home");
 					die;
+				}else{
+
+					$_SESSION['error'] = "Wrong password";
 				}
 			}else{
 
-				$_SESSION['error_message'] = "wrong username or password";
+				$_SESSION['error'] = "Wrong username";
 			}
 		}else{
-
-			$_SESSION['error_message'] = "please enter a valid username and password";
+			$_SESSION['error'] = "Please enter a valid username and password";
 		}
 
 	}
 
 	function signup($POST)
 	{
+		unset($_SESSION['error_message']);
 
 		$DB = new Database();
 		
@@ -71,6 +74,14 @@ Class User
             die("Les mots de passe ne sont pas identique");
         }
         
+		$email = $_POST['email'];
+		$query = "SELECT * FROM user WHERE email = :email LIMIT 1";
+		$email_check = $DB->read($query, ['email' => $email]);
+		if ($email_check) {
+			$_SESSION['error'] = "L'adresse email est déjà utilisée";
+			header("Location: ".ROOT."nouveaucompte");
+		}
+
         $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
         
         if(isset($_POST['type'])){
@@ -82,8 +93,6 @@ Class User
         }
 
 		
-        
-		$_SESSION['error_message'] = "";
 		if(isset($_POST['username']) && isset($_POST['password']))
 		{
 			$arr = [

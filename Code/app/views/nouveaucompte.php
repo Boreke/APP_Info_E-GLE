@@ -18,16 +18,24 @@
       <form class="inputs" id="signup" method="post" novalidate>
         <h2>Nouveau compte</h2>
         <div class="name">
-          <div><input type="Nom" placeholder="Nom*" class="id" id="nom" name="nom" required></div>
-          <div><input type="Prénom" placeholder="Prénom*" class="id" id="prenom" name="prenom" required></div>
+          <div><input type="Nom" placeholder="Nom*" class="id" id="nom" name="nom" value="<?= htmlspecialchars($_POST["nom"] ?? "") ?>" required></div>
+          <div><input type="Prénom" placeholder="Prénom*" class="id" id="prenom" name="prenom" value="<?= htmlspecialchars($_POST["prenom"] ?? "") ?>" required></div>
         </div>
         <div class="name">
-          <div><input type="Email" placeholder="Email*" class="id" id="email" name="email" required></div>
-          <div><input type="Identifiant" placeholder="Identifiant*" class="id" id="username" name="username" required></div>
+          <div class="input-container">
+            <input type="Email" placeholder="Email*" class="id" id="email" name="email" value="<?= htmlspecialchars($_POST["email"] ?? "") ?>" required>
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="error">
+                  <p class="error"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></p>
+                </div>  
+            <?php endif; ?>
+          </div>
+          <div><input type="Identifiant" placeholder="Identifiant*" class="id" id="username" name="username" value="<?= htmlspecialchars($_POST["username"] ?? "") ?>" required></div>
         </div>
+        
         <div class="name">
-          <div><input type="password" placeholder="Mot de passe*" class="id" id="password" name="password" required></div>
-          <div><input type="password" placeholder="Confirmation*" class="id" id="password_confirmation" name="password_confirmation"></div>
+          <div><input type="password" placeholder="Mot de passe*" class="id" id="password" name="password" value="<?= htmlspecialchars($_POST["password"] ?? "") ?>" required></div>
+          <div><input type="password" placeholder="Confirmation*" class="id" id="password_confirmation" name="password_confirmation" value="<?= htmlspecialchars($_POST["password_confirmation"] ?? "") ?>" ></div>
         </div>
         
 

@@ -18,6 +18,16 @@ body {
     margin-top: 7vh;
     
 }
+
+.error {
+    margin: 0;
+    padding: 0;
+    color: red;
+    font-size: 18px;
+    top: 100%;
+    left: 0;
+  }
+
 .connexion {
     border-radius: 40px;
     background: rgba(80, 80, 80, 0.81);

@@ -16,6 +16,10 @@ validation
     .addField("#email", [
         {
             rule: "required"
+        },
+        {
+            rule: "email",
+            errorMessage: "Le format de l'email est incorrect"
         }
     ])
 
