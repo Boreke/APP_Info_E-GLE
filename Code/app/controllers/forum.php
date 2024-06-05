@@ -18,11 +18,10 @@ Class Forum extends Controller
 	}
 
     function displayPost(){
-        $db = new Database();
-        $query = "SELECT * FROM post p JOIN user u ON p.user_id_user = u.id_user";
-        $data['posts'] = $db->read($query);
-        if (isset($data['posts']) && count($data['posts']) > 0){
-            foreach ($data['posts'] as $post){
+        $post_model=new Post();
+        $posts = $post_model->getPosts();
+        if (isset($posts) && count($posts) > 0){
+            foreach ($posts as $post){
                 $formatted_date = date('d-m-Y', strtotime($post->date));
                 echo '<div class="PostItem">
                         <div class="post">
@@ -35,6 +34,7 @@ Class Forum extends Controller
                                 <h2>' . $post->contenu . '</h3> 
                             </div>
                         </div>
+                        '.$this->displayCommentaire($post->idpost).'
                         <button class="editPostBtn" " data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>
                       </div>';
             } 

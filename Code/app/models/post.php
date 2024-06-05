@@ -15,7 +15,7 @@ Class Post
 	}
 	function getPosts(){
 		$db=new Database();
-		$query = "SELECT * FROM post";
+		$query ="SELECT * FROM post p JOIN user u ON p.user_id_user = u.id_user";
         return $db->read($query);
 	}
 
