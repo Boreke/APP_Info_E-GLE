@@ -5,32 +5,38 @@ Class Forum extends Controller
 	function index()
 	{
 		unset($_SESSION['error_message']);
-        $post_model=$this->loadModel("post");
-        $data['commentaires']= $post_model->getCommentaireById(1);
+        
 		$data['page_title'] = "Forum";
 
-        $db = new Database();
-        $query = "SELECT * FROM post";
-        $data['posts'] = $db->read($query);
         
+
+        $post_model=$this->loadModel("post");
+        $data['commentaires']= $post_model->getCommentaireById(1);
+
 		$this->view("forum",$data);
 	}
 
     function displayPost(){
-        if (is_array($data['posts']) && count($data['posts']) > 0){
+        $db = new Database();
+        $query = "SELECT * FROM post p JOIN user u ON p.user_id_user = u.id_user";
+        $data['posts'] = $db->read($query);
+        if (isset($data['posts']) && count($data['posts']) > 0){
             foreach ($data['posts'] as $post){
+                $formatted_date = date('d-m-Y', strtotime($post->date));
                 echo '<div class="PostItem">
                         <div class="post">
                             <h2>' . $post->titre . '</h2>
+                            <p>' . $formatted_date . '</p>
+                            <p>' . $post->post_type . '</p>
+                            <p>Auhtor: ' . $post->username . '</p>
+                            <p>User type: ' . $post->type . '</p>
+                            <div class="contenu"> 
+                                <h2>' . $post->contenu . '</h3> 
+                            </div>
                         </div>
-                        <div class="commentaire"> 
-                             <h2>' . $post->contenu . '</h3> 
-                        </div>
-                        <button class="editPostBtn" data-id="<?= $post->id ?>" data-question="<?= $faq->question ?>" data-answer="<?= $faq->answer ?>">Edit</button>
+                        <button class="editPostBtn" " data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>
                       </div>';
             } 
-                
-           
         }else{
             echo '<h1>No Posts found.</h1>';
         }
