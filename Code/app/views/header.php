@@ -45,7 +45,7 @@
                 <button class="dropbtn" onclick="toggleDropdown()"><?=$_SESSION["username"]?></button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="<?=ROOT?>profil">Mon Profil</a>
-                    <a href="#about">Sur Nous</a>
+                    <a href="<?=ROOT?>forum">Forum</a>
                     <?php if (isset($_SESSION["username"])): ?>
                         <a href="<?=ROOT?>logoutadmin">Back to admin</a>
                     <?php else:  ?>
