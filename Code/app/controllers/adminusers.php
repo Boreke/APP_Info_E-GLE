@@ -8,6 +8,15 @@ Class AdminUsers extends Controller
 		unset($_SESSION['error_message']);
  	 	$data['page_title'] = "utilisateurs";
 		$data['users'] = $this->listUsers();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search_keyword']) && isset($_POST['search_category'])) {
+            $keyword = $_POST['search_keyword'];
+            $category = $_POST['search_category'];
+            $data['users'] = $this->searchUsers($category, $keyword);
+        } else {
+            $data['users'] = $this->listUsers();
+        }
+
 		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])){
 			$this->deleteUser($_POST['delete_id']);
 		} elseif (isset($_POST['login_id'])) {
@@ -26,6 +35,18 @@ Class AdminUsers extends Controller
     public function listUsers() {
         $query = "SELECT id_user, nom, prenom, username, email, type FROM user";
         return $this->db->read($query);
+    }
+
+    public function searchUsers($category, $keyword) {
+        $allowedCategories = ['nom', 'prenom', 'username', 'email', 'type'];
+        
+        if (!in_array($category, $allowedCategories)) {
+            return []; // Return an empty array if the category is not allowed
+        }
+        
+        $query = "SELECT id_user, nom, prenom, username, email, type FROM user 
+                  WHERE $category LIKE :keyword";
+        return $this->db->read($query, ['keyword' => '%' . $keyword . '%']);
     }
 
     public function deleteUser($id) {

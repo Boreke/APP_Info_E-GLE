@@ -16,8 +16,27 @@
     ?>
 <body>
 
+    
+    
+
     <div class="container">
-        <h1>Liste des utilisateurs</h1>
+        <div class="container_top">
+            <h1>Liste des utilisateurs</h1>
+            <div class="search_bar">
+                <form method="post">
+                    <input type="text" class="id" name="search_keyword" placeholder="Search users..." />
+                    <select name="search_category">
+                        <option value="nom">Nom</option>
+                        <option value="prenom">Prénom</option>
+                        <option value="username">Username</option>
+                        <option value="email">Email</option>
+                        <option value="type">Type</option>
+                    </select>
+                    <button type="submit" class="search">Search</button>
+                </form>
+            </div>
+        </div>
+        
         <div class="listcontainer">
             <table>
                 <tr class="top">
