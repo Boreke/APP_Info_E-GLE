@@ -9,11 +9,9 @@ Class Forum extends Controller
         
 		$data['page_title'] = "Forum";
 
-        
-
         $post_model=$this->loadModel("post");
         $data['commentaires']= $post_model->getCommentaireById(1);
-
+        $data['posts']= $post_model->getPosts();
 		$this->view("forum",$data);
 	}
 
@@ -57,7 +55,7 @@ Class Forum extends Controller
         $posts = $post_model->getPosts();
         if (isset($posts) && count($posts) > 0){
             foreach ($posts as $post){
-                $formatted_date = date('d-m-Y', strtotime($post->date));
+                $formatted_date = date('H:i d-m-Y', strtotime($post->date));
                 $commentaires = $this->displayCommentaire($post->idpost);
                 echo '<div class="PostItem">
                         
@@ -100,7 +98,7 @@ Class Forum extends Controller
                 $commentHtml .= '<div class="commentaire"> 
                                     <div class="comm-head">
                                         <h3>' . $comm->username . '</h3>
-                                        <h4>' . $comm->date . '</h4>
+                                        <h4>' . date('H:i d-m-Y', strtotime($comm->date)) . '</h4>
                                     </div>
                                     <p>' . $comm->contenu . '</p> 
                                  </div>';

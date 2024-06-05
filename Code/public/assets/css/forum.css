@@ -37,8 +37,7 @@ p{
     }
 }
 .TITRE {
-    margin-left: 10vw;
-    margin-top: 6vh;
+
     color: rgb(255, 255, 255); 
     font-size: 60px; 
     
@@ -154,9 +153,20 @@ button:hover {
 }
 
 .addBtn{
-
-    margin-left: 3vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5vh;
+    margin-left: 4vw;
     margin-bottom: 1vh;
+}
+#addPostBtn{
+    margin-right: 4vw;
+    font-size: 25px;
+
+    width: 180px;
+    height:75px;
 }
 .editPostBtn{
     margin-top: 2vh;

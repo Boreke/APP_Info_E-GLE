@@ -10,9 +10,10 @@
 
 <body>
     <main>
-    <h1 class="TITRE">FORUM</h1>
+    
 
     <div class="addBtn">
+        <h1 class="TITRE">FORUM</h1>
         <button id="addPostBtn">Add Post</button>
     </div>
 
