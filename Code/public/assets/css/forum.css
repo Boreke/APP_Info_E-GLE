@@ -20,3 +20,84 @@ body {
 main {
     flex: 1;
 }
+
+@keyframes slideinleft {
+    from {
+        margin-left: -20%;
+        opacity: 0%;
+    }
+}
+@keyframes slideinright {
+    from {
+        margin-right: -20%;
+        opacity: 0%;
+    }
+}
+.TITRE {
+    margin-left: 10vw;
+    margin-top: 6vh;
+    color: rgb(255, 255, 255); 
+    font-size: 60px; 
+    
+}
+.sous-titre{
+    margin-left: 10vw;
+    margin-top: 2vh;
+    color: rgb(255, 255, 255); 
+    font-size: 20px;  
+    padding-bottom: 10vh; 
+}
+
+
+.post{
+    margin-bottom: 0;
+    color: white; 
+    font-size: 20px; 
+    padding: 2vw;
+    border-radius: 5px;
+    background-color: rgb(26, 26, 26);
+    display: flex;
+    flex-direction: row;
+    filter: drop-shadow(5px 5px 4px black);
+}
+
+.flechebas {
+    transform: scale(0.6);
+}
+.commentaire{
+    background-color: rgb(26, 26, 26);
+    padding: 50px 20px;
+    margin-top: 0;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    border-radius: 5px;
+}
+
+
+
+button {
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 36px;
+    font-size: 18px;
+    font-weight: 700;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    filter:none;
+    width: 120px;
+    height: 50px;
+}
+
+button:hover {
+    background-color: #898989;
+
+}
+
+.faqItem{
+    padding-left: 3vw;
+    padding-right: 3vw;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+
+}
