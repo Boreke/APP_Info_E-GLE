@@ -99,7 +99,10 @@ navs.forEach((nav) => {
 document.addEventListener("DOMContentLoaded", renderCalendar);
 
 function showReservation() {
-  document.getElementById("festival-popup").style.display = "block";
+  document.getElementById("festival-popup").style.display = "flex";
+  document.getElementById("festival-popup").style.justifyContent = "space-around";
+  document.getElementById("festival-popup").style.alignContent = "center";
+  document.getElementById("festival-popup").style.alignItems = "center";
   document.body.classList.add('no-scroll');
 }
 

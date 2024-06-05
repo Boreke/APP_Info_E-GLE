@@ -5,6 +5,7 @@
     require "../app/controllers/header.php";
     $header= new Header();
     $header->displayHeader($data['page_title']);
+
 ?>
 
 <body>

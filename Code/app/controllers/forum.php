@@ -2,6 +2,7 @@
 
 Class Forum extends Controller
 {
+
 	function index()
 	{
 		unset($_SESSION['error_message']);
@@ -52,12 +53,11 @@ Class Forum extends Controller
     }
 
     function displayPost(){
-        $db = new Database();
-        $query = "SELECT * FROM post p JOIN user u ON p.user_id_user = u.id_user";
-        $data['posts'] = $db->read($query);
-        if (isset($data['posts']) && count($data['posts']) > 0){
-            foreach ($data['posts'] as $post){
-                $formatted_date = date('H:i:s d-m-Y', strtotime($post->date));
+        $post_model=new Post();
+        $posts = $post_model->getPosts();
+        if (isset($posts) && count($posts) > 0){
+            foreach ($posts as $post){
+                $formatted_date = date('d-m-Y', strtotime($post->date));
                 echo '<div class="PostItem">
                         <div class="post">
                             <h2>' . $post->titre . '</h2>
@@ -69,6 +69,8 @@ Class Forum extends Controller
                                 <h2>' . $post->contenu . '</h3> 
                             </div>
                         </div>
+                        '.$this->displayCommentaire($post->idpost).'
+                        <button class="editPostBtn" " data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>
                         <button class="editPostBtn" " data-id="' . $post->idpost . '" data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>
                       </div>';
             } 
@@ -77,6 +79,22 @@ Class Forum extends Controller
         }
             
         
+    }
+    function displayCommentaire($id){
+        $post_model=new Post();
+        $comms=$post_model->getCommentaireById($id);
+
+        if($comms){
+            foreach ($comms as $comm) {
+                echo '<div class="commentaire"> 
+                        <div class="comm-head">
+                        <h3>' . $comm->username . '</h3>
+                        <h4>'. $comm->date.'</h4>
+                        </div>
+                        <p>' . $comm->contenu . '</p> 
+                    </div>';
+            }
+        }
     }
 
 }
