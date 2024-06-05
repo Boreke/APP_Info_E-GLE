@@ -173,7 +173,7 @@ Class User
 	{
 		$_SESSION['username']=$_SESSION['real_username'];
 		$_SESSION['user_id']=$_SESSION['real_id'];
-		$_SESSION['type']=$_SESSION['real_type'];
+		$_SESSION['type']='admin';
 		unset($_SESSION['real_username']);
 		unset($_SESSION['real_id']);
 		unset($_SESSION['real_type']);
