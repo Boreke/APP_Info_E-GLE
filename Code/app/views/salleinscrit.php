@@ -57,5 +57,6 @@
     <?php endif;?>
     </main>
 </body>
+<script>var seances=<?= json_encode($data['seances']);?>;</script>
 <script src="<?=ASSETS?>js/carroussel.js"></script>
 <?= $this->view("footer")?>
