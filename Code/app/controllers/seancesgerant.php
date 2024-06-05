@@ -22,7 +22,7 @@ Class Seancesgerant extends Controller
 			if (isset($_POST['deleteSeance'])) {
 				$gerant->deleteSeance($_POST['idseance']);
 			}
-			if (isset($_POST['genre'])) {
+			if (isset($_POST['editFilm'])) {
 				$gerant->updateFilm($_POST);
 			}
 

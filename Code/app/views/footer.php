@@ -7,9 +7,9 @@
         <li><a href="<?=ROOT?>faqclient" class="nav_bas_elmt">FAQ</a></li>
     </div>
     <div class="reseaux">
-        <li><a href="www.twitter.com"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>
-        <li><a href="www.instagram.com"><img src="<?=ASSETS?>img/Instagram.png" alt="Instagram"></a></li>
-        <li><a href="www.facebook.com"><img src="<?=ASSETS?>img/Facebook.png" alt=""></a></li>
+        <li><a href="https://x.com/EGLE_Events_IT"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>
+        <li><a href="https://www.instagram.com/egle_events_it?igsh=MW41bWt2cXM1a2E0Yw%3D%3D&utm_source=qr"><img src="<?=ASSETS?>img/Instagram.png" alt="Instagram"></a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61560832343131"><img src="<?=ASSETS?>img/Facebook.png" alt=""></a></li>
     </div>
     <div class="mention_legales">
         <img src="<?=ASSETS?>img/Copyright.png" alt="" class="Copyright">

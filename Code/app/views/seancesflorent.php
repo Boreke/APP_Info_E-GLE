@@ -23,30 +23,7 @@
     <img src="<?=ASSETS?>img/arrow.png" alt="Previous" class="pre-btn">
     <div class="movie-container">
     <?php
-            require_once "../app/core/database.php"; 
-            $db = new Database();
-            $arr['today']=date('Y-m-d');
-            $date = new DateTime();
-            $date->modify('-3 months');
-            $arr['before'] = $date->format('Y-m-d');
-            
-            $films = $db->read("SELECT id_film, image_file, titre FROM film WHERE date_sortie <= :today AND date_sortie >= :before", $arr);
-
-            if ($films && count($films) > 0) {
-                foreach ($films as $film) {
-                    echo '<div class="movie-image">';
-
-
-                    $url = ROOT . 'calendar?id=' .  $film->id_film; 
-                
-
-                    echo '<a href="' . $url . '"><img src="'. $film->image_file . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
-                    echo '<div class="movie-title_1">' . htmlspecialchars($film->titre) . '</div>'; 
-                    echo '</div>';
-                }
-            } else {
-                echo "No movies found";
-            }
+            $this->showMovies($this->getNewMovies());
         ?>
     </div>
     <img src="<?=ASSETS?>img/arrow.png" alt="Next" class="nxt-btn">
@@ -61,25 +38,8 @@
     <img src="<?=ASSETS?>img/arrow.png" alt="Previous" class="pre-btn">
     <div class="movie-container">
     <?php
-            require_once "../app/core/database.php"; 
-            $db = new Database();
-            $films = $db->read("SELECT id_film, image_file, titre FROM film");
 
-            if ($films && count($films) > 0) {
-                foreach ($films as $film) {
-                    echo '<div class="movie-image">';
-
-
-                    $url = ROOT . 'calendar?id=' .  $film->id_film; 
-                
-
-                    echo '<a href="' . $url . '"><img src="' . $film->image_file . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
-                    echo '<div class="movie-title_2">' . htmlspecialchars($film->titre) . '</div>'; // Added movie title
-                    echo '</div>';
-                }
-            } else {
-                echo "No movies found";
-            }
+        $this->showMovies($this->getAffiche());
         ?>
     </div>
     <img src="<?=ASSETS?>img/arrow.png" alt="Next" class="nxt-btn">
@@ -94,25 +54,7 @@
     <img src="<?=ASSETS?>img/arrow.png" alt="Previous" class="pre-btn">
     <div class="movie-container">
     <?php
-            require_once "../app/core/database.php"; 
-            $db = new Database();
-            $films = $db->read("SELECT id_film, image_file, titre FROM film");
-
-            if ($films && count($films) > 0) {
-                foreach ($films as $film) {
-                    echo '<div class="movie-image">';
-
-
-                    $url = ROOT . 'calendar?id=' .  $film->id_film; 
-                
-
-                    echo '<a href="' . $url . '"><img src="' . $film->image_file . '" alt="' . htmlspecialchars($film->titre) . '" class="movie-cover"></a>';
-                    echo '<div class="movie-title_3">' . htmlspecialchars($film->titre) . '</div>'; // Added movie title
-                    echo '</div>';
-                }
-            } else {
-                echo "No movies found";
-            }
+            $this->showMovies($this->getUpcoming());
         ?>
     </div>
     <img src="<?=ASSETS?>img/arrow.png" alt="Next" class="nxt-btn">

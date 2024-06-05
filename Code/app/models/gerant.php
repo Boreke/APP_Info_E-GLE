@@ -10,43 +10,44 @@ Class Gerant{
                 if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
                 
                     echo "file uploading";
-                    $target_dir = "../public/assets/img/"; // Ensure this directory exists and is writable
+                    $target_dir = "../public/assets/img/";
                     $target_file = $target_dir . basename($_FILES["image"]["name"]);
                     $uploadOk = 1;
                     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         
         
                     if (file_exists($target_file)) {
-                        echo "Sorry, file already exists.";
                         $uploadOk = 0;
+                        $fileExists=0;
                     }
                 
-                    // Check file size
-                    if ($_FILES["image"]["size"] > 500000) { // size in bytes
+                    
+                    if ($_FILES["image"]["size"] > 500000) { 
                         echo "Sorry, your file is too large.";
                         $uploadOk = 0;
                     }
                 
-                    // Allow certain file formats
+                    
                     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                     && $imageFileType != "gif" ) {
                         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                         $uploadOk = 0;
                     }
                 
-                    // Check if $uploadOk is set to 0 by an error
+                   
                     if ($uploadOk == 0) {
                         echo "Sorry, your file was not uploaded.";
-                    // if everything is ok, try to upload file
+                    
                     } else {
-                        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                        if ($fileExists) {
+                            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
                             echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
                         } else {
                             echo "Sorry, there was an error uploading your file.";
                         }
                     }
         
-                    if ($uploadOk == 1) {
+                    if ($uploadOk == 1||$fileExists==0) {
                         $hour = isset($_POST["hour"]) ? (int) $_POST["hour"] : 0;
                         $minute = isset($_POST["minute"]) ? (int) $_POST["minute"] : 0;
                         $duration = $hour * 3600 + $minute * 60;
