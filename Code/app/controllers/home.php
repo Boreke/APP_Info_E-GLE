@@ -5,7 +5,7 @@ Class Home extends Controller
 	function index()
 	{
 		unset($_SESSION['error_message']);
- 	 	$data['page_title'] = "Home";
+ 	 	$data['page_title'] = "Accueil";
 
 		$this->view("index",$data);
 	}

@@ -5,7 +5,7 @@ Class Seancesgerant extends Controller
 	function index()
 	{
 		unset($_SESSION['error_message']);
- 	 	$data['page_title'] = "seancesgerant";
+ 	 	$data['page_title'] = "Mes films et séances";
 		$user=$this->loadModel("user");
 		$gerant=$this->loadModel("gerant");
 		

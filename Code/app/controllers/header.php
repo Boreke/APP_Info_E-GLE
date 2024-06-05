@@ -6,9 +6,10 @@ Class Header extends Controller
 		unset($_SESSION['error_message']);
 	}
 
-    function displayHeader(){
+    function displayHeader($pageTitle){
         $data['pageClassMap']=$this->getPageClassMap();
         $data['pageName']=$this->getPageName();
+        $data['pageTitle']=$pageTitle;
         $data['currentPage']=$this->getCurrentPage();
         $data['CSS']=$this->getCSS();
         $this->view("header",$data);

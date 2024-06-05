@@ -6,7 +6,7 @@ Class cinemasalle extends Controller {
 	{
 		$user=$this->loadModel("user");
  	 	unset($_SESSION['error_message']);;
- 	 	$data['page_title'] = "salle";
+ 	 	$data['page_title'] = "Mes salles";
 		if(isset($_POST['numero_salle_del'])){
 			$this->delete_salle($_POST);
 		}

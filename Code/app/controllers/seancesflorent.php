@@ -5,7 +5,7 @@ Class SeancesFlorent extends Controller
 	function index()
 	{
 		unset($_SESSION['error_message']);
- 	 	$data['page_title'] = "Seances_Client";
+ 	 	$data['page_title'] = "Seances";
 
 		$this->view("seancesflorent",$data);
 	}

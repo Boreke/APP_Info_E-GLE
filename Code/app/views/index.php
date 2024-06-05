@@ -2,11 +2,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="<?=ASSETS?>css/index.css"></head>
+
 <?php 
         require "../app/controllers/header.php";
         $header= new Header();
-        $header->displayHeader();
+        $header->displayHeader($data['page_title']);
 ?>
 <body>
     <main>

@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $data['page_title'] ?></title>
-</head>
+
 <?php
         $data['mention']=require_once '../app/models/mentions_legales_content.php';
         require "../app/controllers/header.php";
         $header = new Header();
-        $header->displayHeader();
+        $header->displayHeader($data['page_title']);
     
     ?>
 

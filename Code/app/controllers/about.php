@@ -6,7 +6,7 @@ Class About extends Controller
 	{
 		unset($_SESSION['error_message']);
 		$data['page_title'] = "About";
-		$this->view("minima/about-us",$data);
+		$this->view("about-us",$data);
 	}
 
 }

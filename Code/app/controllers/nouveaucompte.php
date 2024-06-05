@@ -4,7 +4,7 @@ Class NouveauCompte extends Controller
 	function index()
 	{
         unset($_SESSION['error_message']);
- 	 	$data['page_title'] = "nouveaucompte";
+ 	 	$data['page_title'] = "nouveau compte";
 		
  	 	if(isset($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['password_confirmation']))
  	 	{

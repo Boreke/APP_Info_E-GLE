@@ -5,7 +5,7 @@ Class Salles extends Controller
 	function index()
 	{
 		unset($_SESSION['error_message']);
- 	 	$data['page_title'] = "salles";
+ 	 	$data['page_title'] = "Cinémas et salles";
 		  $data['salles'] = $this->getSalles();
 		$user=$this->loadModel('user');
 		$this->view("salles",$data);

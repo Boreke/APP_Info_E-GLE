@@ -4,7 +4,7 @@ Class Calendar extends Controller
 	function index()
 	{
 		unset($_SESSION['error_message']);
- 	 	$data['page_title'] = "calendrier";
+ 	 	$data['page_title'] = "Séances";
 		$data['seanceData']=$this->getSeances();
 
 
