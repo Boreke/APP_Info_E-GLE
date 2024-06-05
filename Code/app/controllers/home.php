@@ -14,6 +14,7 @@ Class Home extends Controller
 		$DB= new Database();
 		$query= "SELECT DISTINCT f.image_file FROM film f JOIN diffuser d ON f.id_film= d.Film_id_film WHERE f.image_file IS NOT NULL";
 		$pics= $DB->read($query);
+		$pics[count($pics)]=$pics[0];
 		return $pics;
 	}
 
