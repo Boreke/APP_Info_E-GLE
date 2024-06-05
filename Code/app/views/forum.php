@@ -12,10 +12,25 @@
     <main>
     <h1 class="TITRE">FORUM</h1>
     <div id="PostList">
-        <?php $this->displayCommentaire(1);?>
+        <?php $this -> displayPost(); ?>
     </div>
+
+    <div id="editPostPopup" class="popup">
+        <form id="editPostForm" method="POST">
+            <label for="editTitre">Titre :</label>
+            <input type="text" id="editTitre" name="titre" required>
+            <label for="editContenu">Contenu :</label>
+            <textarea id="editContenu" name="contenu" required></textarea>
+            <button type="submit">Edit</button>
+            <button type="button" id="closeEditPopup">Close</button>
+        </form>
+    </div>
+
     </main>  
 </body>
 
 <?= $this->view("footer")?>
+
+<script src="<?=ASSETS?>js/forum.js"></script>
+
 </html>
