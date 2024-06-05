@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    var containerElement=document.getElementsByClassName("container");
-    var formElement=document.getElementsByClassName("edit-form");
-    var editBtn=document.getElementsByClassName("edit-btn");
+    const containerElement = document.querySelector(".container");
+            const formElement = document.querySelector(".edit-form");
+            const editBtn = document.querySelector(".edit-btn");
     
-    editBtn.addEventListener('click',()=>{
+    editBtn.addEventListener('click',function(){
         formElement.style.display="block";
         containerElement.style.display="none";
     });

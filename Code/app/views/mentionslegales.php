@@ -65,7 +65,7 @@
         <label for="phone">Téléphone : </label>
         <input type='text' class='phone' name='phone' value="<?=$data['mention']['editor']['phone']?>"> <br>
         <label for="email">Email :</label>
-        <input type='text' class='phone' name='phone' value="<?=$data['mention']['editor']['email']?>"> <br>
+        <input type='text' class='email' name='email' value="<?=$data['mention']['editor']['email']?>"> <br>
         </p>
 
         <input type='text' class='header' name='2' value="<?=$data['mention']['headers'][2]?>">
@@ -83,5 +83,6 @@
     
 </body>
 <?= $this->view("footer")?>
-
+<script>const root="<?php echo ROOT;?>";</script>
+<script src="<?=ASSETS?>js/mentions.js"></script>
 </html>

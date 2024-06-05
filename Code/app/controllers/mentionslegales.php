@@ -36,9 +36,9 @@ Class MentionsLegales extends Controller
 				]
 			];
 			//modifier info legales.php
-			$configContent = "<?php\n\nreturn " . var_export($data, true) . ";\n";
+			$configContent = "<?php\n\nreturn " . var_export($dataArr, true) . ";\n";
 			file_put_contents('../app/models/mentions_legales_content.php', $configContent);
-			echo 'success';
+			echo 'success, data:'.$dataArr;
 		}
 	}
 }
