@@ -152,6 +152,12 @@ button:hover {
     margin-bottom: 2vh;
     
 }
+
+.addBtn{
+
+    margin-left: 3vw;
+    margin-bottom: 1vh;
+}
 .editPostBtn{
     margin-top: 2vh;
 }

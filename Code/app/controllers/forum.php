@@ -17,6 +17,41 @@ Class Forum extends Controller
 		$this->view("forum",$data);
 	}
 
+    function add()
+    {
+        $user=$this->loadModel("user");
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $titre = $_POST['titre'];
+            $contenu = $_POST['contenu'];
+            $post_type = $_POST['post_type'];
+            $date= new DateTime();
+            $formatted_date = $date->format('Y-m-d H:i:s');
+
+            $db = new Database();
+            $query = "INSERT INTO post (titre, date, contenu, post_type, user_id_user) VALUES (:titre, :date, :contenu, :post_type, :user_id)";
+            $db->write($query, ['titre' => $titre, 'date' => $formatted_date,'contenu' => $contenu, 'post_type' => $post_type, 'user_id' => $user->getUserId()]);
+            
+            header("Location: " . ROOT . "forum");
+            die;
+        }
+    }
+
+    function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $titre = $_POST['titre'];
+            $contenu = $_POST['contenu'];
+
+            $db = new Database();
+            $query = "UPDATE post SET titre = :titre, contenu = :contenu WHERE idpost = :id";
+            $db->write($query, ['titre' => $titre, 'contenu' => $contenu, 'id' => $id], false);
+            
+            header("Location: " . ROOT . "forum");
+            die;
+        }
+    }
+
     function displayPost(){
         $post_model=new Post();
         $posts = $post_model->getPosts();
