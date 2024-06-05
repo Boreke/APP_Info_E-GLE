@@ -12,6 +12,47 @@ body {
 p{
     text-align: justify;
 }
-.container {
+input{
+    background-color: transparent;
+    border: 2px solid #818181;
+    border-radius: 5px;
+    padding: 5px;
+}
+textarea{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: justify;
+    background-color: transparent;
+    font-family: 'Roboto';
+    border: 2px solid #818181;
+    border-radius: 10px;
+}
+
+.container,.edit-form {
     padding: 2vw;
+}
+.header-edit{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.edit-btn, .submit-btn {
+    background-color: white;
+    color: black;
+    font-family: Roboto;
+    font-size: 20px;
+    border-radius: 20rem;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 1vw;
+}
+.edit-form{
+    display: none;
 }

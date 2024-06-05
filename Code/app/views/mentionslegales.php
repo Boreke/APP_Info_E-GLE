@@ -16,10 +16,14 @@
 <body>
     <!-- ajouter modifs h2 (nouvelle entrées dans liste : $data['mention']['headers'][int] faire correspondre int à numero de la partie, commencer à 2)
         ajouter form d'edit ->js? ->popup? 
-        ajouter bouton edit en dessous de h1 et grouper les deux dans une div(pour le display)
     -->
     <div class="container">
-        <h1>Mentions Légales</h1>
+        <div class='header-edit'>
+            <h1>Mentions Légales</h1>
+            <?php if($data['user']->check_logged_in() && $_SESSION['type']=== 'admin'):?>
+                <button class='edit-btn'> Editer </button>
+            <?php endif;?>
+        </div>
 
         <h2>1. Éditeur du site</h2>
 
@@ -31,19 +35,51 @@
         Email : <?=$data['mention']['editor']['email']?> <br>
         </p>
 
-        <h2>2. Propriété intellectuelle</h2>
+        <h2><?=$data['mention']['headers'][2]?></h2>
 
         <p><?=$data['mention']['intellectual_property']?></p>
         
-        <h2>3. Protection des données personnelles</h2>
+        <h2><?=$data['mention']['headers'][3]?></h2>
         <p><?=$data['mention']['data_protection']?></p>
 
-        <h2>4. Responsabilité</h2>
+        <h2><?=$data['mention']['headers'][4]?></h2>
         <p><?=$data['mention']['responsibility']?></p>
 
-        <h2>5. Droit applicable</h2>
+        <h2><?=$data['mention']['headers'][5]?></h2>
         <p><?=$data['mention']['applicable_law']?></p>
     </div>
+    <form class="edit-form" method='post'>
+        <div class='header-edit'>
+            <h1>Mentions Légales</h1>
+            <input type="submit" value="Submit" class='submit-btn'>
+        </div>
+
+        <h2>1. Éditeur du site</h2>
+
+        <p>Le site E-GLE est édité par :
+        <br>
+        <label for="name">Nom du responsable : </label>
+        <input type='text' class='name' name='name' value="<?=$data['mention']['editor']['name']?>" ><br>
+        <label for="address"> Adresse : </label>
+        <input type='text' class='address' name='address' value="<?=$data['mention']['editor']['address']?>"> <br>
+        <label for="phone">Téléphone : </label>
+        <input type='text' class='phone' name='phone' value="<?=$data['mention']['editor']['phone']?>"> <br>
+        <label for="email">Email :</label>
+        <input type='text' class='phone' name='phone' value="<?=$data['mention']['editor']['email']?>"> <br>
+        </p>
+
+        <input type='text' class='header' name='2' value="<?=$data['mention']['headers'][2]?>">
+        <textarea id='intellectual_property' class='intellectual_property' name='intellectual_property' rows="4" cols="50"><?=$data['mention']['intellectual_property']?></textarea>
+
+        <input type='text' class='header' name='3' value="<?=$data['mention']['headers'][3]?>">
+        <textarea id='data_protection' class='data_protection' name='data_protection' rows="4" cols="50"><?=$data['mention']['data_protection']?></textarea>
+        
+        <input type='text' class='header' name='4' value="<?=$data['mention']['headers'][4]?>">
+        <textarea id='responsibility' class='responsibility' name='responsibility' rows="4" cols="50"><?=$data['mention']['responsibility']?></textarea>
+
+        <input type='text' class='header' name='5' value="<?=$data['mention']['headers'][5]?>">
+        <textarea id='applicable_law' class='applicable_law' name='applicable_law' rows="4" cols="50"><?=$data['mention']['applicable_law']?></textarea>
+    </form>
     
 </body>
 <?= $this->view("footer")?>
