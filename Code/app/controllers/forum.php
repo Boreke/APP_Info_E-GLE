@@ -2,17 +2,18 @@
 
 Class Forum extends Controller
 {
+
 	function index()
 	{
 		unset($_SESSION['error_message']);
         $post_model=$this->loadModel("post");
         $data['commentaires']= $post_model->getCommentaireById(1);
 		$data['page_title'] = "Forum";
-
-        $db = new Database();
-        $query = "SELECT * FROM post";
-        $data['posts'] = $db->read($query);
         
+        $db = new Database();
+
+        $posts= $post_model->getPosts();
+        $data['posts']=$posts;
 		$this->view("forum",$data);
 	}
 
@@ -28,14 +29,29 @@ Class Forum extends Controller
                         </div>
                         <button class="editPostBtn" data-id="<?= $post->id ?>" data-question="<?= $faq->question ?>" data-answer="<?= $faq->answer ?>">Edit</button>
                       </div>';
-            } 
-                
-           
+            }
+
         }else{
             echo '<h1>No Posts found.</h1>';
         }
             
         
+    }
+    function displayCommentaire($id){
+        $post_model=new Post();
+        $comms=$post_model->getCommentaireById($id);
+
+        if($comms){
+            foreach ($comms as $comm) {
+                echo '<div class="commentaire"> 
+                        <div class="comm-head">
+                        <h3>' . $comm->username . '</h3>
+                        <h4>'. $comm->date.'</h4>
+                        </div>
+                        <p>' . $comm->contenu . '</p> 
+                    </div>';
+            }
+        }
     }
 
 }
