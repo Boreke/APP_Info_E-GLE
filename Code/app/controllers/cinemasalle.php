@@ -13,7 +13,7 @@ Class cinemasalle extends Controller {
 		if(isset($_POST['numero_salle'])){
 			$this->add_salle($_POST);
 		}
-		$data['salles']=$this->getExistingSalles();
+
 		$this->view("cinemasalle",$data);
 	}
 
@@ -21,7 +21,7 @@ Class cinemasalle extends Controller {
 		$user=new User();
 		$DB = new Database();
 		$cinemaId=$user->getCinemaID();
-		$sqlRequest="SELECT * FROM salle WHERE cinema_idcinema = :idCinema";
+		$sqlRequest="SELECT * FROM salle WHERE cinema_idcinema = :idCinema ORDER BY numero ASC";
 		$arr["idCinema"]=$cinemaId;
 		$existingRooms=$DB->read($sqlRequest,$arr);
 		unset($sqlRequest);
@@ -73,25 +73,25 @@ Class cinemasalle extends Controller {
 						</div>';
 			}
 		}else{
-			echo '<h1>Aucune Salle</h1>';
+			echo '<h1 class="no-salles">Aucune Salle</h1>';
 		}
 	}
-	function add_salle($POST){
+	function add_salle(){
 		$DB = new Database();
 		$user=new User();
 		
 		if ($user->check_logged_in()) {
 			
 			$cinema_id=$user->getCinemaId();
-			if (empty($POST["numero_salle"])) {
+			if (empty($_POST["numero_salle"])) {
 				$_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
-			} elseif (!is_numeric($POST["numero_salle"])&& $POST["numero_salle"]==0) {
+			} elseif (!is_numeric($_POST["numero_salle"])&& $_POST["numero_salle"]==0) {
 				$_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
 			}
 			$sql = "INSERT INTO salle (numero, nbr_places, cinema_idcinema) VALUES (:numero, :nb_places, :cinema_idcinema)";
 			unset($arr);
-			$arr["numero"]=$POST["numero_salle"];
-			$arr["nb_places"]=$POST["nb_places"];
+			$arr["numero"]=$_POST["numero_salle"];
+			$arr["nb_places"]=$_POST["nb_places"];
 			$arr["cinema_idcinema"]=$cinema_id;
 			try {
 				$DB->write($sql,$arr);
@@ -110,14 +110,14 @@ Class cinemasalle extends Controller {
 
 
 
-	function delete_salle($POST) {
+	function delete_salle() {
         $DB = new Database();
-        if (empty($POST["numero_salle_del"])) {
+        if (empty($_POST["numero_salle_del"])) {
             $_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
-        } elseif (!is_numeric($POST["numero_salle_del"]) || $POST["numero_salle_del"] == 0) {
+        } elseif (!is_numeric($_POST["numero_salle_del"]) || $_POST["numero_salle_del"] == 0) {
             $_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
         } else {
-            $arr = ['numero_salle_del' => $POST['numero_salle_del']];
+            $arr = ['numero_salle_del' => $_POST['numero_salle_del']];
             $sql = 'DELETE FROM salle WHERE idsalle = :numero_salle_del';
             try {
                 $DB->write($sql, $arr);

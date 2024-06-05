@@ -1,5 +1,7 @@
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Roboto';
     background: rgb(9,6,67);
     background: linear-gradient(90deg, rgba(9,6,67,1) 0%, rgba(0,0,0,1) 42%, rgba(15,80,93,1) 100%);
@@ -9,8 +11,11 @@ body {
 button{
     border: 0;
 }
+main {
+    flex: 1;
+}
 
-/* fin header, debut body */
+
 
 h1 {
     color: #FFF;
@@ -400,6 +405,9 @@ select option{
     margin-right: 1vw;
     color:red;
     border-radius: 5%;
+}
+.no-salles{
+    margin-left: 50px;
 }
 @media (max-width:520px){
     .ajouter_salle{

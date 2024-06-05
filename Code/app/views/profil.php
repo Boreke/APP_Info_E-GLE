@@ -6,7 +6,7 @@
     $header->displayHeader();
 ?>
 <body>  
-
+<main>
 <section id="Compte" class="Compte">
     <div>
         <div class="tabs">
@@ -240,7 +240,7 @@
         <script src="<?=ASSETS?>js/profil.js"></script>
     </div>
 </section>
-
+</main>
 </body>
 
 <?= $this->view("footer")?>

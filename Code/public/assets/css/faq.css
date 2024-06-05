@@ -111,6 +111,7 @@ button {
     filter:none;
     width: 120px;
     height: 50px;
+    margin-top: 1vh;
 }
 
 button:hover {
@@ -121,8 +122,12 @@ button:hover {
 .faqItem{
     padding-left: 3vw;
     padding-right: 3vw;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
 }
 
 .addBtn{
-    padding: 3vw;
+
+    margin-left: 3vw;
+    margin-bottom: 1vh;
 }

@@ -26,16 +26,18 @@ Class Calendar extends Controller
 		$seances = $db->read($seanceQuery, [$movieId]);
 
 		$seanceData = [];
-		foreach ($seances as $seance) {
-			$query="SELECT * FROM salle WHERE idsalle=?";
-			$idcinema=$db->read($query,[$seance->salle_idsalle])[0]->cinema_idcinema;
-			unset($query);
-			$query="SELECT * FROM cinema WHERE idcinema = ?";
-			$cinema=$db->read($query,[$idcinema]);
-			if(empty($seanceData[date('Y-m-d', strtotime($seance->film_date))])){
-				$seanceData[date('Y-m-d', strtotime($seance->film_date))][0] = ['time' => date('H:i', strtotime($seance->film_date)), 'id' => $seance->idseance, 'nomCinema'=> $cinema[0]->nom_cinema, 'price'=>$seance->price];
-			}else{
-				array_push($seanceData[date('Y-m-d', strtotime($seance->film_date))] ,['time' => date('H:i', strtotime($seance->film_date)), 'id' => $seance->idseance, 'nomCinema'=> $cinema[0]->nom_cinema, 'price'=>$seance->price]);
+		if($seances){
+			foreach ($seances as $seance) {
+				$query="SELECT * FROM salle WHERE idsalle=?";
+				$idcinema=$db->read($query,[$seance->salle_idsalle])[0]->cinema_idcinema;
+				unset($query);
+				$query="SELECT * FROM cinema WHERE idcinema = ?";
+				$cinema=$db->read($query,[$idcinema]);
+				if(empty($seanceData[date('Y-m-d', strtotime($seance->film_date))])){
+					$seanceData[date('Y-m-d', strtotime($seance->film_date))][0] = ['time' => date('H:i', strtotime($seance->film_date)), 'id' => $seance->idseance, 'nomCinema'=> $cinema[0]->nom_cinema, 'price'=>$seance->price];
+				}else{
+					array_push($seanceData[date('Y-m-d', strtotime($seance->film_date))] ,['time' => date('H:i', strtotime($seance->film_date)), 'id' => $seance->idseance, 'nomCinema'=> $cinema[0]->nom_cinema, 'price'=>$seance->price]);
+				}
 			}
 		}
 		return $seanceData;

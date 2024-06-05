@@ -1,3 +1,4 @@
+
 <footer>
     <img src="<?=ASSETS?>img/logo-events-IT 1.png" alt="">
     <div class="nav_bas">

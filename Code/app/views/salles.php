@@ -11,7 +11,7 @@
         $header->displayHeader();
     ?>
 <body>
-
+    <main>
     <section class="center">
         <div class="center-top">
             <h2>Cinémas</h2>
@@ -27,6 +27,7 @@
             
         </div>
     </section>
+</main>
 </body>
 <?= $this->view("footer")?>
 <script src="<?=ASSETS?>js/index.js"></script>

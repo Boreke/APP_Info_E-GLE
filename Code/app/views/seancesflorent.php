@@ -11,7 +11,7 @@
     $header->displayHeader();
 ?>
 <body>
-
+<main>
 
 
 <br><br><br>
@@ -120,7 +120,7 @@
 <!-- Fin Troisieme carroussel-->
 
 <br><br><br><br><br><br>
-
+</main>
 <script src="<?=ASSETS?>js/script.js"></script> 
 </body>
 <?= $this->view("footer")?>

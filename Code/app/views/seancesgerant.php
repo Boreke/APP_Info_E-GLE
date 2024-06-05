@@ -6,6 +6,7 @@
         $header->displayHeader();
     ?>
 <body>
+    <main>
     <div class="container">
         <div class="film-div">
             <div id="section">
@@ -106,7 +107,8 @@
             </div>
 
         </div>
-    </div>                
+    </div>   
+</main>             
 </body>
 
 <?= $this->view("footer")?>

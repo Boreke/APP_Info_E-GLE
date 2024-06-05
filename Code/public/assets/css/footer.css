@@ -12,6 +12,7 @@ footer {
     align-items: center;
     gap: 60px;
     overflow: hidden;
+    flex-shrink: 0;
 
 }
 

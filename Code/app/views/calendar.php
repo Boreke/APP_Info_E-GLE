@@ -7,7 +7,7 @@ $header = new Header();
 $header->displayHeader();
 ?>
 <body>
-
+<main>
 <?php $this->showMovieData();?>
 
 <div class="container">
@@ -67,6 +67,7 @@ $header->displayHeader();
         </form>
     </div>
 </div>
+</main>
 <script>
 
 const root="<?php echo ROOT;?>";

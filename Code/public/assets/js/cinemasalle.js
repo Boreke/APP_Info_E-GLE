@@ -16,6 +16,43 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    $(".form_salle").on('submit',function(e){
+        e.preventDefault();
+        const serializedData = $(this).serialize();
+        let url= root+"cinemasalle/addSalle";
+        console.log(serializedData);
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: serializedData,
+            success: function(response) {
+                window.location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+    $(".form_salle_del").on('submit',function(e){
+        e.preventDefault;
+        const serializedData = $(this).serialize();
+        
+        let url= root+"cinemasalle/addSalle";
+
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: serializedData,
+            success: function(response) {
+                window.location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
     
 });
 

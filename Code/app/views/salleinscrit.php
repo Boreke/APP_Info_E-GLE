@@ -7,7 +7,7 @@
 ?>
 
     <body>
-
+    <main>
     <section class="top">
         <div class="disposition">
             <h1 class="place-header">Places :</h1> 
@@ -55,6 +55,7 @@
         </div>
     </section>
     <?php endif;?>
+    </main>
 </body>
 <script src="<?=ASSETS?>js/carroussel.js"></script>
 <?= $this->view("footer")?>

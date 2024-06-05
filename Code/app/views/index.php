@@ -9,7 +9,7 @@
         $header->displayHeader();
 ?>
 <body>
-    
+    <main>
     <section class="center">
         <div class="center1">
             <div class="left1">
@@ -55,6 +55,7 @@
             </div>
         </div>
     </section>
+</main>
 </body>
 <?= $this->view("footer")?>
 <script src="<?=ASSETS?>js/index.js"></script>

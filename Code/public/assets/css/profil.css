@@ -1,9 +1,15 @@
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Roboto';
     background: rgb(9,6,67);
     background: linear-gradient(90deg, rgba(9,6,67,1) 0%, rgba(0,0,0,1) 42%, rgba(15,80,93,1) 100%);
-    min-height:100vh;
+    overflow-x: hidden;
     margin: 0;
+    min-height:100vh;
+}
+main {
+    flex: 1;
 }
 
 .Compte {
