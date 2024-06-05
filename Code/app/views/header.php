@@ -55,6 +55,6 @@
         <?php endif; ?> 
     </div>
 </header>
-<script src="<?=ASSETS?>js/index.js">
+<script src="<?=ASSETS?>js/loader.js">
     
 </script>

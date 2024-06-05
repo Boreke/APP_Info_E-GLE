@@ -125,7 +125,7 @@ h2{
     align-items: center;
     justify-self: center;
     justify-content: center;
-    width:60%;
+    width:68%;
     position: relative;
     overflow: hidden;
 
@@ -155,6 +155,7 @@ h2{
 .seance {
     display: flex;
     flex-direction: row;
+    align-items: center;
     min-width: 100%;
     height: 100%;
     flex: 1 0 100%;
@@ -165,7 +166,7 @@ h2{
     width: auto;
     margin-left: 4vw;
     margin-right: 4vw;
-    margin-top: 6vh;
+
     border: 1px solid rgb(136, 133, 133);
     border-radius: 30px;  
 
@@ -220,6 +221,7 @@ h2{
 .genre-duree, .headers-syn-date{
     display: flex;
     flex-direction: row;
+    margin-bottom: 2vh;
 }
 .syn-header, .duree-header, .date-header{
     color: grey;

@@ -114,6 +114,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 20px;
+    width: fit-content;
 }
 .lg {
     display: flex;
@@ -218,6 +219,7 @@ nav {
     position: relative;
     display: flex;
     justify-content: center;
+    width: fit-content;
 }
 
 

@@ -5,12 +5,13 @@
         require "../app/controllers/header.php";
         $header= new Header();
         $header->displayHeader($data['page_title']);
+
     ?>
 <body>
     <main>
     <section class="center">
         <div class="salles_existantes" id="salles_existantes">
-        <?php $this->showExistingSalles(); ?>
+        
         </div>
         <div class="ajouter_salle">
             <div class="div-btn-add">
@@ -21,9 +22,9 @@
                 <h1 class="del-header">Supprimer une salle</h1>
                 <a onclick="openDelPopup()" id="popup11" class="plus"> <img src="<?=ASSETS?>img/Addminus.png" alt="Bouton Del" class="del_btn"></a>
             </div>
-            <?php if (!empty($_SESSION["error_message"])) : ?>
-                <h2 class="error-message"><?php echo $_SESSION["error_message"]; ?></h2>
-            <?php endif; ?>  
+
+            <h2 id="error-message"></h2>
+             
             <div id="addPopup" class="addPopup">
                 <div class="popup-content">
                     <div class="haut">
@@ -65,7 +66,6 @@
      
 </body>
     <?= $this->view("footer")?>
-    <script>const root="<?php echo ROOT;?>"; var data=<?= json_encode($data); ?>;</script>
+    <script>const root="<?php echo ROOT;?>"; var data=<?= json_encode($data); ?>; var seances=<?= json_encode($data['seances']); ?>;</script>
     <script src="<?=ASSETS?>js/cinemasalle.js"></script>
-    <script src="<?=ASSETS?>js/carroussel.js"></script>  
 </html>

@@ -5,24 +5,21 @@ Class cinemasalle extends Controller {
 	function index()
 	{
 		$user=$this->loadModel("user");
- 	 	unset($_SESSION['error_message']);;
+ 	 	unset($_SESSION['error_message']);
  	 	$data['page_title'] = "Mes salles";
-		if(isset($_POST['numero_salle_del'])){
-			$this->delete_salle($_POST);
-		}
-		if(isset($_POST['numero_salle'])){
-			$this->add_salle($_POST);
-		}
+		
+		$data['seances']=$this->getSeance();
 
 		$this->view("cinemasalle",$data);
 	}
 
 	function getExistingSalles(){
-		$user=new User();
+		
 		$DB = new Database();
-		$cinemaId=$user->getCinemaID();
+		$query="SELECT * FROM cinema WHERE user_id_user = ?";
+		$cinemaId=$DB->read($query,[$_SESSION['user_id']]);
 		$sqlRequest="SELECT * FROM salle WHERE cinema_idcinema = :idCinema ORDER BY numero ASC";
-		$arr["idCinema"]=$cinemaId;
+		$arr["idCinema"]=$cinemaId[0]->idcinema;
 		$existingRooms=$DB->read($sqlRequest,$arr);
 		unset($sqlRequest);
 		return $existingRooms;
@@ -33,12 +30,12 @@ Class cinemasalle extends Controller {
 		if($existingRooms){
 			$seances=$this->getSeance();
 			foreach ($existingRooms as $room){
-				echo '<div class="salle">
+				echo '<div class="salle" id="'.$room->idsalle.'">
 							<div class="salle-top">
 								<h1>Salle '.$room->numero.'</h1>
 								<a><img class="dropdown" src="../public/assets/img/Drop Down.png" alt=""></a>
 							</div>
-							<div class="salle-bot">
+							<div class="salle-bot" id="'.$room->idsalle.'">
 								<div class="disposition">
 									<h1 class="place-header">Places:</h1> 
 									<div class="layout">
@@ -78,34 +75,41 @@ Class cinemasalle extends Controller {
 	}
 	function add_salle(){
 		$DB = new Database();
-		$user=new User();
+		$user=$this->loadModel('user');
 		
 		if ($user->check_logged_in()) {
 			
 			$cinema_id=$user->getCinemaId();
-			if (empty($_POST["numero_salle"])) {
-				$_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
-			} elseif (!is_numeric($_POST["numero_salle"])&& $_POST["numero_salle"]==0) {
+			if (empty($_POST["numero_salle"])||empty($_POST["nb_places"])) {
+				$_SESSION["error_message"] = "Veuillez remplir tout les champs.";
+				echo $_SESSION['error_message'];
+			} elseif (!is_numeric($_POST["numero_salle"])|| $_POST["numero_salle"]==0) {
 				$_SESSION["error_message"] = "Veuillez saisir un numéro valide pour la salle.";
-			}
-			$sql = "INSERT INTO salle (numero, nbr_places, cinema_idcinema) VALUES (:numero, :nb_places, :cinema_idcinema)";
-			unset($arr);
-			$arr["numero"]=$_POST["numero_salle"];
-			$arr["nb_places"]=$_POST["nb_places"];
-			$arr["cinema_idcinema"]=$cinema_id;
-			try {
-				$DB->write($sql,$arr);
-			} catch (PDOexception $e) {
-				if ($e->getCode() == 23000) {
-					$_SESSION["error_message"]="une salle de ce numero existe deja pour ce cinéma";
-				} else {
-					$_SESSION["error_message"]="Erreur lors de l'ajout de la salle: " . $e->getMessage();
+				echo $_SESSION['error_message'];
+			}else{
+				$sql = "INSERT INTO salle (numero, nbr_places, cinema_idcinema) VALUES (:numero, :nb_places, :cinema_idcinema)";
+				unset($arr);
+				$arr["numero"]=$_POST["numero_salle"];
+				$arr["nb_places"]=$_POST["nb_places"];
+				$arr["cinema_idcinema"]=$cinema_id;
+				try {
+					$DB->write($sql,$arr);
+				} catch (PDOexception $e) {
+					if ($e->getCode() == 23000) {
+						$_SESSION["error_message"]="une salle de ce numero existe deja pour ce cinéma";
+						echo $_SESSION['error_message'];
+					} else {
+						$_SESSION["error_message"]="Erreur lors de l'ajout de la salle: " . $e->getMessage();
+						echo $_SESSION['error_message'];
+					}
 				}
 			}
 				
 		}
 		unset($sqlRequest);
 		unset($arr);
+		unset($_SESSION["error_message"]);
+		
 	}
 
 
@@ -145,6 +149,7 @@ Class cinemasalle extends Controller {
 	}
 	function showRows($idsalle){
 		$row=$this->getRowNumbers();
+		$seances=$this->getSeance();
 		$seatId=1;
 		for ($i=0; $i < $row[$idsalle]['number']; $i++) { 
 			echo'<div class="row">';
