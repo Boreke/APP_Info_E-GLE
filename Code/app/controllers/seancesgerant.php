@@ -105,6 +105,26 @@ Class Seancesgerant extends Controller
 				echo '<div class="table-btn">';
 				echo '<div id="section">';
 				echo 	'<button class ="btn-edit" onclick="openPopupEdit(\'' . $popupID . '\')" id="' . $buttonID . '"><img class="modify-img" src="'.ASSETS.'img/modifier.png" ></button>';
+				                  
+				echo	'</div>';
+
+				echo'</div>';
+
+				
+
+				echo '<form method="POST" onsubmit="return confirm(\'Êtes-vous sûr que vous voulez supprimer cette séance?\');">';
+				echo '<input type="hidden" name="idseance" value="' . $seance->idseance . '">';
+				echo '<input type="submit" name="deleteSeance" class="btn-remove">';
+				echo '</form>';
+				echo '</td>';
+				echo '</div>';
+				echo '</tr>';
+
+			}
+			echo '</table>';
+			echo '</div>';
+			foreach ($seances as $seance) {
+				$popupID = "popupEdit" . $seance->idseance;
 				echo 	'<div id="' . $popupID . '" class="popup">';
 				echo		'<div class="popup-content">';
 				echo			'<span class="close" onclick="closePopupEdit(\'' . $popupID . '\')">&times;</span>';
@@ -120,23 +140,8 @@ Class Seancesgerant extends Controller
 				echo 				'<input type="number" name="price" value="' . htmlspecialchars($seance->price) . '" required>';
 				echo 				'<input type="submit" name="editSeance" value="Modifier" class="submit-edit">';
 				echo			'</form>';
-				echo		'</div>';                  
-				echo	'</div>';
-				echo	'<script src="<?=ASSETS?>js/popupsceancegerant.js"></script>';
-				echo'</div>';
-
-				
-
-				echo '<form method="POST" onsubmit="return confirm(\'Êtes-vous sûr que vous voulez supprimer cette séance?\');">';
-				echo '<input type="hidden" name="idseance" value="' . $seance->idseance . '">';
-				echo '<input type="submit" name="deleteSeance" class="btn-remove">';
-				echo '</form>';
-				echo '</td>';
-				echo '</div>';
-				echo '</tr>';
-
+				echo		'</div>';
 			}
-			echo '</table>';
 		} else {
 			echo '<h2 class="no-seance">Aucune séance à venir.</h2>';
 		}
@@ -167,7 +172,21 @@ Class Seancesgerant extends Controller
 				echo '<td>';
 				echo '<div class="table-btn">';
 				echo 	'<button class ="btn-edit" onclick="openPopupEdit(\'' . $popupID . '\')" id="' . $buttonID . '"><img class="modify-img" src="'.ASSETS.'img/modifier.png" ></button>';
-				echo 	'<div id="' . $popupID . '" class="popup">';
+				echo '<form method="POST" onsubmit="return confirm(\'Êtes-vous sûr que vous voulez supprimer ce film?\');">';
+				echo '<input type="hidden" name="idfilm" value="' . $film->id_film . '">';
+				echo '<input type="submit" name="deletefilm" class="btn-remove">';
+				echo '</form>';
+				echo '</td>';
+
+				echo '</div>';
+
+				echo '</tr>';
+			}
+			echo '</table>';
+			echo '</div>';
+			foreach ($films as $film) {
+				$popupID = "popupEdit" . $film->id_film;
+				echo '<div id="' . $popupID . '" class="popup">';
 				echo		'<div class="popup-content">';
 				echo			'<span class="close" onclick="closePopupEdit(\'' . $popupID . '\')">&times;</span>';
 				echo			'<form class="form" method="POST">';
@@ -180,18 +199,7 @@ Class Seancesgerant extends Controller
 				echo			'</form>';
 				echo		'</div>';                  
 				echo	'</div>';
-				echo	'<script src="<?=ASSETS?>js/popupsceancegerant.js"></script>';
-				echo '<form method="POST" onsubmit="return confirm(\'Êtes-vous sûr que vous voulez supprimer ce film?\');">';
-				echo '<input type="hidden" name="idfilm" value="' . $film->id_film . '">';
-				echo '<input type="submit" name="deletefilm" class="btn-remove">';
-				echo '</form>';
-				echo '</td>';
-
-				echo '</div>';
-
-				echo '</tr>';
 			}
-			echo '</table>';
 		} else {
 			echo '<h2 class="no-film">Vous n\'avez aucun film pour l\'instant.</h2>';
 		}

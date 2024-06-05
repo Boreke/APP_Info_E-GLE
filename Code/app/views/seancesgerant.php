@@ -57,11 +57,12 @@
                         </form>
                     </div>                    
                 </div>
-                <script src="<?=ASSETS?>js/popupsceancegerant.js"></script>
+
             </div>
             <div class="table-container">
                 <?php $this -> displayFilms(); ?>
-            </div>
+            
+            
         </div>
 
         
@@ -100,11 +101,11 @@
                         </form>
                     </div>                    
                 </div>
-                <script src="<?=ASSETS?>js/popupsceancegerant.js"></script>
+
             </div>
             <div class="table-container">
                 <?php $this -> displaySeances(); ?>
-            </div>
+
 
         </div>
     </div>   
@@ -112,4 +113,5 @@
 </body>
 
 <?= $this->view("footer")?>
+<script src="<?=ASSETS?>js/popupsceancegerant.js"></script>
 </html>
