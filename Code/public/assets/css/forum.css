@@ -20,6 +20,9 @@ body {
 main {
     flex: 1;
 }
+p{
+    text-align: justify;
+}
 
 @keyframes slideinleft {
     from {
@@ -48,7 +51,10 @@ main {
     padding-bottom: 10vh; 
 }
 
-
+.PostList{
+    display: flex;
+    flex-direction: column;
+}
 .post{
     margin-bottom: 0;
     color: white; 
@@ -57,14 +63,29 @@ main {
     border-radius: 5px;
     background-color: rgb(26, 26, 26);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     filter: drop-shadow(5px 5px 4px black);
+}
+.post-head,.comm-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+.commentaire{
+    margin-bottom: 1vh;
+    padding: 1.5vw;
+    border-radius: 10px;
+}
+.commentaire:hover{
+    
+    background-color: #ffffff09;
 }
 
 .flechebas {
     transform: scale(0.6);
 }
-.commentaire{
+.commentaireList{
     background-color: rgb(26, 26, 26);
     padding: 50px 20px;
     margin-top: 0;
@@ -127,7 +148,12 @@ button:hover {
 .PostItem{
     padding-left: 3vw;
     padding-right: 3vw;
-    margin-bottom: 2vh;
     margin-top: 1vh;
-
+    margin-bottom: 2vh;
+    
 }
+.editPostBtn{
+    margin-top: 2vh;
+}
+
+

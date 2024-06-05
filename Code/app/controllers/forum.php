@@ -23,18 +23,28 @@ Class Forum extends Controller
         if (isset($posts) && count($posts) > 0){
             foreach ($posts as $post){
                 $formatted_date = date('d-m-Y', strtotime($post->date));
+                $commentaires = $this->displayCommentaire($post->idpost);
                 echo '<div class="PostItem">
+                        
                         <div class="post">
-                            <h2>' . $post->titre . '</h2>
-                            <p>' . $formatted_date . '</p>
-                            <p>' . $post->post_type . '</p>
-                            <p>Auhtor: ' . $post->username . '</p>
-                            <p>User type: ' . $post->type . '</p>
-                            <div class="contenu"> 
-                                <h2>' . $post->contenu . '</h3> 
+                            <div class="post-head">
+                                <div class="title-username">
+                                    <h2>' . $post->titre . '</h2>
+                                    <p>' . $post->username . '</p>
+                                </div>
+                                <div call="date-type">
+                                    <h3>' . $formatted_date . '</h3>
+                                    <p>' . $post->post_type . '</p>
+                                    <p>' . $post->type . '</p>
+                                </div>
                             </div>
+                            <div class="contenu"> 
+                                <p>' . $post->contenu . '</p> 
+                            </div>
+                            
                         </div>
-                        '.$this->displayCommentaire($post->idpost).'
+                        <div class = "commentaireList">'.$commentaires.'
+                        </div>
                         <button class="editPostBtn" " data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>
                       </div>';
             } 
@@ -45,20 +55,25 @@ Class Forum extends Controller
         
     }
     function displayCommentaire($id){
-        $post_model=new Post();
-        $comms=$post_model->getCommentaireById($id);
+        $post_model = new Post();
+        $comms = $post_model->getCommentaireById($id);
 
-        if($comms){
+        $commentHtml = '';
+        
+        if ($comms) {
             foreach ($comms as $comm) {
-                echo '<div class="commentaire"> 
-                        <div class="comm-head">
-                        <h3>' . $comm->username . '</h3>
-                        <h4>'. $comm->date.'</h4>
-                        </div>
-                        <p>' . $comm->contenu . '</p> 
-                    </div>';
+                $commentHtml .= '<div class="commentaire"> 
+                                    <div class="comm-head">
+                                        <h3>' . $comm->username . '</h3>
+                                        <h4>' . $comm->date . '</h4>
+                                    </div>
+                                    <p>' . $comm->contenu . '</p> 
+                                 </div>';
+                
             }
         }
+
+        return $commentHtml;
     }
 
 }
