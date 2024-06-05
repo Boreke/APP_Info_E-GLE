@@ -8,12 +8,13 @@ body {
     min-height:100vh;
     margin: 0;
 }
-button{
-    border: 0;
-}
 main {
     flex: 1;
 }
+button{
+    border: 0;
+}
+
 
 
 

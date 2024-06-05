@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             data: serializedData,
             success: function(response) {
                 loadSalles();
+                closeDelPopup();
             },
             error: function(xhr, status, error) {
                 console.error('Error:', error);

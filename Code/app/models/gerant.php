@@ -18,7 +18,7 @@ Class Gerant{
         
                     if (file_exists($target_file)) {
                         $uploadOk = 0;
-                        $fileExists=0;
+                        $fileExists=true;
                     }
                 
                     
@@ -39,7 +39,7 @@ Class Gerant{
                         echo "Sorry, your file was not uploaded.";
                     
                     } else {
-                        if ($fileExists) {
+                        if (!$fileExists) {
                             move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
                             echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
                         } else {
@@ -47,7 +47,7 @@ Class Gerant{
                         }
                     }
         
-                    if ($uploadOk == 1||$fileExists==0) {
+                    if ($uploadOk == 1||$fileExists) {
                         $hour = isset($_POST["hour"]) ? (int) $_POST["hour"] : 0;
                         $minute = isset($_POST["minute"]) ? (int) $_POST["minute"] : 0;
                         $duration = $hour * 3600 + $minute * 60;
