@@ -69,6 +69,22 @@ body {
     align-items: center;
   }
 }
+
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  margin: 0;
+  padding: 0;
+  color: red;
+  font-size: 14px;
+  top: 100%;
+  left: 0;
+}
+
 .id{
   color: #777;
   font-family: Roboto;
