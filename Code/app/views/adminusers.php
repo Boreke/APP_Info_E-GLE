@@ -16,9 +16,6 @@
     ?>
 <body>
 
-    
-    
-
     <div class="container">
         <div class="container_top">
             <h1>Liste des utilisateurs</h1>
