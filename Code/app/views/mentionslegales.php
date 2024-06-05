@@ -11,9 +11,7 @@
 
 <body>
     <main>
-    <!-- ajouter modifs h2 (nouvelle entrées dans liste : $data['mention']['headers'][int] faire correspondre int à numero de la partie, commencer à 2)
-        ajouter form d'edit ->js? ->popup? 
-    -->
+
     <div class="container">
         <div class='header-edit'>
             <h1>Mentions Légales</h1>
@@ -21,29 +19,30 @@
                 <button class='edit-btn'> Editer </button>
             <?php endif;?>
         </div>
+        <div id="mainText">
+            <h2>1. Éditeur du site</h2>
 
-        <h2>1. Éditeur du site</h2>
+            <p>Le site E-GLE est édité par :
+            <br>
+            Nom du responsable : <?=$data['mention']['editor']['name']?> <br>
+            Adresse : <?=$data['mention']['editor']['address']?> <br>
+            Téléphone : <?=$data['mention']['editor']['phone']?> <br>
+            Email : <?=$data['mention']['editor']['email']?> <br>
+            </p>
 
-        <p>Le site E-GLE est édité par :
-        <br>
-        Nom du responsable : <?=$data['mention']['editor']['name']?> <br>
-        Adresse : <?=$data['mention']['editor']['address']?> <br>
-        Téléphone : <?=$data['mention']['editor']['phone']?> <br>
-        Email : <?=$data['mention']['editor']['email']?> <br>
-        </p>
+            <h2><?=$data['mention']['headers'][2]?></h2>
 
-        <h2><?=$data['mention']['headers'][2]?></h2>
+            <p><?=$data['mention']['intellectual_property']?></p>
+            
+            <h2><?=$data['mention']['headers'][3]?></h2>
+            <p><?=$data['mention']['data_protection']?></p>
 
-        <p><?=$data['mention']['intellectual_property']?></p>
-        
-        <h2><?=$data['mention']['headers'][3]?></h2>
-        <p><?=$data['mention']['data_protection']?></p>
+            <h2><?=$data['mention']['headers'][4]?></h2>
+            <p><?=$data['mention']['responsibility']?></p>
 
-        <h2><?=$data['mention']['headers'][4]?></h2>
-        <p><?=$data['mention']['responsibility']?></p>
-
-        <h2><?=$data['mention']['headers'][5]?></h2>
-        <p><?=$data['mention']['applicable_law']?></p>
+            <h2><?=$data['mention']['headers'][5]?></h2>
+            <p><?=$data['mention']['applicable_law']?></p>
+        </div>
     </div>
     <form class="edit-form" method='post'>
         <div class='header-edit'>

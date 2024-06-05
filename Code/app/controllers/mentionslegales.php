@@ -43,6 +43,29 @@ Class MentionsLegales extends Controller
 				$configContent = "<?php\n\nreturn " . var_export($dataArr, true) . ";\n";
 				file_put_contents('../app/models/mentions_legales_content.php', $configContent);
 			}
+			//envoyer la nouvelle version en reponse ajax
+			echo'<h2>1. Éditeur du site</h2>
+
+            <p>Le site E-GLE est édité par :
+            <br>
+            Nom du responsable : '.$dataArr['editor']['name'].' <br>
+            Adresse : '.$dataArr['editor']['address'].'<br>
+            Téléphone : '.$dataArr['editor']['phone'].' <br>
+            Email : '.$dataArr['editor']['email'].' <br>
+            </p>
+
+            <h2>'.$dataArr["headers"][2].'</h2>
+
+            <p>'.$dataArr['intellectual_property'].'</p>
+            
+            <h2>'.$dataArr['headers'][3].'</h2>
+            <p>'.$dataArr['data_protection'].'</p>
+
+            <h2>'.$dataArr['headers'][4].'</h2>
+            <p>'.$dataArr['responsibility'].'</p>
+
+            <h2>'.$dataArr['headers'][5].'</h2>
+            <p>'.$dataArr['applicable_law'].'</p>';
 		}
 	}
 	

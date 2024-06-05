@@ -46,6 +46,7 @@
                 <div id="myDropdown" class="dropdown-content">
                     <a href="<?=ROOT?>profil">Mon Profil</a>
                     <a href="#about">Sur Nous</a>
+                    
                     <a href="<?=ROOT?>logout">Logout</a>
                 </div>
             </div>
