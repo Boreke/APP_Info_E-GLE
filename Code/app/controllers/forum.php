@@ -77,9 +77,16 @@ Class Forum extends Controller
                             
                         </div>
                         <div class = "commentaireList">'.$commentaires.'
-                        </div>
-                        <button class="editPostBtn" " data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>
-                      </div>';
+                        </div>';
+                        if (isset($_SESSION['user_id'])) {
+                            if($_SESSION['user_id']==$post->id_user||$_SESSION['type']=='admin'){
+                                echo '<button class="editPostBtn" " data-titre="' . $post->titre . '" data-contenu="'. $post->contenu . '">Edit</button>';
+                            }
+                        }
+                        
+            
+                        
+                      echo'</div>';
             } 
         }else{
             echo '<h1>No Posts found.</h1>';

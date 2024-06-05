@@ -161,7 +161,7 @@ button:hover {
     margin-left: 4vw;
     margin-bottom: 1vh;
 }
-#addPostBtn{
+#addPostBtn,#fakeAddPostBtn{
     margin-right: 4vw;
     font-size: 25px;
 

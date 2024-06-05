@@ -14,7 +14,11 @@
 
     <div class="addBtn">
         <h1 class="TITRE">FORUM</h1>
-        <button id="addPostBtn">Add Post</button>
+        <?php if(isset($_SESSION['user_id'])):?>
+            <button id="addPostBtn">Add Post</button>
+        <?php else:?>
+            <a href="<?=ROOT?>login"><button id="fakeAddPostBtn">Add Post</button></a>
+        <?php endif;?> 
     </div>
 
     <div id="PostList">

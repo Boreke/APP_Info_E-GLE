@@ -5,6 +5,7 @@
         <li><a href="<?=ROOT?>contact" class="nav_bas_elmt">Contact</a></li>
         <li><a href="<?=ROOT?>mentionslegales" class="nav_bas_elmt">Mention légales et CGU</a></li>
         <li><a href="<?=ROOT?>faqclient" class="nav_bas_elmt">FAQ</a></li>
+        <li><a href="<?=ROOT?>forum" class="nav_bas_elmt">Forum</a></li>
     </div>
     <div class="reseaux">
         <li><a href="https://x.com/EGLE_Events_IT"><img src="<?=ASSETS?>img/Twitter.png" alt="Twitter"></a></li>
