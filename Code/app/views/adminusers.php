@@ -3,13 +3,11 @@
 <html lang="en">
 
 <?php 
-
-        
         require "../app/controllers/header.php";
         $header= new Header();
         $header->displayHeader($data['page_title']);
+?>
 
-    ?>
 <body>
 <main>
     <div class="container">
@@ -28,6 +26,18 @@
                     <button type="submit" class="search">Search</button>
                 </form>
             </div>
+
+            <div>
+                <form method="post">
+                        <select name="logintest">
+                                <option value="">Select User Type</option>
+                                <option value="client">Client</option>
+                                <option value="gerant">Gérant</option>
+                        </select>
+                        <button type="submit" class="login">Log in</button>
+                </form>
+            </div>
+
         </div>
         
         <div class="listcontainer">

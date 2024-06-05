@@ -126,7 +126,7 @@ select {
     background-image: none;
     cursor: pointer;
     border-radius: 15px;
-    width: 5vw;
+    width: auto;
     height: 2vw;
     border: 5px solid grey;
     font-size: 15px;

@@ -169,6 +169,18 @@ Class User
 		die;
 	}
 
+	function logoutadmin()
+	{
+		$_SESSION['username']=$_SESSION['real_username'];
+		$_SESSION['user_id']=$_SESSION['real_id'];
+		$_SESSION['type']=$_SESSION['real_type'];
+		unset($_SESSION['real_username']);
+		unset($_SESSION['real_id']);
+		unset($_SESSION['real_type']);
+		header("Location:". ROOT . "adminusers");
+		die;
+	}
+
 	function getCinemaId(){
 		$DB = new Database();
 		$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
@@ -177,6 +189,30 @@ Class User
 		if (isset($cinemaResult)) {
 			$cinema_id = $cinemaResult[0]->idcinema;
 			return $cinema_id;
+		}
+		
+	}
+
+	function getUserId(){
+		$DB = new Database();
+		$sqlRequest = "SELECT * FROM user WHERE id_user = :user_id";
+		$arr["user_id"]=$_SESSION["user_id"];
+		$Result =$DB->read($sqlRequest,$arr);
+		if (isset($Result)) {
+			$id = $Result[0]->id_user;
+			return $id;
+		}
+		
+	}
+
+	function getUsername(){
+		$DB = new Database();
+		$sqlRequest = "SELECT * FROM user WHERE id_user = :user_id";
+		$arr["user_id"]=$_SESSION["user_id"];
+		$Result =$DB->read($sqlRequest,$arr);
+		if (isset($Result)) {
+			$username = $Result[0]->username;
+			return $username;
 		}
 		
 	}
