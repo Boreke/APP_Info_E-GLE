@@ -17,7 +17,7 @@ Class Forum extends Controller
 
     function add()
     {
-        $user=$this->loadModel("user");
+        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $titre = $_POST['titre'];
             $contenu = $_POST['contenu'];
@@ -25,9 +25,9 @@ Class Forum extends Controller
             $date= new DateTime();
             $formatted_date = $date->format('Y-m-d H:i:s');
 
-            $db = new Database();
+            
             $query = "INSERT INTO post (titre, date, contenu, post_type, user_id_user) VALUES (:titre, :date, :contenu, :post_type, :user_id)";
-            $db->write($query, ['titre' => $titre, 'date' => $formatted_date,'contenu' => $contenu, 'post_type' => $post_type, 'user_id' => $user->getUserId()]);
+            $this->DB->write($query, ['titre' => $titre, 'date' => $formatted_date,'contenu' => $contenu, 'post_type' => $post_type, 'user_id' => $this->user->getUserId()]);
             
             header("Location: " . ROOT . "forum");
             die;
@@ -41,9 +41,9 @@ Class Forum extends Controller
             $titre = $_POST['titre'];
             $contenu = $_POST['contenu'];
 
-            $db = new Database();
+            
             $query = "UPDATE post SET titre = :titre, contenu = :contenu WHERE idpost = :id";
-            $db->write($query, ['titre' => $titre, 'contenu' => $contenu, 'id' => $id], false);
+            $this->DB->write($query, ['titre' => $titre, 'contenu' => $contenu, 'id' => $id], false);
             
             header("Location: " . ROOT . "forum");
             die;

@@ -2,6 +2,13 @@
 
 Class Controller
 {
+	protected $DB;
+	protected $user;
+
+	public function __construct(){
+		$this->DB=new Database();
+		$this->user=$this->loadModel("user");
+	}
 
 	protected function view($view,$data = [])
 	{
@@ -17,7 +24,7 @@ Class Controller
 	{
 		if(file_exists("../app/models/". $model .".php"))
  		{
- 			include "../app/models/". $model .".php";
+ 			include_once "../app/models/". $model .".php";
  			return $model = new $model();
  		}
 

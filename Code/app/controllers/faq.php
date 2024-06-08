@@ -8,9 +8,9 @@ Class Faq extends Controller
         $data['page_title'] = "FAQ";
 
         // Récupérer les questions et réponses depuis la base de données
-        $db = new Database();
+
         $query = "SELECT * FROM faq1";
-        $data['faqs'] = $db->read($query);
+        $data['faqs'] = $this->DB->read($query);
 
         $this->view("faq", $data);
     }
@@ -21,9 +21,9 @@ Class Faq extends Controller
             $question = $_POST['question'];
             $answer = $_POST['answer'];
 
-            $db = new Database();
+    
             $query = "INSERT INTO faq1 (question, answer) VALUES (:question, :answer)";
-            $db->write($query, ['question' => $question, 'answer' => $answer]);
+            $this->DB->write($query, ['question' => $question, 'answer' => $answer]);
             
             header("Location: " . ROOT . "faq");
             die;
@@ -37,9 +37,9 @@ Class Faq extends Controller
             $question = $_POST['question'];
             $answer = $_POST['answer'];
 
-            $db = new Database();
+    
             $query = "UPDATE faq1 SET question = :question, answer = :answer WHERE id = :id";
-            $db->write($query, ['id' => $id, 'question' => $question, 'answer' => $answer]);
+            $this->DB->write($query, ['id' => $id, 'question' => $question, 'answer' => $answer]);
             
             header("Location: " . ROOT . "faq");
             die;

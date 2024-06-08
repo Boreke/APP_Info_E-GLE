@@ -5,7 +5,7 @@ Class Profil extends Controller{
     function index()
     {
         unset($_SESSION['error_message']);
-        $user=$this->loadModel("user");
+
 
  	 	$data['page_title'] = "Profil";
         $data['user_info'] = $this->getUserInfo();
@@ -14,7 +14,7 @@ Class Profil extends Controller{
         $data['user_comments'] = $this->getUserComments();
         $data['user_tickets'] = $this->getUserTickets();
         if(isset($_SESSION['type']) && $_SESSION['type'] == 'gerant'){
-            $data['cinema_id'] = $user->getCinemaId();
+            $data['cinema_id'] = $this->user->getCinemaId();
         }
         
 
@@ -54,25 +54,25 @@ Class Profil extends Controller{
     }
 
     function getUserInfo(){
-		$DB = new Database();
+		
 		$sqlRequest="SELECT * FROM user WHERE id_user = :user_id";
 		$arr["user_id"]=$_SESSION["user_id"];
-		$userinfo=$DB->read($sqlRequest,$arr);
+		$userinfo=$this->DB->read($sqlRequest,$arr);
 		unset($sqlRequest);
 		return $userinfo ? $userinfo[0] : null;
 	}
 
     function getCinemaInfo(){
-		$DB = new Database();
+		
 		$sqlRequest="SELECT * FROM cinema WHERE user_id_user = :user_id";
 		$arr["user_id"]=$_SESSION["user_id"];
-		$cinemainfo=$DB->read($sqlRequest,$arr);
+		$cinemainfo=$this->DB->read($sqlRequest,$arr);
 		unset($sqlRequest);
 		return $cinemainfo ? $cinemainfo[0] : null;
 	}
 
     function getUserTickets() {
-        $DB = new Database();
+        
         $sqlRequest = "
             SELECT b.idbillet, b.price, 
                    f.titre AS film_title, f.synopsis AS film_synopsis, f.duree AS film_duration, f.genre AS film_genre, f.image_file AS film_image,
@@ -85,7 +85,7 @@ Class Profil extends Controller{
             WHERE b.user_id_user = :user_id
         ";
         $arr["user_id"] = $_SESSION["user_id"];
-        return $DB->read($sqlRequest, $arr);
+        return $this->DB->read($sqlRequest, $arr);
     }
 
     function displayUserInfo(){
@@ -120,7 +120,7 @@ Class Profil extends Controller{
     }
 
     function updateProfile($postData) {
-        $DB = new Database();
+        
         $updateQuery = "UPDATE user SET prenom = :prenom, nom = :nom, username = :username, email = :email WHERE id_user = :user_id";
         $params = [
             'prenom' => $postData['current_surname'],
@@ -130,7 +130,7 @@ Class Profil extends Controller{
             'user_id' => $_SESSION["user_id"]
         ];
 
-        if ($DB->write($updateQuery, $params)) {
+        if ($this->DB->write($updateQuery, $params)) {
             echo "<p>Profil mis à jour avec succès.</p>";
         } else {
             echo "<p>Échec de la mise à jour du profil.</p>";
@@ -138,9 +138,9 @@ Class Profil extends Controller{
     }
 
     function updateCinema($postData) {
-        $DB = new Database();
-        $user = new User();
-        $cinema_id = $user->getCinemaId();
+        
+        
+        $cinema_id = $this->user->getCinemaId();
         
         $updateQuery = "UPDATE cinema SET nom_cinema = :nom_cinema, adresse_cinema = :adresse_cinema WHERE idcinema = :cinema_id";
         $params = [
@@ -149,7 +149,7 @@ Class Profil extends Controller{
             'cinema_id' => $cinema_id
         ];
     
-        if ($DB->write($updateQuery, $params)) {
+        if ($this->DB->write($updateQuery, $params)) {
             echo "<p>L'information a été mise à jour avec succès.</p>";
         } else {
             echo "<p>Échec de la mise à jour de l'information.</p>";
@@ -157,7 +157,7 @@ Class Profil extends Controller{
     }
 
     function updatePassword($postData) {
-        $DB = new Database();
+        
         $userInfo = $this->getUserInfo();
 
         if ($userInfo && count($userInfo) > 0) {
@@ -178,7 +178,7 @@ Class Profil extends Controller{
                         'user_id' => $_SESSION["user_id"]
                     ];
 
-                    if ($DB->write($updateQuery, $arr)) {
+                    if ($this->DB->write($updateQuery, $arr)) {
                         echo "<p>Mot de passe mis à jour avec succès.</p>";
                     } else {
                         echo "<p>Échec de la mise à jour du mot de passe.</p>";
@@ -195,7 +195,7 @@ Class Profil extends Controller{
     }
 
     function deleteProfile($postData) {
-        $DB = new Database();
+        
         $userInfo = $this->getUserInfo();
 
         if ($userInfo && count($userInfo) > 0) {
@@ -208,7 +208,7 @@ Class Profil extends Controller{
                 $deleteQuery = "DELETE FROM user WHERE id_user = :user_id";
                 $params = ['user_id' => $_SESSION["user_id"]];
 
-                if ($DB->write($deleteQuery, $params)) {
+                if ($this->DB->write($deleteQuery, $params)) {
                     session_destroy(); 
                     header("Location: /login"); 
                     exit;
@@ -224,56 +224,56 @@ Class Profil extends Controller{
     }
 
     function getUserPosts() {
-        $DB = new Database();
+        
         $sqlRequest = "SELECT * FROM post WHERE user_id_user = :user_id";
         $arr["user_id"] = $_SESSION["user_id"];
-        return $DB->read($sqlRequest, $arr);
+        return $this->DB->read($sqlRequest, $arr);
     }
 
     function getUserComments() {
-        $DB = new Database();
+        
         $sqlRequest = "
-            SELECT c.idcommentaire AS id, c.titre AS comment_title, c.date AS comment_date, 
+            SELECT c.idcommentaire AS id, c.date AS comment_date, 
                    c.contenu AS comment_content, p.idpost AS post_id, p.titre AS post_title 
             FROM commentaire c
             JOIN post p ON p.idpost = c.post_idpost
             WHERE c.user_id= :user_id";
         $arr["user_id"] = $_SESSION["user_id"];
-        return $DB->read($sqlRequest, $arr);
+        return $this->DB->read($sqlRequest, $arr);
     }
 
     function deletePost($post_id) {
-        $DB = new Database();
+        
         $sqlRequest = "DELETE FROM post WHERE idpost = :post_id";
         $arr["post_id"] = $post_id;
-        $DB->write($sqlRequest, $arr);
+        $this->DB->write($sqlRequest, $arr);
     }
 
     function deleteComment($comment_id) {
-        $DB = new Database();
+        
         $sqlRequest = "DELETE FROM commentaire WHERE idcommentaire = :comment_id";
         $arr["comment_id"] = $comment_id;
-        $DB->write($sqlRequest, $arr);
+        $this->DB->write($sqlRequest, $arr);
     }
 
     function updatePost($postData) {
-        $DB = new Database();
+        
         $updateQuery = "UPDATE post SET contenu = :content WHERE idpost = :post_id";
         $params = [
             'content' => $postData['post_content'],
             'post_id' => $postData['post_id']
         ];
-        $DB->write($updateQuery, $params);
+        $this->DB->write($updateQuery, $params);
     }
 
     function updateComment($postData) {
-        $DB = new Database();
+        
         $updateQuery = "UPDATE commentaire SET contenu = :content WHERE idcommentaire = :comment_id";
         $params = [
             'content' => $postData['comment_content'],
             'comment_id' => $postData['comment_id']
         ];
-        $DB->write($updateQuery, $params);
+        $this->DB->write($updateQuery, $params);
     }
 
 }

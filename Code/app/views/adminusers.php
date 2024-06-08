@@ -34,7 +34,7 @@
                                 <option value="client">Client</option>
                                 <option value="gerant">Gérant</option>
                         </select>
-                        <button type="submit" class="login">Log in</button>
+                        <button type="submit" class="login">Prévisualiser</button>
                 </form>
             </div>
 

@@ -4,7 +4,7 @@ Class cinemasalle extends Controller {
 	
 	function index()
 	{
-		$user=$this->loadModel("user");
+		
  	 	unset($_SESSION['error_message']);
  	 	$data['page_title'] = "Mes salles";
 		
@@ -15,12 +15,12 @@ Class cinemasalle extends Controller {
 
 	function getExistingSalles(){
 		
-		$DB = new Database();
+
 		$query="SELECT * FROM cinema WHERE user_id_user = ?";
-		$cinemaId=$DB->read($query,[$_SESSION['user_id']]);
+		$cinemaId=$this->DB->read($query,[$_SESSION['user_id']]);
 		$sqlRequest="SELECT * FROM salle WHERE cinema_idcinema = :idCinema ORDER BY numero ASC";
 		$arr["idCinema"]=$cinemaId[0]->idcinema;
-		$existingRooms=$DB->read($sqlRequest,$arr);
+		$existingRooms=$this->DB->read($sqlRequest,$arr);
 		unset($sqlRequest);
 		return $existingRooms;
 	}
@@ -74,12 +74,9 @@ Class cinemasalle extends Controller {
 		}
 	}
 	function add_salle(){
-		$DB = new Database();
-		$user=$this->loadModel('user');
-		
-		if ($user->check_logged_in()) {
+		if ($this->user->check_logged_in()) {
 			
-			$cinema_id=$user->getCinemaId();
+			$cinema_id=$this->user->getCinemaId();
 			if (empty($_POST["numero_salle"])||empty($_POST["nb_places"])) {
 				$_SESSION["error_message"] = "Veuillez remplir tout les champs.";
 				echo $_SESSION['error_message'];
@@ -93,7 +90,7 @@ Class cinemasalle extends Controller {
 				$arr["nb_places"]=$_POST["nb_places"];
 				$arr["cinema_idcinema"]=$cinema_id;
 				try {
-					$DB->write($sql,$arr);
+					$this->DB->write($sql,$arr);
 				} catch (PDOexception $e) {
 					if ($e->getCode() == 23000) {
 						$_SESSION["error_message"]="une salle de ce numero existe deja pour ce cinéma";
@@ -115,7 +112,7 @@ Class cinemasalle extends Controller {
 
 
 	function delete_salle() {
-        $DB = new Database();
+
         if (empty($_POST["numero_salle_del"])) {
             $_SESSION["error_message"] = "Veuillez saisir un numéro de salle.";
         } elseif (!is_numeric($_POST["numero_salle_del"]) || $_POST["numero_salle_del"] == 0) {
@@ -124,13 +121,13 @@ Class cinemasalle extends Controller {
             $arr = ['numero_salle_del' => $_POST['numero_salle_del']];
             $sql = 'DELETE FROM salle WHERE idsalle = :numero_salle_del';
             try {
-                $DB->write($sql, $arr);
+                $this->DB->write($sql, $arr);
             } catch (PDOException $e) {
                 $_SESSION["error_message"] = "Erreur lors de la suppression de la salle: " . $e->getMessage();
             }
 			$sql = 'DELETE FROM diffuser WHERE salle_idsalle = :numero_salle_del';
 			try {
-                $DB->write($sql, $arr);
+                $this->DB->write($sql, $arr);
             } catch (PDOException $e) {
                 $_SESSION["error_message"] = "Erreur lors de la suppression de la salle: " . $e->getMessage();
             }
@@ -178,23 +175,23 @@ Class cinemasalle extends Controller {
 		return $rows;
 	}
 	function getSeance(){
-		$DB = new Database();
+
 		$salles=$this->getExistingSalles();
 		$arr['today']=date('Y-m-d H:i:s');
 		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today ORDER BY film_date ASC";
 		foreach($salles as $salle){
 			$arr['idsalle'] = $salle->idsalle;
-			$seances[$salle->idsalle]=$DB->read($query, $arr);
+			$seances[$salle->idsalle]=$this->DB->read($query, $arr);
 		}
 		return $seances;
 	}
 
 	function showSeance($seances){
-		$DB = new Database();
+		
 		foreach ($seances as $seance) {
 			$query="SELECT * FROM film WHERE id_film=:idfilm";
 		$arr['idfilm']=$seance->Film_id_film;
-		$film=$DB->read($query, $arr);
+		$film=$this->DB->read($query, $arr);
 		$dureeH=intval($film[0]->duree/3600);
 		$dureeM=intval(fmod($film[0]->duree,3600)/60);
 		echo'<div class="seance">

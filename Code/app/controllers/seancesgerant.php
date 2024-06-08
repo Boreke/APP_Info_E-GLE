@@ -6,24 +6,24 @@ Class Seancesgerant extends Controller
 	{
 		unset($_SESSION['error_message']);
  	 	$data['page_title'] = "Mes films et séances";
-		$user=$this->loadModel("user");
-		$gerant=$this->loadModel("gerant");
 		
-		if($user->check_logged_in()){
+
+		
+		if($this->user->check_logged_in()){
 			if(isset($_POST['titre'])){
-				$gerant->ajout_film($_POST,$_SESSION["user_id"]); 
+				$this->user->ajout_film($_POST,$_SESSION["user_id"]); 
 			}
 			if (isset($_POST['salle'])) {
-				$gerant->create_sceance($_POST);
+				$this->user->create_sceance($_POST);
 			}
 			if (isset($_POST['editSeance'])) {
-				$gerant->updateSeance($_POST);
+				$this->user->updateSeance($_POST);
 			}
 			if (isset($_POST['deleteSeance'])) {
-				$gerant->deleteSeance($_POST['idseance']);
+				$this->user->deleteSeance($_POST['idseance']);
 			}
 			if (isset($_POST['editFilm'])) {
-				$gerant->updateFilm($_POST);
+				$this->user->updateFilm($_POST);
 			}
 
 			
@@ -32,15 +32,15 @@ Class Seancesgerant extends Controller
 	}
 
 	function afficher_salle(){
-		$DB = new Database();
+		
 		$cine_query = "select idcinema from cinema where user_id_user = :user_id limit 1";
         $arr["user_id"]=$_SESSION["user_id"];
-        $cinemaResult =$DB->read($cine_query,$arr);
+        $cinemaResult =$this->DB->read($cine_query,$arr);
         if ($cinemaResult) {
 			$cinema_id = $cinemaResult[0]->idcinema;
             $arr2["cinema_id"] = $cinema_id;
             $salle_query = "select distinct idsalle, numero, cinema_idcinema from salle where cinema_idcinema = :cinema_id ORDER BY numero";
-            $salle_row =$DB->read($salle_query,$arr2);
+            $salle_row =$this->DB->read($salle_query,$arr2);
             if (is_array($salle_row) && count($salle_row) > 0) {
 				foreach ($salle_row as $row) {
 					echo "<option value=\"{$row->idsalle}\">{$row->numero}</option>";
@@ -54,16 +54,16 @@ Class Seancesgerant extends Controller
 	}
 
 	function afficher_film(){
-		$DB = new Database();
+		
 		$cine_query = "select idcinema from cinema where user_id_user = :user_id limit 1";
         $arr["user_id"]=$_SESSION["user_id"];
-        $cinemaResult =$DB->read($cine_query,$arr);
+        $cinemaResult =$this->DB->read($cine_query,$arr);
 
         if ($cinemaResult) {
 			$cinema_id = $cinemaResult[0]->idcinema;
             $arr2["cinema_id"] = $cinema_id;
 			$film_query = "SELECT DISTINCT id_film, titre, id_cinema FROM film WHERE id_cinema = :cinema_id ORDER BY titre";
-            $film_row =$DB->read($film_query,$arr2);
+            $film_row =$this->DB->read($film_query,$arr2);
 
 			if (is_array($film_row) && count($film_row) > 0) {
 				foreach ($film_row as $row) {
@@ -79,8 +79,8 @@ Class Seancesgerant extends Controller
 	}
 
 	function displaySeances() {
-		$gerant = new Gerant();
-		$seances = $gerant->fetchAllSeances();  
+
+		$seances = $this->user->fetchAllSeances();  
 		if ($seances && count($seances) > 0) {
 			echo '<table  >';
 			echo '<tr>';
@@ -147,8 +147,8 @@ Class Seancesgerant extends Controller
 		}
 	}
 	function displayFilms() {
-		$gerant = new Gerant();
-		$films = $gerant->fetchAllFilms();  
+
+		$films = $this->user->fetchAllFilms();  
 		if ($films && count($films) > 0) {
 			echo '<table  >';
 			echo '<tr>';

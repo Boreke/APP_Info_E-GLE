@@ -11,28 +11,28 @@ Class Calendar extends Controller
 		$this->view("calendar",$data);
 	}
 	function getMovie(){
-		$db = new Database(); 
+
 
 		$movieId = isset($_GET['id']) ? $_GET['id'] : null; 
 		$query = "SELECT * FROM film WHERE id_film = ?";
-		$movieDetails = $db->read($query, [$movieId]);
+		$movieDetails = $this->DB->read($query, [$movieId]);
 		return $movieDetails;
 	}
 	
 	function getSeances(){
-		$db=new Database();
+		$this->DB=new Database();
 		$movieId=isset($_GET['id']) ? $_GET['id'] : null; 
 		$seanceQuery = "SELECT * FROM diffuser WHERE Film_id_film = ? ORDER BY film_date ASC";
-		$seances = $db->read($seanceQuery, [$movieId]);
+		$seances = $this->DB->read($seanceQuery, [$movieId]);
 
 		$seanceData = [];
 		if($seances){
 			foreach ($seances as $seance) {
 				$query="SELECT * FROM salle WHERE idsalle=?";
-				$idcinema=$db->read($query,[$seance->salle_idsalle])[0]->cinema_idcinema;
+				$idcinema=$this->DB->read($query,[$seance->salle_idsalle])[0]->cinema_idcinema;
 				unset($query);
 				$query="SELECT * FROM cinema WHERE idcinema = ?";
-				$cinema=$db->read($query,[$idcinema]);
+				$cinema=$this->DB->read($query,[$idcinema]);
 				if(empty($seanceData[date('Y-m-d', strtotime($seance->film_date))])){
 					$seanceData[date('Y-m-d', strtotime($seance->film_date))][0] = ['time' => date('H:i', strtotime($seance->film_date)), 'id' => $seance->idseance, 'nomCinema'=> $cinema[0]->nom_cinema, 'price'=>$seance->price];
 				}else{
@@ -73,10 +73,10 @@ Class Calendar extends Controller
 	}
 
 	function reserver($nbPlaces,$idseance){
-		$DB = new Database();
+		
 		
 		$query="SELECT * FROM diffuser WHERE idseance=?";
-		$seance=$DB->read($query,[$idseance]);
+		$seance=$this->DB->read($query,[$idseance]);
 		$placeDisp=$seance[0]->nbr_places_disp;
         $query = "UPDATE diffuser SET
                   nbr_places_rsv=:nbPlacesRsv,
@@ -89,10 +89,10 @@ Class Calendar extends Controller
         ];
 		if(!($arr['nbPlacesDisp']<0)){
 
-			$seanceCheck=$DB->write($query, $arr);
+			$seanceCheck=$this->DB->write($query, $arr);
 			unset($arr);
 			$query="SELECT * FROM salle JOIN cinema ON salle.cinema_idcinema=cinema.idcinema WHERE salle.idsalle=?";
-			$salle=$DB->read($query,[$seance[0]->salle_idsalle]);
+			$salle=$this->DB->read($query,[$seance[0]->salle_idsalle]);
 
 			$query="INSERT INTO billet (price, Film_id_film, user_id_user, id_salle, id_cinema, idseance, nbplaces) VALUES (:price,:idfilm, :iduser, :idsalle,:idcinema,:idseance,:nbplaces)";
 			$arr=[
@@ -104,7 +104,7 @@ Class Calendar extends Controller
 				'idseance'=>$seance[0]->idseance,
 				'nbplaces'=>$nbPlaces
 			];
-			$billetCheck=$DB->write($query,$arr);
+			$billetCheck=$this->DB->write($query,$arr);
 			if ($seanceCheck && $billetCheck) {
 				$_SESSION['error-message']="Seance reservée.";
 			} else {
@@ -115,10 +115,10 @@ Class Calendar extends Controller
 		}
 	}
 	function checkPayment(){
-		$user=$this->loadmodel('user');
+		
 		$today = date('Y-m-d');
 
-		if($user->check_logged_in()){
+		if($this->user->check_logged_in()){
 			$idseance = $_POST['idSeanceClicked'];
 			$film_date = strtotime($_POST['expiryDate']);
         	$formatted_date = date('Y-m-d', $film_date);
