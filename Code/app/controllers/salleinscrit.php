@@ -11,10 +11,10 @@ Class SalleInscrit extends Controller
 		$data['seances']=$this->getSeance();
 
 		if ($salle_id) {
-            $DB = new Database();
+            
             $arr['idsalle'] = $salle_id;
             $query = "SELECT * FROM salle WHERE idsalle = :idsalle";
-            $data['salle'] = $DB->read($query, $arr);
+            $data['salle'] = $this->DB->read($query, $arr);
         }
 
 
@@ -22,21 +22,21 @@ Class SalleInscrit extends Controller
 	}
 
 	function getSeance(){
-		$DB = new Database();
+		
 		$arr['today']= date('Y-m-d H:i:s');
 		$arr['idsalle'] = $_GET['salle_id'];
 
 		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today ORDER BY film_date ASC";
-		return $DB->read($query, $arr);
+		return $this->DB->read($query, $arr);
 	}
 
 	function showSeance(){
-		$DB = new Database();
+		
 		$seances=$this->getSeance();
 		$query="SELECT * FROM film WHERE id_film=:idfilm";
 		foreach($seances as $seance){
 			$arr['idfilm']=$seance->Film_id_film;
-			$film=$DB->read($query, $arr);
+			$film=$this->DB->read($query, $arr);
 			$dureeH=intval($film[0]->duree/3600);
 			$dureeM=intval(fmod($film[0]->duree,3600)/60);
 			
@@ -70,10 +70,10 @@ Class SalleInscrit extends Controller
 		}
 	}
 	function getRowNumbers(){
-		$DB = new Database();
+		
 		$arr['idsalle'] = $_GET['salle_id'];
 		$query = "SELECT * FROM salle WHERE idsalle = :idsalle";
-		$salle=$DB->read($query, $arr);
+		$salle=$this->DB->read($query, $arr);
 		$nbPlaces=$salle[0]->nbr_places;
 		$rows['number']=intval($nbPlaces/15);
 		$rows['remaining_places']=fmod($nbPlaces,15);

@@ -501,7 +501,7 @@ footer {
 .movie-layout {
   display: flex;
   justify-content: center;
-  align-items: stretch; 
+  align-items: center; 
   margin-top: 80px;
 }
 
@@ -532,10 +532,12 @@ footer {
 .movie-title {
   font-size: 50px; 
   font-weight: bold;
+  margin-bottom: 2vh;
 }
 .movie-genre-duration {
   display: flex; 
   justify-content: space-between;
+  margin-bottom: 1vh;
 }
 
 .movie-image {

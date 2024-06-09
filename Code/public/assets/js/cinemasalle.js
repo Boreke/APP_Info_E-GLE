@@ -74,7 +74,7 @@ function loadSalles() {
         type: 'GET',
         success: function(data) {
             $('#salles_existantes').html(data);
-            initializeSalleElements(); // Call the function to initialize event listeners
+            initializeSalleElements();
         },
         error: function() {
             alert('Failed to load content');
@@ -91,7 +91,8 @@ function initializeSalleElements() {
         let isSalleBotVisible = false;
         salleBotElement.style.display = 'none';
 
-        if (seances[salleElement.id] != false) {
+        if (seances[salleElement.id]) {
+            console.log(seances[salleElement.id]);
             var seancesContainer = salleBotElement.querySelector(".seances-container");
             var seancesElement = salleBotElement.querySelectorAll(".seance");
 

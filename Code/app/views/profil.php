@@ -172,17 +172,11 @@
 
         <div id="Forum" class="tabcontent">
             <h2>Mes Posts</h2>
-            <button onclick="openPopupForum()" id="buttonForum">Afficher mes Posts et Commentaires</button>
-            <div id="popupForum" class="popup">
-                <div class="popup-content">
-                    <span class="close" onclick="closePopupForum()">&times;</span>
-                    <h3>Mes Posts</h3>
-                    <?php if (!empty($data['user_posts'])): ?>
+            <?php if (!empty($data['user_posts'])): ?>
                         <ul>
                             <?php foreach ($data['user_posts'] as $post): ?>
                                 <li>
-                                    <?= htmlspecialchars($post->content) ?>
-                                    <a href="<?= $post->idpost ?>">Voir</a>
+                                    <?= htmlspecialchars($post->contenu) ?>
                                     <button onclick="openEditPostPopup(<?= $post->idpost ?>)">Éditer</button>
                                     <form method="post" style="display:inline;">
                                         <input type="hidden" name="post_id" value="<?= $post->idpost ?>">
@@ -204,6 +198,7 @@
                     <?php else: ?>
                         <p>Vous n'avez aucun post.</p>
                     <?php endif; ?>
+                    
                     <h3>Mes Commentaires</h3>
                     <?php if (!empty($data['user_comments'])): ?>
                         <ul>
@@ -232,7 +227,7 @@
                     <?php else: ?>
                         <p>Vous n'avez aucun commentaire.</p>
                     <?php endif; ?>
-                </div>
+                
             </div>
         </div>
         

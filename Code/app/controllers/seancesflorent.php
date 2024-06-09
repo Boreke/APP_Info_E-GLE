@@ -11,13 +11,13 @@ Class SeancesFlorent extends Controller
 	}
 
 	function getNewMovies(){
-		$db = new Database();
+		
 		$arr['today']=date('Y-m-d');
 		$date = new DateTime();
 		$date->modify('-3 months');
 		$arr['before'] = $date->format('Y-m-d');
 		
-		$films = $db->read("SELECT id_film, image_file, titre FROM film WHERE date_sortie <= :today AND date_sortie >= :before", $arr);
+		$films = $this->DB->read("SELECT id_film, image_file, titre FROM film WHERE date_sortie <= :today AND date_sortie >= :before", $arr);
 		if ($films){
 			return $films;
 		}else{
@@ -25,8 +25,8 @@ Class SeancesFlorent extends Controller
 		}
 	}
 	function getAffiche(){
-		$db = new Database();
-        $films = $db->read("SELECT DISTINCT f.id_film, f.image_file, f.titre FROM film f JOIN diffuser d ON f.id_film= d.Film_id_film WHERE f.image_file IS NOT NULL");
+		
+        $films = $this->DB->read("SELECT DISTINCT f.id_film, f.image_file, f.titre FROM film f JOIN diffuser d ON f.id_film= d.Film_id_film WHERE f.image_file IS NOT NULL");
 		if($films){
 			foreach ($films as $film1) {
 				foreach ($films as $film2){
@@ -39,11 +39,9 @@ Class SeancesFlorent extends Controller
 		return $films;
 	}
 	function getUpcoming(){
-		$db = new Database();
-		$date = new DateTime();
-		$date->modify('-3 months');
-		$arr['before'] = $date->format('Y-m-d');
-        $films = $db->read("SELECT DISTINCT id_film, image_file, titre FROM film WHERE id_film NOT IN (SELECT Film_id_film FROM diffuser) AND date_sortie >= :before",$arr);
+		
+		$arr['today']=date('Y-m-d');
+        $films = $this->DB->read("SELECT DISTINCT id_film, image_file, titre FROM film WHERE id_film NOT IN (SELECT Film_id_film FROM diffuser) AND date_sortie >= :today",$arr);
 		return $films;
 	}
 
@@ -62,7 +60,7 @@ Class SeancesFlorent extends Controller
 				echo '</div>';
 			}
 		} else {
-			echo "Aucun film";
+			echo "<br><br><h1>Aucun film</h1>";
 		}
 	}
 

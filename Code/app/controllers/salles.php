@@ -7,14 +7,13 @@ Class Salles extends Controller
 		unset($_SESSION['error_message']);
  	 	$data['page_title'] = "Cinémas et salles";
 		  $data['salles'] = $this->getSalles();
-		$user=$this->loadModel('user');
 		$this->view("salles",$data);
 	}
 
 	function showCinemas(){
-		$DB=new Database();
+		
 		$query="SELECT * FROM cinema";
-		$cinemas= $DB->read($query);
+		$cinemas= $this->DB->read($query);
 		$salles=$this->getSalles();
 		foreach($cinemas as $cinema){
 			echo '<div class="cinema-elmt">
@@ -45,14 +44,14 @@ Class Salles extends Controller
 	}
 
 	function getSalles(){
-		$DB=new Database();
+
 		$query="SELECT * FROM cinema";
-		$cinemas= $DB->read($query);
+		$cinemas= $this->DB->read($query);
 		unset($query);
 		foreach($cinemas as $cinema){
 			$arr['idcinema']=$cinema->idcinema;
 			$sqlquery="SELECT * FROM salle WHERE cinema_idcinema = :idcinema";
-			$salles= $DB->read($sqlquery,$arr);
+			$salles= $this->DB->read($sqlquery,$arr);
 			$salleCinema[$cinema->idcinema]=$salles;
 		}
 		return $salleCinema;
