@@ -4,6 +4,7 @@
     require "../app/controllers/header.php";
     $header= new Header();
     $header->displayHeader($data['page_title']);
+
 ?>
 <body>  
 <main>
@@ -49,7 +50,7 @@
                                     <input type="text" id="current_username" name="current_username" value="<?= htmlspecialchars($data['user_info']->username) ?>" required>
                                 </div>
 
-                                <button type="submit" name="updateProfile" id="b1">Mettre à jour mon profil</button>
+                                <button type="submit" name="updateProfile" id="b2">Mettre à jour mon profil</button>
                         </form>
                     </div>                    
                 </div>
@@ -173,68 +174,68 @@
         <div id="Forum" class="tabcontent">
             <h2>Mes Posts</h2>
             <?php if (!empty($data['user_posts'])): ?>
-                        <ul>
-                            <?php foreach ($data['user_posts'] as $post): ?>
-                                <li>
-                                    <?= htmlspecialchars($post->contenu) ?>
-                                    <button onclick="openEditPostPopup(<?= $post->idpost ?>)">Éditer</button>
-                                    <form method="post" style="display:inline;">
+                <ul>
+                    <?php foreach ($data['user_posts'] as $post): ?>
+                        <li>
+                            <?= htmlspecialchars($post->contenu) ?>
+                            <button onclick="openEditPostPopup(<?= $post->idpost ?>)">Éditer</button>
+                            <form method="post" style="display:inline;">
+                                <input type="hidden" name="post_id" value="<?= $post->idpost ?>">
+                                <button type="submit" name="delete_post">Supprimer</button>
+                            </form>
+                            <div id="editPostPopup<?= $post->idpost ?>" class="popup">
+                                <div class="popup-content">
+                                    <span class="close" onclick="closeEditPostPopup(<?= $post->idpost ?>)">&times;</span>
+                                    <form method="post">
                                         <input type="hidden" name="post_id" value="<?= $post->idpost ?>">
-                                        <button type="submit" name="delete_post">Supprimer</button>
+                                        <textarea name="post_content" required><?= htmlspecialchars($post->content) ?></textarea>
+                                        <button type="submit" name="update_post">Mettre à jour</button>
                                     </form>
-                                    <div id="editPostPopup<?= $post->idpost ?>" class="popup">
-                                        <div class="popup-content">
-                                            <span class="close" onclick="closeEditPostPopup(<?= $post->idpost ?>)">&times;</span>
-                                            <form method="post">
-                                                <input type="hidden" name="post_id" value="<?= $post->idpost ?>">
-                                                <textarea name="post_content" required><?= htmlspecialchars($post->content) ?></textarea>
-                                                <button type="submit" name="update_post">Mettre à jour</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php else: ?>
-                        <p>Vous n'avez aucun post.</p>
-                    <?php endif; ?>
-                    
-                    <h3>Mes Commentaires</h3>
-                    <?php if (!empty($data['user_comments'])): ?>
-                        <ul>
-                            <?php foreach ($data['user_comments'] as $comment): ?>
-                                <li>
-                                    <?= htmlspecialchars($comment->comment_content) ?>
-                                    <a href="<?= $comment->post_id ?>">Voir</a>
-                                    <button onclick="openEditCommentPopup(<?= $comment->id ?>)">Éditer</button>
-                                    <form method="post" style="display:inline;">
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Vous n'avez aucun post.</p>
+            <?php endif; ?>
+            
+            <h3>Mes Commentaires</h3>
+            <?php if (!empty($data['user_comments'])): ?>
+                <ul>
+                    <?php foreach ($data['user_comments'] as $comment): ?>
+                        <li>
+                            <?= htmlspecialchars($comment->comment_content) ?>
+                            <a href="<?= $comment->post_id ?>">Voir</a>
+                            <button onclick="openEditCommentPopup(<?= $comment->id ?>)">Éditer</button>
+                            <form method="post" style="display:inline;">
+                                <input type="hidden" name="comment_id" value="<?= $comment->id ?>">
+                                <button type="submit" name="delete_comment">Supprimer</button>
+                            </form>
+                            <div id="editCommentPopup<?= $comment->id ?>" class="popup">
+                                <div class="popup-content">
+                                    <span class="close" onclick="closeEditCommentPopup(<?= $comment->id ?>)">&times;</span>
+                                    <form method="post">
                                         <input type="hidden" name="comment_id" value="<?= $comment->id ?>">
-                                        <button type="submit" name="delete_comment">Supprimer</button>
+                                        <textarea name="comment_content" required><?= htmlspecialchars($comment->comment_content) ?></textarea>
+                                        <button type="submit" name="update_comment">Mettre à jour</button>
                                     </form>
-                                    <div id="editCommentPopup<?= $comment->id ?>" class="popup">
-                                        <div class="popup-content">
-                                            <span class="close" onclick="closeEditCommentPopup(<?= $comment->id ?>)">&times;</span>
-                                            <form method="post">
-                                                <input type="hidden" name="comment_id" value="<?= $comment->id ?>">
-                                                <textarea name="comment_content" required><?= htmlspecialchars($comment->comment_content) ?></textarea>
-                                                <button type="submit" name="update_comment">Mettre à jour</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php else: ?>
-                        <p>Vous n'avez aucun commentaire.</p>
-                    <?php endif; ?>
-                
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Vous n'avez aucun commentaire.</p>
+            <?php endif; ?>
             </div>
         </div>
         
-        <script src="<?=ASSETS?>js/popupprofil.js"></script>
-        <script src="<?=ASSETS?>js/profil.js"></script>
+        
     </div>
 </section>
+<script src="<?=ASSETS?>js/popupprofil.js"></script>
+<script src="../public/assets/js/profil.js"></script>
 </main>
 </body>
 

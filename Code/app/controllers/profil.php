@@ -2,18 +2,29 @@
 
 Class Profil extends Controller{
 
+    protected $userInfo;
+    protected $userPosts;
+    protected $userComments;
+    protected $userTickets;
+    protected $cinema;
+
+
     function index()
     {
         unset($_SESSION['error_message']);
 
-
+        $this->userInfo = $this->getUserInfo();
+        $this->userPosts = $this->getUserPosts();
+        $this->userComments = $this->getUserComments();
+        $this->userTickets = $this->getUserTickets();
  	 	$data['page_title'] = "Profil";
-        $data['user_info'] = $this->getUserInfo();
-        $data['user_posts'] = $this->getUserPosts();
-        $data['user_comments'] = $this->getUserComments();
-        $data['user_tickets'] = $this->getUserTickets();
+        $data['user_info'] = $this->userInfo;
+        $data['user_posts'] = $this->userPosts;
+        $data['user_comments'] = $this->userComments;
+        $data['user_tickets'] = $this->userTickets;
         if(isset($_SESSION['type']) && $_SESSION['type'] == 'gerant'){
-            $data['cinema'] = $this->user->getCinema()[0];
+            $this->cinema=$this->user->getCinema()[0];
+            $data['cinema'] = $this->cinema;
         }
         
 
@@ -56,9 +67,8 @@ Class Profil extends Controller{
 		
 		$sqlRequest="SELECT * FROM user WHERE id_user = :user_id";
 		$arr["user_id"]=$_SESSION["user_id"];
-		$userinfo=$this->DB->read($sqlRequest,$arr);
-		unset($sqlRequest);
-		return $userinfo ? $userinfo[0] : null;
+		$this -> userInfo=$this->DB->read($sqlRequest,$arr);
+		return $this -> userInfo ? $this -> userInfo[0] : null;
 	}
 
 
@@ -80,15 +90,15 @@ Class Profil extends Controller{
     }
 
     function displayUserInfo(){
-        $userinfo = $this -> getUserInfo();
-        if ($userinfo) {
+
+        if ($this -> userInfo) {
             echo '<div class="infouser">';
-            echo '<h3>Bienvenue ' . htmlspecialchars($userinfo->prenom) . ' ' . htmlspecialchars($userinfo->nom) . '!</h3>';
+            echo '<h3>Bienvenue ' . htmlspecialchars($this -> userInfo->prenom) . ' ' . htmlspecialchars($this -> userInfo->nom) . '!</h3>';
             echo '<ul>';
-            echo '<li><strong>Email:</strong> ' . htmlspecialchars($userinfo->email) . '</li>';
-            echo '<li><strong>Nom:</strong> ' . htmlspecialchars($userinfo->nom) . '</li>';
-            echo '<li><strong>Prénom:</strong> ' . htmlspecialchars($userinfo->prenom) . '</li>';
-            echo '<li><strong>Username:</strong> ' . htmlspecialchars($userinfo->username) . '</li>';
+            echo '<li><strong>Email:</strong> ' . htmlspecialchars($this -> userInfo->email) . '</li>';
+            echo '<li><strong>Nom:</strong> ' . htmlspecialchars($this -> userInfo->nom) . '</li>';
+            echo '<li><strong>Prénom:</strong> ' . htmlspecialchars($this -> userInfo->prenom) . '</li>';
+            echo '<li><strong>Username:</strong> ' . htmlspecialchars($this -> userInfo->username) . '</li>';
             echo '</ul>';
             echo '</div>';
         } else {
@@ -97,13 +107,13 @@ Class Profil extends Controller{
     }
 
     function displayCinemaInfo(){
-        $cinemainfo = $this -> getCinemaInfo();
-        $userinfo = $this -> getUserInfo();
-        if ($cinemainfo) {
-            echo '<h3>Bienvenue au cinema ' . htmlspecialchars($cinemainfo->nom_cinema) . ' ' . htmlspecialchars($userinfo->prenom) . ' ' . htmlspecialchars($userinfo->nom) . '!</h3>';
+        $this->cinema = $this->cinema;
+
+        if ($this->cinema) {
+            echo '<h3>Bienvenue au cinema ' . htmlspecialchars($this->cinema->nom_cinema) . ' ' . htmlspecialchars($this -> userInfo->prenom) . ' ' . htmlspecialchars($this -> userInfo->nom) . '!</h3>';
             echo '<ul>';
-            echo '<li><strong>Nom du Cinema:</strong> ' . htmlspecialchars($cinemainfo->nom_cinema) . '</li>';
-            echo '<li><strong>Adresse du Cinema:</strong> ' . htmlspecialchars($cinemainfo->adresse_cinema) . '</li>';
+            echo '<li><strong>Nom du Cinema:</strong> ' . htmlspecialchars($this->cinema->nom_cinema) . '</li>';
+            echo '<li><strong>Adresse du Cinema:</strong> ' . htmlspecialchars($this->cinema->adresse_cinema) . '</li>';
             echo '</ul>';
         } else {
             echo '<p>Cinema non trouvé ou erreur de requête.</p>';
@@ -123,6 +133,7 @@ Class Profil extends Controller{
 
         if ($this->DB->write($updateQuery, $params)) {
             echo "<p>Profil mis à jour avec succès.</p>";
+            $this->userInfo=$this->getUserInfo();
         } else {
             echo "<p>Échec de la mise à jour du profil.</p>";
         }
@@ -130,14 +141,11 @@ Class Profil extends Controller{
 
     function updateCinema($postData) {
         
-        
-        $cinema = $this->user->getCinema();
-        
         $updateQuery = "UPDATE cinema SET nom_cinema = :nom_cinema, adresse_cinema = :adresse_cinema WHERE idcinema = :cinema_id";
         $params = [
             'nom_cinema' => $postData['current_cinema'],
             'adresse_cinema' => $postData['current_address'],
-            'cinema_id' => $cinema->idcinema
+            'cinema_id' => $this->cinema->idcinema
         ];
     
         if ($this->DB->write($updateQuery, $params)) {
@@ -148,11 +156,9 @@ Class Profil extends Controller{
     }
 
     function updatePassword($postData) {
-        
-        $userInfo = $this->getUserInfo();
 
-        if ($userInfo && count($userInfo) > 0) {
-            $userInfo = $userInfo[0]; 
+        if ($this -> userInfo && count($this -> userInfo) > 0) {
+            $this -> userInfo = $this -> userInfo[0]; 
             
             $currentPassword = $postData['current_password'];
             $newPassword = $postData['new_password'];
@@ -160,7 +166,7 @@ Class Profil extends Controller{
 
             $currentPasswordHash = password_hash($currentPassword, PASSWORD_DEFAULT);
 
-            if (password_verify($currentPassword, $userInfo->password_hash)) {
+            if (password_verify($currentPassword, $this -> userInfo->password_hash)) {
                 if ($newPassword === $confirmPassword) {
                     $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
                     $updateQuery = "UPDATE user SET password_hash = :new_password WHERE id_user = :user_id";
@@ -186,16 +192,13 @@ Class Profil extends Controller{
     }
 
     function deleteProfile($postData) {
-        
-        $userInfo = $this->getUserInfo();
-
-        if ($userInfo && count($userInfo) > 0) {
-            $userInfo = $userInfo[0]; 
+        if ($this -> userInfo && count($this -> userInfo) > 0) {
+            $this -> userInfo = $this -> userInfo[0]; 
             
             $currentPassword = $postData['delete_password'];
             $currentPasswordHash = password_hash($currentPassword, PASSWORD_DEFAULT);
 
-            if (password_verify($currentPasswordHash, $userInfo->password_hash)) {
+            if (password_verify($currentPasswordHash, $this -> userInfo->password_hash)) {
                 $deleteQuery = "DELETE FROM user WHERE id_user = :user_id";
                 $params = ['user_id' => $_SESSION["user_id"]];
 
