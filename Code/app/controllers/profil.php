@@ -9,12 +9,11 @@ Class Profil extends Controller{
 
  	 	$data['page_title'] = "Profil";
         $data['user_info'] = $this->getUserInfo();
-        $data['user_cinema'] = $this->getCinemaInfo();
         $data['user_posts'] = $this->getUserPosts();
         $data['user_comments'] = $this->getUserComments();
         $data['user_tickets'] = $this->getUserTickets();
         if(isset($_SESSION['type']) && $_SESSION['type'] == 'gerant'){
-            $data['cinema_id'] = $user->getCinemaId();
+            $data['cinema'] = $this->user->getCinema()[0];
         }
         
 
@@ -62,14 +61,6 @@ Class Profil extends Controller{
 		return $userinfo ? $userinfo[0] : null;
 	}
 
-    function getCinemaInfo(){
-		$DB = new Database();
-		$sqlRequest="SELECT * FROM cinema WHERE user_id_user = :user_id";
-		$arr["user_id"]=$_SESSION["user_id"];
-		$cinemainfo=$DB->read($sqlRequest,$arr);
-		unset($sqlRequest);
-		return $cinemainfo ? $cinemainfo[0] : null;
-	}
 
     function getUserTickets() {
         $DB = new Database();
@@ -138,15 +129,15 @@ Class Profil extends Controller{
     }
 
     function updateCinema($postData) {
-        $DB = new Database();
-        $user = new User();
-        $cinema_id = $user->getCinemaId();
+        
+        
+        $cinema = $this->user->getCinema();
         
         $updateQuery = "UPDATE cinema SET nom_cinema = :nom_cinema, adresse_cinema = :adresse_cinema WHERE idcinema = :cinema_id";
         $params = [
             'nom_cinema' => $postData['current_cinema'],
             'adresse_cinema' => $postData['current_address'],
-            'cinema_id' => $cinema_id
+            'cinema_id' => $cinema->idcinema
         ];
     
         if ($DB->write($updateQuery, $params)) {

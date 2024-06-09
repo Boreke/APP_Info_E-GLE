@@ -155,11 +155,11 @@
                                 <input type="hidden" name="form_type" value="update_cinema">
                                 <div>
                                     <label for="current_cinema">Nom actuel:</label>
-                                    <input type="text" id="current_cinema" name="current_cinema" value="<?= htmlspecialchars($data['user_cinema']->nom_cinema) ?>" required>
+                                    <input type="text" id="current_cinema" name="current_cinema" value="<?= htmlspecialchars($data['cinema']->nom_cinema) ?>" required>
                                 </div>
                                 <div>
                                     <label for="current_address">Adresse actuel:</label>
-                                    <input type="text" id="current_address" name="current_address" value="<?= htmlspecialchars($data['user_cinema']->adresse_cinema) ?>" required>
+                                    <input type="text" id="current_address" name="current_address" value="<?= htmlspecialchars($data['cinema']->adresse_cinema) ?>" required>
                                 </div>
 
                                 <button type="submit" name="updateCinema" id="b1">Mettre à jour les informations</button>

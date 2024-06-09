@@ -44,7 +44,7 @@ Class AdminUsers extends Controller
         $allowedCategories = ['nom', 'prenom', 'username', 'email', 'type'];
         
         if (!in_array($category, $allowedCategories)) {
-            return []; // Return an empty array if the category is not allowed
+            return [];
         }
         
         $query = "SELECT id_user, nom, prenom, username, email, type FROM user 

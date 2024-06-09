@@ -25,7 +25,6 @@ Class Seancesgerant extends Controller
 			if (isset($_POST['editFilm'])) {
 				$gerant->updateFilm($_POST);
 			}
-
 			
 		}
 		$this->view("seancesgerant",$data);

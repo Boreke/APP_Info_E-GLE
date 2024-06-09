@@ -181,14 +181,13 @@ Class User
 		die;
 	}
 
-	function getCinemaId(){
-		$DB = new Database();
+	function getCinema(){
+		
 		$sqlRequest = "SELECT * FROM cinema WHERE user_id_user = :user_id";
 		$arr["user_id"]=$_SESSION["user_id"];
-		$cinemaResult =$DB->read($sqlRequest,$arr);
-		if (isset($cinemaResult)) {
-			$cinema_id = $cinemaResult[0]->idcinema;
-			return $cinema_id;
+		$cinemaResult =$this->DB->read($sqlRequest,$arr);
+		if ($cinemaResult) {
+			return $cinemaResult;
 		}
 		
 	}

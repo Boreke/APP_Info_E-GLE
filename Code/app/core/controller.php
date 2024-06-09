@@ -2,6 +2,17 @@
 
 Class Controller
 {
+	protected $DB;
+	protected $user;
+	protected $cinema;
+
+	public function __construct(){
+		$this->DB=new Database();
+		$this->user=$this->loadModel("user");
+		
+		$this->cinema=$this->loadModel("cinema");
+
+	}
 
 	protected function view($view,$data = [])
 	{
