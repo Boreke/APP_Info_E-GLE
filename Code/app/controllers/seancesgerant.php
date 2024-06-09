@@ -23,6 +23,7 @@ Class Seancesgerant extends Controller
 				$this->user->deleteSeance($_POST['idseance']);
 			}
 			if (isset($_POST['editFilm'])) {
+
 				$this->user->updateFilm($_POST);
 			}
 			
@@ -129,6 +130,7 @@ Class Seancesgerant extends Controller
 				echo			'<span class="close" onclick="closePopupEdit(\'' . $popupID . '\')">&times;</span>';
 				echo			'<form class="form" method="POST">';
 				echo 				'<input type="hidden" name="idseance" value="' . $seance->idseance . '">';
+				echo 				'<input type="hidden" name="editSeance" value="">';
 				echo 				'<label for="film_date">Date et Horaire:</label>';
 				echo 				'<input type="datetime-local" name="film_date" value="' . htmlspecialchars(date('Y-m-d\TH:i', strtotime($seance->film_date))) . '" required>';
 				echo 				'<label for="film">Film:</label>';
@@ -190,6 +192,7 @@ Class Seancesgerant extends Controller
 				echo			'<span class="close" onclick="closePopupEdit(\'' . $popupID . '\')">&times;</span>';
 				echo			'<form class="form" method="POST">';
 				echo 				'<input type="hidden" name="idfilm" value="' . $film->id_film . '">';
+				echo 				'<input type="hidden" name="editFilm" value="">';
 				echo 				'<label for="film_date">Date de sortie:</label>';
 				echo 				'<input type="date" name="film_date" value="' . htmlspecialchars(date('Y-m-d', strtotime($film->date_sortie))) . '" required>';
 				echo 				'<label for="genre">Genre:</label>';

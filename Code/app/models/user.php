@@ -456,15 +456,15 @@ Class User
         
 		if ($_SESSION['type']=='gerant'){
 			$query = "UPDATE film SET
-					date_sortie = :date,
+					date_sortie = :newdate,
 					genre=:genre
 					WHERE id_film = :idfilm";
 			$arr = [
 				'genre' => $POST['genre'],
-				'date' => $POST['film_date'],
+				'newdate' => $POST['film_date'],
 				'idfilm' => $POST['idfilm']
 			];
-		
+			
 			if ($this->DB->write($query, $arr)) {
 				echo "Film mis à jour.";
 			} else {

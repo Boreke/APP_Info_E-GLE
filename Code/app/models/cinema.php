@@ -13,7 +13,7 @@ Class Cinema{
 
     function getCinemaById($id){
         $query= "SELECT * FROM cinema WHERE user_id_user=?";
-        return $this->DB->read($query,[$id]);
+        return $this->DB->read($query,[$id])[0];
     }
 
     function getOwner(){
@@ -34,4 +34,18 @@ Class Cinema{
             return $this->attributes->adresse_cinema;
         }
     }
+    function getId(){
+        if ($this-> attributes){
+            return $this->attributes->idcinema;
+        }
+    }
+
+    function getExistingSalles(){
+		
+		$sqlRequest="SELECT * FROM salle WHERE cinema_idcinema = :idCinema ORDER BY numero ASC";
+		$arr["idCinema"]=$this->getId();
+		$existingRooms=$this->DB->read($sqlRequest,$arr);
+		unset($sqlRequest);
+		return $existingRooms;
+	}
 }

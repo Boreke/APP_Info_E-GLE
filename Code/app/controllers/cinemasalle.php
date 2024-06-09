@@ -1,6 +1,13 @@
 <?php
 
 Class cinemasalle extends Controller {
+
+	public $existingRooms;
+	
+	function __construct(){
+		parent::__construct();
+		$this->existingRooms=$this->cinema->getExistingSalles();
+	}
 	
 	function index()
 	{
@@ -11,25 +18,13 @@ Class cinemasalle extends Controller {
 		$data['seances']=$this->getSeance();
 
 		$this->view("cinemasalle",$data);
-	}
-
-	function getExistingSalles(){
 		
-
-		$query="SELECT * FROM cinema WHERE user_id_user = ?";
-		$cinemaId=$this->DB->read($query,[$_SESSION['user_id']]);
-		$sqlRequest="SELECT * FROM salle WHERE cinema_idcinema = :idCinema ORDER BY numero ASC";
-		$arr["idCinema"]=$cinemaId[0]->idcinema;
-		$existingRooms=$this->DB->read($sqlRequest,$arr);
-		unset($sqlRequest);
-		return $existingRooms;
 	}
+
 	function showExistingSalles(){
-		$existingRooms=$this->getExistingSalles();
-		
-		if($existingRooms){
+		if(count($this->existingRooms)!=0){
 			$seances=$this->getSeance();
-			foreach ($existingRooms as $room){
+			foreach ($this->existingRooms as $room){
 				echo '<div class="salle" id="'.$room->idsalle.'">
 							<div class="salle-top">
 								<h1>Salle '.$room->numero.'</h1>
@@ -73,6 +68,7 @@ Class cinemasalle extends Controller {
 			echo '<h1 class="no-salles">Aucune Salle</h1>';
 		}
 	}
+
 	function add_salle(){
 		if ($this->user->check_logged_in()) {
 			
@@ -101,12 +97,10 @@ Class cinemasalle extends Controller {
 					}
 				}
 			}
-				
 		}
 		unset($sqlRequest);
 		unset($arr);
 		unset($_SESSION["error_message"]);
-		
 	}
 
 
@@ -135,9 +129,9 @@ Class cinemasalle extends Controller {
     }
 
 	function afficher_salle(){
-		$existingRooms=$this->getExistingSalles();
-		if (is_array($existingRooms) && count($existingRooms) > 0) {
-			foreach ($existingRooms as $row) {
+
+		if (is_array($this->existingRooms) && count($this->existingRooms) > 0) {
+			foreach ($this->existingRooms as $row) {
 				echo "<option value=\"{$row->idsalle}\">{$row->numero}</option>";
 			}
 		} else {
@@ -166,8 +160,8 @@ Class cinemasalle extends Controller {
 		}
 	}
 	function getRowNumbers(){
-		$salles=$this->getExistingSalles();
-		foreach($salles as $salle){	
+		
+		foreach($this->existingRooms as $salle){	
 			$nbPlaces=$salle->nbr_places;
 			$rows[$salle->idsalle]['number']=intval($nbPlaces/15);
 			$rows[$salle->idsalle]['remaining_places']=fmod($nbPlaces,15);
@@ -176,10 +170,10 @@ Class cinemasalle extends Controller {
 	}
 	function getSeance(){
 
-		$salles=$this->getExistingSalles();
+		
 		$arr['today']=date('Y-m-d H:i:s');
 		$query = "SELECT * FROM diffuser WHERE salle_idsalle = :idsalle AND film_date >= :today ORDER BY film_date ASC";
-		foreach($salles as $salle){
+		foreach($this->existingRooms as $salle){
 			$arr['idsalle'] = $salle->idsalle;
 			$seances[$salle->idsalle]=$this->DB->read($query, $arr);
 		}
@@ -228,4 +222,5 @@ Class cinemasalle extends Controller {
 		}
 		
 	}
+	
 }
