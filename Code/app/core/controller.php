@@ -23,11 +23,14 @@ Class Controller
  		}
 	}
 
-	protected function loadModel($model)
+	protected function loadModel($model,$params=[])
 	{
 		if(file_exists("../app/models/". $model .".php"))
  		{
  			include_once "../app/models/". $model .".php";
+			if (count($params)!=0) {
+				return $model = new $model($params);
+			}
  			return $model = new $model();
  		}
 
