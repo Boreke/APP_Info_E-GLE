@@ -28,10 +28,14 @@
                 </ul>
             </div>
         </div>
-        <div class="infos-capteur">
-            <h1 class="capt-header">Intensité sonore moyenne:</h1>
-            <h1>89.3 dB</h1>
-        </div>
+        <?php if(!empty($this->getCapteur())):?>
+            <div class="infos-capteur">
+                <h1 class="capt-header">Intensité sonore moyenne:</h1>
+                <div class="capteur-container">
+                    <?php $this->showCapteur($data['capteur']);?>
+                </div>
+            </div>
+        <?php endif;?>  
     </section>
     <?php if(!empty($this->getSeance())):?>
     <section class="bot">

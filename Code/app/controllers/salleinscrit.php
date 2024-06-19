@@ -9,6 +9,7 @@ Class SalleInscrit extends Controller
 
  	 	$data['page_title'] = "salle ".$salle_id;
 		$data['seances']=$this->getSeance();
+		$data['capteur']=$this->getCapteur();
 
 		if ($salle_id) {
             
@@ -104,6 +105,38 @@ Class SalleInscrit extends Controller
 		$seances=$this->getSeance();
 		foreach ($seances as $seance) {
 			echo '<li class="date" id="'.$seance->idseance.'">'.date("F j, Y, g:i a", strtotime($seance->film_date)).'</li>';
+		}
+	}
+
+	function getCapteur(){
+		$query = "SELECT * FROM capteur WHERE salle_idsalle = :idsalle ORDER BY idcapteur ASC";
+		$arr['idsalle'] = $_GET['salle_id'];
+		$capteurs=$this->DB->read($query, $arr);
+		
+		return $capteurs;
+		
+	}
+
+	function showCapteur($capteurs){
+		if (!empty($capteurs)) {
+			foreach ($capteurs as $capteur) {
+				echo '<div class="capteur" id="capteur-'.$capteur->idcapteur.'">';
+				echo	'<div class="capteur_id">
+							<h3 class="capteur-header2">Id Capteur : </h3>
+							<h3>'. $capteur->idcapteur .'</h3>
+						</div>';
+				echo	'<div class="capteur_nv">
+							<h3 class="capteur-header2">Niveau sonore : </h3>
+							<h3>'. $capteur->niveau_sonore .'dB</h3>
+						</div>';
+				echo	'<div class="capteur_temp">
+							<h3 class="capteur-header2">Température : </h3>
+							<h3>'. $capteur->temperature .'°C</h3>
+						</div>';
+				echo '</div>';
+			}
+		} else {
+			echo '<p>Aucun capteur disponible pour cette salle.</p>';
 		}
 	}
 }

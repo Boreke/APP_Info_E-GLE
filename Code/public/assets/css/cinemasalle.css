@@ -46,6 +46,7 @@ h2{
 }
 
 .disposition{
+    display: flex;
     align-self: left;
     flex : 1;
 }
@@ -239,6 +240,52 @@ h2{
     font-size: 23px;
 }
 
+.capt-header{
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 10px;
+}
+
+.infos-capteur {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.capteurs-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.capteur {
+    display: flex;
+    flex-direction: column;
+}
+
+.capteur-header2{
+    margin: 0.5vw;
+    color: grey;
+    font-size: 20px;
+}
+
+.capteur_id {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.capteur_nv {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+.capteur_temp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
 .salle-top {
     display: flex;
@@ -247,9 +294,9 @@ h2{
 }
 .salle-bot{
     display: flex;
+    flex-direction: column;
     align-items: center;
     color: white;
-    display: none;
     margin-left: 50px;
 }
 .salles_existentes{

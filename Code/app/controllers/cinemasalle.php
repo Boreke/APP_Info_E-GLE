@@ -24,11 +24,13 @@ Class cinemasalle extends Controller {
 		unset($sqlRequest);
 		return $existingRooms;
 	}
+
 	function showExistingSalles(){
 		$existingRooms=$this->getExistingSalles();
 		
 		if($existingRooms){
 			$seances=$this->getSeance();
+			$capteurs=$this->getCapteur();
 			foreach ($existingRooms as $room){
 				echo '<div class="salle" id="'.$room->idsalle.'">
 							<div class="salle-top">
@@ -54,18 +56,28 @@ Class cinemasalle extends Controller {
 												<small>Occupied</small>
 												</li>    
 										</ul>
-									</div>
-								</div>';
-								if(!empty($seances[$room->idsalle])){
-								echo'<div class="infos-seances" id="infos-seances">
-										<button id="pre-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="pre-btn-img"></button>
-										<div class="seances-container" id="seances-container">';
-											$this->showSeance($seances[$room->idsalle]);
-								echo '	</div>
-										<button id="nxt-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="nxt-btn-img"></button>
 									</div>';
-								}
-						echo '</div>
+									if(!empty($seances[$room->idsalle])){
+										echo'<div class="infos-seances" id="infos-seances">
+												<button id="pre-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="pre-btn-img"></button>
+												<div class="seances-container" id="seances-container">';
+													$this->showSeance($seances[$room->idsalle]);
+										echo '	</div>
+												<button id="nxt-btn"><img src="'.ASSETS.'img/arrow.png" alt="" class="nxt-btn-img"></button>
+											</div>';
+									}
+								echo '</div>';
+								if(!empty($capteurs[$room->idsalle])){
+								echo '<div class="infos-capteur">
+									<h2 class="capt-header">Information capteur:</h2>
+									<div class="capteurs-container" id="capteurs-container">';
+											$this->showCapteur($capteurs[$room->idsalle]);
+								echo '	</div>
+								</div>';
+							
+						}
+							
+						echo'</div>
 						</div>
 						</div>';
 			}
@@ -227,5 +239,39 @@ Class cinemasalle extends Controller {
 			</div>';
 		}
 		
+	}
+
+	function getCapteur(){
+		$salles=$this->getExistingSalles();
+		$query = "SELECT * FROM capteur WHERE salle_idsalle = :idsalle ORDER BY idcapteur ASC";
+		foreach($salles as $salle){
+			$arr['idsalle'] = $salle->idsalle;
+			$capteurs[$salle->idsalle]=$this->DB->read($query, $arr);
+		}
+		return $capteurs;
+		
+	}
+
+	function showCapteur($capteurs){
+		if (!empty($capteurs)) {
+			foreach ($capteurs as $capteur) {
+				echo '<div class="capteur" id="capteur-'.$capteur->idcapteur.'">';
+				echo	'<div class="capteur_id">
+							<h3 class="capteur-header2">Id Capteur : </h3>
+							<h3>'. $capteur->idcapteur .'</h3>
+						</div>';
+				echo	'<div class="capteur_nv">
+							<h3 class="capteur-header2">Niveau sonore : </h3>
+							<h3>'. $capteur->niveau_sonore .'dB</h3>
+						</div>';
+				echo	'<div class="capteur_temp">
+							<h3 class="capteur-header2">Température : </h3>
+							<h3>'. $capteur->temperature .'°C</h3>
+						</div>';
+				echo '</div>';
+			}
+		} else {
+			echo '<p>Aucun capteur disponible pour cette salle.</p>';
+		}
 	}
 }
