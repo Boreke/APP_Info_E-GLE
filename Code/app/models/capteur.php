@@ -2,9 +2,7 @@
 
 class Capteur {
 
-    function updateCapteur() {
-        $DB = new Database();
-
+    function getLatestData() {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=G10B");
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
@@ -33,9 +31,15 @@ class Capteur {
             ];
         }
 
+        return $trames;
+    }
+
+    function updateCapteur() {
+        $DB = new Database();
+        $trames = $this->getLatestData();
         
-        /*
         $currentTime = time();
+        /*
         $interval = 5 * 60; 
         $recentTrames = array_filter($trames, function ($trame) use ($currentTime, $interval) {
             return ($currentTime - $trame['timestamp']) <= $interval;
@@ -72,11 +76,17 @@ class Capteur {
             'salle_idsalle' => $salle_idsalle
         ];
 
-        if ($DB->write($query, $params)) {
-            echo "Record updated successfully<br />";
-        } else {
-            echo "Error updating record<br />";
-        }
+        $result = $DB->read($query, $params);
+
+        header('Content-Type: application/json');
+        echo json_encode($result);
+        echo json_encode([
+            'sound' => $soundValues,
+            'temp' => $tempValues,
+            'timestamp' => $currentTime,
+            'averageSound' => $averageSound,
+            'averageTemp' => $averageTemp
+        ]);
     }
 }
 

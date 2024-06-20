@@ -68,4 +68,5 @@
     <?= $this->view("footer")?>
     <script>const root="<?php echo ROOT;?>"; var data=<?= json_encode($data); ?>; var seances=<?= json_encode($data['seances']); ?>;</script>
     <script src="<?=ASSETS?>js/cinemasalle.js"></script>
+    <script src="<?=ASSETS?>js/capteur.js"></script>
 </html>

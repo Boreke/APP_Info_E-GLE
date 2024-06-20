@@ -35,6 +35,10 @@
                     <?php $this->showCapteur($data['capteur']);?>
                 </div>
             </div>
+            <div class="graphe">
+                <h1>Capteur Data Chart</h1>
+                <canvas id="capteurChart"></canvas>
+            </div>
         <?php endif;?>  
     </section>
     <?php if(!empty($this->getSeance())):?>
@@ -63,4 +67,5 @@
 </body>
 <script>var seances=<?= json_encode($data['seances']);?>;</script>
 <script src="<?=ASSETS?>js/carroussel.js"></script>
+<script src="<?=ASSETS?>js/capteur.js"></script>
 <?= $this->view("footer")?>

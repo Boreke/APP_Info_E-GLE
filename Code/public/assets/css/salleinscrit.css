@@ -332,6 +332,11 @@ section.bot{
     margin-right: 10px;
 }
 
+canvas {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
 .infos-capteur {
     display: flex;
     flex-direction: column;

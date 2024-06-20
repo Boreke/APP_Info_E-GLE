@@ -287,6 +287,11 @@ h2{
     align-items: center;
 }
 
+canvas {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
 .salle-top {
     display: flex;
     align-items: center;

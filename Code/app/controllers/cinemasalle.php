@@ -75,7 +75,11 @@ Class cinemasalle extends Controller {
 									<h2 class="capt-header">Information capteur:</h2>
 									<div class="capteurs-container" id="capteurs-container">';
 											$this->showCapteur($capteurs[$room->idsalle]);
-								echo '	</div>
+								echo '</div>
+									<div class="graphe">
+										<h1>Capteur Data Chart</h1>
+										<canvas id="capteurChart"></canvas>
+									</div>
 								</div>';
 							
 						}
