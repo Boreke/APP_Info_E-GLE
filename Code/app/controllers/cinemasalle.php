@@ -8,6 +8,9 @@ Class cinemasalle extends Controller {
  	 	unset($_SESSION['error_message']);
  	 	$data['page_title'] = "Mes salles";
 		
+		$capteur = $this->loadModel("capteur");
+		$capteur->updateCapteur();
+
 		$data['seances']=$this->getSeance();
 
 		$this->view("cinemasalle",$data);

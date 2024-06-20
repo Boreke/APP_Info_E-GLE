@@ -7,6 +7,9 @@ Class SalleInscrit extends Controller
 		unset($_SESSION['error_message']);
 		$salle_id = $_GET['salle_id'] ?? null;
 
+		$capteur = $this->loadModel("capteur");
+		$capteur->updateCapteur();
+
  	 	$data['page_title'] = "salle ".$salle_id;
 		$data['seances']=$this->getSeance();
 		$data['capteur']=$this->getCapteur();
